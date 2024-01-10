@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+	  <Description>Working with non-generic collections</Description>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Version>24.1.7.1</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="SunamoArgs" Version="24.1.9.1" />
+    <PackageReference Include="SunamoAttributes" Version="24.1.7.1" />
+    <PackageReference Include="SunamoChar" Version="24.1.7.1" />
+    <PackageReference Include="SunamoCollectionsChangeContent" Version="24.1.7.1" />
+    <PackageReference Include="SunamoCollectionsGeneric" Version="24.1.5.1" />
+    <PackageReference Include="SunamoCollectionWithoutDuplicates" Version="24.1.5.1" />
+    <PackageReference Include="SunamoData" Version="24.1.5.5" />
+    <PackageReference Include="SunamoEnums" Version="24.1.7.2" />
+    <PackageReference Include="SunamoExceptions" Version="24.1.5.1" />
+    <PackageReference Include="SunamoExtensions" Version="24.1.5.1" />
+    <PackageReference Include="SunamoInterfaces" Version="24.1.7.1" />
+    <PackageReference Include="SunamoPercentCalculator" Version="24.1.7.1" />
+    <PackageReference Include="SunamoPlatformUwpInterop" Version="24.1.5.1" />
+    <PackageReference Include="SunamoStringGetLines" Version="24.1.7.1" />
+    <PackageReference Include="SunamoStringReplace" Version="24.1.5.1" />
+    <PackageReference Include="SunamoStringSplit" Version="24.1.5.1" />
+    <PackageReference Include="SunamoTextOutputGenerator" Version="24.1.7.1" />
+  </ItemGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>$(DefineConstants);ASYNC</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>$(DefineConstants);ASYNC</DefineConstants>
+  </PropertyGroup>
+</Project>
