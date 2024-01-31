@@ -25,16 +25,7 @@ public partial class CA
 
 
 
-    /// <summary>
-    /// Direct edit
-    /// </summary>
-    /// <param name="files_in"></param>
-    /// <param name="what"></param>
-    /// <param name="forWhat"></param>
-    public static void Replace(List<string> files_in, string what, string forWhat)
-    {
-        CAChangeContent.ChangeContent2(null, files_in, SHReplace.Replace, what, forWhat);
-    }
+
 
 
 
@@ -351,36 +342,8 @@ public partial class CA
         return mySites;
     }
 
-    public static List<string> RemoveStringsEmpty2(List<string> mySites)
-    {
-        for (int i = mySites.Count - 1; i >= 0; i--)
-        {
-            if (mySites[i].Trim() == string.Empty)
-            {
-                mySites.RemoveAt(i);
-            }
-        }
-        return mySites;
-    }
 
-    /// <summary>
-    /// For all types
-    /// </summary>
-    /// <param name="times"></param>
-    public static List<int> IndexesWithNull(IList times)
-    {
-        List<int> nulled = new List<int>();
-        int i = 0;
-        foreach (var item in times)
-        {
-            if (item == null)
-            {
-                nulled.Add(i);
-            }
-            i++;
-        }
 
-        return nulled;
-    }
+
 
 }

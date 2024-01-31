@@ -1,0 +1,1 @@
+﻿SunamoString - musí být, hodně závislostí

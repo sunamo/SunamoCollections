@@ -1,14 +1,12 @@
+using SunamoCollectionsShared;
+
 namespace SunamoCollections;
 
-public partial class CA
+public partial class CA //: CASH
 {
-
     public static Func<IList, object> dFirstOrNull = null;
     //dFirstOrNull
     private static Type type = typeof(CA);
-
-
-
 
     public static void RemoveLines(List<string> lines, List<int> removeLines)
     {
@@ -22,22 +20,7 @@ public partial class CA
 
 
 
-    /// <summary>
-    /// Return true if A1 is null or have zero elements
-    /// </summary>
-    /// <param name="mustBe"></param>
-    public static bool IsEmptyOrNull(IList mustBe)
-    {
-        if (mustBe == null)
-        {
-            return true;
-        }
-        else if (mustBe.Count() == 0)
-        {
-            return true;
-        }
-        return false;
-    }
+
 
     public static void AddSuffix(List<string> headers, string v)
     {
@@ -69,23 +52,7 @@ public partial class CA
         return v;
     }
 
-    /// <summary>
-    /// Return null if A1 will be null
-    /// </summary>
-    /// <param name="captions"></param>
-    /// <param name="i"></param>
-    public static object GetIndex(List<string> captions, int i)
-    {
-        if (captions == null)
-        {
-            return null;
-        }
-        if (!HasIndex(i, captions))
-        {
-            return null;
-        }
-        return captions[i];
-    }
+
 
     public static bool HasDuplicates(List<string> list)
     {
@@ -378,29 +345,7 @@ public partial class CA
         }
     }
 
-    /// <summary>
-    /// Dont trim
-    /// </summary>
-    /// <param name="times"></param>
-    public static List<int> IndexesWithNullOrEmpty(IList times)
-    {
-        List<int> nulled = new List<int>();
-        int i = 0;
-        foreach (var item in times)
-        {
-            if (item == null)
-            {
-                nulled.Add(i);
-            }
-            else if (item.ToString() == string.Empty)
-            {
-                nulled.Add(i);
-            }
-            i++;
-        }
 
-        return nulled;
-    }
 
 
 
@@ -467,26 +412,7 @@ public partial class CA
 
 
 
-    /// <summary>
-    /// Pro vyssi vykon uklada primo do zdrojoveho pole, pokud neni A2
-    /// </summary>
-    /// <param name="ss"></param>
-    public static List<string> ToLower(List<string> ss, bool createNewArray = false)
-    {
-        List<string> outArr = ss;
 
-        if (createNewArray)
-        {
-            outArr = new List<string>(ss.Count);
-            CASE.InitFillWith(outArr, ss.Count);
-        }
-
-        for (int i = 0; i < ss.Count; i++)
-        {
-            outArr[i] = ss[i].ToLower();
-        }
-        return outArr;
-    }
 
     /// <summary>
     /// Simply calling SequenceEqual
@@ -554,27 +480,6 @@ public partial class CA
         return b;
     }
 
-
-
-
-
-    public static bool HasIndex(int dex, Array col)
-    {
-        return col.Length > dex;
-    }
-    public static bool HasIndex(int p, IList nahledy)
-    {
-        if (p < 0)
-        {
-            ThrowEx.Custom("Chybn\u00FD parametr p");
-        }
-        if (nahledy.Count() > p)
-        {
-            return true;
-        }
-        return false;
-    }
-
     public static int GetLength(IList where)
     {
         if (where == null)
@@ -583,9 +488,6 @@ public partial class CA
         }
         return where.Count;
     }
-
-
-
 
     public static string[] JoinVariableAndArray(object p, IList sloupce)
     {
@@ -697,46 +599,7 @@ public partial class CA
         return false;
     }
 
-    /// <summary>
-    /// Remove elements starting with A1
-    /// Direct edit
-    /// </summary>
-    /// <param name="start"></param>
-    /// <param name="mySites"></param>
-    public static void RemoveStartingWith(string start, List<string> mySites, RemoveStartingWithArgs a = null)
-    {
-        if (a == null)
-        {
-            a = new RemoveStartingWithArgs();
-        }
 
-        var (negate, start2) = SH.IsNegationTuple(start);
-        start = start2;
-
-        for (int i = mySites.Count - 1; i >= 0; i--)
-        {
-            var val = mySites[i];
-            if (a._trimBeforeFinding)
-            {
-                val = val.Trim();
-            }
-
-            if (negate)
-            {
-                if (!SH.StartingWith(val, start, a.caseSensitive))
-                {
-                    mySites.RemoveAt(i);
-                }
-            }
-            else
-            {
-                if (SH.StartingWith(val, start, a.caseSensitive))
-                {
-                    mySites.RemoveAt(i);
-                }
-            }
-        }
-    }
 
     /// <summary>
     /// Return A2 if start something in A1
@@ -1059,16 +922,7 @@ public partial class CA
         }
     }
 
-    public static void DoubleOrMoreMultiLinesToSingle(ref string list)
-    {
-        var n = Environment.NewLine;
-        list = Regex.Replace(list, @"(\r?\n\s*){2,}", Environment.NewLine + Environment.NewLine);
-        list = list.Trim();
-        //list = list.Replace(n, n + n);
 
-        // 27-10-23 dříve to bylo takhle
-        //return list.Trim();
-    }
 
     public static bool HasPostfix(string key, params string[] v1)
     {

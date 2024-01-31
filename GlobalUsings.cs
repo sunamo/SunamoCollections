@@ -26,3 +26,8 @@ global using SunamoPercentCalculator;
 global using SunamoStringGetLines;
 global using SunamoStringReplace;
 global using SunamoCollectionsChangeContent.Args;
+global using SunamoDictionary;
+global using SunamoString;
+//global using SunamoCollectionsShared;
+global using SunamoExtensions;
+global using SunamoRegex;

@@ -1,3 +1,6 @@
+using SunamoCollectionsGenericShared;
+using SunamoCollectionsShared;
+
 namespace SunamoCollections;
 
 
@@ -30,8 +33,9 @@ public partial class CA
             l2 = t2.Item1;
         }
 
-        CA.RemoveStringsEmpty2(l1);
-        CA.RemoveStringsEmpty2(l2);
+        l1 = l1.Where(d => !string.IsNullOrWhiteSpace(d)).ToList();
+        l2 = l2.Where(d => !string.IsNullOrWhiteSpace(d)).ToList();
+
         CAChangeContent.ChangeContent0(null, l1, SHReplace.ReplaceWhiteSpacesWithoutSpaces);
         CAChangeContent.ChangeContent0(null, l2, SHReplace.ReplaceWhiteSpacesWithoutSpaces);
         CAChangeContent.ChangeContent0(null, l1, SHReplace.ReplaceAllDoubleSpaceToSingle);
@@ -91,7 +95,7 @@ public partial class CA
     {
         foreach (var item in searchTerms)
         {
-            if (!CA.IsEqualToAnyElement<T>(item, key))
+            if (!CAGSH.IsEqualToAnyElement<T>(item, key))
             {
                 return false;
             }
@@ -373,40 +377,7 @@ public partial class CA
         return p[p.Count - 1];
     }
 
-    /// <summary>
-    /// A1 musí být string[], kdyby byl string[] nemůžu vložit List<string>, tj. object ale ne string
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="innerMain"></param>
-    /// <returns></returns>
-    [ObjectParamsObsolete]
-    public static Object[] ConvertListStringWrappedInArray(Object[] innerMain)
-    {
-        if (CA.IsListStringWrappedInArray(innerMain))
-        {
-            List<object> result = null;
-            var first = (IEnumerable)innerMain[0];
 
-            if (first is List<object>)
-            {
-                result = (List<object>)first;
-            }
-            else
-            {
-                result = new List<object>();
-
-                foreach (var item in first)
-                {
-                    result.Add(item);
-                }
-            }
-
-
-            return result.ToArray();
-        }
-
-        return innerMain;
-    }
 
 
 

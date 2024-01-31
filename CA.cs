@@ -1,6 +1,9 @@
+using SunamoCollectionsShared;
+using SunamoStringParts;
+
 namespace SunamoCollections;
 
-public partial class CA : CASE
+public partial class CA
 {
     public static List<int> ParseInt(string v, string comma)
     {
@@ -43,7 +46,7 @@ public partial class CA : CASE
             }
             else
             {
-                sb.AppendLine(SH.GetFirstWord(t));
+                sb.AppendLine(SH.GetFirstWord(t, true));
             }
         }
 
@@ -87,7 +90,7 @@ public partial class CA : CASE
     {
         for (int i = 0; i < l.Count; i++)
         {
-            l[i] = SH.RemoveAfterFirstFunc(l[i], CharHelper.IsSpecial, EmptyArrays.Chars);
+            l[i] = SHParts.RemoveAfterFirstFunc(l[i], CharHelper.IsSpecial, EmptyArrays.Chars);
         }
     }
 
@@ -135,7 +138,7 @@ public partial class CA : CASE
     /// <param name="input"></param>
     public static string GetNumberedList(List<string> input, int startFrom)
     {
-        CA.RemoveStringsEmpty2(input);
+        input = input.Where(d => !string.IsNullOrWhiteSpace(d)).ToList();
         CA.PrependWithNumbered(input, startFrom);
         return SHSE.JoinNL(input);
     }
@@ -179,23 +182,7 @@ public partial class CA : CASE
 
 
 
-    /// <summary>
-    /// Direct edit
-    /// </summary>
-    /// <param name="v"></param>
-    /// <param name="l"></param>
-    /// <returns></returns>
-    public static List<string> StartingWith(string v, List<string> l)
-    {
-        for (int i = l.Count - 1; i >= 0; i--)
-        {
-            if (!l[i].StartsWith(v))
-            {
-                l.RemoveAt(i);
-            }
-        }
-        return l;
-    }
+
 
     /// <summary>
     /// A2,3 can be null, then no header will be append
@@ -300,17 +287,7 @@ public partial class CA : CASE
         }
         return celkove;
     }
-    public static List<string> WrapWithIfFunc(Func<string, string, bool, bool> f, bool invert, string mustContains, string wrapWith, params string[] whereIsUsed2)
-    {
-        for (int i = 0; i < whereIsUsed2.Length; i++)
-        {
-            if (f.Invoke(whereIsUsed2[i], mustContains, invert))
-            {
-                whereIsUsed2[i] = wrapWith + whereIsUsed2[i] + wrapWith;
-            }
-        }
-        return whereIsUsed2.ToList();
-    }
+
     /// <summary>
     /// If some of A1 is match with A2
     /// </summary>
@@ -369,7 +346,7 @@ public partial class CA : CASE
         }
         for (int i = 0; i < list.Count; i++)
         {
-            list[i] = FS.WithEndSlash(list[i]);
+            list[i] = list[i].TrimEnd('\\') + "\\";
         }
         return folders;
     }
@@ -377,7 +354,7 @@ public partial class CA : CASE
     {
         for (int i = 0; i < folders.Count; i++)
         {
-            folders[i] = FS.WithoutEndSlash(folders[i]);
+            folders[i] = folders[i].TrimEnd('\\');
         }
         return folders;
     }
@@ -520,7 +497,7 @@ public partial class CA : CASE
     {
         for (int i = 0; i < globallyInstalledTsDefinitions.Count(); i++)
         {
-            globallyInstalledTsDefinitions[i] = SH.Format2(uninstallNpmPackageGlobal, globallyInstalledTsDefinitions[i]);
+            globallyInstalledTsDefinitions[i] = /*SHFormat.Format2*/ string.Format(uninstallNpmPackageGlobal, CAG.ToArrayT<Object>(globallyInstalledTsDefinitions[i]));
         }
         return globallyInstalledTsDefinitions;
     }
