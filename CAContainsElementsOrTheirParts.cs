@@ -1,7 +1,9 @@
-using SunamoCollectionsGenericShared;
+namespace SunamoCollections;
+
+
+using SunamoChar._sunamo;
 using SunamoCollectionsShared;
 
-namespace SunamoCollections;
 
 
 
@@ -22,36 +24,7 @@ namespace SunamoCollections;
 /// </summary>
 public partial class CA
 {
-    public static string CompareListSanitizeStringOutput(List<string> l1, List<string> l2, Func<List<string>, Tuple<List<string>, List<string>>> typeScriptHelperGetNamesAndTypes = null, bool tsInterface = false)
-    {
-        if (tsInterface && typeScriptHelperGetNamesAndTypes != null)
-        {
-            var t2 = typeScriptHelperGetNamesAndTypes(l1);
-            l1 = t2.Item1;
 
-            t2 = typeScriptHelperGetNamesAndTypes(l2);
-            l2 = t2.Item1;
-        }
-
-        l1 = l1.Where(d => !string.IsNullOrWhiteSpace(d)).ToList();
-        l2 = l2.Where(d => !string.IsNullOrWhiteSpace(d)).ToList();
-
-        CAChangeContent.ChangeContent0(null, l1, SHReplace.ReplaceWhiteSpacesWithoutSpaces);
-        CAChangeContent.ChangeContent0(null, l2, SHReplace.ReplaceWhiteSpacesWithoutSpaces);
-        CAChangeContent.ChangeContent0(null, l1, SHReplace.ReplaceAllDoubleSpaceToSingle);
-        CAChangeContent.ChangeContent0(null, l2, SHReplace.ReplaceAllDoubleSpaceToSingle);
-        var abl = CA.CompareList(l1, l2);
-        TextOutputGenerator textOutputGenerator = new TextOutputGenerator();
-
-        textOutputGenerator.List(l1, "Only in 1:");
-        textOutputGenerator.AppendLine("");
-        textOutputGenerator.List(l2, "Only in 2:");
-        textOutputGenerator.AppendLine("");
-        textOutputGenerator.List(abl, "Both:");
-
-        var result = textOutputGenerator.ToString();
-        return result;
-    }
 
 
     public static List<T> SortSetFirst<T, U, P>(U result, Func<T, P> getProperty, P prioritize) where U : List<T>
@@ -95,7 +68,7 @@ public partial class CA
     {
         foreach (var item in searchTerms)
         {
-            if (!CAGSH.IsEqualToAnyElement<T>(item, key))
+            if (!key.Any(d => EqualityComparer<T>.Default.Equals(d, item)))// (item, key))
             {
                 return false;
             }
@@ -210,12 +183,13 @@ public partial class CA
 
     private static IList<int> ReturnWhichAreEqualIndexes<T>(IList<T> parts, IList<T> mustBeEqual)
     {
-        CollectionWithoutDuplicates<int> result = new CollectionWithoutDuplicates<int>();
+        List<int> result = new List<int>();
         foreach (var item in mustBeEqual)
         {
             result.AddRange(ReturnWhichAreEqualIndexes<T>(parts, item));
         }
-        return result.c;
+        result = result.Distinct().ToList();
+        return result;
     }
 
     /// <summary>
@@ -341,7 +315,7 @@ public partial class CA
 
         if (p.Count % v != 0)
         {
-            ThrowEx.Custom($"Count in {nameof(p)} is not dividable by {v}");
+            throw new Exception($"Count in {nameof(p)} is not dividable by {v}");
         }
 
         for (int i = 0; i < p.Count; i++)
@@ -407,7 +381,16 @@ public partial class CA
 
         foreach (var item in l)
         {
-            DictionaryHelper.AddOrPlus(result, item, 1);
+            if (result.ContainsKey(item))
+            {
+                result[item]++;
+            }
+            else
+            {
+                result.Add(item, 1);
+            }
+
+            //DictionaryHelper.AddOrPlus(result, item, 1);
         }
 
         return result;

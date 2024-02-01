@@ -1,5 +1,7 @@
 namespace SunamoCollections;
 
+
+
 public partial class CA
 {
     #region 1) ContainsAnyFromElement - For easy copy from CAContainsElementsOrTheirPartsShared.cs
@@ -118,7 +120,7 @@ public partial class CA
         int i = 0;
         foreach (var term in terms)
         {
-            if (SH.Contains(item, term, searchStrategy))
+            if (item.Contains(term) /*SH.Contains(item, term, searchStrategy)*/)
             {
                 result.Add(i);
             }
@@ -154,7 +156,7 @@ public partial class CA
         {
             foreach (var item in value)
             {
-                if (SH.Contains(item, term, searchStrategy))
+                if (item.Contains(term) /*SH.Contains(item, term, searchStrategy)*/)
                 {
                     result.Add(i);
                 }
@@ -179,12 +181,13 @@ public partial class CA
     /// <returns></returns>
     public static IList<int> ReturnWhichContainsIndexes(IList<string> parts, IList<string> mustContains)
     {
-        CollectionWithoutDuplicates<int> result = new CollectionWithoutDuplicates<int>();
+        List<int> result = new List<int>();
         foreach (var item in mustContains)
         {
             result.AddRange(ReturnWhichContainsIndexes(parts, item));
         }
-        return result.c;
+        result = result.Distinct().ToList();
+        return result;
     }
     #endregion
 }

@@ -1,4 +1,8 @@
+using SunamoExtensions;
+
 namespace SunamoCollections;
+
+
 public partial class CA
 {
 
@@ -75,15 +79,6 @@ public partial class CA
 
 
 
-    /// <summary>
-    /// not direct edit
-    /// </summary>
-    /// <param name="v"></param>
-    /// <param name="dirs"></param>
-    public static List<string> PostfixIfNotEnding(string v, List<string> dirs)
-    {
-        return CAChangeContent.ChangeContent1(new ChangeContentArgs() { }, dirs, SH.PostfixIfNotEmpty, v);
-    }
 
 
 
@@ -107,14 +102,14 @@ public partial class CA
     /// <param name="files1"></param>
     /// <param name="item"></param>
     /// <param name="wildcard"></param>
-    public static void RemoveWhichContains(List<string> files1, string item, bool wildcard)
+    public static void RemoveWhichContains(List<string> files1, string item, bool wildcard, Func<string, string, bool> WildcardIsMatch)
     {
         if (wildcard)
         {
             //item = SH.WrapWith(item, AllChars.asterisk);
             for (int i = files1.Count - 1; i >= 0; i--)
             {
-                if (Wildcard.IsMatch(files1[i], item))
+                if (WildcardIsMatch(files1[i], item))
                 {
                     files1.RemoveAt(i);
                 }
@@ -293,7 +288,7 @@ public partial class CA
     ///// </summary>
     //private static List<string> ToListString2(IList enumerable)
     //{
-    //    return se.CA.ToListString2(enumerable);
+    //    return se.new List<string>2(enumerable);
     //}
 
     ///// <summary>
@@ -305,7 +300,7 @@ public partial class CA
     ///// <param name="enumerable"></param>
     //public static List<string> ToListString(IList enumerable2)
     //{
-    //    return se.CA.ToListString(enumerable2);
+    //    return se.new List<string>(enumerable2);
     //}
 
     public static IList<object> OneElementCollectionToMulti(IList deli2)

@@ -1,6 +1,10 @@
+namespace SunamoCollections;
+
+
+using Diacritics.Extensions;
+
 using SunamoCollectionsShared;
 
-namespace SunamoCollections;
 
 public partial class CA //: CASH
 {
@@ -57,7 +61,8 @@ public partial class CA //: CASH
     public static bool HasDuplicates(List<string> list)
     {
         var list2 = list.ToList();
-        CAG.RemoveDuplicitiesList(list);
+        //CAG.RemoveDuplicitiesList(list);
+        list2 = list2.Distinct().ToList();
         if (list2.Count != list.Count)
         {
             //Console.WriteLine( Exceptions.DifferentCountInLists(string.Empty, "list2", list2.Count, "list", list.Count));
@@ -104,7 +109,7 @@ public partial class CA //: CASH
     public static List<T> ToArrayTCheckNull<T>(params T[] where)
     {
 
-        var vr = CAG.ToList<T>(where);
+        var vr = where.ToList();
         RemoveDefaultT(vr);
         return vr;
     }
@@ -187,7 +192,7 @@ public partial class CA //: CASH
         List<string> result = new List<string>();
         foreach (var item in o)
         {
-            result.AddRange(CA.ToListStringMoreObject(item));
+            result.AddRange(new List<string>([item.ToString()]));
         }
 
         return result;
@@ -454,10 +459,13 @@ public partial class CA //: CASH
     public static T[] JumbleUp<T>(T[] b)
     {
         int bl = b.Length;
+
+        Random random = new Random();
+
         for (int i = 0; i < bl; ++i)
         {
-            int index1 = (RandomHelper.RandomInt() % bl);
-            int index2 = (RandomHelper.RandomInt() % bl);
+            int index1 = (random.Next() % bl);
+            int index2 = (random.Next() % bl);
 
             T temp = b[index1];
             b[index1] = b[index2];
@@ -468,10 +476,13 @@ public partial class CA //: CASH
     public static List<T> JumbleUp<T>(List<T> b)
     {
         int bl = b.Count;
+        Random r = new Random();
         for (int i = 0; i < bl; ++i)
         {
-            int index1 = (RandomHelper.RandomInt() % bl);
-            int index2 = (RandomHelper.RandomInt() % bl);
+
+
+            int index1 = (r.Next() % bl);
+            int index2 = (r.Next() % bl);
 
             T temp = b[index1];
             b[index1] = b[index2];
@@ -568,7 +579,7 @@ public partial class CA //: CASH
     {
         for (int i = 0; i < nazev.Count; i++)
         {
-            nazev[i] = SH.TextWithoutDiacritic(nazev[i]);
+            nazev[i] = nazev[i].RemoveDiacritics();
         }
         return nazev;
     }
@@ -683,7 +694,7 @@ public partial class CA //: CASH
         {
             foreach (var item in lines)
             {
-                if (SH.ContainsAll(item, w, parseNegations))
+                if (w.All(d => item.Contains(d))) //SH.ContainsAll(item, w, parseNegations))
                 {
                     founded.Add(i);
                     result.Add(item);
@@ -806,13 +817,17 @@ public partial class CA //: CASH
     /// <param name="mask"></param>
     public static void RemoveWildcard(List<string> d, string mask)
     {
-        for (int i = d.Count - 1; i >= 0; i--)
-        {
-            if (SH.MatchWildcard(d[i], mask))
-            {
-                d.RemoveAt(i);
-            }
-        }
+        //https://stackoverflow.com/a/15275806
+
+        throw new NotImplementedException();
+
+        //for (int i = d.Count - 1; i >= 0; i--)
+        //{
+        //    if (SH.MatchWildcard(d[i], mask))
+        //    {
+        //        d.RemoveAt(i);
+        //    }
+        //}
     }
 
     public static List<List<T>> SplitList<T>(IList<T> locations, int nSize = 30)
@@ -842,7 +857,7 @@ public partial class CA //: CASH
         var b = new List<bool>(numbers.Count);
         foreach (var item in numbers)
         {
-            b.Add(SunamoBts.BTS.IntToBool(item));
+            b.Add(item == 1 ? true : false);
         }
         return b;
     }
@@ -853,11 +868,11 @@ public partial class CA //: CASH
     /// <param name="files"></param>
     /// <param name="list"></param>
     /// <param name="wildcard"></param>
-    public static void RemoveWhichContainsList(List<string> files, List<string> list, bool wildcard)
+    public static void RemoveWhichContainsList(List<string> files, List<string> list, bool wildcard, Func<string, string, bool> WildcardIsMatch = null)
     {
         foreach (var item in list)
         {
-            RemoveWhichContains(files, item, wildcard);
+            RemoveWhichContains(files, item, wildcard, WildcardIsMatch);
         }
     }
 
@@ -899,10 +914,7 @@ public partial class CA //: CASH
         return false;
     }
 
-    public static List<string> CompareList(List<string> c1, List<string> c2)
-    {
-        return CAG.CompareList<string>(c1, c2);
-    }
+
 
 
 

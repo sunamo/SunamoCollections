@@ -1,4 +1,6 @@
-﻿//using System;
+namespace SunamoCollections._sunamo;
+
+//using System;
 //using System.Collections.Generic;
 //using System.Linq;
 //using System.Text;
@@ -8,9 +10,9 @@
 
 //namespace SunamoCollections._sunamo
 //{
-//    public class CaInit
+//    internal class CaInit
 //    {
-//        public static void Fs(Func<string, string> GetDirectoryName, Func<string, string, Task> WriteAllTextWithExc, Func<string, bool> TryDeleteFile, Func<string, bool> ExistsFile, Action<string> CreateFileIfDoesntExists, Func<string, string> WithEndSlash, Func<string, string> WithoutEndSlash)
+//        internal static void Fs(Func<string, string> GetDirectoryName, Func<string, string, Task> WriteAllTextWithExc, Func<string, bool> TryDeleteFile, Func<string, bool> ExistsFile, Action<string> CreateFileIfDoesntExists, Func<string, string> WithEndSlash, Func<string, string> WithoutEndSlash)
 //        {
 //            FS2.GetDirectoryName = GetDirectoryName;
 //            FS2.WriteAllTextWithExc = WriteAllTextWithExc;
@@ -21,7 +23,7 @@
 //            FS2.WithoutEndSlash = WithoutEndSlash;
 //        }
 
-//        public static void Sh(Func<string, string, bool> MatchWildcard, Func<string, List<string>> GetLines, Func<string, bool, string> GetFirstWord, Func<string, Object[], string> Format2, Func<string, Func<char, bool>, Char[], string> RemoveAfterFirstFunc, Func<string, string> TextWithoutDiacritic, Func<char, IList, string> JoinChar, Func<string, List<string>, ContainsCompareMethod, bool> ContainsAll, Func<string, string, bool, bool> StartingWith, Func<string, (bool, string)> IsNegationTuple, Func<string, string, string, string> Replace, Func<string, string, string> PostfixIfNotEmpty, Func<List<string>, string> JoinNL, Func<string, bool> ContainsDiacritic, Func<string, string> FirstCharUpper, Func<string, string> ReplaceWhiteSpacesWithoutSpaces, Func<string, string> ReplaceAllDoubleSpaceToSingle, Func<string, string, SearchStrategy, bool> Contains)
+//        internal static void Sh(Func<string, string, bool> MatchWildcard, Func<string, List<string>> GetLines, Func<string, bool, string> GetFirstWord, Func<string, Object[], string> Format2, Func<string, Func<char, bool>, Char[], string> RemoveAfterFirstFunc, Func<string, string> TextWithoutDiacritic, Func<char, IList, string> JoinChar, Func<string, List<string>, ContainsCompareMethod, bool> ContainsAll, Func<string, string, bool, bool> StartingWith, Func<string, (bool, string)> IsNegationTuple, Func<string, string, string, string> Replace, Func<string, string, string> PostfixIfNotEmpty, Func<List<string>, string> JoinNL, Func<string, bool> ContainsDiacritic, Func<string, string> FirstCharUpper, Func<string, string> ReplaceWhiteSpacesWithoutSpaces, Func<string, string> ReplaceAllDoubleSpaceToSingle, Func<string, string, SearchStrategy, bool> Contains)
 //        {
 //            SH2.MatchWildcard = MatchWildcard;
 //            SH2.GetLines = GetLines;
@@ -43,7 +45,7 @@
 //            SH2.Contains = Contains;
 //        }
 
-//        public static void Wildcard(Func<string, string, bool> IsMatch)
+//        internal static void Wildcard(Func<string, string, bool> IsMatch)
 //        {
 //            SunamoCollections._sunamo.Wildcard.IsMatch = IsMatch;
 //        }

@@ -1,14 +1,24 @@
-using SunamoCollectionsShared;
-using SunamoStringParts;
-
 namespace SunamoCollections;
+
+
+using Diacritics.Extensions;
+
+using SunamoCollectionsShared;
+using SunamoTextOutputGenerator;
 
 public partial class CA
 {
     public static List<int> ParseInt(string v, string comma)
     {
         var s = SHSE.Split(v, comma);
-        return BTS.CastCollectionStringToInt(s);
+        List<int> n = new List<int>(s.Count);
+        foreach (var item in s)
+        {
+            n.Add(int.Parse(item));
+        }
+
+        //return BTS.CastCollectionStringToInt(s);
+        return n;
     }
 
     public static List<List<string>> Split(List<string> s, string determining)
@@ -31,7 +41,7 @@ public partial class CA
     {
         StringBuilder sb = new StringBuilder();
 
-        var text = SHGetLines.GetLines(t2);
+        var text = t2.Split(new string[] { Environment.NewLine }, StringSplitOptions.None).ToList(); //SHGetLines.GetLines(t2);
         foreach (var item in text)
         {
             string t = item.Trim();
@@ -46,7 +56,7 @@ public partial class CA
             }
             else
             {
-                sb.AppendLine(SH.GetFirstWord(t, true));
+                sb.AppendLine(t.Split(AllChars.whiteSpacesChars.ToArray())[0]);
             }
         }
 
@@ -88,10 +98,11 @@ public partial class CA
     //}
     public static void KeepOnlyWordsToFirstSpecialChars(List<string> l)
     {
-        for (int i = 0; i < l.Count; i++)
-        {
-            l[i] = SHParts.RemoveAfterFirstFunc(l[i], CharHelper.IsSpecial, EmptyArrays.Chars);
-        }
+        throw new NotImplementedException();
+        //for (int i = 0; i < l.Count; i++)
+        //{
+        //    l[i] = SHParts.RemoveAfterFirstFunc(l[i], CharHelper.IsSpecial, EmptyArrays.Chars);
+        //}
     }
 
 
@@ -124,7 +135,7 @@ public partial class CA
             List<int> ca = new List<int>();
             for (int y = 0; y < value.GetLength(1); y++)
             {
-                ca.Add(SunamoBts.BTS.BoolToInt(value[i, y]));
+                ca.Add(value[i, y] ? 1 : 0);
             }
             result.Add(ca);
         }
@@ -132,25 +143,25 @@ public partial class CA
     }
 
 
-    /// <summary>
-    /// Direct edit
-    /// </summary>
-    /// <param name="input"></param>
-    public static string GetNumberedList(List<string> input, int startFrom)
-    {
-        input = input.Where(d => !string.IsNullOrWhiteSpace(d)).ToList();
-        CA.PrependWithNumbered(input, startFrom);
-        return SHSE.JoinNL(input);
-    }
-    /// <summary>
-    /// Direct edit
-    /// </summary>
-    /// <param name="input"></param>
-    private static void PrependWithNumbered(List<string> input, int startFrom)
-    {
-        var numbered = SunamoBts.BTS.GetNumberedListFromTo(startFrom, input.Count - 1, ") ");
-        Prepend(numbered, input);
-    }
+    ///// <summary>
+    ///// Direct edit
+    ///// </summary>
+    ///// <param name="input"></param>
+    //public static string GetNumberedList(List<string> input, int startFrom)
+    //{
+    //    input = input.Where(d => !string.IsNullOrWhiteSpace(d)).ToList();
+    //    CA.PrependWithNumbered(input, startFrom);
+    //    return SHSE.JoinNL(input);
+    //}
+    ///// <summary>
+    ///// Direct edit
+    ///// </summary>
+    ///// <param name="input"></param>
+    //private static void PrependWithNumbered(List<string> input, int startFrom)
+    //{
+    //    var numbered = SunamoBts.BTS.GetNumberedListFromTo(startFrom, input.Count - 1, ") ");
+    //    Prepend(numbered, input);
+    //}
     public static ABL<string, string> CompareListDifferent(List<string> c1, List<string> c2)
     {
         List<string> existsIn1 = new List<string>();
@@ -201,7 +212,7 @@ public partial class CA
         int files1Count = files1.Count;
         int files2Count = files2.Count;
         string result;
-        TextOutputGenerator textOutput = new TextOutputGenerator();
+        var textOutput = new TextOutputGenerator();
         int inBothCount = inBoth.Count;
         double sumBothPlusManaged = inBothCount + files2Count;
         PercentCalculator percentCalculator = new PercentCalculator(sumBothPlusManaged);
@@ -286,16 +297,6 @@ public partial class CA
             celkove++;
         }
         return celkove;
-    }
-
-    /// <summary>
-    /// If some of A1 is match with A2
-    /// </summary>
-    /// <param name="list"></param>
-    /// <param name="file"></param>
-    public static bool MatchWildcard(string file, List<string> list)
-    {
-        return list.Any(d => SH.MatchWildcard(file, d));
     }
 
     public static bool HasFirstItemLength(List<string> notContains)
@@ -442,7 +443,7 @@ public partial class CA
         List<string> vr = new List<string>(nazvyReseni.Count());
         foreach (var item in nazvyReseni)
         {
-            if (SH.ContainsDiacritic(item))
+            if (item.HasDiacritics())
             {
                 vr.Add(item);
             }
@@ -497,7 +498,7 @@ public partial class CA
     {
         for (int i = 0; i < globallyInstalledTsDefinitions.Count(); i++)
         {
-            globallyInstalledTsDefinitions[i] = /*SHFormat.Format2*/ string.Format(uninstallNpmPackageGlobal, CAG.ToArrayT<Object>(globallyInstalledTsDefinitions[i]));
+            globallyInstalledTsDefinitions[i] = /*string.Format*/ string.Format(uninstallNpmPackageGlobal, globallyInstalledTsDefinitions[i]);
         }
         return globallyInstalledTsDefinitions;
     }
