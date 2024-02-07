@@ -1,13 +1,4 @@
 namespace SunamoCollections;
-
-
-using SunamoChar._sunamo;
-using SunamoCollectionsShared;
-
-
-
-
-
 /// <summary>
 /// Keep in separatly file, I have still chaos in it
 /// Only 1:M, therefore not CompareListResult
@@ -258,6 +249,7 @@ public partial class CA
     public static string CompareListSanitizeStringOutput(List<string> l, List<string> l2)
     {
         // Nemůžu najít její obsah - později zkusit najít ve všech souborech nebo v gitu.
+        // teď vidím že  je v CAG
         throw new NotImplementedException();
     }
 
