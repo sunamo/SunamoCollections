@@ -168,7 +168,7 @@ public partial class CA
 
     /// <summary>
     /// CA.ContainsAnyFromElement - Contains string elements of list. Return List<string>
-    /// CA.IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
+    /// CAG.IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
     /// CA.IsEqualToAllElement - takes two generic list. return bool
     /// CA.ContainsElement - at least one element must be equaled. generic. bool
     /// CA.IsSomethingTheSame - only for string. as List.Contains. bool

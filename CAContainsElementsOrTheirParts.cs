@@ -3,7 +3,7 @@ namespace SunamoCollections;
 /// Keep in separatly file, I have still chaos in it
 /// Only 1:M, therefore not CompareListResult
 /// 1) CA.ContainsAnyFromElement - Contains string elements of list. Return List<string>
-/// 2) CA.IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
+/// 2) CAG.IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
 /// 3) CA.IsEqualToAllElement - takes two generic list. return bool
 /// 4) CA.ContainsElement - at least one element must be equaled. generic. bool
 /// 5) CA.IsSomethingTheSame - only for string. as List.Contains. bool
@@ -44,7 +44,7 @@ public partial class CA
     /// Return whether all of A1 are in A2
     /// Not all from A2 must be A1ContainsAnyFromElement - Contains string elements of list. Return List<string>
     /// ) CA.ContainsAnyF=´úl¨romElement - Contains string elements of list. Return List<string>
-    /// ) CA.IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
+    /// ) CAG.IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
     /// ) CA.IsEqualToAllElement - takes two generic list. return bool
     /// ) CA.ContainsElement - at least one element must be equaled. generic. bool
     /// ) CA.IsSomethingTheSame - only for string. as List.Contains. bool
@@ -71,7 +71,7 @@ public partial class CA
     #region 5) IsSomethingTheSame
     /// <summary>
     /// 1) CA.ContainsAnyFromElement - Contains string elements of list. Return List<string>
-    /// 2) CA.IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
+    /// 2) CAG.IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
     /// 3) CA.IsEqualToAllElement - takes two generic list. return bool
     /// 4) CA.ContainsElement - at least one element must be equaled. generic. bool
     /// 5) CA.IsSomethingTheSame - only for string. as List.Contains. bool
@@ -94,7 +94,7 @@ public partial class CA
 
     /// <summary>
     /// 1) CA.ContainsAnyFromElement - Contains string elements of list. Return List<string>
-    /// 2) CA.IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
+    /// 2) CAG.IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
     /// 3) CA.IsEqualToAllElement - takes two generic list. return bool
     /// 4) CA.ContainsElement - at least one element must be equaled. generic. bool
     /// 5) CA.IsSomethingTheSame - only for string. as List.Contains. bool
@@ -131,7 +131,7 @@ public partial class CA
 
     /// <summary>
     /// 1) CA.ContainsAnyFromElement - Contains string elements of list. Return List<string>
-    /// 2) CA.IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
+    /// 2) CAG.IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
     /// 3) CA.IsEqualToAllElement - takes two generic list. return bool
     /// 4) CA.ContainsElement - at least one element must be equaled. generic. bool
     /// 5) CA.IsSomethingTheSame - only for string. as List.Contains. bool

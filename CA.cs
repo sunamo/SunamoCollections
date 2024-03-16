@@ -6,6 +6,20 @@ using SunamoTextOutputGenerator;
 
 public partial class CA
 {
+    public static List<string> PostfixIfNotEnding(string pre, List<string> l)
+    {
+        for (int i = 0; i < l.Count; i++)
+        {
+            l[i] = pre + l[i];
+        }
+        return l;
+    }
+
+    public static List<string> GetNumberedList(List<string> strings, int from)
+    {
+        throw new NotImplementedException();
+    }
+
     public static List<int> ParseInt(string v, string comma)
     {
         var s = SHSE.Split(v, comma);

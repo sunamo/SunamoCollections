@@ -4,15 +4,11 @@
     <Description>Working with non-generic collections</Description>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>24.2.6.2</Version>
+    <Version>24.2.7.1</Version>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Diacritics" Version="3.3.27" />
-    <PackageReference Include="SunamoAttributes" Version="24.2.6.2" />
     <PackageReference Include="SunamoCollectionsShared" Version="24.2.6.2" />
-    <PackageReference Include="SunamoData" Version="24.2.6.2" />
-    <PackageReference Include="SunamoExtensions" Version="24.2.6.2" />
-    <PackageReference Include="SunamoInterfaces" Version="24.2.6.3" />
     <PackageReference Include="SunamoPercentCalculator" Version="24.2.6.2" />
     <PackageReference Include="SunamoTextOutputGenerator" Version="24.2.6.2" />
   </ItemGroup>
