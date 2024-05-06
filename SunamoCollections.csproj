@@ -13,15 +13,12 @@
     <PackageReference Include="SunamoTextOutputGenerator" Version="24.2.6.2" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SunamoChar\SunamoChar.csproj" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Args\" />
   </ItemGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>$(DefineConstants);ASYNC</DefineConstants>
+    <DefineConstants>$(DefineConstants);ASYNC;SunamoCollections</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DefineConstants>$(DefineConstants);ASYNC</DefineConstants>
+    <DefineConstants>$(DefineConstants);ASYNC;SunamoCollections</DefineConstants>
   </PropertyGroup>
 </Project>
