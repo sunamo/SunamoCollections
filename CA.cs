@@ -53,7 +53,7 @@ public partial class CA
     {
         StringBuilder sb = new StringBuilder();
 
-        var text = t2.Split(new string[] { Environment.NewLine }, StringSplitOptions.None).ToList(); //SHGetLines.GetLines(t2);
+        var text = t2v.Split(new string[] { v.Contains("\r\n") ? "\r\n" : "\n" }, StringSplitOptions.None).ToList(); //SHGetLines.GetLines(t2);
         foreach (var item in text)
         {
             string t = item.Trim();
