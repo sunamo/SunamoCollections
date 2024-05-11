@@ -12,5 +12,8 @@ global using SunamoData.Data;
 global using SunamoPercentCalculator;
 global using System.Data;
 global using SunamoAttributes;
-//global using SunamoString;
-global using SunamoExtensions;
+
+global using System.Collections.Generic;
+global using System.Collections;
+global using System.IO;
+
