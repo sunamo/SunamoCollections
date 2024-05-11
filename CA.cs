@@ -2,6 +2,7 @@ namespace SunamoCollections;
 
 
 using Diacritics.Extensions;
+using SunamoCollections._sunamo;
 using SunamoTextOutputGenerator;
 
 public partial class CA
@@ -22,7 +23,7 @@ public partial class CA
 
     public static List<int> ParseInt(string v, string comma)
     {
-        var s = SHSE.Split(v, comma);
+        var s = SHSunamoExceptions.Split(v, comma);
         List<int> n = new List<int>(s.Count);
         foreach (var item in s)
         {
@@ -53,7 +54,7 @@ public partial class CA
     {
         StringBuilder sb = new StringBuilder();
 
-        var text = t2v.Split(new string[] { v.Contains("\r\n") ? "\r\n" : "\n" }, StringSplitOptions.None).ToList(); //SHGetLines.GetLines(t2);
+        var text = t2.Split(new string[] { t2.Contains("\r\n") ? "\r\n" : "\n" }, StringSplitOptions.None).ToList(); //SHGetLines.GetLines(t2);
         foreach (var item in text)
         {
             string t = item.Trim();
@@ -163,7 +164,7 @@ public partial class CA
     //{
     //    input = input.Where(d => !string.IsNullOrWhiteSpace(d)).ToList();
     //    CA.PrependWithNumbered(input, startFrom);
-    //    return SHSE.JoinNL(input);
+    //    return SHSunamoExceptions.JoinNL(input);
     //}
     ///// <summary>
     ///// Direct edit
@@ -479,7 +480,7 @@ public partial class CA
         if (realLength > requiredLength)
         {
             returnArray = new List<string>(requiredLength);
-            CASE.InitFillWith(returnArray, requiredLength);
+            CASunamoExceptions.InitFillWith(returnArray, requiredLength);
             for (int i = 0; i < requiredLength; i++)
             {
                 returnArray[i] = input[i];
@@ -493,7 +494,7 @@ public partial class CA
         else if (realLength < requiredLength)
         {
             returnArray = new List<string>(requiredLength);
-            CASE.InitFillWith(returnArray, requiredLength);
+            CASunamoExceptions.InitFillWith(returnArray, requiredLength);
             int i = 0;
             for (; i < realLength; i++)
             {

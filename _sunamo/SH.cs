@@ -4,6 +4,11 @@ namespace SunamoCollections._sunamo;
 
 internal class SH
 {
+    public static List<string> Split(string s, params string[] dot)
+    {
+        return s.Split(dot, StringSplitOptions.RemoveEmptyEntries).ToList();
+    }
+
     //    internal static Func<string, string, bool> MatchWildcard;
     //    internal static Func<string, List<string>> GetLines;
     //    internal static Func<string, bool, string> GetFirstWord;

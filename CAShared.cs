@@ -2,7 +2,7 @@ namespace SunamoCollections;
 
 
 using Diacritics.Extensions;
-
+using SunamoCollections._sunamo;
 
 public partial class CA //: CASH
 {
@@ -673,7 +673,7 @@ public partial class CA //: CASH
         List<string> w = null;
         if (parseNegations == ContainsCompareMethod.SplitToWords || parseNegations == ContainsCompareMethod.Negations)
         {
-            w = SHSE.SplitNone(term, SunamoValues.AllStrings.whiteSpacesChars.ToArray());
+            w = SHSunamoExceptions.SplitNone(term, SunamoValues.AllStrings.whiteSpacesChars.ToArray());
         }
 
         if (parseNegations == ContainsCompareMethod.WholeInput)
@@ -995,7 +995,7 @@ public partial class CA //: CASH
             string tem = item;
             if (delimiters.Length != 0)
             {
-                tem = SHSE.Split(item, delimiters)[0].Trim();
+                tem = SH.Split(item, delimiters)[0].Trim();
             }
             if (delkaNejdelsiho < tem.Length)
             {

@@ -339,7 +339,7 @@ public partial class CA
 
     public static string LastItem(string version, string deli)
     {
-        var p = SHSE.Split(version, deli);
+        var p = SHSunamoExceptions.Split(version, deli);
         return p[p.Count - 1];
     }
 
@@ -361,7 +361,7 @@ public partial class CA
             sb.AppendLine();
             sb.AppendLine("#" + i + " " + headers[i]);
             sb.AppendLine();
-            sb.AppendLine(SHSE.JoinNL(outputs[i]));
+            sb.AppendLine(SHSunamoExceptions.JoinNL(outputs[i]));
         }
 
         return sb.ToString();
