@@ -1,4 +1,4 @@
-namespace SunamoCollections._sunamo;
+namespace SunamoCollections;
 
 //using System;
 //using System.Collections.Generic;

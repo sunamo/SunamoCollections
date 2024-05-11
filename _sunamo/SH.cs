@@ -1,4 +1,4 @@
-namespace SunamoCollections._sunamo;
+namespace SunamoCollections;
 
 //namespace SunamoCollections._sunamo;
 

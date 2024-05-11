@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SunamoCollections._sunamo;
+namespace SunamoCollections;
 internal class SHSE
 {
     public static List<string> Split(string s, params string[] dot)
