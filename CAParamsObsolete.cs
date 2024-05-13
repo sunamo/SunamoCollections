@@ -1,6 +1,6 @@
 
 namespace SunamoCollections;
-using SunamoCollectionsShared;
+
 
 /// <summary>
 /// všechny co jsou params string[] nebo params T[]
