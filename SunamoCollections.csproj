@@ -33,6 +33,13 @@
     <Compile Include="..\SunamoExceptions\_AddedToAllCsproj\CASunamoExceptions.cs" Link="_linked\SunamoExceptions\_AddedToAllCsproj\CASunamoExceptions.cs" />
     <Compile Include="..\SunamoExceptions\OnlyInSE\Exc.cs" Link="_linked\SunamoExceptions\OnlyInSE\Exc.cs" />
     <Compile Include="..\SunamoXlfKeys\XlfKeys.cs" Link="_linked\SunamoXlfKeys\XlfKeys.cs" />
+    <Compile Include="..\SunamoParsing\Parse.cs" Link="_linked\SunamoParsing\Parse.cs" />
+    <Compile Include="..\SunamoTextOutputGenerator\TextOutputGenerator.cs" Link="_linked\SunamoTextOutputGenerator\TextOutputGenerator.cs" />
+    <Compile Include="..\SunamoCollectionsShared\CASH.cs" Link="_linked\SunamoCollectionsShared\CASH.cs" />
+    <Compile Include="..\SunamoParsing\TryParse.cs" Link="_linked\SunamoParsing\TryParse.cs" />
+    <Compile Include="..\SunamoString\SH.cs" Link="_linked\SunamoString\SH.cs" />
+    <Compile Include="..\SunamoValues\Constants\Messages.cs" Link="_linked\SunamoValues\Constants\Messages.cs" />
+    <Compile Include="..\SunamoTextOutputGenerator\TextOutputGeneratorArgs.cs" Link="_linked\SunamoTextOutputGenerator\TextOutputGeneratorArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Args\" />
