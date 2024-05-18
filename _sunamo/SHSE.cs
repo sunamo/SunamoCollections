@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SunamoCollections;
-internal class SHSE
+internal class SH
 {
     public static List<string> Split(string s, params string[] dot)
     {

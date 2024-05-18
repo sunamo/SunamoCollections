@@ -2,8 +2,7 @@ namespace SunamoCollections;
 
 
 using Diacritics.Extensions;
-
-
+using SunamoTextOutputGenerator;
 
 public partial class CA
 {
