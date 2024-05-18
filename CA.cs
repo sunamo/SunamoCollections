@@ -2,7 +2,6 @@ namespace SunamoCollections;
 
 
 using Diacritics.Extensions;
-using SunamoTextOutputGenerator;
 
 public partial class CA
 {
@@ -224,7 +223,8 @@ public partial class CA
         int files1Count = files1.Count;
         int files2Count = files2.Count;
         string result;
-        var textOutput = new TextOutputGenerator();
+        
+        dynamic textOutput = null; //new TextOutputGenerator();
         int inBothCount = inBoth.Count;
         double sumBothPlusManaged = inBothCount + files2Count;
         PercentCalculator percentCalculator = new PercentCalculator(sumBothPlusManaged);

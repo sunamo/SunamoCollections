@@ -673,7 +673,7 @@ public partial class CA //: CASH
         List<string> w = null;
         if (parseNegations == ContainsCompareMethod.SplitToWords || parseNegations == ContainsCompareMethod.Negations)
         {
-            w = SHSunamoExceptions.SplitNone(term, SunamoValues.AllStrings.whiteSpacesChars.ToArray());
+            w = SHSunamoExceptions.SplitNone(term, AllStrings.whiteSpacesChars.ToArray());
         }
 
         if (parseNegations == ContainsCompareMethod.WholeInput)
