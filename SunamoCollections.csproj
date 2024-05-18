@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Description>Working with non-generic collections</Description>
@@ -8,9 +8,6 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Diacritics" Version="3.3.27" />
-    <PackageReference Include="SunamoCollectionsShared" Version="24.2.6.2" />
-    <PackageReference Include="SunamoPercentCalculator" Version="24.2.6.2" />
-    <PackageReference Include="SunamoTextOutputGenerator" Version="24.2.6.2" />
     <Compile Include="..\SunamoAttributes\ObjectParamsAllowedAttribute.cs" Link="_linked\SunamoAttributes\ObjectParamsAllowedAttribute.cs" />
     <Compile Include="..\SunamoAttributes\ObjectParamsObsoleteAttribute.cs" Link="_linked\SunamoAttributes\ObjectParamsObsoleteAttribute.cs" />
     <Compile Include="..\SunamoData\Data\ABL.cs" Link="_linked\SunamoData\ABL.cs" />
