@@ -4,41 +4,10 @@
     <Description>Working with non-generic collections</Description>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>24.2.7.1</Version>
+    <Version>24.5.21.1</Version>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Diacritics" Version="3.3.27" />
-    <Compile Include="..\SunamoAttributes\ObjectParamsAllowedAttribute.cs" Link="_linked\SunamoAttributes\ObjectParamsAllowedAttribute.cs" />
-    <Compile Include="..\SunamoAttributes\ObjectParamsObsoleteAttribute.cs" Link="_linked\SunamoAttributes\ObjectParamsObsoleteAttribute.cs" />
-    <Compile Include="..\SunamoData\Data\ABL.cs" Link="_linked\SunamoData\ABL.cs" />
-    <Compile Include="..\SunamoData\Data\FromTo.cs" Link="_linked\SunamoData\FromTo.cs" />
-    <Compile Include="..\SunamoData\Data\FromToTSH.cs" Link="_linked\SunamoData\FromToTSH.cs" />
-    <Compile Include="..\SunamoEnums\Enums\FromToUse.cs" Link="_linked\SunamoEnums\Enums\FromToUse.cs" />
-    <Compile Include="..\SunamoExtensions\IListExtensions.cs" Link="_linked\SunamoExtensions\IListExtensions.cs" />
-    <Compile Include="..\SunamoPercentCalculator\PercentCalculator.cs" Link="_linked\SunamoPercentCalculator\PercentCalculator.cs" />
-    <Compile Include="..\SunamoValues\AllStrings.cs" Link="_linked\SunamoValues\AllStrings.cs" />
-    <Compile Include="..\SunamoValues\AllChars.cs" Link="_linked\SunamoValues\AllChars.cs" />
-    <Compile Include="..\SunamoValues\EmptyArrays.cs" Link="_linked\SunamoValues\EmptyArrays.cs" />
-    <Compile Include="..\SunamoExceptions\OnlyInSE\ThrowEx.cs" Link="_linked\SunamoExceptions\OnlyInSE\ThrowEx.cs" />
-    <Compile Include="..\SunamoEnums\Enums\SearchStrategy.cs" Link="_linked\SunamoEnums\Enums\SearchStrategy.cs" />
-    <Compile Include="..\SunamoExceptions\OnlyInSE\Exceptions.cs" Link="_linked\SunamoExceptions\OnlyInSE\Exceptions.cs" />
-    <Compile Include="..\SunamoValues\Consts.cs" Link="_linked\SunamoValues\Consts.cs" />
-    <Compile Include="..\SunamoEnums\Enums\ContainsCompareMethod.cs" Link="_linked\SunamoEnums\Enums\ContainsCompareMethod.cs" />
-    <Compile Include="..\SunamoExceptions\OnlyInSE\Types.cs" Link="_linked\SunamoExceptions\OnlyInSE\Types.cs" />
-    <Compile Include="..\SunamoExceptions\OnlyInSE\TranslateAble.cs" Link="_linked\SunamoExceptions\OnlyInSE\TranslateAble.cs" />
-    <Compile Include="..\SunamoExceptions\_AddedToAllCsproj\SHSunamoExceptions.cs" Link="_linked\SunamoExceptions\_AddedToAllCsproj\SHSunamoExceptions.cs" />
-    <Compile Include="..\SunamoExceptions\_AddedToAllCsproj\CASunamoExceptions.cs" Link="_linked\SunamoExceptions\_AddedToAllCsproj\CASunamoExceptions.cs" />
-    <Compile Include="..\SunamoExceptions\OnlyInSE\Exc.cs" Link="_linked\SunamoExceptions\OnlyInSE\Exc.cs" />
-    <Compile Include="..\SunamoXlfKeys\XlfKeys.cs" Link="_linked\SunamoXlfKeys\XlfKeys.cs" />
-    <Compile Include="..\SunamoParsing\Parse.cs" Link="_linked\SunamoParsing\Parse.cs" />
-    <Compile Include="..\SunamoTextOutputGenerator\TextOutputGenerator.cs" Link="_linked\SunamoTextOutputGenerator\TextOutputGenerator.cs" />
-    <Compile Include="..\SunamoCollectionsShared\CASH.cs" Link="_linked\SunamoCollectionsShared\CASH.cs" />
-    <Compile Include="..\SunamoParsing\TryParse.cs" Link="_linked\SunamoParsing\TryParse.cs" />
-    <Compile Include="..\SunamoValues\Constants\Messages.cs" Link="_linked\SunamoValues\Constants\Messages.cs" />
-    <Compile Include="..\SunamoTextOutputGenerator\TextOutputGeneratorArgs.cs" Link="_linked\SunamoTextOutputGenerator\TextOutputGeneratorArgs.cs" />
-    <Compile Include="..\SunamoExceptions\InSunamoIsDerivedFrom\CASE.cs" Link="_linked\SunamoExceptions\InSunamoIsDerivedFrom\CASE.cs" />
-    <Compile Include="..\SunamoArgs\RemoveStartingWithArgs.cs" Link="_linked\SunamoArgs\RemoveStartingWithArgs.cs" />
-    <Compile Include="..\SunamoExceptions\_AddedToAllCsproj\FSSunamoExceptions.cs" Link="_linked\SunamoExceptions\_AddedToAllCsproj\FSSunamoExceptions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Args\" />
