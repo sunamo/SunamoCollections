@@ -817,15 +817,13 @@ public partial class CA //: CASH
     {
         //https://stackoverflow.com/a/15275806
 
-        throw new NotImplementedException();
-
-        //for (int i = d.Count - 1; i >= 0; i--)
-        //{
-        //    if (SH.MatchWildcard(d[i], mask))
-        //    {
-        //        d.RemoveAt(i);
-        //    }
-        //}
+        for (int i = d.Count - 1; i >= 0; i--)
+        {
+            if (SH.MatchWildcard(d[i], mask))
+            {
+                d.RemoveAt(i);
+            }
+        }
     }
 
     public static List<List<T>> SplitList<T>(IList<T> locations, int nSize = 30)

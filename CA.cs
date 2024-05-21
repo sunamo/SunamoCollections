@@ -14,11 +14,6 @@ public partial class CA
         return l;
     }
 
-    public static List<string> GetNumberedList(List<string> strings, int from)
-    {
-        throw new NotImplementedException();
-    }
-
     public static List<int> ParseInt(string v, string comma)
     {
         var s = SHSunamoExceptions.Split(v, comma);
@@ -109,7 +104,7 @@ public partial class CA
     //}
     public static void KeepOnlyWordsToFirstSpecialChars(List<string> l)
     {
-        throw new NotImplementedException();
+        ThrowEx.NotImplementedMethod();
         //for (int i = 0; i < l.Count; i++)
         //{
         //    l[i] = SHParts.RemoveAfterFirstFunc(l[i], CharHelper.IsSpecial, EmptyArrays.Chars);
