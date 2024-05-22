@@ -5,19 +5,19 @@ using System.Diagnostics;
 /// <summary>
 /// Normálně se volá 100x DonePartially()
 /// </summary>
-public class PercentCalculator //: IPercentCalculator
+internal class PercentCalculator //: IPercentCalculator
 //: IPercentCalculator
 {
-    public double onePercent = 0;
-    public double last { get; set; } = 0;
-    public double _overallSum { get; set; }
+    internal double onePercent = 0;
+    internal double last { get; set; } = 0;
+    internal double _overallSum { get; set; }
     private double _hundredPercent = 100d;
     int added = 0;
-    public PercentCalculator Create(double overallSum)
+    internal PercentCalculator Create(double overallSum)
     {
         return new PercentCalculator(overallSum);
     }
-    public void AddOnePercent()
+    internal void AddOnePercent()
     {
         added++;
         last += onePercent;
@@ -29,8 +29,8 @@ public class PercentCalculator //: IPercentCalculator
     {
         last += 1;
     }
-    public static Type type = typeof(PercentCalculator);
-    public PercentCalculator(double overallSum)
+    internal static Type type = typeof(PercentCalculator);
+    internal PercentCalculator(double overallSum)
     {
         if (overallSum == 0)
         {
@@ -43,7 +43,7 @@ public class PercentCalculator //: IPercentCalculator
     /// <summary>
     /// Is automatically called with PercentFor with last 
     /// </summary>
-    public void ResetComputedSum()
+    internal void ResetComputedSum()
     {
         _sum = 0;
         Func<string, short> d = short.Parse;
@@ -54,7 +54,7 @@ public class PercentCalculator //: IPercentCalculator
     /// <param name="value"></param>
     /// <param name="last"></param>
     /// <returns></returns>
-    public int PercentFor(double value, bool last)
+    internal int PercentFor(double value, bool last)
     {
         // cannot divide by zero
         if (_overallSum == 0)

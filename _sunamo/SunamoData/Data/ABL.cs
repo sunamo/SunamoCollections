@@ -1,8 +1,8 @@
 namespace SunamoCollections;
 
 
-public class ABL<T, U>
+internal class ABL<T, U>
 {
-    public List<T> a;
-    public List<T> b;
+    internal List<T> a;
+    internal List<T> b;
 }
