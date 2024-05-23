@@ -4,6 +4,6 @@ namespace SunamoCollections;
 /// <summary>
 /// ObjectParamsUse
 /// </summary>
-internal class ObjectParamsObsoleteAttribute : Attribute
+public class ObjectParamsObsoleteAttribute : Attribute
 {
 }

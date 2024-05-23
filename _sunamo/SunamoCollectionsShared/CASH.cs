@@ -3,9 +3,9 @@ namespace SunamoCollections;
 
 using System.Collections;
 using System.Text.RegularExpressions;
-internal class CASH : CASE
+public class CASH : CASE
 {
-    internal static List<string> WrapWithIfFunc(Func<string, string, bool, bool> f, bool invert, string mustContains, string wrapWith, params string[] whereIsUsed2)
+    public static List<string> WrapWithIfFunc(Func<string, string, bool, bool> f, bool invert, string mustContains, string wrapWith, params string[] whereIsUsed2)
     {
         for (int i = 0; i < whereIsUsed2.Length; i++)
         {
@@ -21,7 +21,7 @@ internal class CASH : CASE
     /// </summary>
     /// <param name="captions"></param>
     /// <param name="i"></param>
-    internal static object GetIndex(List<string> captions, int i)
+    public static object GetIndex(List<string> captions, int i)
     {
         if (captions == null)
         {
@@ -49,7 +49,7 @@ internal class CASH : CASE
     /// </summary>
     /// <param name="enumerable"></param>
     [ObjectParamsObsoleteAttribute]
-    internal static List<string> ToListStringIList(IList enumerable2)
+    public static List<string> ToListStringIList(IList enumerable2)
     {
         return null;
         //List<string> result = new List<string>();
@@ -104,11 +104,11 @@ internal class CASH : CASE
         //}
         //return result;
     }
-    internal static bool HasIndex(int dex, Array col)
+    public static bool HasIndex(int dex, Array col)
     {
         return col.Length > dex;
     }
-    internal static bool HasIndex(int p, IList nahledy)
+    public static bool HasIndex(int p, IList nahledy)
     {
         if (p < 0)
         {
@@ -120,7 +120,7 @@ internal class CASH : CASE
         }
         return false;
     }
-    internal static string DoubleOrMoreMultiLinesToSingle(string list)
+    public static string DoubleOrMoreMultiLinesToSingle(string list)
     {
         DoubleOrMoreMultiLinesToSingle(ref list);
         return list;
@@ -129,7 +129,7 @@ internal class CASH : CASE
     /// Return true if A1 is null or have zero elements
     /// </summary>
     /// <param name="mustBe"></param>
-    internal static bool IsEmptyOrNull(IList mustBe)
+    public static bool IsEmptyOrNull(IList mustBe)
     {
         if (mustBe == null)
         {
@@ -145,7 +145,7 @@ internal class CASH : CASE
     /// Pro vyssi vykon uklada primo do zdrojoveho pole, pokud neni A2
     /// </summary>
     /// <param name="ss"></param>
-    internal static List<string> ToLower(List<string> ss, bool createNewArray = false)
+    public static List<string> ToLower(List<string> ss, bool createNewArray = false)
     {
         List<string> outArr = ss;
         if (createNewArray)
@@ -159,7 +159,7 @@ internal class CASH : CASE
         }
         return outArr;
     }
-    internal static void DoubleOrMoreMultiLinesToSingle(ref string list)
+    public static void DoubleOrMoreMultiLinesToSingle(ref string list)
     {
         var n = Environment.NewLine;
         list = Regex.Replace(list, @"(\r?\n\s*){2,}", Environment.NewLine + Environment.NewLine);
@@ -175,7 +175,7 @@ internal class CASH : CASE
     /// <param name="innerMain"></param>
     /// <returns></returns>
     [ObjectParamsObsoleteAttribute]
-    internal static Object[] ConvertListStringWrappedInArray(Object[] innerMain)
+    public static Object[] ConvertListStringWrappedInArray(Object[] innerMain)
     {
         if (CASE.IsListStringWrappedInArray(innerMain))
         {
@@ -197,7 +197,7 @@ internal class CASH : CASE
         }
         return innerMain;
     }
-    internal static (bool, string) IsNegationTuple(string contains)
+    public static (bool, string) IsNegationTuple(string contains)
     {
         if (contains[0] == '!')
         {
@@ -212,7 +212,7 @@ internal class CASH : CASE
     /// </summary>
     /// <param name="start"></param>
     /// <param name="mySites"></param>
-    internal static void RemoveStartingWith(string start, List<string> mySites, RemoveStartingWithArgs a = null)
+    public static void RemoveStartingWith(string start, List<string> mySites, RemoveStartingWithArgs a = null)
     {
         if (a == null)
         {
@@ -249,7 +249,7 @@ internal class CASH : CASE
     /// <param name="v"></param>
     /// <param name="l"></param>
     /// <returns></returns>
-    internal static List<string> StartingWith(string v, List<string> l)
+    public static List<string> StartingWith(string v, List<string> l)
     {
         for (int i = l.Count - 1; i >= 0; i--)
         {
@@ -260,7 +260,7 @@ internal class CASH : CASE
         }
         return l;
     }
-    internal static bool StartingWith(string val, string start, bool caseSensitive)
+    public static bool StartingWith(string val, string start, bool caseSensitive)
     {
         if (caseSensitive)
         {
@@ -271,7 +271,7 @@ internal class CASH : CASE
             return val.ToLower().StartsWith(start.ToLower());
         }
     }
-    internal static List<string> RemoveStringsEmpty2(List<string> mySites)
+    public static List<string> RemoveStringsEmpty2(List<string> mySites)
     {
         for (int i = mySites.Count - 1; i >= 0; i--)
         {
@@ -292,7 +292,7 @@ internal class CASH : CASE
     /// <param name="files_in"></param>
     /// <param name="what"></param>
     /// <param name="forWhat"></param>
-    internal static void Replace(List<string> files_in, string what, string forWhat)
+    public static void Replace(List<string> files_in, string what, string forWhat)
     {
         for (int i = 0; i < files_in.Count; i++)
         {
@@ -306,11 +306,11 @@ internal class CASH : CASE
     /// 
     ///     <string>
     ///         Nothing more, nothing less
-    ///         Must be private - to use only internal in CA
+    ///         Must be private - to use only public in CA
     ///         bcoz Cast() not working
     ///         Dont make any type checking - could be done before
     /// </summary>
-    internal static List<string> ToListStringIEnumerable2(IEnumerable enumerable)
+    public static List<string> ToListStringIEnumerable2(IEnumerable enumerable)
     {
         List<string> result = new List<string>(/*enumerable.Count()*/);
         foreach (object item in enumerable)

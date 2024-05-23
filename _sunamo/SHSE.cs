@@ -6,9 +6,9 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace SunamoCollections;
-internal class SH
+public class SH
 {
-    internal static bool MatchWildcard(string name, string mask)
+    public static bool MatchWildcard(string name, string mask)
     {
         return IsMatchRegex(name, mask, AllChars.q, AllChars.asterisk);
     }
@@ -27,7 +27,7 @@ internal class SH
         Regex reg = new Regex(pat);
         return reg.IsMatch(str);
     }
-    internal static List<string> Split(string s, params string[] dot)
+    public static List<string> Split(string s, params string[] dot)
     {
         return s.Split(dot, StringSplitOptions.RemoveEmptyEntries).ToList();
     }

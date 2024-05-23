@@ -6,7 +6,7 @@ namespace SunamoCollections;
 /// AnySpaces -
 /// ExactlyName - Is exactly the same
 /// </summary>
-internal enum SearchStrategy
+public enum SearchStrategy
 {
     /// <summary>
     /// Contains
