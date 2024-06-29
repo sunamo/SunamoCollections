@@ -26,7 +26,7 @@ public class FromToCollections : FromToTSHCollections<long>
     /// <param name="from"></param>
     /// <param name="to"></param>
     /// <param name="ftUse"></param>
-    internal FromToCollections(long from, long to, FromToUse ftUse = FromToUse.DateTime)
+    internal FromToCollections(long from, long to, FromToUseCollections ftUse = FromToUseCollections.DateTime)
     {
         this.from = from;
         this.to = to;

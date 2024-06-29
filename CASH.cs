@@ -4,7 +4,7 @@ namespace SunamoCollections;
 using SunamoCollections;
 using System.Collections;
 using System.Text.RegularExpressions;
-public class CASH : CASE
+public class CASH : CASECA
 {
     public static List<string> WrapWithIfFunc(Func<string, string, bool, bool> f, bool invert, string mustContains, string wrapWith, params string[] whereIsUsed2)
     {
@@ -178,7 +178,7 @@ public class CASH : CASE
     [ObjectParamsObsoleteAttribute]
     public static Object[] ConvertListStringWrappedInArray(Object[] innerMain)
     {
-        if (CASE.IsListStringWrappedInArray(innerMain))
+        if (CASECA.IsListStringWrappedInArray(innerMain))
         {
             List<object> result = null;
             var first = (IEnumerable)innerMain[0];

@@ -6,12 +6,12 @@ public class FromToTSHCollections<T>
 
     internal bool empty;
     protected long fromL;
-    internal FromToUse ftUse = FromToUse.DateTime;
+    internal FromToUseCollections ftUse = FromToUseCollections.DateTime;
     protected long toL;
     internal FromToTSHCollections()
     {
         var t = typeof(T);
-        if (t == Types.tInt) ftUse = FromToUse.None;
+        if (t == Types.tInt) ftUse = FromToUseCollections.None;
     }
     /// <summary>
     ///     Use Empty contstant outside of class
@@ -28,7 +28,7 @@ public class FromToTSHCollections<T>
     /// <param name="from"></param>
     /// <param name="to"></param>
     /// <param name="ftUse"></param>
-    internal FromToTSHCollections(T from, T to, FromToUse ftUse = FromToUse.DateTime) : this()
+    internal FromToTSHCollections(T from, T to, FromToUseCollections ftUse = FromToUseCollections.DateTime) : this()
     {
         this.from = from;
         this.to = to;

@@ -1,7 +1,7 @@
 namespace SunamoCollections;
 
 
-internal class CASE
+public class CASECA
 {
     internal static void InitFillWith(List<string> datas, int pocet, string initWith = Consts.stringEmpty)
     {

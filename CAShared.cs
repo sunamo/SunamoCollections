@@ -652,7 +652,7 @@ public partial class CA //: CASH
     /// </summary>
     /// <param name="lines"></param>
     /// <param name="term"></param>
-    public static List<string> ReturnWhichContains(List<string> lines, string term, ContainsCompareMethod parseNegations = ContainsCompareMethod.WholeInput)
+    public static List<string> ReturnWhichContains(List<string> lines, string term, ContainsCompareMethodCA parseNegations = ContainsCompareMethodCA.WholeInput)
     {
         List<int> founded;
         return ReturnWhichContains(lines, term, out founded, parseNegations);
@@ -664,19 +664,19 @@ public partial class CA //: CASH
     /// <param name="lines"></param>
     /// <param name="term"></param>
     /// <param name="founded"></param>
-    public static List<string> ReturnWhichContains(List<string> lines, string term, out List<int> founded, ContainsCompareMethod parseNegations = ContainsCompareMethod.WholeInput)
+    public static List<string> ReturnWhichContains(List<string> lines, string term, out List<int> founded, ContainsCompareMethodCA parseNegations = ContainsCompareMethodCA.WholeInput)
     {
         founded = new List<int>();
         List<string> result = new List<string>();
         int i = 0;
 
         List<string> w = null;
-        if (parseNegations == ContainsCompareMethod.SplitToWords || parseNegations == ContainsCompareMethod.Negations)
+        if (parseNegations == ContainsCompareMethodCA.SplitToWords || parseNegations == ContainsCompareMethodCA.Negations)
         {
             w = SHSunamoExceptions.SplitNone(term, AllStrings.whiteSpacesChars.ToArray());
         }
 
-        if (parseNegations == ContainsCompareMethod.WholeInput)
+        if (parseNegations == ContainsCompareMethodCA.WholeInput)
         {
             foreach (var item in lines)
             {
@@ -688,7 +688,7 @@ public partial class CA //: CASH
                 i++;
             }
         }
-        else if (parseNegations == ContainsCompareMethod.SplitToWords || parseNegations == ContainsCompareMethod.Negations)
+        else if (parseNegations == ContainsCompareMethodCA.SplitToWords || parseNegations == ContainsCompareMethodCA.Negations)
         {
             foreach (var item in lines)
             {
