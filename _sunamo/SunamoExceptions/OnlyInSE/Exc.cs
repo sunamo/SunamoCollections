@@ -1,5 +1,5 @@
 
-namespace SunamoCollections;
+namespace SunamoCollectionsShared;
 using System.Diagnostics;
 using System.Text;
 

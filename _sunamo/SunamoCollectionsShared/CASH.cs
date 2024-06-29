@@ -212,11 +212,11 @@ internal class CASH : CASE
     /// </summary>
     /// <param name="start"></param>
     /// <param name="mySites"></param>
-    internal static void RemoveStartingWith(string start, List<string> mySites, RemoveStartingWithArgs a = null)
+    internal static void RemoveStartingWith(string start, List<string> mySites, RemoveStartingWithArgsCA a = null)
     {
         if (a == null)
         {
-            a = new RemoveStartingWithArgs();
+            a = new RemoveStartingWithArgsCA();
         }
         var (negate, start2) = IsNegationTuple(start);
         start = start2;

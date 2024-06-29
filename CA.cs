@@ -168,7 +168,7 @@ public partial class CA
     //    var numbered = SunamoBts.BTS.GetNumberedListFromTo(startFrom, input.Count - 1, ") ");
     //    Prepend(numbered, input);
     //}
-    public static ABL<string, string> CompareListDifferent(List<string> c1, List<string> c2)
+    public static ABLCA<string, string> CompareListDifferent(List<string> c1, List<string> c2)
     {
         List<string> existsIn1 = new List<string>();
         List<string> existsIn2 = new List<string>();
@@ -191,7 +191,7 @@ public partial class CA
                 existsIn1.Add(item);
             }
         }
-        ABL<string, string> abl = new ABL<string, string>();
+        ABLCA<string, string> abl = new ABLCA<string, string>();
         abl.a = existsIn1;
         abl.b = existsIn2;
         return abl;
@@ -218,7 +218,7 @@ public partial class CA
         int files1Count = files1.Count;
         int files2Count = files2.Count;
         string result;
-        
+
         dynamic textOutput = null; //new TextOutputGenerator();
         int inBothCount = inBoth.Count;
         double sumBothPlusManaged = inBothCount + files2Count;
@@ -416,7 +416,7 @@ public partial class CA
     /// <summary>
     /// Na rozdíl od metody RemoveStringsEmpty2 NEtrimuje před porovnáním
     /// </summary>
-    public static List<string> RemoveStringsByScopeKeepAtLeastOne(List<string> mySites, FromTo fromTo, int keepLines)
+    public static List<string> RemoveStringsByScopeKeepAtLeastOne(List<string> mySites, FromToCollections fromTo, int keepLines)
     {
         mySites.RemoveRange((int)fromTo.FromL, (int)fromTo.ToL - (int)fromTo.FromL + 1);
         for (long i = fromTo.FromL; i < fromTo.FromL - 1 + keepLines; i++)

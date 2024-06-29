@@ -1,4 +1,4 @@
-namespace SunamoCollections;
+namespace SunamoCollectionsShared;
 internal class SHGetLines
 {
     internal static List<string> GetLines(string p)

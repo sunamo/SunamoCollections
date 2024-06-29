@@ -114,7 +114,7 @@ public partial class CA
     #endregion
 
     #region 8) ReturnWhichContainsIndexes
-    public static List<int> ReturnWhichContainsIndexes(string item, IList<string> terms, SearchStrategy searchStrategy = SearchStrategy.FixedSpace)
+    public static List<int> ReturnWhichContainsIndexes(string item, IList<string> terms, SearchStrategyCA searchStrategy = SearchStrategyCA.FixedSpace)
     {
         List<int> result = new List<int>();
         int i = 0;
@@ -148,7 +148,7 @@ public partial class CA
     /// <param name="value"></param>
     /// <param name="term"></param>
     /// <param name="searchStrategy"></param>
-    public static List<int> ReturnWhichContainsIndexes(IList<string> value, string term, SearchStrategy searchStrategy = SearchStrategy.FixedSpace)
+    public static List<int> ReturnWhichContainsIndexes(IList<string> value, string term, SearchStrategyCA searchStrategy = SearchStrategyCA.FixedSpace)
     {
         List<int> result = new List<int>();
         int i = 0;
