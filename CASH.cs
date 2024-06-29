@@ -1,5 +1,5 @@
 
-namespace SunamoCollectionsShared;
+namespace SunamoCollections;
 
 using SunamoCollections;
 using System.Collections;

@@ -1,5 +1,5 @@
 
-namespace SunamoCollectionsShared;
+namespace SunamoCollections;
 internal class TranslateAble
 {
     

@@ -1,5 +1,5 @@
 
-namespace SunamoCollectionsShared;
+namespace SunamoCollections;
 internal class AllChars
 {
     internal static List<char> vsZnakyWithoutSpecial;
