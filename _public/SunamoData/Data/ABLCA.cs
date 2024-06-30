@@ -3,6 +3,6 @@ namespace SunamoCollections;
 
 public class ABLCA<T, U>
 {
-    internal List<T> a;
-    internal List<T> b;
+    public List<T> a;
+    public List<T> b;
 }
