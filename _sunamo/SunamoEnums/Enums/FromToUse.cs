@@ -1,7 +1,7 @@
 namespace SunamoCollections._sunamo.SunamoEnums.Enums;
 
 
-public enum FromToUseCollections
+internal enum FromToUseCollections
 {
     DateTime,
     Unix,
