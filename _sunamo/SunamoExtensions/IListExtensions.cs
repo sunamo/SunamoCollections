@@ -1,6 +1,5 @@
 namespace SunamoCollections._sunamo.SunamoExtensions;
 
-using System.Runtime.CompilerServices;
 
 internal static class IListExtensions
 {

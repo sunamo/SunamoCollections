@@ -1,9 +1,5 @@
-
 namespace SunamoCollections;
 
-using SunamoCollections;
-using System.Collections;
-using System.Text.RegularExpressions;
 public class CASH : CASECA
 {
     public static List<string> WrapWithIfFunc(Func<string, string, bool, bool> f, bool invert, string mustContains, string wrapWith, params string[] whereIsUsed2)
