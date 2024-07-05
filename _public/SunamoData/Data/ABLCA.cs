@@ -1,4 +1,4 @@
-namespace SunamoCollections;
+namespace SunamoCollections._public.SunamoData.Data;
 
 
 public class ABLCA<T, U>

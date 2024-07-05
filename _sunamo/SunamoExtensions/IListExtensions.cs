@@ -1,4 +1,4 @@
-namespace SunamoCollections;
+namespace SunamoCollections._sunamo.SunamoExtensions;
 
 using System.Runtime.CompilerServices;
 

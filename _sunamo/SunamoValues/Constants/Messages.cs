@@ -1,4 +1,4 @@
-namespace SunamoCollections;
+namespace SunamoCollections._sunamo.SunamoValues.Constants;
 
 
 /// <summary>

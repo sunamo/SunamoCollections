@@ -1,5 +1,5 @@
 
-namespace SunamoCollections;
+namespace SunamoCollections._sunamo.SunamoExceptions._AddedToAllCsproj;
 using System;
 using System.Collections.Generic;
 using System.Linq;

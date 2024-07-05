@@ -1,4 +1,4 @@
-namespace SunamoCollections;
+namespace SunamoCollections._public.SunamoExceptions.InSunamoIsDerivedFrom;
 
 
 public class CASECA

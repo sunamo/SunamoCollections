@@ -1,4 +1,4 @@
-namespace SunamoCollections;
+namespace SunamoCollections._public.SunamoEnums.Enums;
 
 
 

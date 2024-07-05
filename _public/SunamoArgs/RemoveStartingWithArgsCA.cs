@@ -1,4 +1,4 @@
-namespace SunamoCollections;
+namespace SunamoCollections._public.SunamoArgs;
 
 
 public class RemoveStartingWithArgsCA

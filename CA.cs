@@ -1,4 +1,4 @@
-﻿using Diacritics.Extensions;
+using Diacritics.Extensions;
 
 namespace SunamoCollections;
 
