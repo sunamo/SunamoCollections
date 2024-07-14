@@ -17,7 +17,13 @@ public partial class CA
     }
 
 
-
+    public static void Remove(List<string> from, List<string> what)
+    {
+        foreach (var item in what)
+        {
+            from.Remove(item);
+        }
+    }
 
 
     public static void AddSuffix(List<string> headers, string v)

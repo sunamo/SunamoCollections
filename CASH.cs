@@ -122,6 +122,18 @@ public class CASH : CASECA
         DoubleOrMoreMultiLinesToSingle(ref list);
         return list;
     }
+
+    public static void RemoveNullEmptyWs(List<string> l)
+    {
+        for (int i = l.Count - 1; i >= 0; i--)
+        {
+            if (string.IsNullOrWhiteSpace(l[i]))
+            {
+                l.RemoveAt(i);
+            }
+        }
+    }
+
     /// <summary>
     /// Return true if A1 is null or have zero elements
     /// </summary>
