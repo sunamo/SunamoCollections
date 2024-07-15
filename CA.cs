@@ -6,7 +6,7 @@ public partial class CA
     //dFirstOrNull
     private static Type type = typeof(CA);
 
-    internal static void RemoveEmptyLinesFromBack(List<string> c)
+    public static void RemoveEmptyLinesFromBack(List<string> c)
     {
         for (int i = c.Count - 1; i >= 0; i--)
         {
@@ -1944,7 +1944,7 @@ public partial class CA
 
     #endregion
 
-    internal static void RemoveEmptyLinesFromStartAndEnd(List<string> c)
+    public static void RemoveEmptyLinesFromStartAndEnd(List<string> c)
     {
         RemoveEmptyLinesToFirstNonEmpty(c);
         RemoveEmptyLinesFromBack(c);
