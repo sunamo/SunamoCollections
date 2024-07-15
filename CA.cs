@@ -6,6 +6,55 @@ public partial class CA
     //dFirstOrNull
     private static Type type = typeof(CA);
 
+    internal static void RemoveEmptyLinesFromBack(List<string> c)
+    {
+        for (int i = c.Count - 1; i >= 0; i--)
+        {
+            var line = c[i];
+            if (line.Trim() == string.Empty)
+            {
+                c.RemoveAt(i);
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+
+    public static int AllNonWhitespaceLines(List<string> lines)
+    {
+        int nonEmptyLines = 0;
+
+        for (int i = 0; i < lines.Count; i++)
+        {
+            if (lines[i].Trim() != string.Empty)
+            {
+                nonEmptyLines++;
+            }
+        }
+
+        return nonEmptyLines;
+    }
+
+    public static List<string> RemoveStringsEmptyFromBeginStart(List<string> sourceList)
+    {
+        //textLines1.SkipWhile(e => !HasContent(e))
+        //            .Reverse()
+        //            .SkipWhile(e => !HasContent(e))
+        //            .Reverse()
+        //            .ToList();
+
+        int start = 0, end = sourceList.Count - 1;
+
+        while (start < end && string.IsNullOrWhiteSpace(sourceList[start])) start++;
+        while (end >= start && string.IsNullOrWhiteSpace(sourceList[end])) end--;
+
+        var result = sourceList.Skip(start).Take(end - start + 1).ToList();
+
+        return result;
+    }
+
     public static void RemoveLines(List<string> lines, List<int> removeLines)
     {
         removeLines.Sort();
@@ -1894,4 +1943,12 @@ public partial class CA
 
 
     #endregion
+
+    internal static void RemoveEmptyLinesFromStartAndEnd(List<string> c)
+    {
+        RemoveEmptyLinesToFirstNonEmpty(c);
+        RemoveEmptyLinesFromBack(c);
+    }
+
+
 }

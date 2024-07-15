@@ -117,6 +117,30 @@ public class CASH : CASECA
         }
         return false;
     }
+
+    public static bool RemoveAndLeading(List<string> tokens, string v)
+    {
+        var dx = tokens.IndexOf(v);
+        if (dx != -1)
+        {
+            tokens.RemoveAt(dx);
+            tokens.Insert(0, v);
+            return true;
+        }
+        return false;
+    }
+    public static void RemoveNull<T>(List<T> result)
+    {
+        var def = default(T);
+        for (int i = result.Count - 1; i >= 0; i--)
+        {
+            if (EqualityComparer<T>.Default.Equals(def, result[i]))
+            {
+                result.RemoveAt(i);
+            }
+        }
+    }
+
     public static string DoubleOrMoreMultiLinesToSingle(string list)
     {
         DoubleOrMoreMultiLinesToSingle(ref list);
