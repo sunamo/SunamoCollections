@@ -1,3 +1,5 @@
+using SunamoCollections._sunamo;
+
 namespace SunamoCollections;
 
 public partial class CA
@@ -5,6 +7,11 @@ public partial class CA
     public static Func<IList, object> dFirstOrNull = null;
     //dFirstOrNull
     private static Type type = typeof(CA);
+
+    internal static bool PartialContains(List<string> dirs, string pathWithoutNameBs)
+    {
+        throw new NotImplementedException();
+    }
 
     public static void RemoveEmptyLinesFromBack(List<string> c)
     {
@@ -724,7 +731,7 @@ public partial class CA
         List<string> w = null;
         if (parseNegations == ContainsCompareMethodCA.SplitToWords || parseNegations == ContainsCompareMethodCA.Negations)
         {
-            w = SHSunamoExceptions.SplitNone(term, AllStrings.whiteSpacesChars.ToArray());
+            w = SHSplit.SplitNone(term, AllStrings.whiteSpacesChars.ToArray());
         }
 
         if (parseNegations == ContainsCompareMethodCA.WholeInput)
@@ -1044,7 +1051,7 @@ public partial class CA
             string tem = item;
             if (delimiters.Length != 0)
             {
-                tem = SH.Split(item, delimiters)[0].Trim();
+                tem = SHSplit.SplitMore(item, delimiters)[0].Trim();
             }
             if (delkaNejdelsiho < tem.Length)
             {
@@ -1403,7 +1410,8 @@ public partial class CA
 
     public static List<int> ParseInt(string v, string comma)
     {
-        var s = SHSunamoExceptions.Split(v, comma);
+
+        var s = SHSplit.SplitMore(v, comma);
         List<int> n = new List<int>(s.Count);
         foreach (var item in s)
         {

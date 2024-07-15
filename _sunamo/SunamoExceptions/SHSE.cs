@@ -20,7 +20,7 @@ internal class SH
         Regex reg = new Regex(pat);
         return reg.IsMatch(str);
     }
-    internal static List<string> Split(string s, params string[] dot)
+    internal static List<string> SplitMore(string s, params string[] dot)
     {
         return s.Split(dot, StringSplitOptions.RemoveEmptyEntries).ToList();
     }
