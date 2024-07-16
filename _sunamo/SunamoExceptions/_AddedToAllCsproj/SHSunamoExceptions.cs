@@ -2,6 +2,18 @@
 
 internal class SH
 {
+
+    internal static string TrimEnd(string name, string ext)
+    {
+        while (name.EndsWith(ext)) return name.Substring(0, name.Length - ext.Length);
+        return name;
+    }
+
+    internal static string NullToStringOrDefault(object n)
+    {
+
+        return n == null ? " " + Consts.nulled : AllStrings.space + n;
+    }
     internal static bool MatchWildcard(string name, string mask)
     {
         return IsMatchRegex(name, mask, AllChars.q, AllChars.asterisk);
@@ -21,6 +33,13 @@ internal class SH
         Regex reg = new Regex(pat);
         return reg.IsMatch(str);
     }
+    internal static List<string> SplitMore(string s, params string[] dot)
+    {
+        return s.Split(dot, StringSplitOptions.RemoveEmptyEntries).ToList();
+    }
+
+
+
 
     internal static string JoinNL(List<string> l)
     {
@@ -34,22 +53,10 @@ internal class SH
     {
         return s.Split(dot, StringSplitOptions.RemoveEmptyEntries).ToList();
     }
-    internal static List<string> SplitMore(string s, params string[] dot)
-    {
-        return s.Split(dot, StringSplitOptions.RemoveEmptyEntries).ToList();
-    }
+
     internal static List<string> SplitNone(string text, params string[] deli)
     {
         return text.Split(deli, StringSplitOptions.None).ToList();
     }
-    internal static string NullToStringOrDefault(object n)
-    {
 
-        return n == null ? " " + Consts.nulled : AllStrings.space + n;
-    }
-    internal static string TrimEnd(string name, string ext)
-    {
-        while (name.EndsWith(ext)) return name.Substring(0, name.Length - ext.Length);
-        return name;
-    }
 }
