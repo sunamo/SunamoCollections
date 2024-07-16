@@ -5,11 +5,40 @@ using SunamoCollections._sunamo;
 public partial class CA
 {
 
+    public static string LastItem(string version, string v)
+    {
+        throw new NotImplementedException();
+    }
 
+    public static List<List<T>> DivideByPercent<T>(List<T> ls, int v)
+    {
+        var parts = 100 / v;
+        var ds = (int)(ls.Count / parts);
 
+        int from = 0;
+        List<List<T>> result = new List<List<T>>();
+        for (int i = 0; i < parts; i++)
+        {
+            result.Add(CA.GetIndexesFromTo<T>(ls, from, ds));
+            from += ds;
+        }
 
+        bool anotherEls = from != ls.Count;
+        if (anotherEls)
+        {
+            result.Add(CA.GetIndexesFromTo<T>(ls, from, ls.Count - (result[0].Count * parts)));
+        }
 
+        return result;
+    }
 
+    private static List<T> GetIndexesFromTo<T>(List<T> ls, int from, int countOfElements)
+    {
+        T[] t = new T[countOfElements];
+        ls.CopyTo(from, t, 0, countOfElements);
+
+        return new List<T>(t);
+    }
 
 
 
@@ -442,7 +471,7 @@ public partial class CA
     }
 
 
-    internal static bool PartialContains(List<string> dirs, string pathWithoutNameBs)
+    public static bool PartialContains(List<string> dirs, string pathWithoutNameBs)
     {
         throw new NotImplementedException();
     }

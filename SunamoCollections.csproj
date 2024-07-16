@@ -4,7 +4,7 @@
     <Description>Working with non-generic collections</Description>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>24.7.16.1</Version>
+    <Version>24.7.16.2</Version>
     <Authors>www.sunamo.cz</Authors>
     <Copyright>www.sunamo.cz</Copyright>
     <PackageProjectUrl>https://sunamo.cz/</PackageProjectUrl>
@@ -12,7 +12,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
-    <PackageReleaseNotes>test</PackageReleaseNotes>
+    <PackageReleaseNotes>Added 2 methods</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Diacritics" Version="3.3.27" />
