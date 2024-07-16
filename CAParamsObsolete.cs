@@ -1,10 +1,9 @@
 namespace SunamoCollections;
 
-
 /// <summary>
 /// všechny co jsou params string[] nebo params T[]
 /// </summary>
-public partial class CA : CASH
+public partial class CA
 {
     /// <summary>
     /// Dont use

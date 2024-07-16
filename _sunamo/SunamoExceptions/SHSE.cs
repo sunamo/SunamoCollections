@@ -1,4 +1,5 @@
 namespace SunamoCollections._sunamo.SunamoExceptions;
+
 internal class SH
 {
     internal static bool MatchWildcard(string name, string mask)

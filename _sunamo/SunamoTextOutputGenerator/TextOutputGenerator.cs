@@ -1,6 +1,5 @@
 namespace SunamoCollections._sunamo.SunamoTextOutputGenerator;
 
-
 /// <summary>
 /// In Comparing
 /// </summary>

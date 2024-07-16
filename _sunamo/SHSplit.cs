@@ -1,10 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SunamoCollections._sunamo;
+
 internal class SHSplit
 {
     internal static List<string> SplitNone(string p, params string[] newLine)

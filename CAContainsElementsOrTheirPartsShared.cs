@@ -1,7 +1,5 @@
 namespace SunamoCollections;
 
-
-
 public partial class CA
 {
     #region 1) ContainsAnyFromElement - For easy copy from CAContainsElementsOrTheirPartsShared.cs
@@ -120,7 +118,7 @@ public partial class CA
         int i = 0;
         foreach (var term in terms)
         {
-            if (item.Contains(term) /*SH.Contains(item, term, searchStrategy)*/)
+            if (item.Contains(term) /*.Contains(item, term, searchStrategy)*/)
             {
                 result.Add(i);
             }
@@ -156,7 +154,7 @@ public partial class CA
         {
             foreach (var item in value)
             {
-                if (item.Contains(term) /*SH.Contains(item, term, searchStrategy)*/)
+                if (item.Contains(term) /*.Contains(item, term, searchStrategy)*/)
                 {
                     result.Add(i);
                 }
