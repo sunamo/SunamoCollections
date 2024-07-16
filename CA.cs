@@ -4,7 +4,10 @@ using SunamoCollections._sunamo;
 
 public partial class CA
 {
-
+    public static Dictionary<string, int> OccurenceOfEveryLine(List<string> l)
+    {
+        throw new NotImplementedException();
+    }
     public static string LastItem(string version, string v)
     {
         throw new NotImplementedException();
