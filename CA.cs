@@ -1,6 +1,6 @@
-using SunamoCollections._sunamo;
 
 namespace SunamoCollections;
+using SunamoCollections._sunamo;
 
 public partial class CA
 {
