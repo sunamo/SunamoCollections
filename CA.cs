@@ -265,7 +265,7 @@ public partial class CA
         if (createNewArray)
         {
             outArr = new List<string>(ss.Count);
-            CASunamoExceptions.InitFillWith(outArr, ss.Count);
+            CA.InitFillWith(outArr, ss.Count);
         }
         for (int i = 0; i < ss.Count; i++)
         {
@@ -1986,7 +1986,7 @@ public partial class CA
     //{
     //    input = input.Where(d => !string.IsNullOrWhiteSpace(d)).ToList();
     //    CA.PrependWithNumbered(input, startFrom);
-    //    return SHSunamoExceptions.JoinNL(input);
+    //    return SH.JoinNL(input);
     //}
     ///// <summary>
     ///// Direct edit
@@ -2303,7 +2303,7 @@ public partial class CA
         if (realLength > requiredLength)
         {
             returnArray = new List<string>(requiredLength);
-            CASunamoExceptions.InitFillWith(returnArray, requiredLength);
+            CA.InitFillWith(returnArray, requiredLength);
             for (int i = 0; i < requiredLength; i++)
             {
                 returnArray[i] = input[i];
@@ -2317,7 +2317,7 @@ public partial class CA
         else if (realLength < requiredLength)
         {
             returnArray = new List<string>(requiredLength);
-            CASunamoExceptions.InitFillWith(returnArray, requiredLength);
+            CA.InitFillWith(returnArray, requiredLength);
             int i = 0;
             for (; i < realLength; i++)
             {
