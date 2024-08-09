@@ -1,8 +1,7 @@
 namespace SunamoCollections._sunamo.SunamoAttributes;
 
-
 /// <summary>
-/// ObjectParamsUse
+///     ObjectParamsUse
 /// </summary>
 internal class ObjectParamsAllowedAttribute : Attribute
 {

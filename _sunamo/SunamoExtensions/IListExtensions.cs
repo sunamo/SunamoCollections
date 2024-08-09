@@ -5,13 +5,64 @@ internal static class IListExtensions
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     internal static void Swap<T>(this IList<T> list, int dx1, int dx2)
     {
-        if (dx1 == dx2)   //This check is not required but Partition function may make many calls so its for perf reason
+        if (dx1 == dx2) //This check is not required but Partition function may make many calls so its for perf reason
             return;
         var temp = list[dx1];
         list[dx1] = list[dx2];
         list[dx2] = temp;
     }
+
+    internal static object FirstOrNull(this IEnumerable e)
+    {
+        foreach (var item in e) return item;
+        return null;
+    }
+
+    internal static int Count(this IEnumerable e)
+    {
+        var i = 0;
+        foreach (var item in e) i++;
+        return i;
+    }
+
+    internal static void SortAsc<T>(this List<T> c)
+    {
+        c.Sort();
+    }
+
+    internal static IList<T> TakeLast<T>(this IList<T> source, int N)
+    {
+        return source.Skip(Math.Max(0, source.Count - N)).ToList();
+    }
+
+    internal static IList<TSource> Where2<TSource>(this IList<TSource> source, Func<TSource, bool> predicate)
+    {
+        //source.ToList().Where(predicate); - StackOverflowExtension
+        //return new List<TSource>(source).Where(predicate) ;
+        return source.ToList().Where(predicate).ToList();
+    }
+
+    internal static List<object> WhereNonGeneric(this IList enu, Func<object, bool> predicate)
+    {
+        var o = new List<object>(Count(enu));
+        foreach (var item in enu) o.Add(item);
+        return o.Where(predicate).ToList();
+    }
+
+    /// <summary>
+    ///     Not direct edit
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="t"></param>
+    /// <returns></returns>
+    internal static List<T> RemoveLast<T>(this IList<T> t)
+    {
+        t.RemoveAt(t.Count - 1);
+        return t.ToList();
+    }
+
     #region from IListExtensionsShared64.cs
+
     //internal static object FirstOrNull(this IList e)
     //{
     //    if (e.Count > 0)
@@ -23,27 +74,13 @@ internal static class IListExtensions
     //    }
     //    return null;
     //}
+
     #endregion
-    internal static object FirstOrNull(this IEnumerable e)
-    {
-        foreach (var item in e)
-        {
-            return item;
-        }
-        return null;
-    }
-    internal static int Count(this IEnumerable e)
-    {
-        int i = 0;
-        foreach (var item in e)
-        {
-            i++;
-        }
-        return i;
-    }
+
     #region For easy copy from IListExtensionsShared64Sunamo.cs
+
     /// <summary>
-    /// Must be written with type parameter
+    ///     Must be written with type parameter
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="t"></param>
@@ -55,6 +92,7 @@ internal static class IListExtensions
         l.RemoveAt(dx);
         return l;
     }
+
     // todo DumpAsStringHeaderArgs je ve SunamoShared který nemůži přidat do deps protože by to způsobilo chybu Cycle detected
     internal static string DumpAsString<T>(this IList<T> ie, string operation, /*DumpAsStringHeaderArgs*/ object a)
     {
@@ -62,17 +100,20 @@ internal static class IListExtensions
         //
         //return RH.DumpListAsStringOneLine(operation, ie, a);
     }
+
     #region Must be two coz in some projects is not Dispatcher
+
     //internal static object FirstOrNull(this IList e)
     //{
     //    return se.IListExtensions.FirstOrNull(e);
     //}
+
     #region Cant be first because then have priority than LINQ method
+
     /// <summary>
-    /// Cant be first because then have priority than LINQ method
-    /// musel bych ke každé přidávat typový argument
-    ///
-    /// => Renamed to 2
+    ///     Cant be first because then have priority than LINQ method
+    ///     musel bych ke každé přidávat typový argument
+    ///     => Renamed to 2
     /// </summary>
     /// <param name="e"></param>
     /// <returns></returns>
@@ -80,17 +121,19 @@ internal static class IListExtensions
     {
         return FirstOrNull(e);
     }
+
     #endregion
+
     #endregion
+
     internal static int Length2<T>(this IList<T> e)
     {
         return Enumerable.Count(e);
         //return CA.Count(e);
     }
+
     /// <summary>
-    /// přejmenoval jsem po převodu na global usings
-    ///
-    ///
+    ///     přejmenoval jsem po převodu na global usings
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="e"></param>
@@ -100,59 +143,22 @@ internal static class IListExtensions
         return Enumerable.Count(e);
         //return CA.Count(e);
     }
+
     /// <summary>
     ///     Usage: in many places coz in Extensions is standard IList
-    ///
-    /// The call is ambiguous between the following methods or properties: 'IListExtensions.Count(System.Collections.IList)' and 'IListExtensions.Count(System.Collections.IList)'
-    /// IListExtensions je pouze ve SunExt, i po pushi nového package furt to samé.
-    /// přejmenováno na 3 a kdyžtak užívat Enumerable.Count
-    ///
-    ///
+    ///     The call is ambiguous between the following methods or properties:
+    ///     'IListExtensions.Count(System.Collections.IList)' and 'IListExtensions.Count(System.Collections.IList)'
+    ///     IListExtensions je pouze ve SunExt, i po pushi nového package furt to samé.
+    ///     přejmenováno na 3 a kdyžtak užívat Enumerable.Count
     /// </summary>
     /// <param name="e"></param>
     /// <returns></returns>
     internal static int Count3(this IList e)
     {
-        int i = 0;
-        foreach (var item in e)
-        {
-            i++;
-        }
+        var i = 0;
+        foreach (var item in e) i++;
         return i;
     }
+
     #endregion
-    internal static void SortAsc<T>(this List<T> c)
-    {
-        c.Sort();
-    }
-    internal static IList<T> TakeLast<T>(this IList<T> source, int N)
-    {
-        return source.Skip(Math.Max(0, source.Count - N)).ToList();
-    }
-    internal static IList<TSource> Where2<TSource>(this IList<TSource> source, Func<TSource, bool> predicate)
-    {
-        //source.ToList().Where(predicate); - StackOverflowExtension
-        //return new List<TSource>(source).Where(predicate) ;
-        return source.ToList().Where(predicate).ToList();
-    }
-    internal static List<object> WhereNonGeneric(this IList enu, Func<object, bool> predicate)
-    {
-        List<object> o = new List<object>(Count(enu));
-        foreach (var item in enu)
-        {
-            o.Add(item);
-        }
-        return o.Where(predicate).ToList();
-    }
-    /// <summary>
-    /// Not direct edit
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <param name="t"></param>
-    /// <returns></returns>
-    internal static List<T> RemoveLast<T>(this IList<T> t)
-    {
-        t.RemoveAt(t.Count - 1);
-        return t.ToList();
-    }
 }

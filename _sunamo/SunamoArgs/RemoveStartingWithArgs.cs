@@ -1,11 +1,11 @@
 namespace SunamoCollections._sunamo.SunamoArgs;
 
-
 internal class RemoveStartingWithArgs
 {
     /// <summary>
-    /// Original
+    ///     Original
     /// </summary>
     internal bool _trimBeforeFinding = false;
+
     internal bool caseSensitive = true;
 }
