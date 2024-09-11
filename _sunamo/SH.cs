@@ -11,13 +11,26 @@ internal class SH
 
     internal static string NullToStringOrDefault(object n)
     {
-
         return n == null ? " " + Consts.nulled : AllStrings.space + n;
     }
+
     internal static bool MatchWildcard(string name, string mask)
     {
         return IsMatchRegex(name, mask, AllChars.q, AllChars.asterisk);
     }
+
+    public static void TrimWhiteSpaceRowFromEnd(List<string> s)
+    {
+        for (int i = s.Count - 1; i >= 0; i--)
+        {
+            if (!string.IsNullOrWhiteSpace(s[i]))
+            {
+                break;
+            }
+            s.RemoveAt(i);
+        }
+    }
+
     private static bool IsMatchRegex(string str, string pat, char singleWildcard, char multipleWildcard)
     {
         // If I compared .vs with .vs, return false before

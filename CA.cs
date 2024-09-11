@@ -82,6 +82,16 @@ public partial class CA
         return l;
     }
 
+    [Obsolete("Do the same as Trim")]
+    public static void TrimWhereIsOnlyWhitespace(List<string> list)
+    {
+        for (var i = list.Count - 1; i >= 0; i--)
+        {
+            var l = list[i];
+            if (string.IsNullOrWhiteSpace(l)) list[i] = list[i].Trim();
+        }
+    }
+
     public static string First(IEnumerable v2)
     {
         foreach (var item in v2) return item.ToString();
@@ -1149,14 +1159,7 @@ public partial class CA
     }
 
 
-    public static void TrimWhereIsOnlyWhitespace(List<string> list)
-    {
-        for (var i = list.Count - 1; i >= 0; i--)
-        {
-            var l = list[i];
-            if (string.IsNullOrWhiteSpace(l)) list[i] = list[i].Trim();
-        }
-    }
+
 
 
     public static bool HasPostfix(string key, params string[] v1)

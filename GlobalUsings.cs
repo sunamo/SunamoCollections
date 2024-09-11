@@ -27,5 +27,4 @@ global using SunamoCollections._sunamo.SunamoExceptions;
 global using SunamoCollections._sunamo.SunamoParsing;
 global using SunamoCollections._sunamo.SunamoStringGetLines;
 global using SunamoCollections._sunamo.SunamoTextOutputGenerator;
-
 global using SunamoCollections._sunamo.SunamoValues.Constants;
