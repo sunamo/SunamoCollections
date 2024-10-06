@@ -23,11 +23,11 @@ partial class CA
         return default;
     }
 
-    public static List<List<T>> DivideBy<T>(List<T> divs, int countOfColumn)
+    public static ResultWithExceptionCollections<List<List<T>>> DivideBy<T>(List<T> divs, int countOfColumn)
     {
         if (divs.Count % countOfColumn != 0)
         {
-            throw new Exception($"Elements in {nameof(divs)} is not dividable by {nameof(countOfColumn)}");
+            return new ResultWithExceptionCollections<List<List<T>>>(new Exception($"Elements in {nameof(divs)} - {divs.Count} is not dividable by {nameof(countOfColumn)} - {countOfColumn}"));
         }
 
         List<List<T>> result = new List<List<T>>();
@@ -44,7 +44,7 @@ partial class CA
             }
         }
 
-        return result;
+        return new ResultWithExceptionCollections<List<List<T>>>(result);
     }
 
     public static List<List<T>> DivideByPercent<T>(List<T> ls, int v)
