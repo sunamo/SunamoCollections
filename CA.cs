@@ -336,7 +336,7 @@ public partial class CA
         return val.ToLower().StartsWith(start.ToLower());
     }
 
-    public static List<string> RemoveStringsEmpty2(List<string> mySites)
+    public static List<string> RemoveStringsEmptyTrimBefore(List<string> mySites)
     {
         for (var i = mySites.Count - 1; i >= 0; i--)
             if (mySites[i].Trim() == string.Empty)
