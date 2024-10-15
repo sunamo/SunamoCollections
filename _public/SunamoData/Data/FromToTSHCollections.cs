@@ -10,7 +10,7 @@ public class FromToTSHCollections<T>
     public FromToTSHCollections()
     {
         var t = typeof(T);
-        if (t == Types.tInt) ftUse = FromToUseCollections.None;
+        if (t == typeof(int)) ftUse = FromToUseCollections.None;
     }
 
 
