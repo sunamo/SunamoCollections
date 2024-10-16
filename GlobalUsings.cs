@@ -19,3 +19,4 @@ global using System.Text.RegularExpressions;
 global using SunamoCollections._sunamo;
 global using System.Reflection;
 global using System.Net;
+global using System.Diagnostics.CodeAnalysis;

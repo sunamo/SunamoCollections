@@ -385,17 +385,7 @@ public partial class CA
         throw new NotImplementedException();
     }
 
-    public static void RemoveEmptyLinesFromBack(List<string> c)
-    {
-        for (var i = c.Count - 1; i >= 0; i--)
-        {
-            var line = c[i];
-            if (line.Trim() == string.Empty)
-                c.RemoveAt(i);
-            else
-                break;
-        }
-    }
+    
 
     public static int AllNonWhitespaceLines(List<string> lines)
     {
@@ -1220,22 +1210,7 @@ public partial class CA
         return sb.ToString();
     }
 
-    public static void RemoveEmptyLinesToFirstNonEmpty(List<string> content)
-    {
-        for (var i = 0; i < content.Count; i++)
-        {
-            var line = content[i];
-            if (line.Trim() == string.Empty)
-            {
-                content.RemoveAt(i);
-                i--;
-            }
-            else
-            {
-                break;
-            }
-        }
-    }
+    
 
     //public static object FirstOrNull(IList e)
     //{
@@ -1584,11 +1559,7 @@ public partial class CA
         return globallyInstalledTsDefinitions;
     }
 
-    public static void RemoveEmptyLinesFromStartAndEnd(List<string> c)
-    {
-        RemoveEmptyLinesToFirstNonEmpty(c);
-        RemoveEmptyLinesFromBack(c);
-    }
+    
 
 
 
