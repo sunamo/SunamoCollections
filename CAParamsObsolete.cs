@@ -21,7 +21,6 @@ public partial class CA
     ///     Multi deep array is not suppported
     ///     For convert into string use ListToString
     /// </summary>
-    /// <param name="para"></param>
     [ObjectParamsObsolete]
     public static List<T> TwoDimensionParamsIntoOne<T>(params T[] para)
     {
