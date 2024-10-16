@@ -1,5 +1,4 @@
 namespace SunamoCollections._sunamo;
-
 internal class SH
 {
 
@@ -11,15 +10,15 @@ internal class SH
 
     internal static string NullToStringOrDefault(object n)
     {
-        return n == null ? " " + Consts.nulled : AllStrings.space + n;
+        return n == null ? " " + "(null)" : "" + n;
     }
 
     internal static bool MatchWildcard(string name, string mask)
     {
-        return IsMatchRegex(name, mask, AllChars.q, AllChars.asterisk);
+        return IsMatchRegex(name, mask, '?', '*');
     }
 
-    public static void TrimWhiteSpaceRowFromEnd(List<string> s)
+    internal static void TrimWhiteSpaceRowFromEnd(List<string> s)
     {
         for (int i = s.Count - 1; i >= 0; i--)
         {
@@ -41,7 +40,7 @@ internal class SH
         string escapedSingle = Regex.Escape(new string(singleWildcard, 1));
         string escapedMultiple = Regex.Escape(new string(multipleWildcard, 1));
         pat = Regex.Escape(pat);
-        pat = pat.Replace(escapedSingle, AllStrings.dot);
+        pat = pat.Replace(escapedSingle, ".");
         pat = "^" + pat.Replace(escapedMultiple, ".*") + "$";
         Regex reg = new Regex(pat);
         return reg.IsMatch(str);

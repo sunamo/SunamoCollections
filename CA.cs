@@ -1,5 +1,6 @@
 namespace SunamoCollections;
 
+
 public partial class CA
 {
     public static Func<IList, object> dFirstOrNull = null;
@@ -22,7 +23,7 @@ public partial class CA
 
 
 
-    public static void InitFillWith(List<string> datas, int pocet, string initWith = Consts.stringEmpty)
+    public static void InitFillWith(List<string> datas, int pocet, string initWith = "")
     {
         InitFillWith<string>(datas, pocet, initWith);
     }
@@ -375,7 +376,7 @@ public partial class CA
         var result = new List<string>( /*enumerable.Count()*/);
         foreach (var item in enumerable)
             if (item == null)
-                result.Add(Consts.nulled);
+                result.Add("(null)");
             else
                 result.Add(item.ToString());
         return result;
@@ -483,9 +484,9 @@ public partial class CA
         for (var i = 0; i < l.Count; i++)
         {
             var line = l[i];
-            if (line.StartsWith(AllStrings.tab))
-                l[i] = l[i].Substring(AllStrings.tab.Length);
-            else if (line.StartsWith(Consts.spaces4)) l[i] = l[i].Substring(Consts.spaces4.Length);
+            if (line.StartsWith("\t"))
+                l[i] = l[i].Substring("\t".Length);
+            else if (line.StartsWith("")) l[i] = l[i].Substring("".Length);
         }
     }
 
@@ -857,8 +858,10 @@ public partial class CA
         List<string> w = null;
         if (parseNegations == ContainsCompareMethodCA.SplitToWords ||
             parseNegations == ContainsCompareMethodCA.Negations)
-            w = SHSplit.SplitNone(term, AllStrings.whiteSpacesChars.ToArray());
-
+        {
+            WhitespaceCharService whitespaceChar = new();
+            w = SHSplit.SplitNone(term, whitespaceChar.whiteSpaceChars.ConvertAll(d => d.ToString()).ToArray());
+        }
         if (parseNegations == ContainsCompareMethodCA.WholeInput)
             foreach (var item in lines)
             {
@@ -931,7 +934,7 @@ public partial class CA
         for (var i = 0; i < eb.Count; i++)
         {
             var r = eb[i];
-            if (r[r.Length - 1] != AllChars.bs) eb[i] = r + Consts.bs;
+            if (r[r.Length - 1] != '\\') eb[i] = r + "\\";
         }
 
         return eb;
@@ -1096,7 +1099,7 @@ public partial class CA
     {
         if (wildcard)
         {
-            //item = SH.WrapWith(item, AllChars.asterisk);
+            //item = SH.WrapWith(item, '*');
             for (var i = files1.Count - 1; i >= 0; i--)
                 if (WildcardIsMatch(files1[i], item))
                     files1.RemoveAt(i);
@@ -1206,12 +1209,15 @@ public partial class CA
         {
             var t = item.Trim();
 
-            if (t.EndsWith(AllStrings.colon))
+            if (t.EndsWith(":"))
                 sb.AppendLine(item);
             else if (t == "")
                 sb.AppendLine(t);
             else
-                sb.AppendLine(t.Split(AllChars.whiteSpacesChars.ToArray())[0]);
+            {
+                WhitespaceCharService whitespaceChars = new WhitespaceCharService();
+                sb.AppendLine(t.Split(whitespaceChars.whiteSpaceChars.ToArray())[0]);
+            }
         }
 
         return sb.ToString();
@@ -1359,18 +1365,18 @@ public partial class CA
         double sumBothPlusManaged = inBothCount + files2Count;
         var percentCalculator = new PercentCalculator(sumBothPlusManaged);
         if (nameOfSolution != null) textOutput.sb.AppendLine(nameOfSolution);
-        textOutput.sb.AppendLine("Both (" + inBothCount + AllStrings.swda +
+        textOutput.sb.AppendLine("Both (" + inBothCount + "-" +
                                  percentCalculator.PercentFor(inBothCount, false) + "%):");
         if (alsoFileNames) textOutput.List(inBoth);
         if (nameForFirstFolder != null)
-            textOutput.sb.AppendLine(nameForFirstFolder + AllStrings.lb + files1Count + AllStrings.swda +
+            textOutput.sb.AppendLine(nameForFirstFolder + "(" + files1Count + "-" +
                                      percentCalculator.PercentFor(files1Count, true) + "%):");
         if (alsoFileNames) textOutput.List(files1);
         if (nameForSecondFolder != null)
-            textOutput.sb.AppendLine(nameForSecondFolder + AllStrings.lb + files2Count + AllStrings.swda +
+            textOutput.sb.AppendLine(nameForSecondFolder + "(" + files2Count + "-" +
                                      percentCalculator.PercentFor(files2Count, true) + "%):");
         if (alsoFileNames) textOutput.List(files2);
-        textOutput.SingleCharLine(AllChars.asterisk, 10);
+        textOutput.SingleCharLine('*', 10);
         result = textOutput.ToString();
         return result;
     }

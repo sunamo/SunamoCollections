@@ -53,7 +53,7 @@ public partial class CA
     public static bool ContainsAnyFromElementBool(string s, IList<string> list,
         bool acceptAsteriskForPassingAll = false)
     {
-        if (list.Count() == 1 && list.First() == AllStrings.ast) return true;
+        if (list.Count() == 1 && list.First() == "*") return true;
 
         var result = new List<int>();
 
