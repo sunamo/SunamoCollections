@@ -1,11 +1,11 @@
-﻿using System;
+namespace SunamoCollections.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SunamoCollections.Services;
-internal class RemoveEmptyLinesService
+public class RemoveEmptyLinesService
 {
     public static void RemoveEmptyLinesFromStartAndEnd(List<string> c)
     {

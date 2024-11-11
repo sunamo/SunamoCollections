@@ -10,7 +10,7 @@ internal class SH
 
     internal static string NullToStringOrDefault(object n)
     {
-        return n == null ? " " + "(null)" : "" + n;
+        return n == null ? " " + "(null)" : " " + n;
     }
 
     internal static bool MatchWildcard(string name, string mask)

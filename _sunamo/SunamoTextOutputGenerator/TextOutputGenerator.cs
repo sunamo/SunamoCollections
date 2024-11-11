@@ -274,7 +274,7 @@ internal class TextOutputGenerator //: ITextOutputGenerator
         if (onlyCountInValue)
         {
             var d = new List<string>(ls.Count);
-            foreach (var item in ls) d.Add(item.Key + "" + item.Value.Count());
+            foreach (var item in ls) d.Add(item.Key + " " + item.Value.Count());
             List(d);
         }
         else
@@ -324,7 +324,7 @@ internal class TextOutputGenerator //: ITextOutputGenerator
     }
 
     internal string DictionaryBothToStringToSingleLine<Key, Value>(Dictionary<Key, Value> sorted, bool putValueAsFirst,
-        string delimiter = "")
+        string delimiter = " ")
     {
         foreach (var item in sorted)
         {

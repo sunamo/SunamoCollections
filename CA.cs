@@ -385,7 +385,7 @@ public partial class CA
         throw new NotImplementedException();
     }
 
-    
+
 
     public static int AllNonWhitespaceLines(List<string> lines)
     {
@@ -473,7 +473,7 @@ public partial class CA
             var line = l[i];
             if (line.StartsWith("\t"))
                 l[i] = l[i].Substring("\t".Length);
-            else if (line.StartsWith("")) l[i] = l[i].Substring("".Length);
+            else if (line.StartsWith(" ")) l[i] = l[i].Substring(" ".Length);
         }
     }
 
@@ -1210,7 +1210,7 @@ public partial class CA
         return sb.ToString();
     }
 
-    
+
 
     //public static object FirstOrNull(IList e)
     //{
@@ -1559,7 +1559,7 @@ public partial class CA
         return globallyInstalledTsDefinitions;
     }
 
-    
+
 
 
 
