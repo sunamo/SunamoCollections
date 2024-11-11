@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 public class RemoveEmptyLinesService
 {
-    public static void RemoveEmptyLinesFromStartAndEnd(List<string> c)
+    public void RemoveEmptyLinesFromStartAndEnd(List<string> c)
     {
         RemoveEmptyLinesToFirstNonEmpty(c);
         RemoveEmptyLinesFromBack(c);
     }
 
-    public static void RemoveEmptyLinesToFirstNonEmpty(List<string> content)
+    public void RemoveEmptyLinesToFirstNonEmpty(List<string> content)
     {
         for (var i = 0; i < content.Count; i++)
         {
@@ -30,7 +30,7 @@ public class RemoveEmptyLinesService
         }
     }
 
-    public static void RemoveEmptyLinesFromBack(List<string> c)
+    public void RemoveEmptyLinesFromBack(List<string> c)
     {
         for (var i = c.Count - 1; i >= 0; i--)
         {
