@@ -1,6 +1,4 @@
 namespace SunamoCollections;
-
-
 public partial class CA
 {
     public static Func<IList, object> dFirstOrNull = null;
@@ -1233,7 +1231,7 @@ public partial class CA
         ThrowEx.NotImplementedMethod();
         //for (int i = 0; i < l.Count; i++)
         //{
-        //    l[i] = SHParts.RemoveAfterFirstFunc(l[i], CharHelper.IsSpecial, EmptyArrays.Chars);
+        //    l[i] = SHParts.RemoveAfterFirstFunc(l[i], CharHelper.IsSpecial, []);
         //}
     }
 
