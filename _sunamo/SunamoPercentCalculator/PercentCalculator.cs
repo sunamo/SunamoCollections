@@ -22,16 +22,7 @@ internal class PercentCalculator //: IPercentCalculator
     internal double last { get; set; }
     internal double _overallSum { get; set; }
 
-    internal PercentCalculator Create(double overallSum)
-    {
-        return new PercentCalculator(overallSum);
-    }
 
-    internal void AddOnePercent()
-    {
-        added++;
-        last += onePercent;
-    }
 
     /// <summary>
     ///     Dont know when is AddOne more useful than AddOnePercent => private

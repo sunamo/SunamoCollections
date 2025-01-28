@@ -1,11 +1,6 @@
 namespace SunamoCollections._sunamo.SunamoExceptions;
 internal partial class ThrowEx
 {
-    internal static bool DifferentCountInLists<T>(string namefc, IList<T> countfc, string namesc, IList<T> countsc)
-    {
-        return ThrowIsNotNull(
-            Exceptions.DifferentCountInLists(FullNameOfExecutedCode(), namefc, countfc.Count, namesc, countsc.Count));
-    }
     internal static bool DifferentCountInLists(string namefc, int countfc, string namesc, int countsc)
     {
         return ThrowIsNotNull(
@@ -79,21 +74,7 @@ internal partial class ThrowEx
     }
 
     #region For avoid FullNameOfExecutedCode
-    internal static bool ThrowIsNotNull(Exception exception, bool reallyThrow = true)
-    {
-        if (exception != null)
-        {
-            ThrowIsNotNull(exception.Message, reallyThrow);
-            return false;
-        }
-        return true;
-    }
 
-    internal static bool ThrowIsNotNull<A, B>(Func<string, A, B, string?> f, A ex, B message)
-    {
-        string? exc = f(FullNameOfExecutedCode(), ex, message);
-        return ThrowIsNotNull(exc);
-    }
 
     internal static bool ThrowIsNotNull<A>(Func<string, A, string?> f, A ex)
     {
