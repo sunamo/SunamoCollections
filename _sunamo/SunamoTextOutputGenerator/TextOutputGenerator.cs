@@ -48,12 +48,6 @@ internal class TextOutputGenerator //: ITextOutputGenerator
         sb.Append(text);
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    internal void AppendLine(string text)
-    {
-        sb.AppendLine(text);
-    }
-
 
 
     #endregion
@@ -80,10 +74,6 @@ internal class TextOutputGenerator //: ITextOutputGenerator
     }
 
     
-    internal void List(IList<string> files1, string header)
-    {
-        List(files1, header, new TextOutputGeneratorArgs { headerWrappedEmptyLines = true, insertCount = false });
-    }
 
 
     /// <summary>
