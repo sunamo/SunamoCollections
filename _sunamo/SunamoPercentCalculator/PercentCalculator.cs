@@ -24,14 +24,7 @@ internal class PercentCalculator //: IPercentCalculator
 
 
 
-    /// <summary>
-    ///     Dont know when is AddOne more useful than AddOnePercent => private
-    /// </summary>
-    private void AddOne()
-    {
-        last += 1;
-    }
-
+    
     /// <summary>
     ///     Is automatically called with PercentFor with last
     /// </summary>
