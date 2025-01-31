@@ -27,7 +27,6 @@ internal class TextOutputGenerator //: ITextOutputGenerator
 
 
 
-    #endregion
 
     #region Other adding methods
 
