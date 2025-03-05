@@ -1,13 +1,8 @@
 namespace SunamoCollections;
-using System;
 
 public class ResultWithExceptionCollections<T>
 {
     public T Data { get; set; }
-
-
-
-
     public string exc { get; set; }
     public ResultWithExceptionCollections(T data)
     {
@@ -21,9 +16,6 @@ public class ResultWithExceptionCollections<T>
     {
         this.exc = Exceptions.TextOfExceptions(exc);
     }
-
-
-
     public ResultWithExceptionCollections()
     {
     }
