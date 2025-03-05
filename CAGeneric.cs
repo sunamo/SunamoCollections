@@ -1,8 +1,4 @@
 namespace SunamoCollections;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 /// <summary>
 /// V samostatném souboru kvůli <T>
@@ -20,18 +16,14 @@ partial class CA
         if (list.Count > 0) return list[0];
         return default;
     }
-
     public static ResultWithExceptionCollections<List<List<T>>> DivideBy<T>(List<T> divs, int countOfColumn)
     {
         if (divs.Count % countOfColumn != 0)
         {
             return new ResultWithExceptionCollections<List<List<T>>>(new Exception($"Elements in {nameof(divs)} - {divs.Count} is not dividable by {nameof(countOfColumn)} - {countOfColumn}"));
         }
-
         List<List<T>> result = new List<List<T>>();
-
         List<T> t = new List<T>();
-
         foreach (var item in divs)
         {
             t.Add(item);
@@ -41,15 +33,12 @@ partial class CA
                 t = new List<T>();
             }
         }
-
         return new ResultWithExceptionCollections<List<List<T>>>(result);
     }
-
     public static List<List<T>> DivideByPercent<T>(List<T> ls, int v)
     {
         var parts = 100 / v;
         var ds = ls.Count / parts;
-
         var from = 0;
         var result = new List<List<T>>();
         for (var i = 0; i < parts; i++)
@@ -57,26 +46,20 @@ partial class CA
             result.Add(GetIndexesFromTo(ls, from, ds));
             from += ds;
         }
-
         var anotherEls = from != ls.Count;
         if (anotherEls) result.Add(GetIndexesFromTo(ls, from, ls.Count - result[0].Count * parts));
-
         return result;
     }
-
     private static List<T> GetIndexesFromTo<T>(List<T> ls, int from, int countOfElements)
     {
         var t = new T[countOfElements];
         ls.CopyTo(from, t, 0, countOfElements);
-
         return new List<T>(t);
     }
-
     public static void InitFillWith<T>(List<T> arr, int columns)
     {
         for (var i = 0; i < columns; i++) arr.Add(default);
     }
-
     public static void RemoveNull<T>(List<T> result)
     {
         var def = default(T);
@@ -84,7 +67,6 @@ partial class CA
             if (EqualityComparer<T>.Default.Equals(def, result[i]))
                 result.RemoveAt(i);
     }
-
     public static List<T> ReplaceNullFor<T>(List<T> l, T empty) where T : class
     {
         for (var i = 0; i < l.Count; i++)
@@ -92,20 +74,17 @@ partial class CA
                 l[i] = empty;
         return l;
     }
-
     public static List<T> ToArrayTCheckNull<T>(params T[] where)
     {
         var vr = where.ToList();
         RemoveDefaultT(vr);
         return vr;
     }
-
     public static T IndexOrNull<T>(T[] where, int v)
     {
         if (where.Length > v) return where[v];
         return default;
     }
-
     /// <summary>
     ///     Index A2 a další bude již v poli A4
     /// </summary>
@@ -128,17 +107,13 @@ partial class CA
                 after[i] = p1[i - p2];
         }
     }
-
     public static List<List<T>> SplitList<T>(IList<T> locations, int nSize = 30)
     {
         var result = new List<List<T>>();
-
         for (var i = 0; i < locations.Count; i += nSize)
             result.Add(locations.ToList().GetRange(i, Math.Min(nSize, locations.Count - i)));
-
         return result;
     }
-
     public static void RemovePadding<T>(List<T> decrypted, T v)
     {
         for (var i = decrypted.Count - 1; i >= 0; i--)
@@ -147,9 +122,7 @@ partial class CA
             decrypted.RemoveAt(i);
         }
     }
-
     #region 4) ContainsElement
-
     /// <summary>
     ///     ContainsAnyFromElement - Contains string elements of list. Return List
     ///     <string>
@@ -171,12 +144,9 @@ partial class CA
         foreach (var item in list)
             if (Equals(item, t))
                 return true;
-
         return false;
     }
-
     #endregion
-
     /// <summary>
     ///     element can be null, then will be added as default(T)
     ///     If item is null, add instead it default(T)
@@ -196,25 +166,21 @@ partial class CA
         //    result = new List<T>(1);
         //    result.Add(SHJoin.JoinIList(string.Empty, enumerable));
         //}
-
         var b1 = ien != null;
         var b2 = typeof(T) == Types.tString;
         var b3 = ienf.Count > 1;
         var b4 = false;
         var b5 = false;
-
         if (ienf != null)
         {
             var f = ienf.FirstOrNull();
             if (f != null) b4 = f.GetType() == Types.tChar;
         }
-
         if (ien != null)
         {
             var l = ien.Last();
             if (l != null) b5 = l.GetType() == Types.tChar;
         }
-
         if (enumerable.Count == 1 && enumerable.FirstOrNull() is IList<object>)
             result = ToListT2<T>((IList)enumerable.FirstOrNull());
         else if (b1 && b2 && b3 && b4 && b5)
@@ -225,7 +191,6 @@ partial class CA
             return ToListT2<T>(enumerable);
         return result;
     }
-
     public static bool IsListStringWrappedInArray<T>(List<T> v2)
     {
         var first = v2.First().ToString();
@@ -233,7 +198,6 @@ partial class CA
                               first == "System.Collections.Generic.List`1[System.Object]")) return true;
         return false;
     }
-
     /// <summary>
     ///     Direct edit
     /// </summary>
@@ -245,12 +209,10 @@ partial class CA
             if (EqualityComparer<T>.Default.Equals(vr[i], default))
                 vr.RemoveAt(i);
     }
-
     public static void InitFillWith<T>(List<T> datas, int pocet, T initWith)
     {
         for (var i = 0; i < pocet; i++) datas.Add(initWith);
     }
-
     /// <summary>
     ///     Only for structs
     /// </summary>
@@ -262,13 +224,9 @@ partial class CA
         for (var i = 0; i < times.Count; i++)
         {
             if (!times[i].HasValue) nulled.Add(i);
-
-
         }
-
         return nulled;
     }
-
     public static List<T> JoinIList<T>(params IList<T>[] enumerable)
     {
         var t = new List<T>();
@@ -277,7 +235,6 @@ partial class CA
                 t.Add(item2);
         return t;
     }
-
     /// <summary>
     ///     Simply calling SequenceEqual
     /// </summary>
@@ -289,7 +246,6 @@ partial class CA
     {
         return sloupce.SequenceEqual(sloupce2);
     }
-
     public static List<T> JumbleUp<T>(List<T> b)
     {
         var bl = b.Count;
@@ -298,15 +254,12 @@ partial class CA
         {
             var index1 = r.Next() % bl;
             var index2 = r.Next() % bl;
-
             var temp = b[index1];
             b[index1] = b[index2];
             b[index2] = temp;
         }
-
         return b;
     }
-
     /// <summary>
     ///     element can be null, then will be added as default(T)
     ///     Must be private - to use only public in CA
@@ -318,8 +271,6 @@ partial class CA
         if (typeof(T) == Types.tString)
         {
             var t = new List<T>();
-
-
             foreach (var item in enumerable)
                 if (item is IList)
                 {
@@ -341,10 +292,8 @@ partial class CA
                 {
                     t.Add((T)(IEnumerable<char>)item.ToString());
                 }
-
             return t;
         }
-
         var result = new List<T>(enumerable.Count());
         foreach (var item in enumerable)
             if (item == null)
@@ -375,25 +324,18 @@ partial class CA
         //}
         return result;
     }
-
     public static T[] JumbleUp<T>(T[] b)
     {
         var bl = b.Length;
-
         var random = new Random();
-
         for (var i = 0; i < bl; ++i)
         {
             var index1 = random.Next() % bl;
             var index2 = random.Next() % bl;
-
             var temp = b[index1];
             b[index1] = b[index2];
             b[index2] = temp;
         }
-
         return b;
     }
-
-
 }
