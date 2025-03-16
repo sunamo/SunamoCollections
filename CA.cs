@@ -26,6 +26,11 @@ public partial class CA
         InitFillWith<string>(datas, pocet, initWith);
     }
 
+    public static void InitFillWith<T>(List<T> datas, int pocet, T initWith)
+    {
+        for (var i = 0; i < pocet; i++) datas.Add(initWith);
+    }
+
 
 
 

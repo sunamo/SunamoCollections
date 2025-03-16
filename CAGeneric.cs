@@ -209,10 +209,7 @@ partial class CA
             if (EqualityComparer<T>.Default.Equals(vr[i], default))
                 vr.RemoveAt(i);
     }
-    public static void InitFillWith<T>(List<T> datas, int pocet, T initWith)
-    {
-        for (var i = 0; i < pocet; i++) datas.Add(initWith);
-    }
+
     /// <summary>
     ///     Only for structs
     /// </summary>
