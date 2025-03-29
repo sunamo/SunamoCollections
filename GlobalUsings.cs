@@ -27,7 +27,6 @@ global using SunamoCollections._sunamo.SunamoParsing;
 global using SunamoCollections._sunamo.SunamoTextOutputGenerator;
 global using SunamoCollections._sunamo.SunamoValues;
 global using SunamoCollections._sunamo.SunamoValues.Constants;
-
 global using System.Threading.Tasks;
 global using ILogger = Microsoft.Extensions.Logging.ILogger;
 global using Microsoft.Extensions.Logging;
