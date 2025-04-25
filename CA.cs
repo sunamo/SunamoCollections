@@ -1,4 +1,5 @@
 namespace SunamoCollections;
+
 public partial class CA
 {
     public static Func<IList, object> dFirstOrNull = null;
@@ -1045,7 +1046,7 @@ public partial class CA
         foreach (var item in list)
         {
             var tem = item;
-            if (delimiters.Length != 0) tem = SHSplit.SplitMore(item, delimiters)[0].Trim();
+            if (delimiters.Length != 0) tem = SHSplit.Split(item, delimiters)[0].Trim();
             if (delkaNejdelsiho < tem.Length)
             {
                 nejdelsi = tem;
@@ -1166,7 +1167,7 @@ public partial class CA
 
     public static List<int> ParseInt(string v, string comma)
     {
-        var s = SHSplit.SplitMore(v, comma);
+        var s = SHSplit.Split(v, comma);
         var n = new List<int>(s.Count);
         foreach (var item in s) n.Add(int.Parse(item));
 
