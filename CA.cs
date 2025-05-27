@@ -1234,11 +1234,11 @@ public partial class CA
     //}
     public static void KeepOnlyWordsToFirstSpecialChars(List<string> l)
     {
-        ThrowEx.NotImplementedMethod();
-        //for (int i = 0; i < l.Count; i++)
-        //{
-        //    l[i] = SHParts.RemoveAfterFirstFunc(l[i], CharHelper.IsSpecial, []);
-        //}
+        //ThrowEx.NotImplementedMethod();
+        for (int i = 0; i < l.Count; i++)
+        {
+            l[i] = SHParts.RemoveAfterFirstFunc(l[i], CharHelper.IsSpecial, []);
+        }
     }
 
 
