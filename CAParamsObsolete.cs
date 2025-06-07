@@ -54,13 +54,13 @@ public partial class CA
         return result;
     }
 
-    /// <summary>
-    ///     ToListString2 - simply for all items call ToString()
-    ///     ToListString - working with type of every element
-    /// </summary>
-    /// <param name="enumerable"></param>
-    public static List<string> ToListStringMoreObject(params object[] enumerable)
-    {
-        return ToListStringIList(enumerable);
-    }
+    ///// <summary>
+    /////     ToListString2 - simply for all items call ToString()
+    /////     ToListString - working with type of every element
+    ///// </summary>
+    ///// <param name="enumerable"></param>
+    //public static List<string> ToListStringMoreObject(params object[] enumerable)
+    //{
+    //    return ToListStringIList(enumerable);
+    //}
 }
