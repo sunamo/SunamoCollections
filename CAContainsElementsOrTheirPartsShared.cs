@@ -50,8 +50,8 @@ public partial class CA
 
     #region 1) ContainsAnyFromElement - For easy copy from CAContainsElementsOrTheirPartsShared.cs
 
-    public static bool ContainsAnyFromElementBool(string s, IList<string> list,
-        bool acceptAsteriskForPassingAll = false)
+    public static bool ContainsAnyFromElementBool(string s, IList<string> list/*,
+        bool acceptAsteriskForPassingAll = false*/)
     {
         if (list.Count() == 1 && list.First() == "*") return true;
 
@@ -95,8 +95,8 @@ public partial class CA
 
     #region 8) ReturnWhichContainsIndexes
 
-    public static List<int> ReturnWhichContainsIndexes(string item, IList<string> terms,
-        SearchStrategyCA searchStrategy = SearchStrategyCA.FixedSpace)
+    public static List<int> ReturnWhichContainsIndexes(string item, IList<string> terms/*,
+        SearchStrategyCA searchStrategy = SearchStrategyCA.FixedSpace*/)
     {
         var result = new List<int>();
         var i = 0;
@@ -131,8 +131,8 @@ public partial class CA
     /// <param name="value"></param>
     /// <param name="term"></param>
     /// <param name="searchStrategy"></param>
-    public static List<int> ReturnWhichContainsIndexes(IList<string> value, string term,
-        SearchStrategyCA searchStrategy = SearchStrategyCA.FixedSpace)
+    public static List<int> ReturnWhichContainsIndexes(IList<string> value, string term/*,
+        SearchStrategyCA searchStrategy = SearchStrategyCA.FixedSpace*/)
     {
         var result = new List<int>();
         var i = 0;

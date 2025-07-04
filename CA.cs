@@ -118,62 +118,62 @@ public partial class CA
     ///                 IList => List<string>
     /// </summary>
     /// <param name="enumerable"></param>
-    [ObjectParamsObsoleteAttribute]
-    public static List<string> ToListStringIList(IList enumerable2)
-    {
-        return null;
-        //List<string> result = new List<string>();
-        //if (enumerable2.GetType() != typeof(string))
-        //{
-        //    foreach (object item in enumerable2)
-        //    {
-        //        Type t = item.GetType();
-        //        // !(item is string)  - not working
-        //        if (RH.IsOrIsDeriveFromBaseClass(t, Types.tIEnumerable))
-        //        {
-        //            // zde to musí být IEnumerable protože spousta věcí z .netu může takhle přijít (např. string)
-        //            var enumerable = (System.Collections.IEnumerable)item;
-        //            Type type = enumerable.GetType();
-        //            bool isEnumerableChar = RH.IsOrIsDeriveFromBaseClass(type, typeof(IList<char>));
-        //            bool isEnumerableString = RH.IsOrIsDeriveFromBaseClass(type, typeof(IList<string>));
-        //            if (type == typeof(string))
-        //            {
-        //                result.Add(string.Join(string.Empty, enumerable));
-        //            }
-        //            else if (isEnumerableChar)
-        //            {
-        //                // IList<char> => string
-        //                //enumerable2 is not string, then I can add all to list
-        //                result.AddRange(ToListStringIEnumerable2(enumerable));
-        //            }
-        //            else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IList<string>)
-        //            {
-        //                // IList<string> => List<string>
-        //                result.AddRange(((IList<string>)enumerable.FirstOrNull()).ToList());
-        //            }
-        //            else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IList &&
-        //                     !isEnumerableChar && !isEnumerableString)
-        //            {
-        //                result.AddRange(ToListStringIEnumerable2((IList)enumerable.FirstOrNull()));
-        //            }
-        //            else
-        //            {
-        //                // IList => List<string>
-        //                result.AddRange(ToListStringIEnumerable2(enumerable));
-        //            }
-        //        }
-        //        else
-        //        {
-        //            result.Add(item.ToString());
-        //        }
-        //    }
-        //}
-        //else
-        //{
-        //    result.Add(enumerable2.ToString());
-        //}
-        //return result;
-    }
+    //[ObjectParamsObsoleteAttribute]
+    //public static List<string> ToListStringIList(IList enumerable2)
+    //{
+    //    return null;
+    //    //List<string> result = new List<string>();
+    //    //if (enumerable2.GetType() != typeof(string))
+    //    //{
+    //    //    foreach (object item in enumerable2)
+    //    //    {
+    //    //        Type t = item.GetType();
+    //    //        // !(item is string)  - not working
+    //    //        if (RH.IsOrIsDeriveFromBaseClass(t, Types.tIEnumerable))
+    //    //        {
+    //    //            // zde to musí být IEnumerable protože spousta věcí z .netu může takhle přijít (např. string)
+    //    //            var enumerable = (System.Collections.IEnumerable)item;
+    //    //            Type type = enumerable.GetType();
+    //    //            bool isEnumerableChar = RH.IsOrIsDeriveFromBaseClass(type, typeof(IList<char>));
+    //    //            bool isEnumerableString = RH.IsOrIsDeriveFromBaseClass(type, typeof(IList<string>));
+    //    //            if (type == typeof(string))
+    //    //            {
+    //    //                result.Add(string.Join(string.Empty, enumerable));
+    //    //            }
+    //    //            else if (isEnumerableChar)
+    //    //            {
+    //    //                // IList<char> => string
+    //    //                //enumerable2 is not string, then I can add all to list
+    //    //                result.AddRange(ToListStringIEnumerable2(enumerable));
+    //    //            }
+    //    //            else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IList<string>)
+    //    //            {
+    //    //                // IList<string> => List<string>
+    //    //                result.AddRange(((IList<string>)enumerable.FirstOrNull()).ToList());
+    //    //            }
+    //    //            else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IList &&
+    //    //                     !isEnumerableChar && !isEnumerableString)
+    //    //            {
+    //    //                result.AddRange(ToListStringIEnumerable2((IList)enumerable.FirstOrNull()));
+    //    //            }
+    //    //            else
+    //    //            {
+    //    //                // IList => List<string>
+    //    //                result.AddRange(ToListStringIEnumerable2(enumerable));
+    //    //            }
+    //    //        }
+    //    //        else
+    //    //        {
+    //    //            result.Add(item.ToString());
+    //    //        }
+    //    //    }
+    //    //}
+    //    //else
+    //    //{
+    //    //    result.Add(enumerable2.ToString());
+    //    //}
+    //    //return result;
+    //}
 
     public static bool HasIndex(int dex, Array col)
     {
@@ -470,7 +470,7 @@ public partial class CA
     }
 
 
-    public static void Unindent(List<string> l, int v)
+    public static void Unindent(List<string> l)
     {
         for (var i = 0; i < l.Count; i++)
         {
