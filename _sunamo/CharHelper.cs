@@ -1,7 +1,8 @@
-﻿namespace SunamoCollections._sunamo;
+namespace SunamoCollections._sunamo;
+
 internal class CharHelper
 {
-    public static bool IsSpecial(char c)
+    internal static bool IsSpecial(char c)
     {
         SpecialCharsService specialChars = new();
         var v = specialChars.specialChars.Contains(c);
