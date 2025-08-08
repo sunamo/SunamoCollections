@@ -25,7 +25,7 @@ partial class Program
         logger = Provider.GetService<ILogger>() ?? throw new ServiceNotFoundException(nameof(ILogger));
     }
 
-    static void Main(string[] args)
+    static void Main()
     {
         MainAsync().GetAwaiter().GetResult();
     }
