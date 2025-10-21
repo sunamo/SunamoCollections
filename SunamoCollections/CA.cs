@@ -1,3 +1,6 @@
+// EN: Variable names have been checked and replaced with self-descriptive names
+// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+
 namespace SunamoCollections;
 
 public partial class CA
@@ -7,12 +10,12 @@ public partial class CA
     //dFirstOrNull
     private static Type type = typeof(CA);
 
-    public static Dictionary<string, int> OccurenceOfEveryLine(List<string> l)
+    public static Dictionary<string, int> OccurenceOfEveryLine(List<string> list)
     {
         throw new NotImplementedException();
     }
 
-    public static string LastItem(string version, string v)
+    public static string LastItem(string version, string value)
     {
         throw new NotImplementedException();
     }
@@ -40,8 +43,8 @@ public partial class CA
     public static int Count(IEnumerable e)
     {
         if (e == null) return 0;
-        var t = e.GetType();
-        var tName = t.Name;
+        var temp = e.GetType();
+        var tName = temp.Name;
 
 
         if (e is IList) return (e as IList).Count;
@@ -52,10 +55,10 @@ public partial class CA
     }
 
 
-    public static List<string> Trim(List<string> l)
+    public static List<string> Trim(List<string> list)
     {
-        for (var i = 0; i < l.Count; i++) l[i] = l[i].Trim();
-        return l;
+        for (var i = 0; i < list.Count; i++) list[i] = list[i].Trim();
+        return list;
     }
 
     [Obsolete("Do the same as Trim")]
@@ -63,8 +66,8 @@ public partial class CA
     {
         for (var i = list.Count - 1; i >= 0; i--)
         {
-            var l = list[i];
-            if (string.IsNullOrWhiteSpace(l)) list[i] = list[i].Trim();
+            var element = list[i];
+            if (string.IsNullOrWhiteSpace(element)) list[i] = list[i].Trim();
         }
     }
 
@@ -127,9 +130,9 @@ public partial class CA
     //    //{
     //    //    foreach (object item in enumerable2)
     //    //    {
-    //    //        Type t = item.GetType();
+    //    //        Type temp = item.GetType();
     //    //        // !(item is string)  - not working
-    //    //        if (RH.IsOrIsDeriveFromBaseClass(t, Types.tIEnumerable))
+    //    //        if (RH.IsOrIsDeriveFromBaseClass(temp, Types.tIEnumerable))
     //    //        {
     //    //            // zde to musí být IEnumerable protože spousta věcí z .netu může takhle přijít (např. string)
     //    //            var enumerable = (System.Collections.IEnumerable)item;
@@ -187,13 +190,13 @@ public partial class CA
         return false;
     }
 
-    public static bool RemoveAndLeading(List<string> tokens, string v)
+    public static bool RemoveAndLeading(List<string> tokens, string value)
     {
-        var dx = tokens.IndexOf(v);
+        var dx = tokens.IndexOf(value);
         if (dx != -1)
         {
             tokens.RemoveAt(dx);
-            tokens.Insert(0, v);
+            tokens.Insert(0, value);
             return true;
         }
 
@@ -208,11 +211,11 @@ public partial class CA
         return list;
     }
 
-    public static void RemoveNullEmptyWs(List<string> l)
+    public static void RemoveNullEmptyWs(List<string> list)
     {
-        for (var i = l.Count - 1; i >= 0; i--)
-            if (string.IsNullOrWhiteSpace(l[i]))
-                l.RemoveAt(i);
+        for (var i = list.Count - 1; i >= 0; i--)
+            if (string.IsNullOrWhiteSpace(list[i]))
+                list.RemoveAt(i);
     }
 
     /// <summary>
@@ -246,10 +249,10 @@ public partial class CA
 
     public static void DoubleOrMoreMultiLinesToSingle(ref string list)
     {
-        var n = Environment.NewLine;
+        var count = Environment.NewLine;
         list = Regex.Replace(list, @"(\r?\n\s*){2,}", Environment.NewLine + Environment.NewLine);
         list = list.Trim();
-        //list = list.Replace(n, n + n);
+        //list = list.Replace(count, count + count);
         // 27-10-23 dříve to bylo takhle
         //return list.Trim();
     }
@@ -326,12 +329,12 @@ public partial class CA
     /// <param name="v"></param>
     /// <param name="l"></param>
     /// <returns></returns>
-    public static List<string> StartingWith(string v, List<string> l)
+    public static List<string> StartingWith(string value, List<string> list)
     {
-        for (var i = l.Count - 1; i >= 0; i--)
-            if (!l[i].StartsWith(v))
-                l.RemoveAt(i);
-        return l;
+        for (var i = list.Count - 1; i >= 0; i--)
+            if (!list[i].StartsWith(value))
+                list.RemoveAt(i);
+        return list;
     }
 
     public static bool StartingWith(string val, string start, bool caseSensitive)
@@ -349,9 +352,9 @@ public partial class CA
         return mySites;
     }
 
-    private static string Replace(string s, string from, string to)
+    private static string Replace(string text, string from, string to)
     {
-        return s.Replace(from, to);
+        return text.Replace(from, to);
     }
 
     /// <summary>
@@ -437,24 +440,24 @@ public partial class CA
     }
 
 
-    public static void AddSuffix(List<string> headers, string v)
+    public static void AddSuffix(List<string> headers, string value)
     {
-        for (var i = 0; i < headers.Count; i++) headers[i] = headers[i] + v;
+        for (var i = 0; i < headers.Count; i++) headers[i] = headers[i] + value;
     }
 
-    public static List<string> CreateListStringWithReverse(int reverse, IList<string> v)
+    public static List<string> CreateListStringWithReverse(int reverse, IList<string> value)
     {
-        var vs = new List<string>(reverse + v.Count());
-        vs.AddRange(v);
+        var vs = new List<string>(reverse + value.Count());
+        vs.AddRange(value);
         return vs;
     }
 
 
     public static List<char> ToListChar(ICollection<string> values)
     {
-        var v = new List<char>(values.Count);
-        foreach (var item in values) v.Add(item[0]);
-        return v;
+        var value = new List<char>(values.Count);
+        foreach (var item in values) value.Add(item[0]);
+        return value;
     }
 
 
@@ -470,14 +473,14 @@ public partial class CA
     }
 
 
-    public static void Unindent(List<string> l)
+    public static void Unindent(List<string> list)
     {
-        for (var i = 0; i < l.Count; i++)
+        for (var i = 0; i < list.Count; i++)
         {
-            var line = l[i];
+            var line = list[i];
             if (line.StartsWith("\t"))
-                l[i] = l[i].Substring("\t".Length);
-            else if (line.StartsWith(" ")) l[i] = l[i].Substring(" ".Length);
+                list[i] = list[i].Substring("\t".Length);
+            else if (line.StartsWith(" ")) list[i] = list[i].Substring(" ".Length);
         }
     }
 
@@ -486,18 +489,18 @@ public partial class CA
 
 
 
-    public static bool AnyElementEndsWith(string t, IList<string> v)
+    public static bool AnyElementEndsWith(string temp, IList<string> value)
     {
         string item2 = null;
-        return AnyElementEndsWith(t, v, out item2);
+        return AnyElementEndsWith(temp, value, out item2);
     }
 
-    public static bool AnyElementEndsWith(string t, IList<string> v, out string element)
+    public static bool AnyElementEndsWith(string temp, IList<string> value, out string element)
     {
         element = null;
 
-        foreach (var item in v)
-            if (item.EndsWith(t))
+        foreach (var item in value)
+            if (item.EndsWith(temp))
             {
                 element = item;
                 return true;
@@ -514,9 +517,9 @@ public partial class CA
     /// <param name="t"></param>
     /// <param name="v"></param>
     /// <returns></returns>
-    public static bool EndsWithAnyElement(string t, params string[] v)
+    public static bool EndsWithAnyElement(string temp, params string[] value)
     {
-        return EndsWithAnyElement(t, v.ToList());
+        return EndsWithAnyElement(temp, value.ToList());
     }
 
     /// <summary>
@@ -525,10 +528,10 @@ public partial class CA
     /// </summary>
     /// <param name="t"></param>
     /// <param name="v"></param>
-    public static bool EndsWithAnyElement(string t, IList<string> v)
+    public static bool EndsWithAnyElement(string temp, IList<string> value)
     {
-        foreach (var item in v)
-            if (t.EndsWith(item))
+        foreach (var item in value)
+            if (temp.EndsWith(item))
                 return true;
         return false;
     }
@@ -559,11 +562,11 @@ public partial class CA
         return result;
     }
 
-    public static string ReplaceAll(string r, List<string> what, string forWhat)
+    public static string ReplaceAll(string result, List<string> what, string forWhat)
     {
-        foreach (var item in what) r = r.Replace(item, forWhat);
+        foreach (var item in what) result = result.Replace(item, forWhat);
 
-        return r;
+        return result;
     }
 
 
@@ -572,13 +575,13 @@ public partial class CA
     /// </summary>
     /// <param name="s"></param>
     /// <param name="manuallyNo"></param>
-    public static void RemoveWhichExists(IList<string> s, List<string> manuallyNo)
+    public static void RemoveWhichExists(IList<string> text, List<string> manuallyNo)
     {
         var dex = -1;
         foreach (var item in manuallyNo)
         {
-            dex = s.IndexOf(item);
-            if (dex != -1) s.RemoveAt(dex);
+            dex = text.IndexOf(item);
+            if (dex != -1) text.RemoveAt(dex);
         }
     }
 
@@ -630,28 +633,28 @@ public partial class CA
     /// </summary>
     /// <param name="backslash"></param>
     /// <param name="s"></param>
-    public static List<string> TrimStart(string backslash, List<string> s)
+    public static List<string> TrimStart(string backslash, List<string> text)
     {
         var methodName = "TrimStart";
 
         ThrowEx.IsNull("backslash", backslash);
-        ThrowEx.IsNull("s", s);
+        ThrowEx.IsNull("s", text);
 
-        for (var i = 0; i < s.Count; i++)
-            if (s[i].StartsWith(backslash))
-                s[i] = s[i].Substring(backslash.Length);
-        return s;
+        for (var i = 0; i < text.Count; i++)
+            if (text[i].StartsWith(backslash))
+                text[i] = text[i].Substring(backslash.Length);
+        return text;
     }
 
 
 
 
-    public static void AppendToLastElement(List<string> list, string s)
+    public static void AppendToLastElement(List<string> list, string text)
     {
         if (list.Count > 0)
-            list[list.Count - 1] += s;
+            list[list.Count - 1] += text;
         else
-            list.Add(s);
+            list.Add(text);
     }
 
 
@@ -663,9 +666,9 @@ public partial class CA
     /// </summary>
     /// <param name="whereIsUsed2"></param>
     /// <param name="v"></param>
-    public static List<string> WrapWith(List<string> whereIsUsed2, string v)
+    public static List<string> WrapWith(List<string> whereIsUsed2, string value)
     {
-        return WrapWith(whereIsUsed2, v, v);
+        return WrapWith(whereIsUsed2, value, value);
     }
 
     /// <summary>
@@ -741,7 +744,7 @@ public partial class CA
 
 
 
-    public static List<int> StartWithAnyInElement(string s, List<string> list, bool _trimBefore)
+    public static List<int> StartWithAnyInElement(string text, List<string> list, bool _trimBefore)
     {
         var result = new List<int>();
 
@@ -751,7 +754,7 @@ public partial class CA
             var item2 = item;
             if (_trimBefore) item2 = item2.Trim();
 
-            if (s.StartsWith(item2)) result.Add(i);
+            if (text.StartsWith(item2)) result.Add(i);
 
             i++;
         }
@@ -851,7 +854,7 @@ public partial class CA
             parseNegations == ContainsCompareMethodCA.Negations)
         {
             WhitespaceCharService whitespaceChar = new();
-            w = SHSplit.SplitNone(term, whitespaceChar.whiteSpaceChars.ConvertAll(d => d.ToString()).ToArray());
+            w = SHSplit.SplitNone(term, whitespaceChar.whiteSpaceChars.ConvertAll(data => data.ToString()).ToArray());
         }
         if (parseNegations == ContainsCompareMethodCA.WholeInput)
             foreach (var item in lines)
@@ -868,7 +871,7 @@ public partial class CA
                  parseNegations == ContainsCompareMethodCA.Negations)
             foreach (var item in lines)
             {
-                if (w.All(d => item.Contains(d))) //SH.ContainsAll(item, w, parseNegations))
+                if (w.All(data => item.Contains(data))) //SH.ContainsAll(item, w, parseNegations))
                 {
                     founded.Add(i);
                     result.Add(item);
@@ -908,10 +911,10 @@ public partial class CA
         if (enumerable.Count() < requiredLength) return null;
 
         var result = new List<int>();
-        var y = 0;
+        var yValue = 0;
         foreach (var item in enumerable)
-            if (int.TryParse(item.ToString(), out y))
-                result.Add(y);
+            if (int.TryParse(item.ToString(), out yValue))
+                result.Add(yValue);
             else
                 return null;
         return result;
@@ -924,8 +927,8 @@ public partial class CA
     {
         for (var i = 0; i < eb.Count; i++)
         {
-            var r = eb[i];
-            if (r[r.Length - 1] != '\\') eb[i] = r + "\\";
+            var result = eb[i];
+            if (result[result.Length - 1] != '\\') eb[i] = result + "\\";
         }
 
         return eb;
@@ -936,13 +939,13 @@ public partial class CA
     /// </summary>
     /// <param name="d"></param>
     /// <param name="mask"></param>
-    public static void RemoveWildcard(List<string> d, string mask)
+    public static void RemoveWildcard(List<string> data, string mask)
     {
         //https://stackoverflow.com/a/15275806
 
-        for (var i = d.Count - 1; i >= 0; i--)
-            if (SH.MatchWildcard(d[i], mask))
-                d.RemoveAt(i);
+        for (var i = data.Count - 1; i >= 0; i--)
+            if (SH.MatchWildcard(data[i], mask))
+                data.RemoveAt(i);
     }
 
 
@@ -956,9 +959,9 @@ public partial class CA
 
     public static List<bool> ToBool(List<int> numbers)
     {
-        var b = new List<bool>(numbers.Count);
-        foreach (var item in numbers) b.Add(item == 1 ? true : false);
-        return b;
+        var builder = new List<bool>(numbers.Count);
+        foreach (var item in numbers) builder.Add(item == 1 ? true : false);
+        return builder;
     }
 
     /// <summary>
@@ -974,9 +977,9 @@ public partial class CA
     }
 
 
-    public static string RemovePadding(List<byte> decrypted, byte v, bool returnStringInUtf8)
+    public static string RemovePadding(List<byte> decrypted, byte value, bool returnStringInUtf8)
     {
-        RemovePadding(decrypted, v);
+        RemovePadding(decrypted, value);
 
         if (returnStringInUtf8) return Encoding.UTF8.GetString(decrypted.ToArray());
         return string.Empty;
@@ -984,10 +987,10 @@ public partial class CA
 
 
 
-    public static bool HasAtLeastOneElementInArray(List<string> d)
+    public static bool HasAtLeastOneElementInArray(List<string> data)
     {
-        if (d != null)
-            if (d.Count != 0)
+        if (data != null)
+            if (data.Count != 0)
                 return true;
         return false;
     }
@@ -1020,11 +1023,11 @@ public partial class CA
     /// </summary>
     /// <param name="v"></param>
     /// <param name="toReplace"></param>
-    public static List<string> Prepend(string v, List<string> toReplace)
+    public static List<string> Prepend(string value, List<string> toReplace)
     {
         for (var i = 0; i < toReplace.Count; i++)
-            if (!toReplace[i].StartsWith(v))
-                toReplace[i] = v + toReplace[i];
+            if (!toReplace[i].StartsWith(value))
+                toReplace[i] = value + toReplace[i];
         return toReplace;
     }
 
@@ -1033,9 +1036,9 @@ public partial class CA
     /// </summary>
     /// <param name="v"></param>
     /// <param name="toReplace"></param>
-    public static List<string> Prepend(string v, string[] toReplace)
+    public static List<string> Prepend(string value, string[] toReplace)
     {
-        return Prepend(v, toReplace.ToList());
+        return Prepend(value, toReplace.ToList());
     }
 
 
@@ -1159,59 +1162,59 @@ public partial class CA
         return mySites;
     }
 
-    public static List<string> PostfixIfNotEnding(string pre, List<string> l)
+    public static List<string> PostfixIfNotEnding(string pre, List<string> list)
     {
-        for (var i = 0; i < l.Count; i++) l[i] = pre + l[i];
-        return l;
+        for (var i = 0; i < list.Count; i++) list[i] = pre + list[i];
+        return list;
     }
 
-    public static List<int> ParseInt(string v, string comma)
+    public static List<int> ParseInt(string value, string comma)
     {
-        var s = SHSplit.Split(v, comma);
-        var n = new List<int>(s.Count);
-        foreach (var item in s) n.Add(int.Parse(item));
+        var text = SHSplit.Split(value, comma);
+        var count = new List<int>(text.Count);
+        foreach (var item in text) count.Add(int.Parse(item));
 
-        //return BTS.CastCollectionStringToInt(s);
-        return n;
+        //return BTS.CastCollectionStringToInt(text);
+        return count;
     }
 
-    public static List<List<string>> Split(List<string> s, string determining)
+    public static List<List<string>> Split(List<string> text, string determining)
     {
-        var ls = new List<List<string>>();
+        var sourceList = new List<List<string>>();
         var actual = new List<string>();
-        foreach (var item in s)
+        foreach (var item in text)
             if (item == determining)
             {
-                ls.Add(actual);
+                sourceList.Add(actual);
                 actual.Clear();
             }
 
-        return ls;
+        return sourceList;
     }
 
     public static string GetFirstWordOfList(string t2)
 
     {
-        var sb = new StringBuilder();
+        var stringBuilder = new StringBuilder();
 
         var text = t2.Split(new[] { t2.Contains("\r\n") ? "\r\n" : "\n" }, StringSplitOptions.None)
             .ToList(); //SHGetLines.GetLines(t2);
         foreach (var item in text)
         {
-            var t = item.Trim();
+            var temp = item.Trim();
 
-            if (t.EndsWith(":"))
-                sb.AppendLine(item);
-            else if (t == "")
-                sb.AppendLine(t);
+            if (temp.EndsWith(":"))
+                stringBuilder.AppendLine(item);
+            else if (temp == "")
+                stringBuilder.AppendLine(temp);
             else
             {
                 WhitespaceCharService whitespaceChars = new WhitespaceCharService();
-                sb.AppendLine(t.Split(whitespaceChars.whiteSpaceChars.ToArray())[0]);
+                stringBuilder.AppendLine(temp.Split(whitespaceChars.whiteSpaceChars.ToArray())[0]);
             }
         }
 
-        return sb.ToString();
+        return stringBuilder.ToString();
     }
 
 
@@ -1232,12 +1235,12 @@ public partial class CA
 
     //    return e.FirstOrNull();
     //}
-    public static void KeepOnlyWordsToFirstSpecialChars(List<string> l)
+    public static void KeepOnlyWordsToFirstSpecialChars(List<string> list)
     {
         //ThrowEx.NotImplementedMethod();
-        for (int i = 0; i < l.Count; i++)
+        for (int i = 0; i < list.Count; i++)
         {
-            l[i] = SHParts.RemoveAfterFirstFunc(l[i], CharHelper.IsSpecial, []);
+            list[i] = SHParts.RemoveAfterFirstFunc(list[i], CharHelper.IsSpecial, []);
         }
     }
 
@@ -1250,11 +1253,11 @@ public partial class CA
             to--;
         }
 
-        var s = new List<string>();
+        var text = new List<string>();
 
-        for (var i = from; i < to + 1; i++) s.Add(cOnlyNamesBy10[i]);
+        for (var i = from; i < to + 1; i++) text.Add(cOnlyNamesBy10[i]);
 
-        return s;
+        return text;
     }
 
     // In order to convert any 2d array to jagged one
@@ -1265,7 +1268,7 @@ public partial class CA
         for (var i = 0; i < value.GetLength(0); i++)
         {
             var ca = new List<int>();
-            for (var y = 0; y < value.GetLength(1); y++) ca.Add(value[i, y] ? 1 : 0);
+            for (var yValue = 0; yValue < value.GetLength(1); yValue++) ca.Add(value[i, yValue] ? 1 : 0);
             result.Add(ca);
         }
 
@@ -1279,7 +1282,7 @@ public partial class CA
     ///// <param name="input"></param>
     //public static string GetNumberedList(List<string> input, int startFrom)
     //{
-    //    input = input.Where(d => !string.IsNullOrWhiteSpace(d)).ToList();
+    //    input = input.Where(data => !string.IsNullOrWhiteSpace(data)).ToList();
     //    CA.PrependWithNumbered(input, startFrom);
     //    return SH.JoinNL(input);
     //}
@@ -1340,16 +1343,16 @@ public partial class CA
         var inBothCount = inBoth.Count;
         double sumBothPlusManaged = inBothCount + files2Count;
         var percentCalculator = new PercentCalculator(sumBothPlusManaged);
-        if (nameOfSolution != null) textOutput.sb.AppendLine(nameOfSolution);
-        textOutput.sb.AppendLine("Both (" + inBothCount + "-" +
+        if (nameOfSolution != null) textOutput.stringBuilder.AppendLine(nameOfSolution);
+        textOutput.stringBuilder.AppendLine("Both (" + inBothCount + "-" +
                                  percentCalculator.PercentFor(inBothCount, false) + "%):");
         if (alsoFileNames) textOutput.List(inBoth);
         if (nameForFirstFolder != null)
-            textOutput.sb.AppendLine(nameForFirstFolder + "(" + files1Count + "-" +
+            textOutput.stringBuilder.AppendLine(nameForFirstFolder + "(" + files1Count + "-" +
                                      percentCalculator.PercentFor(files1Count, true) + "%):");
         if (alsoFileNames) textOutput.List(files1);
         if (nameForSecondFolder != null)
-            textOutput.sb.AppendLine(nameForSecondFolder + "(" + files2Count + "-" +
+            textOutput.stringBuilder.AppendLine(nameForSecondFolder + "(" + files2Count + "-" +
                                      percentCalculator.PercentFor(files2Count, true) + "%):");
         if (alsoFileNames) textOutput.List(files2);
         textOutput.SingleCharLine('*', 10);
@@ -1364,11 +1367,11 @@ public partial class CA
         return list;
     }
 
-    public static int CountOfEnding(List<string> winrarFiles, string v)
+    public static int CountOfEnding(List<string> winrarFiles, string value)
     {
         var count = 0;
         for (var i = 0; i < winrarFiles.Count; i++)
-            if (winrarFiles[i].EndsWith(v))
+            if (winrarFiles[i].EndsWith(value))
                 count++;
         return count;
     }
@@ -1404,9 +1407,9 @@ public partial class CA
 
     public static bool HasFirstItemLength(List<string> notContains)
     {
-        var t = "";
-        if (notContains.Count > 0) t = notContains[0].Trim();
-        return t.Length > 0;
+        var temp = "";
+        if (notContains.Count > 0) temp = notContains[0].Trim();
+        return temp.Length > 0;
     }
 
     public static List<string> TrimList(List<string> c)
@@ -1453,10 +1456,10 @@ public partial class CA
     {
         if (a != null)
         {
-            var d = new List<string>(a.Count + p.Count);
-            d.AddRange(a);
-            d.AddRange(p);
-            return d;
+            var data = new List<string>(a.Count + p.Count);
+            data.AddRange(a);
+            data.AddRange(p);
+            return data;
         }
 
         return new List<string>(p);
@@ -1585,10 +1588,10 @@ public partial class CA
     /// </summary>
     /// <param name="backslash"></param>
     /// <param name="s"></param>
-    public static List<string> TrimStartChar(char backslash, List<string> s)
+    public static List<string> TrimStartChar(char backslash, List<string> text)
     {
-        for (var i = 0; i < s.Count; i++) s[i] = s[i].TrimStart(backslash);
-        return s;
+        for (var i = 0; i < text.Count; i++) text[i] = text[i].TrimStart(backslash);
+        return text;
     }
 
     #endregion

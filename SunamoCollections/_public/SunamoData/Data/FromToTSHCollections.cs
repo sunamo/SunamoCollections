@@ -1,3 +1,6 @@
+// EN: Variable names have been checked and replaced with self-descriptive names
+// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+
 namespace SunamoCollections._public.SunamoData.Data;
 
 public class FromToTSHCollections<T>
@@ -9,8 +12,8 @@ public class FromToTSHCollections<T>
 
     public FromToTSHCollections()
     {
-        var t = typeof(T);
-        if (t == typeof(int)) ftUse = FromToUseCollections.None;
+        var type = typeof(type);
+        if (type == typeof(int)) ftUse = FromToUseCollections.None;
     }
 
 
@@ -20,22 +23,22 @@ public class FromToTSHCollections<T>
     }
 
 
-    public FromToTSHCollections(T from, T to, FromToUseCollections ftUse = FromToUseCollections.DateTime) : this()
+    public FromToTSHCollections(type from, type to, FromToUseCollections ftUse = FromToUseCollections.DateTime) : this()
     {
         this.from = from;
         this.to = to;
         this.ftUse = ftUse;
     }
 
-    public T from
+    public type from
     {
-        get => (T)(dynamic)fromL;
+        get => (type)(dynamic)fromL;
         set => fromL = (long)(dynamic)value;
     }
 
-    public T to
+    public type to
     {
-        get => (T)(dynamic)toL;
+        get => (type)(dynamic)toL;
         set => toL = (long)(dynamic)value;
     }
 

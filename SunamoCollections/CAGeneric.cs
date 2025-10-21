@@ -1,3 +1,6 @@
+// EN: Variable names have been checked and replaced with self-descriptive names
+// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+
 namespace SunamoCollections;
 
 /// <summary>
@@ -23,38 +26,38 @@ partial class CA
             return new ResultWithExceptionCollections<List<List<T>>>(new Exception($"Elements in {nameof(divs)} - {divs.Count} is not dividable by {nameof(countOfColumn)} - {countOfColumn}"));
         }
         List<List<T>> result = new List<List<T>>();
-        List<T> t = new List<T>();
+        List<T> currentRow = new List<T>();
         foreach (var item in divs)
         {
-            t.Add(item);
-            if (t.Count == countOfColumn)
+            currentRow.Add(item);
+            if (currentRow.Count == countOfColumn)
             {
-                result.Add(t);
-                t = new List<T>();
+                result.Add(currentRow);
+                currentRow = new List<T>();
             }
         }
         return new ResultWithExceptionCollections<List<List<T>>>(result);
     }
-    public static List<List<T>> DivideByPercent<T>(List<T> ls, int v)
+    public static List<List<T>> DivideByPercent<T>(List<T> sourceList, int percentPerPart)
     {
-        var parts = 100 / v;
-        var ds = ls.Count / parts;
+        var parts = 100 / percentPerPart;
+        var elementsPerPart = sourceList.Count / parts;
         var from = 0;
         var result = new List<List<T>>();
         for (var i = 0; i < parts; i++)
         {
-            result.Add(GetIndexesFromTo(ls, from, ds));
-            from += ds;
+            result.Add(GetIndexesFromTo(sourceList, from, elementsPerPart));
+            from += elementsPerPart;
         }
-        var anotherEls = from != ls.Count;
-        if (anotherEls) result.Add(GetIndexesFromTo(ls, from, ls.Count - result[0].Count * parts));
+        var hasRemainingElements = from != sourceList.Count;
+        if (hasRemainingElements) result.Add(GetIndexesFromTo(sourceList, from, sourceList.Count - result[0].Count * parts));
         return result;
     }
-    private static List<T> GetIndexesFromTo<T>(List<T> ls, int from, int countOfElements)
+    private static List<T> GetIndexesFromTo<T>(List<T> sourceList, int from, int countOfElements)
     {
-        var t = new T[countOfElements];
-        ls.CopyTo(from, t, 0, countOfElements);
-        return new List<T>(t);
+        var tempArray = new T[countOfElements];
+        sourceList.CopyTo(from, tempArray, 0, countOfElements);
+        return new List<T>(tempArray);
     }
     public static void InitFillWith<T>(List<T> arr, int columns)
     {
@@ -67,12 +70,12 @@ partial class CA
             if (EqualityComparer<T>.Default.Equals(def, result[i]))
                 result.RemoveAt(i);
     }
-    public static List<T> ReplaceNullFor<T>(List<T> l, T empty) where T : class
+    public static List<T> ReplaceNullFor<T>(List<T> list, T empty) where T : class
     {
-        for (var i = 0; i < l.Count; i++)
-            if (l[i] == null)
-                l[i] = empty;
-        return l;
+        for (var i = 0; i < list.Count; i++)
+            if (list[i] == null)
+                list[i] = empty;
+        return list;
     }
     public static List<T> ToArrayTCheckNull<T>(params T[] where)
     {
@@ -97,11 +100,11 @@ partial class CA
         before = new T[p2];
         var p1l = p1.Length;
         after = new T[p1l - p2];
-        var b = true;
+        var builder = true;
         for (var i = 0; i < p1l; i++)
         {
-            if (i == p2) b = false;
-            if (b)
+            if (i == p2) builder = false;
+            if (builder)
                 before[i] = p1[i];
             else
                 after[i] = p1[i - p2];
@@ -178,8 +181,8 @@ partial class CA
         }
         if (ien != null)
         {
-            var l = ien.Last();
-            if (l != null) b5 = l.GetType() == Types.tChar;
+            var list = ien.Last();
+            if (list != null) b5 = list.GetType() == Types.tChar;
         }
         if (enumerable.Count == 1 && enumerable.FirstOrNull() is IList<object>)
             result = ToListT2<T>((IList)enumerable.FirstOrNull());
@@ -226,11 +229,11 @@ partial class CA
     }
     public static List<T> JoinIList<T>(params IList<T>[] enumerable)
     {
-        var t = new List<T>();
+        var result = new List<T>();
         foreach (var item in enumerable)
             foreach (var item2 in item)
-                t.Add(item2);
-        return t;
+                result.Add(item2);
+        return result;
     }
     /// <summary>
     ///     Simply calling SequenceEqual
@@ -243,19 +246,19 @@ partial class CA
     {
         return sloupce.SequenceEqual(sloupce2);
     }
-    public static List<T> JumbleUp<T>(List<T> b)
+    public static List<T> JumbleUp<T>(List<T> builder)
     {
-        var bl = b.Count;
-        var r = new Random();
+        var bl = builder.Count;
+        var result = new Random();
         for (var i = 0; i < bl; ++i)
         {
-            var index1 = r.Next() % bl;
-            var index2 = r.Next() % bl;
-            var temp = b[index1];
-            b[index1] = b[index2];
-            b[index2] = temp;
+            var index1 = result.Next() % bl;
+            var index2 = result.Next() % bl;
+            var temp = builder[index1];
+            builder[index1] = builder[index2];
+            builder[index2] = temp;
         }
-        return b;
+        return builder;
     }
     /// <summary>
     ///     element can be null, then will be added as default(T)
@@ -267,29 +270,29 @@ partial class CA
     {
         if (typeof(T) == Types.tString)
         {
-            var t = new List<T>();
+            var stringResults = new List<T>();
             foreach (var item in enumerable)
                 if (item is IList)
                 {
-                    var ie = (IList)item;
-                    var sb = new StringBuilder();
-                    foreach (var item2 in ie) sb.Append(item2);
-                    object t2 = sb.ToString();
-                    t.Add((T)t2);
+                    var itemList = (IList)item;
+                    var stringBuilder = new StringBuilder();
+                    foreach (var item2 in itemList) stringBuilder.Append(item2);
+                    object convertedString = stringBuilder.ToString();
+                    stringResults.Add((T)convertedString);
                 }
                 else if (item is char)
                 {
-                    var sb = new StringBuilder();
-                    foreach (var item2 in enumerable) sb.Append(item2);
-                    object t2 = sb.ToString();
-                    t.Add((T)t2);
+                    var stringBuilder = new StringBuilder();
+                    foreach (var item2 in enumerable) stringBuilder.Append(item2);
+                    object convertedString = stringBuilder.ToString();
+                    stringResults.Add((T)convertedString);
                     break;
                 }
                 else
                 {
-                    t.Add((T)(IEnumerable<char>)item.ToString());
+                    stringResults.Add((T)(IEnumerable<char>)item.ToString());
                 }
-            return t;
+            return stringResults;
         }
         var result = new List<T>(enumerable.Count());
         foreach (var item in enumerable)
@@ -321,18 +324,18 @@ partial class CA
         //}
         return result;
     }
-    public static T[] JumbleUp<T>(T[] b)
+    public static T[] JumbleUp<T>(T[] builder)
     {
-        var bl = b.Length;
+        var bl = builder.Length;
         var random = new Random();
         for (var i = 0; i < bl; ++i)
         {
             var index1 = random.Next() % bl;
             var index2 = random.Next() % bl;
-            var temp = b[index1];
-            b[index1] = b[index2];
-            b[index2] = temp;
+            var temp = builder[index1];
+            builder[index1] = builder[index2];
+            builder[index2] = temp;
         }
-        return b;
+        return builder;
     }
 }

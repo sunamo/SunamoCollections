@@ -1,12 +1,15 @@
+// EN: Variable names have been checked and replaced with self-descriptive names
+// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+
 namespace SunamoCollections._sunamo;
 
 internal class CharHelper
 {
-    internal static bool IsSpecial(char c)
+    internal static bool IsSpecial(char character)
     {
         SpecialCharsService specialChars = new();
-        var v = specialChars.specialChars.Contains(c);
-        if (!v) v = specialChars.specialChars2.Contains(c);
-        return v;
+        var value = specialChars.specialChars.Contains(character);
+        if (!value) value = specialChars.specialChars2.Contains(character);
+        return value;
     }
 }
