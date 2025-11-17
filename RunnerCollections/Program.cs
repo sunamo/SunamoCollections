@@ -1,5 +1,3 @@
-;
-
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using SunamoCl.SunamoCmd;
@@ -25,9 +23,9 @@ partial class Program
         logger = Provider.GetService<ILogger>() ?? throw new ServiceNotFoundException(nameof(ILogger));
     }
 
-    static void Main()
+    static void Main(string[] args)
     {
-        MainAsync().GetAwaiter().GetResult();
+        MainAsync(args).GetAwaiter().GetResult();
     }
 
     static async Task MainAsync(String[] args)

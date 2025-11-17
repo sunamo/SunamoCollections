@@ -12,7 +12,7 @@ public class FromToTSHCollections<T>
 
     public FromToTSHCollections()
     {
-        var type = typeof(type);
+        var type = typeof(T);
         if (type == typeof(int)) ftUse = FromToUseCollections.None;
     }
 
@@ -23,22 +23,22 @@ public class FromToTSHCollections<T>
     }
 
 
-    public FromToTSHCollections(type from, type to, FromToUseCollections ftUse = FromToUseCollections.DateTime) : this()
+    public FromToTSHCollections(T from, T to, FromToUseCollections ftUse = FromToUseCollections.DateTime) : this()
     {
         this.from = from;
         this.to = to;
         this.ftUse = ftUse;
     }
 
-    public type from
+    public T from
     {
-        get => (type)(dynamic)fromL;
+        get => (T)(dynamic)fromL;
         set => fromL = (long)(dynamic)value;
     }
 
-    public type to
+    public T to
     {
-        get => (type)(dynamic)toL;
+        get => (T)(dynamic)toL;
         set => toL = (long)(dynamic)value;
     }
 
