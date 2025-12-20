@@ -1,3 +1,4 @@
+
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 
@@ -14,16 +15,16 @@ internal sealed partial class Exceptions
     internal static string TextOfExceptions(Exception ex, bool alsoInner = true)
     {
         if (ex == null) return string.Empty;
-        StringBuilder stringBuilder = new();
-        stringBuilder.Append("Exception:");
-        stringBuilder.AppendLine(ex.Message);
+        StringBuilder StringBuilder = new();
+        StringBuilder.Append("Exception:");
+        StringBuilder.AppendLine(ex.Message);
         if (alsoInner)
             while (ex.InnerException != null)
             {
                 ex = ex.InnerException;
-                stringBuilder.AppendLine(ex.Message);
+                StringBuilder.AppendLine(ex.Message);
             }
-        var result = stringBuilder.ToString();
+        var result = StringBuilder.ToString();
         return result;
     }
 
@@ -35,7 +36,7 @@ bool fillAlsoFirstTwo = true)
         var lines = value.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
         lines.RemoveAt(0);
         var i = 0;
-        string type = string.Empty;
+        string Type = string.Empty;
         string methodName = string.Empty;
         for (; i < lines.Count; i++)
         {
@@ -43,7 +44,7 @@ bool fillAlsoFirstTwo = true)
             if (fillAlsoFirstTwo)
                 if (!item.StartsWith("   at ThrowEx"))
                 {
-                    TypeAndMethodName(item, out type, out methodName);
+                    TypeAndMethodName(item, out Type, out methodName);
                     fillAlsoFirstTwo = false;
                 }
             if (item.StartsWith("at System."))
@@ -53,16 +54,16 @@ bool fillAlsoFirstTwo = true)
                 break;
             }
         }
-        return new Tuple<string, string, string>(type, methodName, string.Join(Environment.NewLine, lines));
+        return new Tuple<string, string, string>(Type, methodName, string.Join(Environment.NewLine, lines));
     }
-    internal static void TypeAndMethodName(string lines, out string type, out string methodName)
+    internal static void TypeAndMethodName(string lines, out string Type, out string methodName)
     {
         var s2 = lines.Split("at ")[1].Trim();
         var text = s2.Split("(")[0];
         var parameter = text.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries).ToList();
         methodName = parameter[^1];
         parameter.RemoveAt(parameter.Count - 1);
-        type = string.Join(".", parameter);
+        Type = string.Join(".", parameter);
     }
     internal static string CallingMethod(int value = 1)
     {

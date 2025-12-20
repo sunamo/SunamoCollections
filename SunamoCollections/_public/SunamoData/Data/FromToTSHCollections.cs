@@ -1,3 +1,5 @@
+
+
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 
@@ -5,43 +7,43 @@ namespace SunamoCollections._public.SunamoData.Data;
 
 public class FromToTSHCollections<T>
 {
-    public bool empty;
-    protected long fromL;
-    public FromToUseCollections ftUse = FromToUseCollections.DateTime;
-    protected long toL;
+    public bool Empty { get; set; }
+    private long _from;
+    public FromToUseCollections FromToUse { get; set; } = FromToUseCollections.DateTime;
+    private long _to;
 
     public FromToTSHCollections()
     {
-        var type = typeof(T);
-        if (type == typeof(int)) ftUse = FromToUseCollections.None;
+        var Type = typeof(T);
+        if (Type == typeof(int)) FromToUse = FromToUseCollections.None;
     }
 
 
     private FromToTSHCollections(bool empty) : this()
     {
-        this.empty = empty;
+        this.Empty = empty;
     }
 
 
-    public FromToTSHCollections(T from, T to, FromToUseCollections ftUse = FromToUseCollections.DateTime) : this()
+    public FromToTSHCollections(T from, T to, FromToUseCollections fromToUse = FromToUseCollections.DateTime) : this()
     {
-        this.from = from;
-        this.to = to;
-        this.ftUse = ftUse;
+        this.From = from;
+        this.To = to;
+        this.FromToUse = fromToUse;
     }
 
-    public T from
+    public T From
     {
-        get => (T)(dynamic)fromL;
-        set => fromL = (long)(dynamic)value;
+        get => (T)(dynamic)_from;
+        set => _from = (long)(dynamic)value;
     }
 
-    public T to
+    public T To
     {
-        get => (T)(dynamic)toL;
-        set => toL = (long)(dynamic)value;
+        get => (T)(dynamic)_to;
+        set => _to = (long)(dynamic)value;
     }
 
-    public long FromL => fromL;
-    public long ToL => toL;
+    public long FromAsLong => _from;
+    public long ToAsLong => _to;
 }

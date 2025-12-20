@@ -1,12 +1,13 @@
+
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 namespace SunamoCollections._sunamo;
 
 internal class SpecialCharsService
 {
-    internal readonly List<char> specialChars = new(new[]
+    internal readonly List<char> SpecialChars = new(new[]
         { excl, commat, num, dollar, percnt, Hat, amp, ast, quest, lowbar, tilda });
-    internal readonly List<char> specialChars2 = new(new[]
+    internal readonly List<char> SpecialCharsExtended = new(new[]
     {
         lq, rq, dash, la, ra,
         comma, period, colon, apos, rpar, sol, lt, gt, lcub, rcub, lsqb, verbar, semi, plus, rsqb,
@@ -15,9 +16,9 @@ internal class SpecialCharsService
     /// <summary>
     ///     Used in enigma
     /// </summary>
-    internal readonly List<char> specialCharsAll;
-    internal readonly List<char> specialCharsWhite = new(new[] { space });
-    internal readonly List<char> specialCharsNotEnigma = new(new[] { space160, copy });
+    internal readonly List<char> SpecialCharsAll;
+    internal readonly List<char> SpecialCharsWhite = new(new[] { space });
+    internal readonly List<char> SpecialCharsNotEnigma = new(new[] { space160, copy });
     private const char la = '‘';
     private const char ra = '’';
     private const char comma = ',';
@@ -38,7 +39,7 @@ internal class SpecialCharsService
     private const char lowbar = '_';
     private const char lt = '<';
     /// <summary>
-    ///     skip in specialChars2 - already as equal
+    ///     skip in SpecialCharsExtended - already as equal
     /// </summary>
     private const char equals = '=';
     private const char gt = '>';
@@ -88,6 +89,6 @@ internal class SpecialCharsService
     /// <summary>
     ///     backspace
     /// </summary>
-    private const char bs2 = '\b';
+    private const char backspace = '\b';
     #endregion
 }

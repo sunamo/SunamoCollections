@@ -1,3 +1,4 @@
+
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 namespace SunamoCollections._sunamo.SunamoExceptions;
@@ -25,7 +26,7 @@ internal partial class ThrowEx
         return f;
     }
 
-    static string FullNameOfExecutedCode(object type, string methodName, bool fromThrowEx = false)
+    static string FullNameOfExecutedCode(object Type, string methodName, bool fromThrowEx = false)
     {
         if (methodName == null)
         {
@@ -38,23 +39,23 @@ internal partial class ThrowEx
             methodName = Exceptions.CallingMethod(depth);
         }
         string typeFullName;
-        if (type is Type type2)
+        if (Type is Type type2)
         {
-            typeFullName = type2.FullName ?? "Type cannot be get via type is Type type2";
+            typeFullName = type2.FullName ?? "Type cannot be get via Type is Type type2";
         }
-        else if (type is MethodBase method)
+        else if (Type is MethodBase method)
         {
-            typeFullName = method.ReflectedType?.FullName ?? "Type cannot be get via type is MethodBase method";
+            typeFullName = method.ReflectedType?.FullName ?? "Type cannot be get via Type is MethodBase method";
             methodName = method.Name;
         }
-        else if (type is string)
+        else if (Type is string)
         {
-            typeFullName = type.ToString() ?? "Type cannot be get via type is string";
+            typeFullName = Type.ToString() ?? "Type cannot be get via Type is string";
         }
         else
         {
-            Type t = type.GetType();
-            typeFullName = t.FullName ?? "Type cannot be get via type.GetType()";
+            Type t = Type.GetType();
+            typeFullName = t.FullName ?? "Type cannot be get via Type.GetType()";
         }
         return string.Concat(typeFullName, ".", methodName);
     }

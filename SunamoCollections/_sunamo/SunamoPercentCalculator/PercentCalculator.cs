@@ -1,3 +1,4 @@
+
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 namespace SunamoCollections._sunamo.SunamoPercentCalculator;
@@ -8,21 +9,21 @@ namespace SunamoCollections._sunamo.SunamoPercentCalculator;
 internal class PercentCalculator //: IPercentCalculator
 //: IPercentCalculator
 {
-    internal static Type type = typeof(PercentCalculator);
+    internal static Type Type = typeof(PercentCalculator);
     private readonly double _hundredPercent = 100d;
     private int _sum;
-    private int added;
-    internal double onePercent;
+    private int _added;
+    internal double OnePercent { get; set; }
 
     internal PercentCalculator(double overallSum)
     {
         if (overallSum == 0) ThrowEx.DivideByZero();
-        onePercent = _hundredPercent / overallSum;
-        _overallSum = overallSum;
+        OnePercent = _hundredPercent / overallSum;
+        OverallSum = overallSum;
     }
 
-    internal double last { get; set; }
-    internal double _overallSum { get; set; }
+    internal double Last { get; set; }
+    internal double OverallSum { get; set; }
 
 
 
@@ -45,10 +46,10 @@ internal class PercentCalculator //: IPercentCalculator
     internal int PercentFor(double value, bool last)
     {
         // cannot divide by zero
-        if (_overallSum == 0) return 0;
-        // value - 
-        // 
-        var quocient = value / _overallSum;
+        if (OverallSum == 0) return 0;
+        // value -
+        //
+        var quocient = value / OverallSum;
         var result = (int)(_hundredPercent * quocient);
         _sum += result;
         if (last)

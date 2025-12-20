@@ -1,4 +1,5 @@
-﻿namespace SunamoCollections.Tests;
+
+namespace SunamoCollections.Tests;
 
 public class UnitTest1
 {

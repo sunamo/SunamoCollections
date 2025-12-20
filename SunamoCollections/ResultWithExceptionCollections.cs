@@ -1,3 +1,4 @@
+
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 namespace SunamoCollections;
@@ -5,18 +6,18 @@ namespace SunamoCollections;
 public class ResultWithExceptionCollections<T>
 {
     public T Data { get; set; }
-    public string exc { get; set; }
+    public string ExceptionMessage { get; set; }
     public ResultWithExceptionCollections(T data)
     {
         Data = data;
     }
-    public ResultWithExceptionCollections(string exc)
+    public ResultWithExceptionCollections(string exceptionMessage)
     {
-        this.exc = exc;
+        this.ExceptionMessage = exceptionMessage;
     }
-    public ResultWithExceptionCollections(Exception exc)
+    public ResultWithExceptionCollections(Exception exception)
     {
-        this.exc = Exceptions.TextOfExceptions(exc);
+        this.ExceptionMessage = Exceptions.TextOfExceptions(exception);
     }
     public ResultWithExceptionCollections()
     {

@@ -1,26 +1,24 @@
+
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 namespace SunamoCollections._public.SunamoData.Data;
 
 public class FromToCollections : FromToTSHCollections<long>
 {
-    public static FromToCollections Empty = new(true);
+    public static new FromToCollections Empty = new(true);
 
     public FromToCollections()
     {
     }
 
 
-    private FromToCollections(bool empty)
+    private FromToCollections(bool isEmpty) : base()
     {
-        this.empty = empty;
+        base.Empty = isEmpty;
     }
 
 
-    public FromToCollections(long from, long to, FromToUseCollections ftUse = FromToUseCollections.DateTime)
+    public FromToCollections(long from, long to, FromToUseCollections fromToUse = FromToUseCollections.DateTime) : base(from, to, fromToUse)
     {
-        this.from = from;
-        this.to = to;
-        this.ftUse = ftUse;
     }
 }

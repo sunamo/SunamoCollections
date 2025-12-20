@@ -1,3 +1,4 @@
+
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 namespace SunamoCollections._sunamo.SunamoExtensions;
@@ -5,17 +6,17 @@ namespace SunamoCollections._sunamo.SunamoExtensions;
 internal static class IListExtensions
 {
 
-    internal static object FirstOrNull(this IEnumerable e)
+    internal static object FirstOrNull(this IEnumerable enumerable)
     {
-        foreach (var item in e) return item;
+        foreach (var item in enumerable) return item;
         return null;
     }
 
-    internal static int Count(this IEnumerable e)
+    internal static int Count(this IEnumerable enumerable)
     {
-        var i = 0;
-        foreach (var item in e) i++;
-        return i;
+        var count = 0;
+        foreach (var item in enumerable) count++;
+        return count;
     }
 
 

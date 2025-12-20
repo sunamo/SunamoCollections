@@ -1,3 +1,4 @@
+
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 namespace SunamoCollections._sunamo.SunamoArgs;
@@ -7,7 +8,7 @@ internal class RemoveStartingWithArgs
     /// <summary>
     ///     Original
     /// </summary>
-    internal bool _trimBeforeFinding = false;
+    internal bool TrimBeforeFinding { get; set; } = false;
 
-    internal bool caseSensitive = true;
+    internal bool CaseSensitive { get; set; } = true;
 }

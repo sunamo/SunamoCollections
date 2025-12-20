@@ -1,13 +1,14 @@
+
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 namespace SunamoCollections._sunamo.SunamoTextOutputGenerator;
 
 internal class TextOutputGeneratorArgs
 {
-    internal string delimiter = Environment.NewLine;
-    internal bool headerWrappedEmptyLines = true;
-    internal bool insertCount;
-    internal string whenNoEntries = "No entries";
+    internal string Delimiter { get; set; } = Environment.NewLine;
+    internal bool HeaderWrappedEmptyLines { get; set; } = true;
+    internal bool InsertCount { get; set; }
+    internal string WhenNoEntries { get; set; } = "No entries";
 
     internal TextOutputGeneratorArgs()
     {
@@ -15,7 +16,7 @@ internal class TextOutputGeneratorArgs
 
     internal TextOutputGeneratorArgs(bool headerWrappedEmptyLines, bool insertCount)
     {
-        this.headerWrappedEmptyLines = headerWrappedEmptyLines;
-        this.insertCount = insertCount;
+        this.HeaderWrappedEmptyLines = headerWrappedEmptyLines;
+        this.InsertCount = insertCount;
     }
 }

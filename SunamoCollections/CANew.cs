@@ -1,3 +1,4 @@
+
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 namespace SunamoCollections;
@@ -9,9 +10,9 @@ namespace SunamoCollections;
 /// </summary>
 public class CANew
 {
-    public static bool ContainsAnyFromArray(string input, string[] arr)
+    public static bool ContainsAnyFromArray(string input, string[] array)
     {
-        foreach (var item in arr)
+        foreach (var item in array)
             if (input.Contains(item))
                 return true;
 

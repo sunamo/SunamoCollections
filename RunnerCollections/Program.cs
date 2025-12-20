@@ -16,8 +16,6 @@ partial class Program
     {
         CmdBootStrap.AddILogger(Services, true, null, appName);
 
-
-
         Provider = Services.BuildServiceProvider();
 
         logger = Provider.GetService<ILogger>() ?? throw new ServiceNotFoundException(nameof(ILogger));

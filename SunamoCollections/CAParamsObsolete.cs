@@ -1,3 +1,4 @@
+
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 namespace SunamoCollections;
@@ -10,24 +11,24 @@ public partial class CA
     /// <summary>
     ///     Dont use
     /// </summary>
-    /// <param name="para"></param>
+    /// <param name="parameters"></param>
     [ObjectParamsObsolete]
-    public static List<object> TwoDimensionParamsIntoOne(params object[] para)
+    public static List<object> TwoDimensionParamsIntoOne(params object[] parameters)
     {
-        return TwoDimensionParamsIntoOne<object>(para);
+        return TwoDimensionParamsIntoOne<object>(parameters);
     }
 
     /// <summary>
-    ///     Join elements of inner IList to single list
+    ///     Join elements of inner IList to single List
     ///     T is object, not IList
     ///     Multi deep array is not suppported
     ///     For convert into string use ListToString
     /// </summary>
     [ObjectParamsObsolete]
-    public static List<T> TwoDimensionParamsIntoOne<T>(params T[] para)
+    public static List<T> TwoDimensionParamsIntoOne<T>(params T[] parameters)
     {
         var result = new List<T>();
-        foreach (var item in para)
+        foreach (var item in parameters)
         {
             if (item == null) continue;
 
@@ -58,7 +59,7 @@ public partial class CA
 
     ///// <summary>
     /////     ToListString2 - simply for all items call ToString()
-    /////     ToListString - working with type of every element
+    /////     ToListString - working with Type of every element
     ///// </summary>
     ///// <param name="enumerable"></param>
     //public static List<string> ToListStringMoreObject(params object[] enumerable)

@@ -25,7 +25,7 @@ global using System.Diagnostics.CodeAnalysis;
 global using SunamoCollections;
 global using SunamoCollections.Services;
 global using SunamoCollections._sunamo.SunamoArgs;
-global using SunamoCollections._sunamo.SunamoParsing;
+//global using SunamoCollections._sunamo.SunamoParsing;
 global using SunamoCollections._sunamo.SunamoTextOutputGenerator;
 global using SunamoCollections._sunamo.SunamoValues;
 global using SunamoCollections._sunamo.SunamoValues.Constants;
