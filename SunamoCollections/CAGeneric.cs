@@ -1,7 +1,7 @@
+namespace SunamoCollections;
 
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
-namespace SunamoCollections;
 /// <summary>
 /// V samostatném souboru kvůli <T>
 /// Do CAG to nejde, musel bych upravovat i ty v _sunamo všude
@@ -20,22 +20,22 @@ partial class CA
         return default;
     }
 
-    public static ResultWithExceptionCollections<List<List<T>>> DivideBy<T>(List<T> items, int columnCount)
+    public static ResultWithExceptionCollections<List<List<T>>> DivideBy<T>(List<T> items, int groupSize)
     {
-        if (items.Count % columnCount != 0)
+        if (items.Count % groupSize != 0)
         {
-            return new ResultWithExceptionCollections<List<List<T>>>(new Exception($"Elements in {nameof(items)} - {items.Count} is not dividable by {nameof(columnCount)} - {columnCount}"));
+            return new ResultWithExceptionCollections<List<List<T>>>(new Exception($"Elements in {nameof(items)} - {items.Count} is not dividable by {nameof(groupSize)} - {groupSize}"));
         }
 
         List<List<T>> result = new List<List<T>>();
-        List<T> currentRow = new List<T>();
+        List<T> currentGroup = new List<T>();
         foreach (var item in items)
         {
-            currentRow.Add(item);
-            if (currentRow.Count == columnCount)
+            currentGroup.Add(item);
+            if (currentGroup.Count == groupSize)
             {
-                result.Add(currentRow);
-                currentRow = new List<T>();
+                result.Add(currentGroup);
+                currentGroup = new List<T>();
             }
         }
 
@@ -67,9 +67,9 @@ partial class CA
         return new List<T>(tempArray);
     }
 
-    public static void InitFillWith<T>(List<T> list, int columns)
+    public static void InitFillWith<T>(List<T> list, int count)
     {
-        for (var i = 0; i < columns; i++)
+        for (var i = 0; i < count; i++)
             list.Add(default);
     }
 

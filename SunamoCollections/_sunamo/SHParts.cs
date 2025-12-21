@@ -1,20 +1,17 @@
-
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 namespace SunamoCollections._sunamo;
 
 internal class SHParts
 {
-    internal static string RemoveAfterFirstFunc(string v, Func<char, bool> isSpecial, params char[] canBe)
+    internal static string RemoveAfterFirstFunc(string text, Func<char, bool> predicate, params char[] canBe)
     {
-        v = v.Trim();
-        for (var i = 0; i < v.Length; i++)
-            if (isSpecial(v[i]))
+        text = text.Trim();
+        for (var i = 0; i < text.Length; i++)
+            if (predicate(text[i]))
             {
-                if (canBe.Contains(v[i])) continue;
-                return v.Substring(0, i);
+                if (canBe.Contains(text[i])) continue;
+                return text.Substring(0, i);
             }
 
-        return v;
+        return text;
     }
 }

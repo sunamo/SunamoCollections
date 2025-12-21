@@ -1,7 +1,7 @@
+namespace SunamoCollections;
 
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
-namespace SunamoCollections;
 /// <summary>
 /// V samostatném souboru kvůli <T>
 /// Do CAG to nejde, musel bych upravovat i ty v _sunamo všude

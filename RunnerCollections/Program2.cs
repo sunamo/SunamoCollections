@@ -1,4 +1,5 @@
-﻿
+// variables names: ok
+
 
 using SunamoCl;
 

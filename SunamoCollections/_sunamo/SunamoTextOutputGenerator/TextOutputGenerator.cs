@@ -1,7 +1,3 @@
-
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
-
 namespace SunamoCollections._sunamo.SunamoTextOutputGenerator;
 
 /// <summary>
@@ -28,34 +24,4 @@ internal class TextOutputGenerator //: ITextOutputGenerator
         var ts = StringBuilder.ToString();
         return ts;
     }
-
-
-
-
-    #region Other adding methods
-
-
-
-    #endregion
-
-    #region List
-
-
-
-
-
-
-
-
-
-    #endregion
-
-    #region Dictionary
-
-
-
-
-
-
-    #endregion
 }

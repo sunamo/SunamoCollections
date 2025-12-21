@@ -1,7 +1,7 @@
+namespace SunamoCollections;
 
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
-namespace SunamoCollections;
 public partial class CA
 {
     ///// <summary>
@@ -23,23 +23,23 @@ public partial class CA
     //    var numbered = SunamoBts.BTS.GetNumberedListFromTo(startFrom, input.Count - 1, ") ");
     //    Prepend(numbered, input);
     //}
-    public static ABLCA<string, string> CompareListDifferent(List<string> c1, List<string> c2)
+    public static ABLCA<string, string> CompareListDifferent(List<string> firstList, List<string> secondList)
     {
         var existsIn1 = new List<string>();
         var existsIn2 = new List<string>();
         var index = -1;
-        for (var i = c2.Count - 1; i >= 0; i--)
+        for (var i = secondList.Count - 1; i >= 0; i--)
         {
-            var item = c2[i];
-            index = c1.IndexOf(item);
+            var item = secondList[i];
+            index = firstList.IndexOf(item);
             if (index == -1)
                 existsIn2.Add(item);
         }
 
-        for (var i = c1.Count - 1; i >= 0; i--)
+        for (var i = firstList.Count - 1; i >= 0; i--)
         {
-            var item = c1[i];
-            index = c2.IndexOf(item);
+            var item = firstList[i];
+            index = secondList.IndexOf(item);
             if (index == -1)
                 existsIn1.Add(item);
         }
@@ -166,22 +166,22 @@ public partial class CA
     ///     WithEndSlash - trims backslash and append new
     ///     WithoutEndSlash - ony trims backslash
     /// </summary>
-    /// <param name = "folders"></param>
-    public static List<string> WithEndSlash(List<string> folders)
+    /// <param name = "paths"></param>
+    public static List<string> WithEndSlash(List<string> paths)
     {
-        var list = folders;
+        var list = paths;
         if (list == null)
-            list = folders.ToList();
+            list = paths.ToList();
         for (var i = 0; i < list.Count; i++)
             list[i] = list[i].TrimEnd('\\') + "\\";
-        return folders;
+        return paths;
     }
 
-    public static List<string> WithoutEndSlash(List<string> folders)
+    public static List<string> WithoutEndSlash(List<string> paths)
     {
-        for (var i = 0; i < folders.Count; i++)
-            folders[i] = folders[i].TrimEnd('\\');
-        return folders;
+        for (var i = 0; i < paths.Count; i++)
+            paths[i] = paths[i].TrimEnd('\\');
+        return paths;
     }
 
     public static List<string> JoinArrayAndArrayString(IList<string> firstList, IList<string> secondList)

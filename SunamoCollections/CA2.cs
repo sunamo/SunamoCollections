@@ -1,7 +1,7 @@
+namespace SunamoCollections;
 
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
-namespace SunamoCollections;
 public partial class CA
 {
     /// <summary>
@@ -9,24 +9,24 @@ public partial class CA
     ///     AnyElementEndsWith - string[]
     ///     EndsWith - IList<string>
     /// </summary>
-    /// <param name = "t"></param>
-    /// <param name = "v"></param>
+    /// <param name = "text"></param>
+    /// <param name = "suffixes"></param>
     /// <returns></returns>
-    public static bool EndsWithAnyElement(string temp, params string[] value)
+    public static bool EndsWithAnyElement(string text, params string[] suffixes)
     {
-        return EndsWithAnyElement(temp, value.ToList());
+        return EndsWithAnyElement(text, suffixes.ToList());
     }
 
     /// <summary>
     ///     Overrides working only with string, not List
     ///     Return whether A1 contains with any of A2
     /// </summary>
-    /// <param name = "t"></param>
-    /// <param name = "v"></param>
-    public static bool EndsWithAnyElement(string temp, IList<string> value)
+    /// <param name = "text"></param>
+    /// <param name = "suffixes"></param>
+    public static bool EndsWithAnyElement(string text, IList<string> suffixes)
     {
-        foreach (var item in value)
-            if (temp.EndsWith(item))
+        foreach (var suffix in suffixes)
+            if (text.EndsWith(suffix))
                 return true;
         return false;
     }
@@ -35,13 +35,13 @@ public partial class CA
     ///     AnyElementEndsWith - string[]
     ///     EndsWith - IList<string>
     /// </summary>
-    /// <param name = "fileName"></param>
-    /// <param name = "allowedExtensions"></param>
+    /// <param name = "text"></param>
+    /// <param name = "suffixes"></param>
     /// <returns></returns>
-    public static bool EndsWith(string fileName, List<string> allowedExtensions)
+    public static bool EndsWith(string text, List<string> suffixes)
     {
-        foreach (var item in allowedExtensions)
-            if (fileName.EndsWith(item))
+        foreach (var suffix in suffixes)
+            if (text.EndsWith(suffix))
                 return true;
         return false;
     }
@@ -67,16 +67,16 @@ public partial class CA
     /// <summary>
     ///     Remove from A1 which exists in A2
     /// </summary>
-    /// <param name = "text"></param>
+    /// <param name = "list"></param>
     /// <param name = "itemsToRemove"></param>
-    public static void RemoveWhichExists(IList<string> text, List<string> itemsToRemove)
+    public static void RemoveWhichExists(IList<string> list, List<string> itemsToRemove)
     {
         var index = -1;
         foreach (var item in itemsToRemove)
         {
-            index = text.IndexOf(item);
+            index = list.IndexOf(item);
             if (index != -1)
-                text.RemoveAt(index);
+                list.RemoveAt(index);
         }
     }
 
@@ -94,8 +94,8 @@ public partial class CA
 
     public static string StartWith(string prefix, IList<string> candidates)
     {
-        int i;
-        return StartWith(prefix, candidates, out i);
+        int foundIndex;
+        return StartWith(prefix, candidates, out foundIndex);
     }
 
     /// <summary>
@@ -106,13 +106,13 @@ public partial class CA
     /// </summary>
     /// <param name = "prefix"></param>
     /// <param name = "candidates"></param>
-    /// <param name = "i"></param>
-    public static string StartWith(string prefix, IList<string> candidates, out int i)
+    /// <param name = "foundIndex"></param>
+    public static string StartWith(string prefix, IList<string> candidates, out int foundIndex)
     {
-        i = -1;
+        foundIndex = -1;
         foreach (var item in candidates)
         {
-            i++;
+            foundIndex++;
             if (item.StartsWith(prefix))
                 return item;
         }
@@ -124,16 +124,15 @@ public partial class CA
     ///     Direct edit
     /// </summary>
     /// <param name = "prefix"></param>
-    /// <param name = "text"></param>
-    public static List<string> TrimStart(string prefix, List<string> text)
+    /// <param name = "lines"></param>
+    public static List<string> TrimStart(string prefix, List<string> lines)
     {
-        var methodName = "TrimStart";
         ThrowEx.IsNull("prefix", prefix);
-        ThrowEx.IsNull("text", text);
-        for (var i = 0; i < text.Count; i++)
-            if (text[i].StartsWith(prefix))
-                text[i] = text[i].Substring(prefix.Length);
-        return text;
+        ThrowEx.IsNull("lines", lines);
+        for (var i = 0; i < lines.Count; i++)
+            if (lines[i].StartsWith(prefix))
+                lines[i] = lines[i].Substring(prefix.Length);
+        return lines;
     }
 
     public static void AppendToLastElement(List<string> list, string text)
@@ -148,10 +147,10 @@ public partial class CA
     ///     Direct edit
     /// </summary>
     /// <param name = "list"></param>
-    /// <param name = "value"></param>
-    public static List<string> WrapWith(List<string> list, string value)
+    /// <param name = "wrapper"></param>
+    public static List<string> WrapWith(List<string> list, string wrapper)
     {
-        return WrapWith(list, value, value);
+        return WrapWith(list, wrapper, wrapper);
     }
 
     /// <summary>
@@ -183,12 +182,12 @@ public partial class CA
         return result;
     }
 
-    public static List<byte> JoinBytesArray(byte[] pass, byte[] salt)
+    public static List<byte> JoinBytesArray(byte[] firstArray, byte[] secondArray)
     {
-        var lb = new List<byte>(pass.Length + salt.Length);
-        lb.AddRange(pass);
-        lb.AddRange(salt);
-        return lb;
+        var result = new List<byte>(firstArray.Length + secondArray.Length);
+        result.AddRange(firstArray);
+        result.AddRange(secondArray);
+        return result;
     }
 
     public static int GetLength(IList list)
@@ -198,13 +197,13 @@ public partial class CA
         return list.Count;
     }
 
-    public static string[] JoinVariableAndArray(object value, IList columns)
+    public static string[] JoinVariableAndArray(object firstElement, IList items)
     {
-        var o = new List<string>();
-        o.Add(value.ToString());
-        foreach (var item in columns)
-            o.Add(item.ToString());
-        return o.ToArray();
+        var result = new List<string>();
+        result.Add(firstElement.ToString());
+        foreach (var item in items)
+            result.Add(item.ToString());
+        return result.ToArray();
     }
 
     /// <summary>

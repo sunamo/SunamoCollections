@@ -1,7 +1,7 @@
+namespace SunamoCollections._sunamo;
 
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
-namespace SunamoCollections._sunamo;
 internal class SH
 {
 

@@ -1,37 +1,37 @@
+namespace SunamoCollections;
 
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
-namespace SunamoCollections;
 public partial class CA
 {
     /// <summary>
     ///     Direct edit input collection
     /// </summary>
-    /// <param name = "value"></param>
-    /// <param name = "list"></param>
-    public static List<string> Prepend(string value, List<string> list)
+    /// <param name = "prefix"></param>
+    /// <param name = "items"></param>
+    public static List<string> Prepend(string prefix, List<string> items)
     {
-        for (var i = 0; i < list.Count; i++)
-            if (!list[i].StartsWith(value))
-                list[i] = value + list[i];
-        return list;
+        for (var i = 0; i < items.Count; i++)
+            if (!items[i].StartsWith(prefix))
+                items[i] = prefix + items[i];
+        return items;
     }
 
     /// <summary>
     ///     Direct edit input collection
     /// </summary>
-    /// <param name = "value"></param>
-    /// <param name = "array"></param>
-    public static List<string> Prepend(string value, string[] array)
+    /// <param name = "prefix"></param>
+    /// <param name = "items"></param>
+    public static List<string> Prepend(string prefix, string[] items)
     {
-        return Prepend(value, array.ToList());
+        return Prepend(prefix, items.ToList());
     }
 
-    public static string FindOutLongestItem(List<string> list, params string[] delimiters)
+    public static string FindOutLongestItem(List<string> items, params string[] delimiters)
     {
         var longestLength = 0;
         var longest = "";
-        foreach (var item in list)
+        foreach (var item in items)
         {
             var processedItem = item;
             if (delimiters.Length != 0)
@@ -48,8 +48,8 @@ public partial class CA
 
     public static bool IsOdd(params List<int>[] lists)
     {
-        foreach (var item in lists)
-            if (item.Count % 2 == 1)
+        foreach (var currentList in lists)
+            if (currentList.Count % 2 == 1)
                 return true;
         return false;
     }
@@ -57,34 +57,34 @@ public partial class CA
     /// <summary>
     ///     Direct edit
     /// </summary>
-    /// <param name = "words"></param>
-    public static List<string> ToLower(List<string> words)
+    /// <param name = "items"></param>
+    public static List<string> ToLower(List<string> items)
     {
-        for (var i = 0; i < words.Count; i++)
-            words[i] = words[i].ToLower();
-        return words;
+        for (var i = 0; i < items.Count; i++)
+            items[i] = items[i].ToLower();
+        return items;
     }
 
     /// <summary>
     ///     Direct editr
     /// </summary>
-    /// <param name = "list"></param>
-    /// <param name = "item"></param>
+    /// <param name = "items"></param>
+    /// <param name = "pattern"></param>
     /// <param name = "wildcard"></param>
-    public static void RemoveWhichContains(List<string> list, string item, bool wildcard, Func<string, string, bool> WildcardIsMatch)
+    public static void RemoveWhichContains(List<string> items, string pattern, bool wildcard, Func<string, string, bool> wildcardIsMatch)
     {
         if (wildcard)
         {
-            //item = SH.WrapWith(item, '*');
-            for (var i = list.Count - 1; i >= 0; i--)
-                if (WildcardIsMatch(list[i], item))
-                    list.RemoveAt(i);
+            //pattern = SH.WrapWith(pattern, '*');
+            for (var i = items.Count - 1; i >= 0; i--)
+                if (wildcardIsMatch(items[i], pattern))
+                    items.RemoveAt(i);
         }
         else
         {
-            for (var i = list.Count - 1; i >= 0; i--)
-                if (list[i].Contains(item))
-                    list.RemoveAt(i);
+            for (var i = items.Count - 1; i >= 0; i--)
+                if (items[i].Contains(pattern))
+                    items.RemoveAt(i);
         }
     }
 
@@ -114,9 +114,9 @@ public partial class CA
         if (collection.Count() == 1)
         {
             var first = collection.FirstOrNull();
-            var ien = first as IList<object>;
-            if (ien != null)
-                return ien;
+            var enumerable = first as IList<object>;
+            if (enumerable != null)
+                return enumerable;
             return ToListMoreObject(first);
         }
 
@@ -127,37 +127,37 @@ public partial class CA
     ///     Direct edit collection
     ///     Na rozdíl od metody RemoveStringsEmpty2 NEtrimuje před porovnáním
     /// </summary>
-    /// <param name = "list"></param>
-    public static List<string> RemoveStringsEmpty(List<string> list)
+    /// <param name = "items"></param>
+    public static List<string> RemoveStringsEmpty(List<string> items)
     {
-        for (var i = list.Count - 1; i >= 0; i--)
-            if (list[i] == string.Empty)
-                list.RemoveAt(i);
-        return list;
+        for (var i = items.Count - 1; i >= 0; i--)
+            if (items[i] == string.Empty)
+                items.RemoveAt(i);
+        return items;
     }
 
-    public static List<string> PostfixIfNotEnding(string prefix, List<string> list)
+    public static List<string> PostfixIfNotEnding(string prefix, List<string> items)
     {
-        for (var i = 0; i < list.Count; i++)
-            list[i] = prefix + list[i];
-        return list;
+        for (var i = 0; i < items.Count; i++)
+            items[i] = prefix + items[i];
+        return items;
     }
 
-    public static List<int> ParseInt(string value, string delimiter)
+    public static List<int> ParseInt(string text, string delimiter)
     {
-        var text = SHSplit.Split(value, delimiter);
-        var count = new List<int>(text.Count);
-        foreach (var item in text)
-            count.Add(int.Parse(item));
-        //return BTS.CastCollectionStringToInt(text);
-        return count;
+        var parts = SHSplit.Split(text, delimiter);
+        var numbers = new List<int>(parts.Count);
+        foreach (var item in parts)
+            numbers.Add(int.Parse(item));
+        //return BTS.CastCollectionStringToInt(parts);
+        return numbers;
     }
 
-    public static List<List<string>> Split(List<string> text, string delimiter)
+    public static List<List<string>> Split(List<string> lines, string delimiter)
     {
         var result = new List<List<string>>();
         var currentGroup = new List<string>();
-        foreach (var item in text)
+        foreach (var item in lines)
             if (item == delimiter)
             {
                 result.Add(currentGroup);
@@ -173,15 +173,15 @@ public partial class CA
         var lines = text.Split(new[] { text.Contains("\r\n") ? "\r\n" : "\n" }, StringSplitOptions.None).ToList(); //SHGetLines.GetLines(text);
         foreach (var item in lines)
         {
-            var temp = item.Trim();
-            if (temp.EndsWith(":"))
+            var trimmedLine = item.Trim();
+            if (trimmedLine.EndsWith(":"))
                 stringBuilder.AppendLine(item);
-            else if (temp == "")
-                stringBuilder.AppendLine(temp);
+            else if (trimmedLine == "")
+                stringBuilder.AppendLine(trimmedLine);
             else
             {
                 WhitespaceCharService whiteSpaceChars = new WhitespaceCharService();
-                stringBuilder.AppendLine(temp.Split(whiteSpaceChars.WhiteSpaceChars.ToArray())[0]);
+                stringBuilder.AppendLine(trimmedLine.Split(whiteSpaceChars.WhiteSpaceChars.ToArray())[0]);
             }
         }
 
@@ -202,12 +202,12 @@ public partial class CA
     //    //}
     //    return e.FirstOrNull();
     //}
-    public static void KeepOnlyWordsToFirstSpecialChars(List<string> list)
+    public static void KeepOnlyWordsToFirstSpecialChars(List<string> items)
     {
         //ThrowEx.NotImplementedMethod();
-        for (int i = 0; i < list.Count; i++)
+        for (int i = 0; i < items.Count; i++)
         {
-            list[i] = SHParts.RemoveAfterFirstFunc(list[i], CharHelper.IsSpecial, []);
+            items[i] = SHParts.RemoveAfterFirstFunc(items[i], CharHelper.IsSpecial, []);
         }
     }
 
@@ -219,23 +219,23 @@ public partial class CA
             to--;
         }
 
-        var text = new List<string>();
+        var selectedLines = new List<string>();
         for (var i = from; i < to + 1; i++)
-            text.Add(lines[i]);
-        return text;
+            selectedLines.Add(lines[i]);
+        return selectedLines;
     }
 
     // In order to convert any 2d array to jagged one
     // let's use a generic implementation
-    public static List<List<int>> ToJagged(bool[, ] value)
+    public static List<List<int>> ToJagged(bool[, ] matrix)
     {
         var result = new List<List<int>>();
-        for (var i = 0; i < value.GetLength(0); i++)
+        for (var i = 0; i < matrix.GetLength(0); i++)
         {
-            var ca = new List<int>();
-            for (var columnIndex = 0; columnIndex < value.GetLength(1); columnIndex++)
-                ca.Add(value[i, columnIndex] ? 1 : 0);
-            result.Add(ca);
+            var row = new List<int>();
+            for (var columnIndex = 0; columnIndex < matrix.GetLength(1); columnIndex++)
+                row.Add(matrix[i, columnIndex] ? 1 : 0);
+            result.Add(row);
         }
 
         return result;

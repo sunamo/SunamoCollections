@@ -1,24 +1,21 @@
-
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 namespace SunamoCollections;
 
 public partial class CA
 {
     public static bool IsAllTheSameString<T>(IList<T> firstList, IList<T> secondList)
     {
-        var c1 = firstList.Count();
-        var c2 = secondList.Count();
-        if (c1 != c2) ThrowEx.DifferentCountInLists("firstList", firstList.Count, "secondList", secondList.Count);
+        var firstListCount = firstList.Count();
+        var secondListCount = secondList.Count();
+        if (firstListCount != secondListCount) ThrowEx.DifferentCountInLists("firstList", firstList.Count, "secondList", secondList.Count);
 
-        string s1;
-        string s2;
+        string firstValue;
+        string secondValue;
 
-        for (var i = 0; i < c1; i++)
+        for (var i = 0; i < firstListCount; i++)
         {
-            s1 = firstList[i].ToString();
-            s2 = secondList[i].ToString();
-            if (s1 != s2) return false;
+            firstValue = firstList[i].ToString();
+            secondValue = secondList[i].ToString();
+            if (firstValue != secondValue) return false;
         }
 
         return true;
@@ -39,13 +36,13 @@ public partial class CA
     ///             ReturnWhichContainsIndexes() - takes two List or element and list. return list<int>
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    /// <param name="list"></param>
-    /// <param name="empty"></param>
+    /// <param name="items"></param>
+    /// <param name="searchValue"></param>
     /// <returns></returns>
-    public static List<int> IndexesWithValue<T>(List<T> list, T empty)
+    public static List<int> IndexesWithValue<T>(List<T> items, T searchValue)
     {
-        var result = list.Select((r, index) => new { Index = index, Value = r })
-            .Where(d => EqualityComparer<T>.Default.Equals(d.Value, empty)).Select(d => d.Index).ToList();
+        var result = items.Select((r, index) => new { Index = index, Value = r })
+            .Where(d => EqualityComparer<T>.Default.Equals(d.Value, searchValue)).Select(d => d.Index).ToList();
         return result;
     }
 
@@ -53,15 +50,14 @@ public partial class CA
 
     #region 1) ContainsAnyFromElement - For easy copy from CAContainsElementsOrTheirPartsShared.cs
 
-    public static bool ContainsAnyFromElementBool(string s, IList<string> list/*,
-        bool acceptAsteriskForPassingAll = false*/)
+    public static bool ContainsAnyFromElementBool(string text, IList<string> candidates)
     {
-        if (list.Count() == 1 && list.First() == "*") return true;
+        if (candidates.Count() == 1 && candidates.First() == "*") return true;
 
         var result = new List<int>();
 
-        foreach (var item in list)
-            if (s.Contains(item))
+        foreach (var item in candidates)
+            if (text.Contains(item))
                 return true;
 
         return false;
@@ -76,18 +72,18 @@ public partial class CA
     ///     ContainsElement - bool, generic, check for equal.
     ///     ReturnWhichContains - from lines return which contains
     /// </summary>
-    /// <param name="s"></param>
-    /// <param name="List"></param>
+    /// <param name="text"></param>
+    /// <param name="candidates"></param>
     /// <returns></returns>
-    public static List<int> ContainsAnyFromElement(string s, IList<string> list)
+    public static List<int> ContainsAnyFromElement(string text, IList<string> candidates)
     {
         var result = new List<int>();
 
         var i = 0;
 
-        foreach (var item in list)
+        foreach (var item in candidates)
         {
-            if (s.Contains(item)) result.Add(i);
+            if (text.Contains(item)) result.Add(i);
             i++;
         }
 
@@ -98,14 +94,13 @@ public partial class CA
 
     #region 8) ReturnWhichContainsIndexes
 
-    public static List<int> ReturnWhichContainsIndexes(string item, IList<string> terms/*,
-        SearchStrategyCA searchStrategy = SearchStrategyCA.FixedSpace*/)
+    public static List<int> ReturnWhichContainsIndexes(string text, IList<string> terms)
     {
         var result = new List<int>();
         var i = 0;
         foreach (var term in terms)
         {
-            if (item.Contains(term) /*.Contains(item, term, searchStrategy)*/) result.Add(i);
+            if (text.Contains(term) /*.Contains(text, term, searchStrategy)*/) result.Add(i);
             i++;
         }
 
@@ -131,16 +126,15 @@ public partial class CA
     ///         <int>
     ///             ReturnWhichContainsIndexes() - takes two List or element and list. return list<int>
     /// </summary>
-    /// <param name="value"></param>
+    /// <param name="items"></param>
     /// <param name="term"></param>
     /// <param name="searchStrategy"></param>
-    public static List<int> ReturnWhichContainsIndexes(IList<string> value, string term/*,
-        SearchStrategyCA searchStrategy = SearchStrategyCA.FixedSpace*/)
+    public static List<int> ReturnWhichContainsIndexes(IList<string> items, string term)
     {
         var result = new List<int>();
         var i = 0;
-        if (value != null)
-            foreach (var item in value)
+        if (items != null)
+            foreach (var item in items)
             {
                 if (item.Contains(term) /*.Contains(item, term, searchStrategy)*/) result.Add(i);
                 i++;

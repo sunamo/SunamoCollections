@@ -1,7 +1,7 @@
+namespace SunamoCollections;
 
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
-namespace SunamoCollections;
 public partial class CA
 {
     private static Type type = typeof(CA);
@@ -74,10 +74,10 @@ public partial class CA
         return false;
     }
 
-    public static List<string> WrapWithIfFunc(Func<string, string, bool, bool> f, bool invert, string mustContains, string wrapWith, params string[] items)
+    public static List<string> WrapWithIfFunc(Func<string, string, bool, bool> predicate, bool invert, string mustContains, string wrapWith, params string[] items)
     {
         for (var i = 0; i < items.Length; i++)
-            if (f.Invoke(items[i], mustContains, invert))
+            if (predicate.Invoke(items[i], mustContains, invert))
                 items[i] = wrapWith + items[i] + wrapWith;
         return items.ToList();
     }
@@ -180,13 +180,13 @@ public partial class CA
         return false;
     }
 
-    public static bool RemoveAndLeading(List<string> tokens, string value)
+    public static bool RemoveAndLeading(List<string> list, string value)
     {
-        var index = tokens.IndexOf(value);
+        var index = list.IndexOf(value);
         if (index != -1)
         {
-            tokens.RemoveAt(index);
-            tokens.Insert(0, value);
+            list.RemoveAt(index);
+            list.Insert(0, value);
             return true;
         }
 
@@ -222,19 +222,19 @@ public partial class CA
     /// <summary>
     ///     Pro vyssi vykon uklada primo do zdrojoveho pole, pokud neni A2
     /// </summary>
-    /// <param name = "ss"></param>
-    public static List<string> ToLower(List<string> ss, bool createNewArray = false)
+    /// <param name = "items"></param>
+    public static List<string> ToLower(List<string> items, bool createNewArray = false)
     {
-        var outArr = ss;
+        var result = items;
         if (createNewArray)
         {
-            outArr = new List<string>(ss.Count);
-            InitFillWith(outArr, ss.Count);
+            result = new List<string>(items.Count);
+            InitFillWith(result, items.Count);
         }
 
-        for (var i = 0; i < ss.Count; i++)
-            outArr[i] = ss[i].ToLower();
-        return outArr;
+        for (var i = 0; i < items.Count; i++)
+            result[i] = items[i].ToLower();
+        return result;
     }
 
     public static void DoubleOrMoreMultiLinesToSingle(ref string text)

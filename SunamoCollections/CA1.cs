@@ -1,22 +1,22 @@
+namespace SunamoCollections;
 
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
-namespace SunamoCollections;
 public partial class CA
 {
     /// <summary>
     ///     A1 musí být string[], kdyby byl string[] nemůžu vložit List<string>, tj. object ale ne string
     /// </summary>
     /// <typeparam name = "T"></typeparam>
-    /// <param name = "innerMain"></param>
+    /// <param name = "array"></param>
     /// <returns></returns>
     [ObjectParamsObsoleteAttribute]
-    public static object[] ConvertListStringWrappedInArray(object[] innerMain)
+    public static object[] ConvertListStringWrappedInArray(object[] array)
     {
-        if (IsListStringWrappedInArray(innerMain))
+        if (IsListStringWrappedInArray(array))
         {
             List<object> result = null;
-            var first = (IEnumerable)innerMain[0];
+            var first = (IEnumerable)array[0];
             if (first is List<object>)
             {
                 result = (List<object>)first;
@@ -31,7 +31,7 @@ public partial class CA
             return result.ToArray();
         }
 
-        return innerMain;
+        return array;
     }
 
     public static (bool, string) IsNegationTuple(string contains)
@@ -59,17 +59,17 @@ public partial class CA
         start = start2;
         for (var i = list.Count - 1; i >= 0; i--)
         {
-            var val = list[i];
+            var value = list[i];
             if (args.TrimBeforeFinding)
-                val = val.Trim();
+                value = value.Trim();
             if (negate)
             {
-                if (!StartingWith(val, start, args.CaseSensitive))
+                if (!StartingWith(value, start, args.CaseSensitive))
                     list.RemoveAt(i);
             }
             else
             {
-                if (StartingWith(val, start, args.CaseSensitive))
+                if (StartingWith(value, start, args.CaseSensitive))
                     list.RemoveAt(i);
             }
         }
@@ -78,22 +78,22 @@ public partial class CA
     /// <summary>
     ///     Direct edit
     /// </summary>
-    /// <param name = "value"></param>
+    /// <param name = "prefix"></param>
     /// <param name = "list"></param>
     /// <returns></returns>
-    public static List<string> StartingWith(string value, List<string> list)
+    public static List<string> StartingWith(string prefix, List<string> list)
     {
         for (var i = list.Count - 1; i >= 0; i--)
-            if (!list[i].StartsWith(value))
+            if (!list[i].StartsWith(prefix))
                 list.RemoveAt(i);
         return list;
     }
 
-    public static bool StartingWith(string val, string start, bool caseSensitive)
+    public static bool StartingWith(string text, string start, bool caseSensitive)
     {
         if (caseSensitive)
-            return val.StartsWith(start);
-        return val.ToLower().StartsWith(start.ToLower());
+            return text.StartsWith(start);
+        return text.ToLower().StartsWith(start.ToLower());
     }
 
     public static List<string> RemoveStringsEmptyTrimBefore(List<string> list)
@@ -104,9 +104,9 @@ public partial class CA
         return list;
     }
 
-    private static string Replace(string text, string from, string to)
+    private static string Replace(string text, string what, string replacement)
     {
-        return text.Replace(from, to);
+        return text.Replace(what, replacement);
     }
 
     /// <summary>
@@ -200,10 +200,10 @@ public partial class CA
 
     public static List<char> ToListChar(ICollection<string> values)
     {
-        var value = new List<char>(values.Count);
+        var result = new List<char>(values.Count);
         foreach (var item in values)
-            value.Add(item[0]);
-        return value;
+            result.Add(item[0]);
+        return result;
     }
 
     public static bool HasDuplicates(List<string> list)
@@ -229,19 +229,19 @@ public partial class CA
         }
     }
 
-    public static bool AnyElementEndsWith(string temp, IList<string> value)
+    public static bool AnyElementEndsWith(string text, IList<string> suffixes)
     {
-        string item2 = null;
-        return AnyElementEndsWith(temp, value, out item2);
+        string matchedElement = null;
+        return AnyElementEndsWith(text, suffixes, out matchedElement);
     }
 
-    public static bool AnyElementEndsWith(string temp, IList<string> value, out string element)
+    public static bool AnyElementEndsWith(string text, IList<string> suffixes, out string element)
     {
         element = null;
-        foreach (var item in value)
-            if (item.EndsWith(temp))
+        foreach (var suffix in suffixes)
+            if (suffix.EndsWith(text))
             {
-                element = item;
+                element = suffix;
                 return true;
             }
 

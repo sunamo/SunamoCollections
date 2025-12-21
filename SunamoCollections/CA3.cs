@@ -1,7 +1,7 @@
+namespace SunamoCollections;
 
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
-namespace SunamoCollections;
 public partial class CA
 {
     /// <summary>
@@ -73,10 +73,10 @@ public partial class CA
     /// </summary>
     /// <param name = "lines"></param>
     /// <param name = "term"></param>
-    public static List<string> ReturnWhichContains(List<string> lines, string term, ContainsCompareMethodCA parseNegations = ContainsCompareMethodCA.WholeInput)
+    public static List<string> ReturnWhichContains(List<string> lines, string term, ContainsCompareMethodCA compareMethod = ContainsCompareMethodCA.WholeInput)
     {
         List<int> founded;
-        return ReturnWhichContains(lines, term, out founded, parseNegations);
+        return ReturnWhichContains(lines, term, out founded, compareMethod);
     }
 
     /// <summary>
@@ -85,19 +85,19 @@ public partial class CA
     /// <param name = "lines"></param>
     /// <param name = "term"></param>
     /// <param name = "founded"></param>
-    public static List<string> ReturnWhichContains(List<string> lines, string term, out List<int> founded, ContainsCompareMethodCA parseNegations = ContainsCompareMethodCA.WholeInput)
+    public static List<string> ReturnWhichContains(List<string> lines, string term, out List<int> founded, ContainsCompareMethodCA compareMethod = ContainsCompareMethodCA.WholeInput)
     {
         founded = new List<int>();
         var result = new List<string>();
         var i = 0;
-        List<string> w = null;
-        if (parseNegations == ContainsCompareMethodCA.SplitToWords || parseNegations == ContainsCompareMethodCA.Negations)
+        List<string> words = null;
+        if (compareMethod == ContainsCompareMethodCA.SplitToWords || compareMethod == ContainsCompareMethodCA.Negations)
         {
             WhitespaceCharService whitespaceChar = new();
-            w = SHSplit.SplitNone(term, whitespaceChar.WhiteSpaceChars.ConvertAll(data => data.ToString()).ToArray());
+            words = SHSplit.SplitNone(term, whitespaceChar.WhiteSpaceChars.ConvertAll(data => data.ToString()).ToArray());
         }
 
-        if (parseNegations == ContainsCompareMethodCA.WholeInput)
+        if (compareMethod == ContainsCompareMethodCA.WholeInput)
             foreach (var item in lines)
             {
                 if (item.Contains(term))
@@ -108,10 +108,10 @@ public partial class CA
 
                 i++;
             }
-        else if (parseNegations == ContainsCompareMethodCA.SplitToWords || parseNegations == ContainsCompareMethodCA.Negations)
+        else if (compareMethod == ContainsCompareMethodCA.SplitToWords || compareMethod == ContainsCompareMethodCA.Negations)
             foreach (var item in lines)
             {
-                if (w.All(data => item.Contains(data))) //SH.ContainsAll(item, w, parseNegations))
+                if (words.All(data => item.Contains(data))) //SH.ContainsAll(item, words, compareMethod))
                 {
                     founded.Add(i);
                     result.Add(item);
@@ -120,21 +120,21 @@ public partial class CA
                 i++;
             }
         else
-            ThrowEx.NotImplementedCase(parseNegations);
+            ThrowEx.NotImplementedCase(compareMethod);
         return result;
     }
 
-    public static void Remove(List<string> input, Func<string, string, bool> pred, string arg)
+    public static void Remove(List<string> input, Func<string, string, bool> predicate, string arg)
     {
         for (var i = input.Count - 1; i >= 0; i--)
-            if (pred.Invoke(input[i], arg))
+            if (predicate.Invoke(input[i], arg))
                 input.RemoveAt(i);
     }
 
-    public static bool HasNullValue(List<string> list)
+    public static bool HasNullValue(List<string> items)
     {
-        for (var i = 0; i < list.Count; i++)
-            if (list[i] == null)
+        for (var i = 0; i < items.Count; i++)
+            if (items[i] == null)
                 return true;
         return false;
     }
@@ -162,9 +162,9 @@ public partial class CA
     {
         for (var i = 0; i < paths.Count; i++)
         {
-            var result = paths[i];
-            if (result[result.Length - 1] != '\\')
-                paths[i] = result + "\\";
+            var currentPath = paths[i];
+            if (currentPath[currentPath.Length - 1] != '\\')
+                paths[i] = currentPath + "\\";
         }
 
         return paths;
@@ -173,14 +173,14 @@ public partial class CA
     /// <summary>
     ///     Delete which fullfil A2 wildcard
     /// </summary>
-    /// <param name = "data"></param>
+    /// <param name = "lines"></param>
     /// <param name = "mask"></param>
-    public static void RemoveWildcard(List<string> data, string mask)
+    public static void RemoveWildcard(List<string> lines, string mask)
     {
         //https://stackoverflow.com/a/15275806
-        for (var i = data.Count - 1; i >= 0; i--)
-            if (SH.MatchWildcard(data[i], mask))
-                data.RemoveAt(i);
+        for (var i = lines.Count - 1; i >= 0; i--)
+            if (SH.MatchWildcard(lines[i], mask))
+                lines.RemoveAt(i);
     }
 
     public static List<object> ToObject(IList enumerable)
@@ -202,18 +202,18 @@ public partial class CA
     /// <summary>
     ///     Direct edit
     /// </summary>
-    /// <param name = "items"></param>
-    /// <param name = "list"></param>
+    /// <param name = "lines"></param>
+    /// <param name = "patterns"></param>
     /// <param name = "wildcard"></param>
-    public static void RemoveWhichContainsList(List<string> items, List<string> list, bool wildcard, Func<string, string, bool> WildcardIsMatch = null)
+    public static void RemoveWhichContainsList(List<string> lines, List<string> patterns, bool wildcard, Func<string, string, bool> wildcardIsMatch = null)
     {
-        foreach (var item in list)
-            RemoveWhichContains(items, item, wildcard, WildcardIsMatch);
+        foreach (var pattern in patterns)
+            RemoveWhichContains(lines, pattern, wildcard, wildcardIsMatch);
     }
 
-    public static string RemovePadding(List<byte> bytes, byte value, bool returnStringInUtf8)
+    public static string RemovePadding(List<byte> bytes, byte paddingByte, bool returnStringInUtf8)
     {
-        RemovePadding(bytes, value);
+        RemovePadding(bytes, paddingByte);
         if (returnStringInUtf8)
             return Encoding.UTF8.GetString(bytes.ToArray());
         return string.Empty;

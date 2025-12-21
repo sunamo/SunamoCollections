@@ -1,7 +1,7 @@
+namespace SunamoCollections;
 
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
-namespace SunamoCollections;
 public partial class CA
 {
     /// <summary>
@@ -41,11 +41,11 @@ public partial class CA
         return returnArray;
     }
 
-    public static List<string> Format(string formatString, List<string> list)
+    public static List<string> Format(string formatString, List<string> args)
     {
-        for (var i = 0; i < list.Count(); i++)
-            list[i] = /*string.Format*/ string.Format(formatString, list[i]);
-        return list;
+        for (var i = 0; i < args.Count(); i++)
+            args[i] = /*string.Format*/ string.Format(formatString, args[i]);
+        return args;
     }
 
     //public static int Count(IList e)
