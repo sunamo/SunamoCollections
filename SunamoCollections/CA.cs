@@ -1,10 +1,10 @@
+// variables names: ok
 namespace SunamoCollections;
 
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 public partial class CA
 {
-    private static Type type = typeof(CA);
     public static Dictionary<string, int> OccurenceOfEveryLine(List<string> list)
     {
         throw new NotImplementedException();
@@ -30,7 +30,6 @@ public partial class CA
     {
         if (enumerable == null)
             return 0;
-        var type = enumerable.GetType();
         if (enumerable is IList)
             return (enumerable as IList).Count;
         if (enumerable is Array)
@@ -74,12 +73,12 @@ public partial class CA
         return false;
     }
 
-    public static List<string> WrapWithIfFunc(Func<string, string, bool, bool> predicate, bool invert, string mustContains, string wrapWith, params string[] items)
+    public static List<string> WrapWithIfFunc(Func<string, string, bool, bool> predicate, bool invert, string mustContains, string wrapWith, params string[] array)
     {
-        for (var i = 0; i < items.Length; i++)
-            if (predicate.Invoke(items[i], mustContains, invert))
-                items[i] = wrapWith + items[i] + wrapWith;
-        return items.ToList();
+        for (var i = 0; i < array.Length; i++)
+            if (predicate.Invoke(array[i], mustContains, invert))
+                array[i] = wrapWith + array[i] + wrapWith;
+        return array.ToList();
     }
 
     /// <summary>
@@ -171,11 +170,11 @@ public partial class CA
         return array.Length > index;
     }
 
-    public static bool HasIndex(int index, IList items)
+    public static bool HasIndex(int index, IList list)
     {
         if (index < 0)
-            throw new Exception("Chybný parametr index");
-        if (items.Count > index)
+            throw new Exception("Invalid parameter index");
+        if (list.Count > index)
             return true;
         return false;
     }
@@ -222,18 +221,18 @@ public partial class CA
     /// <summary>
     ///     Pro vyssi vykon uklada primo do zdrojoveho pole, pokud neni A2
     /// </summary>
-    /// <param name = "items"></param>
-    public static List<string> ToLower(List<string> items, bool createNewArray = false)
+    /// <param name = "list"></param>
+    public static List<string> ToLower(List<string> list, bool createNewArray = false)
     {
-        var result = items;
+        var result = list;
         if (createNewArray)
         {
-            result = new List<string>(items.Count);
-            InitFillWith(result, items.Count);
+            result = new List<string>(list.Count);
+            InitFillWith(result, list.Count);
         }
 
-        for (var i = 0; i < items.Count; i++)
-            result[i] = items[i].ToLower();
+        for (var i = 0; i < list.Count; i++)
+            result[i] = list[i].ToLower();
         return result;
     }
 

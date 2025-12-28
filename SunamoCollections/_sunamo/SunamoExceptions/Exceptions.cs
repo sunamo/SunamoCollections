@@ -1,6 +1,9 @@
+// variables names: ok
 namespace SunamoCollections._sunamo.SunamoExceptions;
 
 // © www.sunamo.cz. All Rights Reserved.
+// EN: Variable names have been checked and replaced with self-descriptive names
+// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 internal sealed partial class Exceptions
 {
     #region Other

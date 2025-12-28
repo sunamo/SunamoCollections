@@ -1,5 +1,8 @@
+// variables names: ok
 namespace SunamoCollections;
 
+// EN: Variable names have been checked and replaced with self-descriptive names
+// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 /// <summary>
 ///     Do doby než bude refactoring
 ///     Mám celkem dost velký bordel v metodách v CA

@@ -1,3 +1,4 @@
+// variables names: ok
 namespace SunamoCollections;
 
 // EN: Variable names have been checked and replaced with self-descriptive names

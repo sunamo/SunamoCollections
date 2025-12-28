@@ -1,3 +1,4 @@
+// variables names: ok
 namespace SunamoCollections;
 
 // EN: Variable names have been checked and replaced with self-descriptive names
@@ -139,16 +140,11 @@ public partial class CA
         return result;
     }
 
-    public static bool PartialContains(List<string> directories, string pathWithoutNameBs)
-    {
-        throw new NotImplementedException();
-    }
-
-    public static int AllNonWhitespaceLines(List<string> lines)
+    public static int AllNonWhitespaceLines(List<string> list)
     {
         var nonEmptyLines = 0;
-        for (var i = 0; i < lines.Count; i++)
-            if (lines[i].Trim() != string.Empty)
+        for (var i = 0; i < list.Count; i++)
+            if (list[i].Trim() != string.Empty)
                 nonEmptyLines++;
         return nonEmptyLines;
     }
@@ -169,20 +165,20 @@ public partial class CA
         return result;
     }
 
-    public static void RemoveLines(List<string> lines, List<int> removeLines)
+    public static void RemoveLines(List<string> list, List<int> removeList)
     {
-        removeLines.Sort();
-        for (var i = removeLines.Count - 1; i >= 0; i--)
+        removeList.Sort();
+        for (var i = removeList.Count - 1; i >= 0; i--)
         {
-            var index = removeLines[i];
-            lines.RemoveAt(index);
+            var index = removeList[i];
+            list.RemoveAt(index);
         }
     }
 
-    public static void Remove(List<string> from, List<string> what)
+    public static void Remove(List<string> list, List<string> what)
     {
         foreach (var item in what)
-            from.Remove(item);
+            list.Remove(item);
     }
 
     public static void AddSuffix(List<string> list, string value)
@@ -191,17 +187,17 @@ public partial class CA
             list[i] = list[i] + value;
     }
 
-    public static List<string> CreateListStringWithReserve(int reserveCapacity, IList<string> value)
+    public static List<string> CreateListStringWithReserve(int reserveCapacity, IList<string> list)
     {
-        var vs = new List<string>(reserveCapacity + value.Count());
-        vs.AddRange(value);
+        var vs = new List<string>(reserveCapacity + list.Count());
+        vs.AddRange(list);
         return vs;
     }
 
-    public static List<char> ToListChar(ICollection<string> values)
+    public static List<char> ToListChar(ICollection<string> collection)
     {
-        var result = new List<char>(values.Count);
-        foreach (var item in values)
+        var result = new List<char>(collection.Count);
+        foreach (var item in collection)
             result.Add(item[0]);
         return result;
     }

@@ -1,5 +1,8 @@
+// variables names: ok
 namespace SunamoCollections._sunamo;
 
+// EN: Variable names have been checked and replaced with self-descriptive names
+// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 internal class SHParts
 {
     internal static string RemoveAfterFirstFunc(string text, Func<char, bool> predicate, params char[] canBe)

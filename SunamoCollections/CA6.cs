@@ -1,3 +1,4 @@
+// variables names: ok
 namespace SunamoCollections;
 
 // EN: Variable names have been checked and replaced with self-descriptive names
@@ -7,24 +8,24 @@ public partial class CA
     /// <summary>
     ///     Change elements count in collection to A2
     /// </summary>
-    /// <param name = "input"></param>
+    /// <param name = "list"></param>
     /// <param name = "requiredLength"></param>
-    public static List<string> ToSize(List<string> input, int requiredLength)
+    public static List<string> ToSize(List<string> list, int requiredLength)
     {
         List<string> returnArray = null;
-        var realLength = input.Count;
+        var realLength = list.Count;
         if (realLength > requiredLength)
         {
             returnArray = new List<string>(requiredLength);
             InitFillWith(returnArray, requiredLength);
             for (var i = 0; i < requiredLength; i++)
-                returnArray[i] = input[i];
+                returnArray[i] = list[i];
             return returnArray;
         }
 
         if (realLength == requiredLength)
         {
-            return input;
+            return list;
         }
 
         if (realLength < requiredLength)
@@ -33,7 +34,7 @@ public partial class CA
             InitFillWith(returnArray, requiredLength);
             var i = 0;
             for (; i < realLength; i++)
-                returnArray[i] = input[i];
+                returnArray[i] = list[i];
             for (; i < requiredLength; i++)
                 returnArray[i] = null;
         }

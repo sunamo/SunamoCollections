@@ -1,3 +1,4 @@
+// variables names: ok
 namespace SunamoCollections;
 
 // EN: Variable names have been checked and replaced with self-descriptive names
@@ -20,16 +21,16 @@ partial class CA
         return default;
     }
 
-    public static ResultWithExceptionCollections<List<List<T>>> DivideBy<T>(List<T> items, int groupSize)
+    public static ResultWithExceptionCollections<List<List<T>>> DivideBy<T>(List<T> list, int groupSize)
     {
-        if (items.Count % groupSize != 0)
+        if (list.Count % groupSize != 0)
         {
-            return new ResultWithExceptionCollections<List<List<T>>>(new Exception($"Elements in {nameof(items)} - {items.Count} is not dividable by {nameof(groupSize)} - {groupSize}"));
+            return new ResultWithExceptionCollections<List<List<T>>>(new Exception($"Elements in {nameof(list)} - {list.Count} is not dividable by {nameof(groupSize)} - {groupSize}"));
         }
 
         List<List<T>> result = new List<List<T>>();
         List<T> currentGroup = new List<T>();
-        foreach (var item in items)
+        foreach (var item in list)
         {
             currentGroup.Add(item);
             if (currentGroup.Count == groupSize)
@@ -42,28 +43,28 @@ partial class CA
         return new ResultWithExceptionCollections<List<List<T>>>(result);
     }
 
-    public static List<List<T>> DivideByPercent<T>(List<T> items, int percentPerPart)
+    public static List<List<T>> DivideByPercent<T>(List<T> list, int percentPerPart)
     {
         var parts = 100 / percentPerPart;
-        var elementsPerPart = items.Count / parts;
+        var elementsPerPart = list.Count / parts;
         var from = 0;
         var result = new List<List<T>>();
         for (var i = 0; i < parts; i++)
         {
-            result.Add(GetIndexesFromTo(items, from, elementsPerPart));
+            result.Add(GetIndexesFromTo(list, from, elementsPerPart));
             from += elementsPerPart;
         }
 
-        var hasRemainingElements = from != items.Count;
+        var hasRemainingElements = from != list.Count;
         if (hasRemainingElements)
-            result.Add(GetIndexesFromTo(items, from, items.Count - result[0].Count * parts));
+            result.Add(GetIndexesFromTo(list, from, list.Count - result[0].Count * parts));
         return result;
     }
 
-    private static List<T> GetIndexesFromTo<T>(List<T> items, int from, int countOfElements)
+    private static List<T> GetIndexesFromTo<T>(List<T> list, int from, int countOfElements)
     {
         var tempArray = new T[countOfElements];
-        items.CopyTo(from, tempArray, 0, countOfElements);
+        list.CopyTo(from, tempArray, 0, countOfElements);
         return new List<T>(tempArray);
     }
 
@@ -90,9 +91,9 @@ partial class CA
         return list;
     }
 
-    public static List<T> ToArrayTCheckNull<T>(params T[] items)
+    public static List<T> ToArrayTCheckNull<T>(params T[] array)
     {
-        var result = items.ToList();
+        var result = array.ToList();
         RemoveDefaultT(result);
         return result;
     }
@@ -177,46 +178,46 @@ partial class CA
     ///     cant join from IList elements because there must be T2 for element's Type of collection
     /// </summary>
     /// <typeparam name = "T"></typeparam>
-    /// <param name = "enumerable"></param>
-    public static List<T> ToList<T>(IList enumerable)
+    /// <param name = "list"></param>
+    public static List<T> ToList<T>(IList list)
     {
         // system array etc cant be casted
-        //var ien = enumerable as IList<object>;
-        var ien = enumerable as List<object>;
-        var ienf = ien.FirstOrNull() as IList;
+        //var enumerableAsList = enumerable as IList<object>;
+        var enumerableAsList = list as List<object>;
+        var firstElementAsList = enumerableAsList.FirstOrNull() as IList;
         List<T> result = null;
         //if (enumerable is IList<char>)
         //{
         //    result = new List<T>(1);
         //    result.Add(SHJoin.JoinIList(string.Empty, enumerable));
         //}
-        var b1 = ien != null;
-        var b2 = typeof(T) == Types.TString;
-        var b3 = ienf.Count > 1;
-        var b4 = false;
-        var b5 = false;
-        if (ienf != null)
+        var isEnumerableList = enumerableAsList != null;
+        var isTargetTypeString = typeof(T) == Types.TString;
+        var hasMultipleElements = firstElementAsList.Count > 1;
+        var isFirstElementChar = false;
+        var isLastElementChar = false;
+        if (firstElementAsList != null)
         {
-            var f = ienf.FirstOrNull();
-            if (f != null)
-                b4 = f.GetType() == Types.TChar;
+            var firstElement = firstElementAsList.FirstOrNull();
+            if (firstElement != null)
+                isFirstElementChar = firstElement.GetType() == Types.TChar;
         }
 
-        if (ien != null)
+        if (enumerableAsList != null)
         {
-            var last = ien.Last();
-            if (last != null)
-                b5 = last.GetType() == Types.TChar;
+            var lastElement = enumerableAsList.Last();
+            if (lastElement != null)
+                isLastElementChar = lastElement.GetType() == Types.TChar;
         }
 
-        if (enumerable.Count == 1 && enumerable.FirstOrNull() is IList<object>)
-            result = ToListT2<T>((IList)enumerable.FirstOrNull());
-        else if (b1 && b2 && b3 && b4 && b5)
-            result.Add((T)(dynamic)string.Join(string.Empty, enumerable));
-        else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IList)
-            result = ToListT2<T>((IList)enumerable.FirstOrNull());
+        if (list.Count == 1 && list.FirstOrNull() is IList<object>)
+            result = ToListT2<T>((IList)list.FirstOrNull());
+        else if (isEnumerableList && isTargetTypeString && hasMultipleElements && isFirstElementChar && isLastElementChar)
+            result.Add((T)(dynamic)string.Join(string.Empty, list));
+        else if (list.Count() == 1 && list.FirstOrNull() is IList)
+            result = ToListT2<T>((IList)list.FirstOrNull());
         else
-            return ToListT2<T>(enumerable);
+            return ToListT2<T>(list);
         return result;
     }
 
@@ -232,12 +233,12 @@ partial class CA
     ///     Direct edit
     /// </summary>
     /// <typeparam name = "T"></typeparam>
-    /// <param name = "collection"></param>
-    public static void RemoveDefaultT<T>(List<T> collection)
+    /// <param name = "list"></param>
+    public static void RemoveDefaultT<T>(List<T> list)
     {
-        for (var i = collection.Count - 1; i >= 0; i--)
-            if (EqualityComparer<T>.Default.Equals(collection[i], default))
-                collection.RemoveAt(i);
+        for (var i = list.Count - 1; i >= 0; i--)
+            if (EqualityComparer<T>.Default.Equals(list[i], default))
+                list.RemoveAt(i);
     }
 
     /// <summary>
@@ -271,12 +272,12 @@ partial class CA
     ///     Simply calling SequenceEqual
     /// </summary>
     /// <typeparam name = "T"></typeparam>
-    /// <param name = "first"></param>
-    /// <param name = "second"></param>
+    /// <param name = "firstList"></param>
+    /// <param name = "secondList"></param>
     /// <returns></returns>
-    public static bool IsTheSame<T>(IList<T> first, IList<T> second)
+    public static bool IsTheSame<T>(IList<T> firstList, IList<T> secondList)
     {
-        return first.SequenceEqual(second);
+        return firstList.SequenceEqual(secondList);
     }
 
     public static List<T> JumbleUp<T>(List<T> items)

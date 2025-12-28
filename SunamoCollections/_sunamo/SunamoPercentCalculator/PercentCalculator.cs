@@ -1,5 +1,8 @@
+// variables names: ok
 namespace SunamoCollections._sunamo.SunamoPercentCalculator;
 
+// EN: Variable names have been checked and replaced with self-descriptive names
+// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 /// <summary>
 ///     Normálně se volá 100x DonePartially()
 /// </summary>
@@ -31,7 +34,6 @@ internal class PercentCalculator //: IPercentCalculator
     internal void ResetComputedSum()
     {
         _sum = 0;
-        Func<string, short> d = short.Parse;
     }
 
     /// <summary>

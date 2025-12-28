@@ -19,7 +19,7 @@ partial class Program
     {
         var actions = OtherActions();
 
-        if (CL.perform)
+        if (CL.Perform)
         {
             await CLActions.PerformActionAsync(actions);
         }

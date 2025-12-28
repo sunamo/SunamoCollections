@@ -1,3 +1,4 @@
+// variables names: ok
 namespace SunamoCollections;
 
 // EN: Variable names have been checked and replaced with self-descriptive names
@@ -8,30 +9,30 @@ public partial class CA
     ///     Direct edit input collection
     /// </summary>
     /// <param name = "prefix"></param>
-    /// <param name = "items"></param>
-    public static List<string> Prepend(string prefix, List<string> items)
+    /// <param name = "list"></param>
+    public static List<string> Prepend(string prefix, List<string> list)
     {
-        for (var i = 0; i < items.Count; i++)
-            if (!items[i].StartsWith(prefix))
-                items[i] = prefix + items[i];
-        return items;
+        for (var i = 0; i < list.Count; i++)
+            if (!list[i].StartsWith(prefix))
+                list[i] = prefix + list[i];
+        return list;
     }
 
     /// <summary>
     ///     Direct edit input collection
     /// </summary>
     /// <param name = "prefix"></param>
-    /// <param name = "items"></param>
-    public static List<string> Prepend(string prefix, string[] items)
+    /// <param name = "list"></param>
+    public static List<string> Prepend(string prefix, string[] list)
     {
-        return Prepend(prefix, items.ToList());
+        return Prepend(prefix, list.ToList());
     }
 
-    public static string FindOutLongestItem(List<string> items, params string[] delimiters)
+    public static string FindOutLongestItem(List<string> list, params string[] delimiters)
     {
         var longestLength = 0;
         var longest = "";
-        foreach (var item in items)
+        foreach (var item in list)
         {
             var processedItem = item;
             if (delimiters.Length != 0)
@@ -57,34 +58,34 @@ public partial class CA
     /// <summary>
     ///     Direct edit
     /// </summary>
-    /// <param name = "items"></param>
-    public static List<string> ToLower(List<string> items)
+    /// <param name = "list"></param>
+    public static List<string> ToLower(List<string> list)
     {
-        for (var i = 0; i < items.Count; i++)
-            items[i] = items[i].ToLower();
-        return items;
+        for (var i = 0; i < list.Count; i++)
+            list[i] = list[i].ToLower();
+        return list;
     }
 
     /// <summary>
     ///     Direct editr
     /// </summary>
-    /// <param name = "items"></param>
+    /// <param name = "list"></param>
     /// <param name = "pattern"></param>
     /// <param name = "wildcard"></param>
-    public static void RemoveWhichContains(List<string> items, string pattern, bool wildcard, Func<string, string, bool> wildcardIsMatch)
+    public static void RemoveWhichContains(List<string> list, string pattern, bool wildcard, Func<string, string, bool> wildcardIsMatch)
     {
         if (wildcard)
         {
             //pattern = SH.WrapWith(pattern, '*');
-            for (var i = items.Count - 1; i >= 0; i--)
-                if (wildcardIsMatch(items[i], pattern))
-                    items.RemoveAt(i);
+            for (var i = list.Count - 1; i >= 0; i--)
+                if (wildcardIsMatch(list[i], pattern))
+                    list.RemoveAt(i);
         }
         else
         {
-            for (var i = items.Count - 1; i >= 0; i--)
-                if (items[i].Contains(pattern))
-                    items.RemoveAt(i);
+            for (var i = list.Count - 1; i >= 0; i--)
+                if (list[i].Contains(pattern))
+                    list.RemoveAt(i);
         }
     }
 
@@ -109,38 +110,38 @@ public partial class CA
     //{
     //    return se.new List<string>(enumerable2);
     //}
-    public static IList<object> OneElementCollectionToMulti(IList collection)
+    public static IList<object> OneElementCollectionToMulti(IList list)
     {
-        if (collection.Count() == 1)
+        if (list.Count() == 1)
         {
-            var first = collection.FirstOrNull();
+            var first = list.FirstOrNull();
             var enumerable = first as IList<object>;
             if (enumerable != null)
                 return enumerable;
             return ToListMoreObject(first);
         }
 
-        return collection as IList<object>;
+        return list as IList<object>;
     }
 
     /// <summary>
     ///     Direct edit collection
     ///     Na rozdíl od metody RemoveStringsEmpty2 NEtrimuje před porovnáním
     /// </summary>
-    /// <param name = "items"></param>
-    public static List<string> RemoveStringsEmpty(List<string> items)
+    /// <param name = "list"></param>
+    public static List<string> RemoveStringsEmpty(List<string> list)
     {
-        for (var i = items.Count - 1; i >= 0; i--)
-            if (items[i] == string.Empty)
-                items.RemoveAt(i);
-        return items;
+        for (var i = list.Count - 1; i >= 0; i--)
+            if (list[i] == string.Empty)
+                list.RemoveAt(i);
+        return list;
     }
 
-    public static List<string> PostfixIfNotEnding(string prefix, List<string> items)
+    public static List<string> PostfixIfNotEnding(string prefix, List<string> list)
     {
-        for (var i = 0; i < items.Count; i++)
-            items[i] = prefix + items[i];
-        return items;
+        for (var i = 0; i < list.Count; i++)
+            list[i] = prefix + list[i];
+        return list;
     }
 
     public static List<int> ParseInt(string text, string delimiter)
@@ -153,11 +154,11 @@ public partial class CA
         return numbers;
     }
 
-    public static List<List<string>> Split(List<string> lines, string delimiter)
+    public static List<List<string>> Split(List<string> list, string delimiter)
     {
         var result = new List<List<string>>();
         var currentGroup = new List<string>();
-        foreach (var item in lines)
+        foreach (var item in list)
             if (item == delimiter)
             {
                 result.Add(currentGroup);
@@ -202,16 +203,16 @@ public partial class CA
     //    //}
     //    return e.FirstOrNull();
     //}
-    public static void KeepOnlyWordsToFirstSpecialChars(List<string> items)
+    public static void KeepOnlyWordsToFirstSpecialChars(List<string> list)
     {
         //ThrowEx.NotImplementedMethod();
-        for (int i = 0; i < items.Count; i++)
+        for (int i = 0; i < list.Count; i++)
         {
-            items[i] = SHParts.RemoveAfterFirstFunc(items[i], CharHelper.IsSpecial, []);
+            list[i] = SHParts.RemoveAfterFirstFunc(list[i], CharHelper.IsSpecial, []);
         }
     }
 
-    public static List<string> LinesIndexes(List<string> lines, int from, int to, bool indexedFrom1)
+    public static List<string> LinesIndexes(List<string> list, int from, int to, bool indexedFrom1)
     {
         if (indexedFrom1)
         {
@@ -221,20 +222,20 @@ public partial class CA
 
         var selectedLines = new List<string>();
         for (var i = from; i < to + 1; i++)
-            selectedLines.Add(lines[i]);
+            selectedLines.Add(list[i]);
         return selectedLines;
     }
 
     // In order to convert any 2d array to jagged one
     // let's use a generic implementation
-    public static List<List<int>> ToJagged(bool[, ] matrix)
+    public static List<List<int>> ToJagged(bool[, ] array)
     {
         var result = new List<List<int>>();
-        for (var i = 0; i < matrix.GetLength(0); i++)
+        for (var i = 0; i < array.GetLength(0); i++)
         {
             var row = new List<int>();
-            for (var columnIndex = 0; columnIndex < matrix.GetLength(1); columnIndex++)
-                row.Add(matrix[i, columnIndex] ? 1 : 0);
+            for (var columnIndex = 0; columnIndex < array.GetLength(1); columnIndex++)
+                row.Add(array[i, columnIndex] ? 1 : 0);
             result.Add(row);
         }
 

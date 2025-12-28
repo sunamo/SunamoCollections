@@ -1,3 +1,4 @@
+// variables names: ok
 namespace SunamoCollections;
 
 // EN: Variable names have been checked and replaced with self-descriptive names
@@ -197,11 +198,11 @@ public partial class CA
         return list.Count;
     }
 
-    public static string[] JoinVariableAndArray(object firstElement, IList items)
+    public static string[] JoinVariableAndArray(object firstElement, IList list)
     {
         var result = new List<string>();
         result.Add(firstElement.ToString());
-        foreach (var item in items)
+        foreach (var item in list)
             result.Add(item.ToString());
         return result.ToArray();
     }

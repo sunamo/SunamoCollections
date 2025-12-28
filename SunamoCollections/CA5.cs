@@ -1,3 +1,4 @@
+// variables names: ok
 namespace SunamoCollections;
 
 // EN: Variable names have been checked and replaced with self-descriptive names
@@ -135,10 +136,10 @@ public partial class CA
 
     public static bool HasFirstItemLength(List<string> list)
     {
-        var temp = "";
+        var firstItemTrimmed = "";
         if (list.Count > 0)
-            temp = list[0].Trim();
-        return temp.Length > 0;
+            firstItemTrimmed = list[0].Trim();
+        return firstItemTrimmed.Length > 0;
     }
 
     public static List<string> TrimList(List<string> list)
@@ -166,22 +167,22 @@ public partial class CA
     ///     WithEndSlash - trims backslash and append new
     ///     WithoutEndSlash - ony trims backslash
     /// </summary>
-    /// <param name = "paths"></param>
-    public static List<string> WithEndSlash(List<string> paths)
+    /// <param name = "list"></param>
+    public static List<string> WithEndSlash(List<string> list)
     {
-        var list = paths;
+        var list = list;
         if (list == null)
-            list = paths.ToList();
+            list = list.ToList();
         for (var i = 0; i < list.Count; i++)
             list[i] = list[i].TrimEnd('\\') + "\\";
-        return paths;
+        return list;
     }
 
-    public static List<string> WithoutEndSlash(List<string> paths)
+    public static List<string> WithoutEndSlash(List<string> list)
     {
-        for (var i = 0; i < paths.Count; i++)
-            paths[i] = paths[i].TrimEnd('\\');
-        return paths;
+        for (var i = 0; i < list.Count; i++)
+            list[i] = list[i].TrimEnd('\\');
+        return list;
     }
 
     public static List<string> JoinArrayAndArrayString(IList<string> firstList, IList<string> secondList)
@@ -250,10 +251,10 @@ public partial class CA
         return result;
     }
 
-    public static List<string> ContainsDiacritic(IList<string> items)
+    public static List<string> ContainsDiacritic(IList<string> list)
     {
-        var result = new List<string>(items.Count());
-        foreach (var item in items)
+        var result = new List<string>(list.Count());
+        foreach (var item in list)
             if (item.HasDiacritics())
                 result.Add(item);
         return result;

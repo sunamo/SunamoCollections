@@ -1,3 +1,4 @@
+// variables names: ok
 namespace SunamoCollections._sunamo.SunamoExceptions;
 
 // EN: Variable names have been checked and replaced with self-descriptive names
@@ -22,8 +23,8 @@ internal partial class ThrowEx
     internal static string FullNameOfExecutedCode()
     {
         Tuple<string, string, string> placeOfExc = Exceptions.PlaceOfException();
-        string f = FullNameOfExecutedCode(placeOfExc.Item1, placeOfExc.Item2, true);
-        return f;
+        string fullName = FullNameOfExecutedCode(placeOfExc.Item1, placeOfExc.Item2, true);
+        return fullName;
     }
 
     static string FullNameOfExecutedCode(object Type, string methodName, bool fromThrowEx = false)
