@@ -10,8 +10,8 @@ public class FromToTSHCollections<T>
 
     public FromToTSHCollections()
     {
-        var Type = typeof(T);
-        if (Type == typeof(int)) FromToUse = FromToUseCollections.None;
+        var type = typeof(T);
+        if (type == typeof(int)) FromToUse = FromToUseCollections.None;
     }
 
 

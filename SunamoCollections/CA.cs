@@ -99,14 +99,9 @@ public partial class CA
     ///     ToListString2 - simply for all items call ToString()
     ///     ToListString - working with Type of every element
     ///     Just 3 cases of working:
-    ///     IList
-    ///     <char>
-    ///         => string
-    ///         IList
-    ///         <string>
-    ///             => List
-    ///             <string>
-    ///                 IList => List<string>
+    ///     IList&lt;char&gt; =&gt; string
+    ///     IList&lt;string&gt; =&gt; List&lt;string&gt;
+    ///     IList =&gt; List&lt;string&gt;
     /// </summary>
     /// <param name = "enumerable"></param>
      //[ObjectParamsObsoleteAttribute]

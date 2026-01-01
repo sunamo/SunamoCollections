@@ -170,9 +170,8 @@ public partial class CA
     /// <param name = "list"></param>
     public static List<string> WithEndSlash(List<string> list)
     {
-        var list = list;
         if (list == null)
-            list = list.ToList();
+            list = new List<string>();
         for (var i = 0; i < list.Count; i++)
             list[i] = list[i].TrimEnd('\\') + "\\";
         return list;

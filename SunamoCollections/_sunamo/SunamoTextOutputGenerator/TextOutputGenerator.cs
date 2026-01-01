@@ -8,7 +8,7 @@ namespace SunamoCollections._sunamo.SunamoTextOutputGenerator;
 /// </summary>
 internal class TextOutputGenerator //: ITextOutputGenerator
 {
-    private static readonly string s_znakNadpisu = "*";
+    private static readonly string s_headerCharacter = "*";
 
     // při převádění na nugety jsem to změnil na ITextBuilder StringBuilder = TextBuilder.Create();
     // ale asi to byla blbost, teď mám v _sunamo Create() která je ale null místo abych použil ctor

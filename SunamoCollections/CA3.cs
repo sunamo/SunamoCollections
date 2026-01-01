@@ -49,9 +49,8 @@ public partial class CA
 
     /// <summary>
     ///     Return A2 if start something in A1
-    ///     Really different method than string, List
-    ///     <string>
-    ///         A1 can be null
+    ///     Really different method than string, List&lt;string&gt;
+    ///     A1 can be null
     /// </summary>
     /// <param name = "candidates"></param>
     /// <param name = "line"></param>

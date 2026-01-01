@@ -4,7 +4,7 @@ namespace SunamoCollections;
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 /// <summary>
-/// V samostatném souboru kvůli <T>
+/// V samostatném souboru kvůli &lt;T&gt;
 /// Do CAG to nejde, musel bych upravovat i ty v _sunamo všude
 /// </summary>
 partial class CA

@@ -4,7 +4,7 @@ namespace SunamoCollections;
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 /// <summary>
-/// V samostatném souboru kvůli <T>
+/// V samostatném souboru kvůli &lt;T&gt;
 /// Do CAG to nejde, musel bych upravovat i ty v _sunamo všude
 /// </summary>
 partial class CA
@@ -148,16 +148,14 @@ partial class CA
     }
 
     /// <summary>
-    ///     ContainsAnyFromElement - Contains string elements of list. return list
-    ///     <string>
-    ///         IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
-    ///         IsEqualToAllElement - takes two generic list. return bool
-    ///         ContainsElement - at least one element must be equaled. generic. bool
-    ///         IsSomethingTheSame - only for string. as list.Contains. bool
-    ///         IsAllTheSame() - takes element and list.generic. bool
-    ///         IndexesWithValue() - element and list.generic. return list
-    ///         <int>
-    ///             ReturnWhichContainsIndexes() - takes two List or element and list. return list<int>
+    ///     ContainsAnyFromElement - Contains string elements of list. return List&lt;string&gt;
+    ///     IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
+    ///     IsEqualToAllElement - takes two generic list. return bool
+    ///     ContainsElement - at least one element must be equaled. generic. bool
+    ///     IsSomethingTheSame - only for string. as list.Contains. bool
+    ///     IsAllTheSame() - takes element and list.generic. bool
+    ///     IndexesWithValue() - element and list.generic. return list&lt;int&gt;
+    ///     ReturnWhichContainsIndexes() - takes two List or element and list. return list&lt;int&gt;
     /// </summary>
     /// <typeparam name = "T"></typeparam>
     /// <param name = "list"></param>

@@ -8,7 +8,7 @@ public partial class CA
     /// <summary>
     ///     Overrides working only with string, not List
     ///     AnyElementEndsWith - string[]
-    ///     EndsWith - IList<string>
+    ///     EndsWith - IList&lt;string&gt;
     /// </summary>
     /// <param name = "text"></param>
     /// <param name = "suffixes"></param>
@@ -34,7 +34,7 @@ public partial class CA
 
     /// <summary>
     ///     AnyElementEndsWith - string[]
-    ///     EndsWith - IList<string>
+    ///     EndsWith - IList&lt;string&gt;
     /// </summary>
     /// <param name = "text"></param>
     /// <param name = "suffixes"></param>

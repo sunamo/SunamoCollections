@@ -6,7 +6,7 @@ namespace SunamoCollections;
 public partial class CA
 {
     /// <summary>
-    ///     A1 musí být string[], kdyby byl string[] nemůžu vložit List<string>, tj. object ale ne string
+    ///     A1 musí být string[], kdyby byl string[] nemůžu vložit List&lt;string&gt;, tj. object ale ne string
     /// </summary>
     /// <typeparam name = "T"></typeparam>
     /// <param name = "array"></param>
@@ -122,12 +122,11 @@ public partial class CA
 
     /// <summary>
     ///     ToListString2 - simply for all items call ToString()
-    ///     ToListString - working with Type of every element
-    ///     <string>
-    ///         Nothing more, nothing less
-    ///         Must be private - to use only public in CA
-    ///         bcoz Cast() not working
-    ///         Dont make any Type checking - could be done before
+    ///     ToListString - working with Type of every element - returns List&lt;string&gt;
+    ///     Nothing more, nothing less
+    ///     Must be private - to use only public in CA
+    ///     bcoz Cast() not working
+    ///     Dont make any Type checking - could be done before
     /// </summary>
     public static List<string> ToListStringIEnumerable2(IEnumerable enumerable)
     {
