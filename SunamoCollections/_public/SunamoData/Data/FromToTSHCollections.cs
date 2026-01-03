@@ -1,4 +1,3 @@
-// variables names: ok
 namespace SunamoCollections._public.SunamoData.Data;
 
 public class FromToTSHCollections<T>

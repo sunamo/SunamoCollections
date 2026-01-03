@@ -1,4 +1,3 @@
-// variables names: ok
 namespace SunamoCollections._sunamo.SunamoValues.Constants;
 
 /// <summary>
