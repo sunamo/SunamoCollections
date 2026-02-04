@@ -19,7 +19,7 @@ partial class Program
 
         Provider = Services.BuildServiceProvider();
 
-        logger = Provider.GetService<ILogger>() ?? throw new ServiceNotFoundException(nameof(ILogger));
+        logger = Provider.GetService<ILogger>() ?? throw new InvalidOperationException($"Service {nameof(ILogger)} not found in DI container");
     }
 
     static void Main(string[] args)
