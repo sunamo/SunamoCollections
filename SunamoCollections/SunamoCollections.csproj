@@ -8,7 +8,7 @@
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
     <NoWarn>CS8632;CS0649;CS0169;CS0414;NU1701</NoWarn>
     <Description>Utils for collections</Description>
-    <Version>26.2.4.1</Version>
+    <Version>26.2.5.1</Version>
     <PackageReleaseNotes>feat: Enable SourceLink and added debug symbols</PackageReleaseNotes>
     <Authors>www.sunamo.cz</Authors>
     <Copyright>www.sunamo.cz</Copyright>
