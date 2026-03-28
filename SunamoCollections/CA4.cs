@@ -109,7 +109,7 @@ public partial class CA
     //{
     //    return se.new List<string>(enumerable2);
     //}
-    public static IList<object> OneElementCollectionToMulti(IList list)
+    public static IList<object>? OneElementCollectionToMulti(IList list)
     {
         if (list.Count() == 1)
         {
@@ -117,7 +117,7 @@ public partial class CA
             var enumerable = first as IList<object>;
             if (enumerable != null)
                 return enumerable;
-            return ToListMoreObject(first);
+            return ToListMoreObject(first!);
         }
 
         return list as IList<object>;
@@ -181,7 +181,7 @@ public partial class CA
             else
             {
                 WhitespaceCharService whiteSpaceChars = new WhitespaceCharService();
-                stringBuilder.AppendLine(trimmedLine.Split(whiteSpaceChars.WhiteSpaceChars.ToArray())[0]);
+                stringBuilder.AppendLine(trimmedLine.Split(whiteSpaceChars.WhiteSpaceChars!.ToArray())[0]);
             }
         }
 

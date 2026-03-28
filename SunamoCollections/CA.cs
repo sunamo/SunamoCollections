@@ -30,9 +30,9 @@ public partial class CA
         if (enumerable == null)
             return 0;
         if (enumerable is IList)
-            return (enumerable as IList).Count;
+            return ((IList)enumerable).Count;
         if (enumerable is Array)
-            return (enumerable as Array).Length;
+            return ((Array)enumerable).Length;
         var count = 0;
         foreach (var item in enumerable)
             count++;
@@ -57,10 +57,10 @@ public partial class CA
         }
     }
 
-    public static string First(IEnumerable enumerable)
+    public static string? First(IEnumerable enumerable)
     {
         foreach (var item in enumerable)
-            return item.ToString();
+            return item?.ToString();
         return null;
     }
 
@@ -85,7 +85,7 @@ public partial class CA
     /// </summary>
     /// <param name = "list"></param>
     /// <param name = "index"></param>
-    public static object GetIndex(List<string> list, int index)
+    public static object? GetIndex(List<string> list, int index)
     {
         if (list == null)
             return null;

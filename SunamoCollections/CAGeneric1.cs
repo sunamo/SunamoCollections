@@ -40,7 +40,7 @@ partial class CA
                 }
                 else
                 {
-                    stringResults.Add((T)(IEnumerable<char>)item.ToString());
+                    stringResults.Add((T)(IEnumerable<char>)item.ToString()!);
                 }
 
             return stringResults;
@@ -49,7 +49,7 @@ partial class CA
         var result = new List<T>(enumerable.Count());
         foreach (var item in enumerable)
             if (item == null)
-                result.Add(default);
+                result.Add(default!);
             else
                 // cant join from IList elements because there must be T2 for element's Type of collection. Use CA.TwoDimensionParamsIntoOne instead
                 //var t1 = item.GetType();

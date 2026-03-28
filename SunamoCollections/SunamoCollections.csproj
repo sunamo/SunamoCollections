@@ -6,10 +6,9 @@
     <IsPackable>true</IsPackable>
     <IsTestProject>true</IsTestProject>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
-    <NoWarn>CS8632;CS0649;CS0169;CS0414;NU1701</NoWarn>
     <Description>Utils for collections</Description>
-    <Version>26.2.23.3</Version>
-    <PackageReleaseNotes>feat: fixing variables names</PackageReleaseNotes>
+    <Version>26.3.28.4</Version>
+    <PackageReleaseNotes>feat: Improved names of variables</PackageReleaseNotes>
     <Authors>www.sunamo.cz</Authors>
     <Copyright>www.sunamo.cz</Copyright>
     <PackageProjectUrl>https://sunamo.cz/</PackageProjectUrl>

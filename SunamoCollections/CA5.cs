@@ -66,7 +66,7 @@ public partial class CA
         var files1Count = files1.Count;
         var files2Count = files2.Count;
         string result;
-        dynamic textOutput = null; //new TextOutputGenerator();
+        dynamic textOutput = null!; //new TextOutputGenerator();
         var inBothCount = inBoth.Count;
         double totalCount = inBothCount + files2Count;
         var percentCalculator = new PercentCalculator(totalCount);

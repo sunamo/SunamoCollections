@@ -40,9 +40,9 @@ public partial class CA
     /// <param name = "candidates"></param>
     /// <param name = "line"></param>
     /// <returns></returns>
-    public static string StartWith(List<string> candidates, string line)
+    public static string? StartWith(List<string> candidates, string line)
     {
-        string element = null;
+        string? element = null;
         return StartWith(candidates, line, out element);
     }
 
@@ -53,7 +53,7 @@ public partial class CA
     /// </summary>
     /// <param name = "candidates"></param>
     /// <param name = "line"></param>
-    public static string StartWith(List<string> candidates, string line, out string element)
+    public static string? StartWith(List<string> candidates, string line, out string? element)
     {
         element = null;
         if (candidates != null)
@@ -89,11 +89,11 @@ public partial class CA
         founded = new List<int>();
         var result = new List<string>();
         var i = 0;
-        List<string> words = null;
+        List<string>? words = null;
         if (compareMethod == ContainsCompareMethodCA.SplitToWords || compareMethod == ContainsCompareMethodCA.Negations)
         {
             WhitespaceCharService whitespaceChar = new();
-            words = SHSplit.SplitNone(term, whitespaceChar.WhiteSpaceChars.ConvertAll(data => data.ToString()).ToArray());
+            words = SHSplit.SplitNone(term, whitespaceChar.WhiteSpaceChars!.ConvertAll(data => data.ToString()).ToArray());
         }
 
         if (compareMethod == ContainsCompareMethodCA.WholeInput)
@@ -110,7 +110,7 @@ public partial class CA
         else if (compareMethod == ContainsCompareMethodCA.SplitToWords || compareMethod == ContainsCompareMethodCA.Negations)
             foreach (var item in list)
             {
-                if (words.All(data => item.Contains(data))) //SH.ContainsAll(item, words, compareMethod))
+                if (words!.All(data => item.Contains(data))) //SH.ContainsAll(item, words, compareMethod))
                 {
                     founded.Add(i);
                     result.Add(item);
@@ -143,14 +143,14 @@ public partial class CA
     /// </summary>
     /// <param name = "list"></param>
     /// <param name = "requiredLength"></param>
-    public static List<int> ToIntMinRequiredLength(IList list, int requiredLength)
+    public static List<int>? ToIntMinRequiredLength(IList list, int requiredLength)
     {
         if (list.Count() < requiredLength)
             return null;
         var result = new List<int>();
         var intValue = 0;
         foreach (var item in list)
-            if (int.TryParse(item.ToString(), out intValue))
+            if (int.TryParse(item?.ToString(), out intValue))
                 result.Add(intValue);
             else
                 return null;
@@ -204,10 +204,10 @@ public partial class CA
     /// <param name = "list"></param>
     /// <param name = "patterns"></param>
     /// <param name = "wildcard"></param>
-    public static void RemoveWhichContainsList(List<string> list, List<string> patterns, bool wildcard, Func<string, string, bool> wildcardIsMatch = null)
+    public static void RemoveWhichContainsList(List<string> list, List<string> patterns, bool wildcard, Func<string, string, bool>? wildcardIsMatch = null)
     {
         foreach (var pattern in patterns)
-            RemoveWhichContains(list, pattern, wildcard, wildcardIsMatch);
+            RemoveWhichContains(list, pattern, wildcard, wildcardIsMatch!);
     }
 
     public static string RemovePadding(List<byte> bytes, byte paddingByte, bool returnStringInUtf8)

@@ -11,7 +11,7 @@ public partial class CA
     /// <param name = "requiredLength"></param>
     public static List<string> ToSize(List<string> list, int requiredLength)
     {
-        List<string> returnArray = null;
+        List<string>? returnArray = null;
         var realLength = list.Count;
         if (realLength > requiredLength)
         {
@@ -35,10 +35,10 @@ public partial class CA
             for (; i < realLength; i++)
                 returnArray[i] = list[i];
             for (; i < requiredLength; i++)
-                returnArray[i] = null;
+                returnArray[i] = null!;
         }
 
-        return returnArray;
+        return returnArray!;
     }
 
     public static List<string> Format(string formatString, List<string> args)

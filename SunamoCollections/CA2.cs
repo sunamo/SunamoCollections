@@ -51,7 +51,7 @@ public partial class CA
         var result = new List<string>();
         foreach (var item in enumerable)
         {
-            result.AddRange(new List<string>([item.ToString()]));
+            result.AddRange(new List<string>([item.ToString()!]));
         }
 
         return result;
@@ -87,12 +87,12 @@ public partial class CA
     /// </summary>
     /// <param name = "prefix"></param>
     /// <param name = "candidates"></param>
-    public static string StartWith(string prefix, params string[] candidates)
+    public static string? StartWith(string prefix, params string[] candidates)
     {
         return StartWith(prefix, candidates.ToList());
     }
 
-    public static string StartWith(string prefix, IList<string> candidates)
+    public static string? StartWith(string prefix, IList<string> candidates)
     {
         int foundIndex;
         return StartWith(prefix, candidates, out foundIndex);
@@ -107,7 +107,7 @@ public partial class CA
     /// <param name = "prefix"></param>
     /// <param name = "candidates"></param>
     /// <param name = "foundIndex"></param>
-    public static string StartWith(string prefix, IList<string> candidates, out int foundIndex)
+    public static string? StartWith(string prefix, IList<string> candidates, out int foundIndex)
     {
         foundIndex = -1;
         foreach (var item in candidates)
@@ -170,7 +170,7 @@ public partial class CA
     {
         var result = new List<long>();
         foreach (var item in enumerable)
-            result.Add(long.Parse(item.ToString()));
+            result.Add(long.Parse(item.ToString()!));
         return result;
     }
 
@@ -178,7 +178,7 @@ public partial class CA
     {
         var result = new List<short>();
         foreach (var item in enumerable)
-            result.Add(short.Parse(item.ToString()));
+            result.Add(short.Parse(item.ToString()!));
         return result;
     }
 
@@ -200,9 +200,9 @@ public partial class CA
     public static string[] JoinVariableAndArray(object firstElement, IList list)
     {
         var result = new List<string>();
-        result.Add(firstElement.ToString());
+        result.Add(firstElement.ToString()!);
         foreach (var item in list)
-            result.Add(item.ToString());
+            result.Add(item?.ToString()!);
         return result.ToArray();
     }
 

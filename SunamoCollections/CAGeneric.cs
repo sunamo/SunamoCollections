@@ -13,7 +13,7 @@ partial class CA
     /// </summary>
     /// <typeparam name = "T"></typeparam>
     /// <param name = "List"></param>
-    public static T FirstOrNull<T>(List<T> list)
+    public static T? FirstOrNull<T>(List<T> list)
     {
         if (list.Count > 0)
             return list[0];
@@ -70,7 +70,7 @@ partial class CA
     public static void InitFillWith<T>(List<T> list, int count)
     {
         for (var i = 0; i < count; i++)
-            list.Add(default);
+            list.Add(default!);
     }
 
     public static void RemoveNull<T>(List<T> list)
@@ -97,7 +97,7 @@ partial class CA
         return result;
     }
 
-    public static T IndexOrNull<T>(T[] array, int index)
+    public static T? IndexOrNull<T>(T[] array, int index)
     {
         if (array.Length > index)
             return array[index];
@@ -181,8 +181,8 @@ partial class CA
         // system array etc cant be casted
         //var enumerableAsList = enumerable as IList<object>;
         var enumerableAsList = list as List<object>;
-        var firstElementAsList = enumerableAsList.FirstOrNull() as IList;
-        List<T> result = null;
+        var firstElementAsList = enumerableAsList?.FirstOrNull() as IList;
+        List<T>? result = null;
         //if (enumerable is IList<char>)
         //{
         //    result = new List<T>(1);
@@ -190,7 +190,7 @@ partial class CA
         //}
         var isEnumerableList = enumerableAsList != null;
         var isTargetTypeString = typeof(T) == Types.TString;
-        var hasMultipleElements = firstElementAsList.Count > 1;
+        var hasMultipleElements = firstElementAsList != null && firstElementAsList.Count > 1;
         var isFirstElementChar = false;
         var isLastElementChar = false;
         if (firstElementAsList != null)
@@ -208,19 +208,19 @@ partial class CA
         }
 
         if (list.Count == 1 && list.FirstOrNull() is IList<object>)
-            result = ToListT2<T>((IList)list.FirstOrNull());
+            result = ToListT2<T>((IList)list.FirstOrNull()!);
         else if (isEnumerableList && isTargetTypeString && hasMultipleElements && isFirstElementChar && isLastElementChar)
-            result.Add((T)(dynamic)string.Join(string.Empty, list));
+            result!.Add((T)(dynamic)string.Join(string.Empty, list));
         else if (list.Count() == 1 && list.FirstOrNull() is IList)
-            result = ToListT2<T>((IList)list.FirstOrNull());
+            result = ToListT2<T>((IList)list.FirstOrNull()!);
         else
             return ToListT2<T>(list);
-        return result;
+        return result!;
     }
 
     public static bool IsListStringWrappedInArray<T>(List<T> list)
     {
-        var first = list.First().ToString();
+        var first = list.First()!.ToString();
         if (list.Count == 1 && (first == "System.Collections.Generic.List`1[System.String]" || first == "System.Collections.Generic.List`1[System.Object]"))
             return true;
         return false;

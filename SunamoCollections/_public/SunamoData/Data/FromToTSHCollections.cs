@@ -29,14 +29,14 @@ public class FromToTSHCollections<T>
 
     public T From
     {
-        get => (T)(dynamic)_from;
-        set => _from = (long)(dynamic)value;
+        get => (T)(dynamic)_from!;
+        set => _from = (long)(dynamic)value!;
     }
 
     public T To
     {
-        get => (T)(dynamic)_to;
-        set => _to = (long)(dynamic)value;
+        get => (T)(dynamic)_to!;
+        set => _to = (long)(dynamic)value!;
     }
 
     public long FromAsLong => _from;

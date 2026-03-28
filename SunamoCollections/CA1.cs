@@ -15,7 +15,7 @@ public partial class CA
     {
         if (IsListStringWrappedInArray(array))
         {
-            List<object> result = null;
+            List<object>? result = null;
             var first = (IEnumerable)array[0];
             if (first is List<object>)
             {
@@ -51,7 +51,7 @@ public partial class CA
     /// </summary>
     /// <param name = "start"></param>
     /// <param name = "list"></param>
-    public static void RemoveStartingWith(string start, List<string> list, RemoveStartingWithArgsCA args = null)
+    public static void RemoveStartingWith(string start, List<string> list, RemoveStartingWithArgsCA? args = null)
     {
         if (args == null)
             args = new RemoveStartingWithArgsCA();
@@ -134,7 +134,7 @@ public partial class CA
             if (item == null)
                 result.Add("(null)");
             else
-                result.Add(item.ToString());
+                result.Add(item.ToString()!);
         return result;
     }
 
@@ -225,11 +225,11 @@ public partial class CA
 
     public static bool AnyElementEndsWith(string text, IList<string> suffixes)
     {
-        string matchedElement = null;
+        string? matchedElement = null;
         return AnyElementEndsWith(text, suffixes, out matchedElement);
     }
 
-    public static bool AnyElementEndsWith(string text, IList<string> suffixes, out string element)
+    public static bool AnyElementEndsWith(string text, IList<string> suffixes, out string? element)
     {
         element = null;
         foreach (var suffix in suffixes)

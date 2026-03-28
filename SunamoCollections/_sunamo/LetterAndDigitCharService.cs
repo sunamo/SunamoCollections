@@ -4,8 +4,8 @@ namespace SunamoCollections._sunamo;
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 internal class LetterAndDigitCharService
 {
-    internal List<char> AllCharsWithoutSpecial;
-    internal List<char> AllChars;
+    internal List<char>? AllCharsWithoutSpecial = null;
+    internal List<char>? AllChars = null;
     internal readonly List<char> NumericChars =
         new(new[] { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' });
     internal readonly List<char> LowerChars = new(new[]

@@ -11,7 +11,6 @@ internal class PercentCalculator //: IPercentCalculator
     internal static Type Type = typeof(PercentCalculator);
     private readonly double _hundredPercent = 100d;
     private int _sum;
-    private int _added;
     internal double OnePercent { get; set; }
 
     internal PercentCalculator(double overallSum)

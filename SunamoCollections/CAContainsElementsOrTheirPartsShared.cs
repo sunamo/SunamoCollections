@@ -10,13 +10,13 @@ public partial class CA
         var secondListCount = secondList.Count();
         if (firstListCount != secondListCount) ThrowEx.DifferentCountInLists("firstList", firstList.Count, "secondList", secondList.Count);
 
-        string firstValue;
-        string secondValue;
+        string? firstValue;
+        string? secondValue;
 
         for (var i = 0; i < firstListCount; i++)
         {
-            firstValue = firstList[i].ToString();
-            secondValue = secondList[i].ToString();
+            firstValue = firstList[i]?.ToString();
+            secondValue = secondList[i]?.ToString();
             if (firstValue != secondValue) return false;
         }
 

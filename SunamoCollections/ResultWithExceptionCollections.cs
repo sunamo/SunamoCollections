@@ -4,8 +4,8 @@ namespace SunamoCollections;
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 public class ResultWithExceptionCollections<T>
 {
-    public T Data { get; set; }
-    public string ExceptionMessage { get; set; }
+    public T? Data { get; set; }
+    public string? ExceptionMessage { get; set; }
     public ResultWithExceptionCollections(T data)
     {
         Data = data;
