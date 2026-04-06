@@ -1,9 +1,17 @@
 namespace SunamoCollections._public.SunamoArgs;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+/// <summary>
+/// Public arguments for the RemoveStartingWith operation.
+/// </summary>
 public class RemoveStartingWithArgsCA
 {
+    /// <summary>
+    /// Gets or sets whether to trim elements before finding matches.
+    /// </summary>
     public bool TrimBeforeFinding { get; set; } = false;
+
+    /// <summary>
+    /// Gets or sets whether the comparison is case-sensitive.
+    /// </summary>
     public bool CaseSensitive { get; set; } = true;
 }

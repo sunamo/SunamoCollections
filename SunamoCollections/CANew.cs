@@ -1,18 +1,20 @@
 namespace SunamoCollections;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 /// <summary>
-///     Do doby než bude refactoring
-///     Mám celkem dost velký bordel v metodách v CA
-///     Takže bude třeba udělat fasádu jako jsem dříve udělal v DTHelper
+/// Facade for newer collection utility methods.
 /// </summary>
 public class CANew
 {
-    public static bool ContainsAnyFromArray(string input, string[] array)
+    /// <summary>
+    /// Checks if the text contains any element from the array.
+    /// </summary>
+    /// <param name="text">The text to search in.</param>
+    /// <param name="array">The array of strings to look for.</param>
+    /// <returns>True if the text contains any of the array elements.</returns>
+    public static bool ContainsAnyFromArray(string text, string[] array)
     {
         foreach (var item in array)
-            if (input.Contains(item))
+            if (text.Contains(item))
                 return true;
 
         return false;

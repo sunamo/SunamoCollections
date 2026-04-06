@@ -1,7 +1,8 @@
 namespace SunamoCollections._sunamo;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+/// <summary>
+/// String helper for extracting parts of strings.
+/// </summary>
 internal class SHParts
 {
     internal static string RemoveAfterFirstFunc(string text, Func<char, bool> predicate, params char[] canBe)

@@ -1,73 +1,73 @@
 namespace SunamoCollections._sunamo.SunamoExceptions;
 
-// © www.sunamo.cz. All Rights Reserved.
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+/// <summary>
+/// Exception message formatting utilities.
+/// </summary>
 internal sealed partial class Exceptions
 {
-    #region Other
     internal static string CheckBefore(string before)
     {
         return string.IsNullOrWhiteSpace(before) ? string.Empty : before + ": ";
     }
 
-    internal static string TextOfExceptions(Exception ex, bool alsoInner = true)
+    internal static string TextOfExceptions(Exception exception, bool isIncludingInner = true)
     {
-        if (ex == null) return string.Empty;
+        if (exception == null) return string.Empty;
         StringBuilder stringBuilder = new();
         stringBuilder.Append("Exception:");
-        stringBuilder.AppendLine(ex.Message);
-        if (alsoInner)
-            while (ex.InnerException != null)
+        stringBuilder.AppendLine(exception.Message);
+        if (isIncludingInner)
+            while (exception.InnerException != null)
             {
-                ex = ex.InnerException;
-                stringBuilder.AppendLine(ex.Message);
+                exception = exception.InnerException;
+                stringBuilder.AppendLine(exception.Message);
             }
         var result = stringBuilder.ToString();
         return result;
     }
 
-    internal static Tuple<string, string, string> PlaceOfException(
-bool fillAlsoFirstTwo = true)
+    internal static Tuple<string, string, string> PlaceOfException(bool isFillingFirstTwo = true)
     {
-        StackTrace st = new();
-        var value = st.ToString();
-        var lines = value.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
+        StackTrace stackTrace = new();
+        var stackTraceText = stackTrace.ToString();
+        var lines = stackTraceText.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
         lines.RemoveAt(0);
-        var i = 0;
-        string type = string.Empty;
+        var currentIndex = 0;
+        string typeName = string.Empty;
         string methodName = string.Empty;
-        for (; i < lines.Count; i++)
+        for (; currentIndex < lines.Count; currentIndex++)
         {
-            var item = lines[i];
-            if (fillAlsoFirstTwo)
-                if (!item.StartsWith("   at ThrowEx"))
+            var currentLine = lines[currentIndex];
+            if (isFillingFirstTwo)
+                if (!currentLine.StartsWith("   at ThrowEx"))
                 {
-                    TypeAndMethodName(item, out type, out methodName);
-                    fillAlsoFirstTwo = false;
+                    TypeAndMethodName(currentLine, out typeName, out methodName);
+                    isFillingFirstTwo = false;
                 }
-            if (item.StartsWith("at System."))
+            if (currentLine.StartsWith("at System."))
             {
                 lines.Add(string.Empty);
                 lines.Add(string.Empty);
                 break;
             }
         }
-        return new Tuple<string, string, string>(type, methodName, string.Join(Environment.NewLine, lines));
+        return new Tuple<string, string, string>(typeName, methodName, string.Join(Environment.NewLine, lines));
     }
-    internal static void TypeAndMethodName(string lines, out string type, out string methodName)
+
+    internal static void TypeAndMethodName(string stackTraceLine, out string typeName, out string methodName)
     {
-        var s2 = lines.Split("at ")[1].Trim();
-        var text = s2.Split("(")[0];
-        var parameter = text.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries).ToList();
-        methodName = parameter[^1];
-        parameter.RemoveAt(parameter.Count - 1);
-        type = string.Join(".", parameter);
+        var afterAt = stackTraceLine.Split("at ")[1].Trim();
+        var fullQualifiedName = afterAt.Split("(")[0];
+        var parts = fullQualifiedName.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+        methodName = parts[^1];
+        parts.RemoveAt(parts.Count - 1);
+        typeName = string.Join(".", parts);
     }
-    internal static string CallingMethod(int value = 1)
+
+    internal static string CallingMethod(int depth = 1)
     {
         StackTrace stackTrace = new();
-        var methodBase = stackTrace.GetFrame(value)?.GetMethod();
+        var methodBase = stackTrace.GetFrame(depth)?.GetMethod();
         if (methodBase == null)
         {
             return "Method name cannot be get";
@@ -75,48 +75,46 @@ bool fillAlsoFirstTwo = true)
         var methodName = methodBase.Name;
         return methodName;
     }
-    #endregion
 
-    #region IsNullOrWhitespace
     internal readonly static StringBuilder AdditionalInfoInnerStringBuilder = new();
     internal readonly static StringBuilder AdditionalInfoStringBuilder = new();
-    #endregion
 
-    #region OnlyReturnString 
     internal static string? DivideByZero(string before)
     {
         return CheckBefore(before) + " is dividing by zero.";
     }
+
     internal static string? NotImplementedMethod(string before)
     {
         return CheckBefore(before) + "Not implemented method.";
     }
-    #endregion
+
     internal static string? IsNull(string before, string variableName, object? variable)
     {
         return variable == null ? CheckBefore(before) + variableName + " " + "is null" + "." : null;
     }
+
     internal static string? NotImplementedCase(string before, object notImplementedName)
     {
-        var fr = string.Empty;
+        var forText = string.Empty;
         if (notImplementedName != null)
         {
-            fr = " for ";
+            forText = " for ";
             if (notImplementedName.GetType() == typeof(Type))
-                fr += ((Type)notImplementedName).FullName;
+                forText += ((Type)notImplementedName).FullName;
             else
-                fr += notImplementedName.ToString();
+                forText += notImplementedName.ToString();
         }
-        return CheckBefore(before) + "Not implemented case" + fr + " . internal program error. Please contact developer" +
+        return CheckBefore(before) + "Not implemented case" + forText + " . internal program error. Please contact developer" +
         ".";
     }
 
-    internal static string? DifferentCountInLists(string before, string namefc, int countfc, string namesc, int countsc)
+    internal static string? DifferentCountInLists(string before, string firstCollectionName, int firstCollectionCount, string secondCollectionName, int secondCollectionCount)
     {
-        if (countfc != countsc)
+        if (firstCollectionCount != secondCollectionCount)
             return CheckBefore(before) + " different count elements in collection" + " " +
-            string.Concat(namefc + "-" + countfc) + " vs. " +
-            string.Concat(namesc + "-" + countsc);
+            string.Concat(firstCollectionName + "-" + firstCollectionCount) + " vs. " +
+            string.Concat(secondCollectionName + "-" + secondCollectionCount);
         return null;
     }
 }

@@ -1,7 +1,8 @@
 namespace SunamoCollections._sunamo;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+/// <summary>
+/// Cached type references for common .NET types used in reflection operations.
+/// </summary>
 internal class Types
 {
     internal static readonly Type TObject = typeof(object);
@@ -23,17 +24,11 @@ internal class Types
     internal static readonly Type TBinary = typeof(byte[]);
     internal static readonly Type TChar = typeof(char);
     internal static readonly List<Type> AllBasicTypes = new()
-{
-TObject, TString, TStringBuilder, TInt, TDateTime,
-TDouble, TFloat, TChar, TBinary, TByte, TShort, TBinary, TLong, TDecimal, TSbyte, TUshort, TUint, TUlong
-};
-    internal static readonly Type List = typeof(IList);
-    #region Same seria as in DefaultValueForTypeT
+    {
+        TObject, TString, TStringBuilder, TInt, TDateTime,
+        TDouble, TFloat, TChar, TBinary, TByte, TShort, TBinary, TLong, TDecimal, TSbyte, TUshort, TUint, TUlong
+    };
+    internal static readonly Type ListType = typeof(IList);
     internal static readonly Type TBool = typeof(bool);
-    #region Signed numbers
-    #endregion
-    #region Unsigned numbers
-    #endregion
     internal static readonly Type TGuid = typeof(Guid);
-    #endregion
 }

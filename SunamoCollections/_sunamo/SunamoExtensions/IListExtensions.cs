@@ -1,10 +1,10 @@
 namespace SunamoCollections._sunamo.SunamoExtensions;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+/// <summary>
+/// Extension methods for IEnumerable providing FirstOrNull and Count operations.
+/// </summary>
 internal static class IListExtensions
 {
-
     internal static object? FirstOrNull(this IEnumerable enumerable)
     {
         foreach (var item in enumerable) return item;

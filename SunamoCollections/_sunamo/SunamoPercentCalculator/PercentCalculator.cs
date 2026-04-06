@@ -1,58 +1,60 @@
 namespace SunamoCollections._sunamo.SunamoPercentCalculator;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 /// <summary>
-///     Normálně se volá 100x DonePartially()
+/// Calculator for computing percentage distributions.
 /// </summary>
-internal class PercentCalculator //: IPercentCalculator
-//: IPercentCalculator
+internal class PercentCalculator
 {
-    internal static Type Type = typeof(PercentCalculator);
-    private readonly double _hundredPercent = 100d;
-    private int _sum;
+    internal static Type PercentCalculatorType = typeof(PercentCalculator);
+    private readonly double hundredPercent = 100d;
+    private int sum;
+
+    /// <summary>
+    /// Gets or sets the value of one percent relative to the overall sum.
+    /// </summary>
     internal double OnePercent { get; set; }
 
     internal PercentCalculator(double overallSum)
     {
         if (overallSum == 0) ThrowEx.DivideByZero();
-        OnePercent = _hundredPercent / overallSum;
+        OnePercent = hundredPercent / overallSum;
         OverallSum = overallSum;
     }
 
+    /// <summary>
+    /// Gets or sets the last computed percentage.
+    /// </summary>
     internal double Last { get; set; }
+
+    /// <summary>
+    /// Gets or sets the overall sum used as the base for percentage calculations.
+    /// </summary>
     internal double OverallSum { get; set; }
 
-
-
-    
     /// <summary>
-    ///     Is automatically called with PercentFor with last
+    /// Resets the computed sum. Called automatically with PercentFor when isLast is true.
     /// </summary>
     internal void ResetComputedSum()
     {
-        _sum = 0;
+        sum = 0;
     }
 
     /// <summary>
-    ///     Was used for generating text output with inBothCount, files1Count, files2Count
+    /// Computes the percentage for a given value relative to the overall sum.
     /// </summary>
-    /// <param name="value"></param>
-    /// <param name="last"></param>
-    /// <returns></returns>
-    internal int PercentFor(double value, bool last)
+    /// <param name="value">The value to compute the percentage for.</param>
+    /// <param name="isLast">Whether this is the last computation in the series (adjusts for rounding).</param>
+    /// <returns>The computed percentage as an integer.</returns>
+    internal int PercentFor(double value, bool isLast)
     {
-        // cannot divide by zero
         if (OverallSum == 0) return 0;
-        // value -
-        //
-        var quocient = value / OverallSum;
-        var result = (int)(_hundredPercent * quocient);
-        _sum += result;
-        if (last)
+        var quotient = value / OverallSum;
+        var result = (int)(hundredPercent * quotient);
+        sum += result;
+        if (isLast)
         {
-            var diff = _sum - 100;
-            if (_sum != 0) result -= diff;
+            var diff = sum - 100;
+            if (sum != 0) result -= diff;
             ResetComputedSum();
         }
 #if DEBUG

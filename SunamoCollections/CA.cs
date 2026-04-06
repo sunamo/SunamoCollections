@@ -1,30 +1,60 @@
 namespace SunamoCollections;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+/// <summary>
+/// Collection utility class providing common operations on lists, arrays, and enumerables.
+/// </summary>
 public partial class CA
 {
+    /// <summary>
+    /// Counts occurrences of every line in the list.
+    /// </summary>
+    /// <param name="list">The list of strings to analyze.</param>
+    /// <returns>A dictionary mapping each line to its occurrence count.</returns>
     public static Dictionary<string, int> OccurenceOfEveryLine(List<string> list)
     {
         throw new NotImplementedException();
     }
 
+    /// <summary>
+    /// Returns the last item from a string split by the specified value.
+    /// </summary>
+    /// <param name="text">The input string.</param>
+    /// <param name="value">The delimiter value.</param>
+    /// <returns>The last item after splitting.</returns>
     public static string LastItem(string text, string value)
     {
         throw new NotImplementedException();
     }
 
+    /// <summary>
+    /// Fills a list with the specified number of copies of the init value.
+    /// </summary>
+    /// <param name="list">The list to fill.</param>
+    /// <param name="count">The number of elements to add.</param>
+    /// <param name="initWith">The value to fill with.</param>
     public static void InitFillWith(List<string> list, int count, string initWith = "")
     {
         InitFillWith<string>(list, count, initWith);
     }
 
+    /// <summary>
+    /// Fills a list with the specified number of copies of the init value.
+    /// </summary>
+    /// <typeparam name="T">The type of elements in the list.</typeparam>
+    /// <param name="list">The list to fill.</param>
+    /// <param name="count">The number of elements to add.</param>
+    /// <param name="initWith">The value to fill with.</param>
     public static void InitFillWith<T>(List<T> list, int count, T initWith)
     {
         for (var i = 0; i < count; i++)
             list.Add(initWith);
     }
 
+    /// <summary>
+    /// Counts elements in an enumerable.
+    /// </summary>
+    /// <param name="enumerable">The enumerable to count.</param>
+    /// <returns>The number of elements, or 0 if null.</returns>
     public static int Count(IEnumerable enumerable)
     {
         if (enumerable == null)
@@ -39,6 +69,11 @@ public partial class CA
         return count;
     }
 
+    /// <summary>
+    /// Trims all strings in the list. Direct edit.
+    /// </summary>
+    /// <param name="list">The list of strings to trim.</param>
+    /// <returns>The same list with trimmed elements.</returns>
     public static List<string> Trim(List<string> list)
     {
         for (var i = 0; i < list.Count; i++)
@@ -46,6 +81,10 @@ public partial class CA
         return list;
     }
 
+    /// <summary>
+    /// Trims only whitespace-only lines in the list.
+    /// </summary>
+    /// <param name="list">The list of strings to process.</param>
     [Obsolete("Do the same as Trim")]
     public static void TrimWhereIsOnlyWhitespace(List<string> list)
     {
@@ -57,6 +96,11 @@ public partial class CA
         }
     }
 
+    /// <summary>
+    /// Returns the first element of an enumerable as a string, or null.
+    /// </summary>
+    /// <param name="enumerable">The enumerable to get the first element from.</param>
+    /// <returns>The string representation of the first element, or null if empty.</returns>
     public static string? First(IEnumerable enumerable)
     {
         foreach (var item in enumerable)
@@ -64,6 +108,11 @@ public partial class CA
         return null;
     }
 
+    /// <summary>
+    /// Checks whether an enumerable contains a single element that is a List of strings or objects.
+    /// </summary>
+    /// <param name="enumerable">The enumerable to check.</param>
+    /// <returns>True if the enumerable wraps a List of string or object.</returns>
     public static bool IsListStringWrappedInArray(IEnumerable enumerable)
     {
         var first = First(enumerable);
@@ -72,19 +121,29 @@ public partial class CA
         return false;
     }
 
-    public static List<string> WrapWithIfFunc(Func<string, string, bool, bool> predicate, bool invert, string mustContains, string wrapWith, params string[] array)
+    /// <summary>
+    /// Wraps elements with a specified string if a predicate matches.
+    /// </summary>
+    /// <param name="predicate">The predicate function to test each element.</param>
+    /// <param name="isInverted">Whether to invert the predicate result.</param>
+    /// <param name="mustContains">The string that must be contained.</param>
+    /// <param name="wrapWith">The wrapper string.</param>
+    /// <param name="array">The array of strings to process.</param>
+    /// <returns>A list of processed strings.</returns>
+    public static List<string> WrapWithIfFunc(Func<string, string, bool, bool> predicate, bool isInverted, string mustContains, string wrapWith, params string[] array)
     {
         for (var i = 0; i < array.Length; i++)
-            if (predicate.Invoke(array[i], mustContains, invert))
+            if (predicate.Invoke(array[i], mustContains, isInverted))
                 array[i] = wrapWith + array[i] + wrapWith;
         return array.ToList();
     }
 
     /// <summary>
-    ///     Return null if A1 will be null
+    /// Gets the element at the specified index, or null if the list is null or the index is out of range.
     /// </summary>
-    /// <param name = "list"></param>
-    /// <param name = "index"></param>
+    /// <param name="list">The list to get the element from.</param>
+    /// <param name="index">The index of the element.</param>
+    /// <returns>The element at the index, or null.</returns>
     public static object? GetIndex(List<string> list, int index)
     {
         if (list == null)
@@ -95,75 +154,22 @@ public partial class CA
     }
 
     /// <summary>
-    ///     ToListString2 - simply for all items call ToString()
-    ///     ToListString - working with Type of every element
-    ///     Just 3 cases of working:
-    ///     IList&lt;char&gt; =&gt; string
-    ///     IList&lt;string&gt; =&gt; List&lt;string&gt;
-    ///     IList =&gt; List&lt;string&gt;
+    /// Checks whether an array has the specified index.
     /// </summary>
-    /// <param name = "enumerable"></param>
-     //[ObjectParamsObsoleteAttribute]
-    //public static List<string> ToListStringIList(IList enumerable2)
-    //{
-    //    return null;
-    //    //List<string> result = new List<string>();
-    //    //if (enumerable2.GetType() != typeof(string))
-    //    //{
-    //    //    foreach (object item in enumerable2)
-    //    //    {
-    //    //        Type temp = item.GetType();
-    //    //        // !(item is string)  - not working
-    //    //        if (RH.IsOrIsDeriveFromBaseClass(temp, Types.TIEnumerable))
-    //    //        {
-    //    //            // zde to musí být IEnumerable protože spousta věcí z .netu může takhle přijít (např. string)
-    //    //            var enumerable = (System.Collections.IEnumerable)item;
-    //    //            Type Type = enumerable.GetType();
-    //    //            bool isEnumerableChar = RH.IsOrIsDeriveFromBaseClass(Type, typeof(IList<char>));
-    //    //            bool isEnumerableString = RH.IsOrIsDeriveFromBaseClass(Type, typeof(IList<string>));
-    //    //            if (Type == typeof(string))
-    //    //            {
-    //    //                result.Add(string.Join(string.Empty, enumerable));
-    //    //            }
-    //    //            else if (isEnumerableChar)
-    //    //            {
-    //    //                // IList<char> => string
-    //    //                //enumerable2 is not string, then I can add all to List
-    //    //                result.AddRange(ToListStringIEnumerable2(enumerable));
-    //    //            }
-    //    //            else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IList<string>)
-    //    //            {
-    //    //                // IList<string> => List<string>
-    //    //                result.AddRange(((IList<string>)enumerable.FirstOrNull()).ToList());
-    //    //            }
-    //    //            else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IList &&
-    //    //                     !isEnumerableChar && !isEnumerableString)
-    //    //            {
-    //    //                result.AddRange(ToListStringIEnumerable2((IList)enumerable.FirstOrNull()));
-    //    //            }
-    //    //            else
-    //    //            {
-    //    //                // IList => List<string>
-    //    //                result.AddRange(ToListStringIEnumerable2(enumerable));
-    //    //            }
-    //    //        }
-    //    //        else
-    //    //        {
-    //    //            result.Add(item.ToString());
-    //    //        }
-    //    //    }
-    //    //}
-    //    //else
-    //    //{
-    //    //    result.Add(enumerable2.ToString());
-    //    //}
-    //    //return result;
-    //}
+    /// <param name="index">The index to check.</param>
+    /// <param name="array">The array to check against.</param>
+    /// <returns>True if the index is valid.</returns>
     public static bool HasIndex(int index, Array array)
     {
         return array.Length > index;
     }
 
+    /// <summary>
+    /// Checks whether a list has the specified index.
+    /// </summary>
+    /// <param name="index">The index to check.</param>
+    /// <param name="list">The list to check against.</param>
+    /// <returns>True if the index is valid.</returns>
     public static bool HasIndex(int index, IList list)
     {
         if (index < 0)
@@ -173,6 +179,12 @@ public partial class CA
         return false;
     }
 
+    /// <summary>
+    /// Removes an element and re-inserts it at the beginning of the list.
+    /// </summary>
+    /// <param name="list">The list to modify.</param>
+    /// <param name="value">The value to move to the front.</param>
+    /// <returns>True if the value was found and moved.</returns>
     public static bool RemoveAndLeading(List<string> list, string value)
     {
         var index = list.IndexOf(value);
@@ -186,12 +198,21 @@ public partial class CA
         return false;
     }
 
+    /// <summary>
+    /// Replaces sequences of two or more empty lines with a single empty line.
+    /// </summary>
+    /// <param name="text">The input text.</param>
+    /// <returns>The text with collapsed empty lines.</returns>
     public static string DoubleOrMoreMultiLinesToSingle(string text)
     {
         DoubleOrMoreMultiLinesToSingle(ref text);
         return text;
     }
 
+    /// <summary>
+    /// Removes null, empty, and whitespace-only strings from the list. Direct edit.
+    /// </summary>
+    /// <param name="list">The list to clean.</param>
     public static void RemoveNullEmptyWs(List<string> list)
     {
         for (var i = list.Count - 1; i >= 0; i--)
@@ -200,9 +221,10 @@ public partial class CA
     }
 
     /// <summary>
-    ///     Return true if A1 is null or have zero elements
+    /// Checks whether the list is null or has zero elements.
     /// </summary>
-    /// <param name = "list"></param>
+    /// <param name="list">The list to check.</param>
+    /// <returns>True if null or empty.</returns>
     public static bool IsEmptyOrNull(IList list)
     {
         if (list == null)
@@ -213,13 +235,15 @@ public partial class CA
     }
 
     /// <summary>
-    ///     Pro vyssi vykon uklada primo do zdrojoveho pole, pokud neni A2
+    /// Converts all strings in the list to lowercase. Stores directly in the source list for performance unless a new array is requested.
     /// </summary>
-    /// <param name = "list"></param>
-    public static List<string> ToLower(List<string> list, bool createNewArray = false)
+    /// <param name="list">The list to convert.</param>
+    /// <param name="isCreatingNewArray">Whether to create a new list instead of modifying the original.</param>
+    /// <returns>The list with lowercased elements.</returns>
+    public static List<string> ToLower(List<string> list, bool isCreatingNewArray = false)
     {
         var result = list;
-        if (createNewArray)
+        if (isCreatingNewArray)
         {
             result = new List<string>(list.Count);
             InitFillWith(result, list.Count);
@@ -230,6 +254,10 @@ public partial class CA
         return result;
     }
 
+    /// <summary>
+    /// Replaces sequences of two or more empty lines with a single empty line. Direct edit by reference.
+    /// </summary>
+    /// <param name="text">The text to process.</param>
     public static void DoubleOrMoreMultiLinesToSingle(ref string text)
     {
         text = Regex.Replace(text, @"(\r?\n\s*){2,}", Environment.NewLine + Environment.NewLine);

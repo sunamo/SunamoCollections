@@ -1,7 +1,8 @@
 namespace SunamoCollections._sunamo;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+/// <summary>
+/// Service providing predefined lists of letter and digit characters.
+/// </summary>
 internal class LetterAndDigitCharService
 {
     internal List<char>? AllCharsWithoutSpecial = null;

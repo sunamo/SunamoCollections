@@ -1,30 +1,31 @@
 namespace SunamoCollections._sunamo;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+/// <summary>
+/// Service providing predefined lists of special characters.
+/// </summary>
 internal class SpecialCharsService
 {
     internal readonly List<char> SpecialChars = new(new[]
-        { excl, commat, num, dollar, percnt, Hat, amp, ast, quest, lowbar, tilda });
+        { excl, commat, num, dollar, percnt, hat, amp, ast, quest, lowbar, tilda });
     internal readonly List<char> SpecialCharsExtended = new(new[]
     {
-        lq, rq, dash, la, ra,
-        comma, period, colon, apos, rpar, sol, lt, gt, lcub, rcub, lsqb, verbar, semi, plus, rsqb,
+        leftQuote, rightQuote, dash, leftApostrophe, rightApostrophe,
+        comma, period, colon, apos, rightParen, sol, lt, gt, leftCurly, rightCurly, leftSquare, verbar, semi, plus, rightSquare,
         ndash, slash
     });
     /// <summary>
-    ///     Used in enigma
+    /// Used in enigma.
     /// </summary>
     internal readonly List<char>? SpecialCharsAll = null;
     internal readonly List<char> SpecialCharsWhite = new(new[] { space });
     internal readonly List<char> SpecialCharsNotEnigma = new(new[] { space160, copy });
-    private const char la = '‘';
-    private const char ra = '’';
+    private const char leftApostrophe = '\u2018';
+    private const char rightApostrophe = '\u2019';
     private const char comma = ',';
     private const char space = ' ';
     private static char space160 = (char)160;
     private const char dollar = '$';
-    private const char Hat = '^';
+    private const char hat = '^';
     private const char ast = '*';
     private const char quest = '?';
     private const char tilda = '~';
@@ -32,62 +33,26 @@ internal class SpecialCharsService
     private const char colon = ':';
     private const char excl = '!';
     private const char apos = '\'';
-    private const char rpar = ')';
-    private const char lpar = '(';
+    private const char rightParen = ')';
     private const char sol = '/';
     private const char lowbar = '_';
     private const char lt = '<';
-    /// <summary>
-    ///     skip in SpecialCharsExtended - already as equal
-    /// </summary>
-    private const char equals = '=';
     private const char gt = '>';
     private const char amp = '&';
-    private const char lcub = '{';
-    private const char rcub = '}';
-    private const char lsqb = '[';
+    private const char leftCurly = '{';
+    private const char rightCurly = '}';
+    private const char leftSquare = '[';
     private const char verbar = '|';
     private const char semi = ';';
     private const char commat = '@';
     private const char plus = '+';
-    private const char rsqb = ']';
+    private const char rightSquare = ']';
     private const char num = '#';
     private const char percnt = '%';
-    private const char ndash = '–';
-    private const char copy = '©';
-    #region MyRegion
-    private const char lq = '“';
-    private const char rq = '”';
-    #region Generic chars
-    private const char zero = '0';
-    #endregion
-    #region Names here must be the same as in Consts
-    private const char modulo = '%';
+    private const char ndash = '\u2013';
+    private const char copy = '\u00A9';
+    private const char leftQuote = '\u201C';
+    private const char rightQuote = '\u201D';
     private const char dash = '-';
-    #endregion
-    private const char tab = '\t';
-    private const char nl = '\n';
-    private const char cr = '\r';
-    private const char asterisk = '*';
-    private const char apostrophe = '\'';
-    private const char sc = ';';
-    /// <summary>
-    ///     quotation marks
-    /// </summary>
-    private const char qm = '"';
-    /// <summary>
-    ///     Question
-    /// </summary>
-    private const char q = '?';
-    /// <summary>
-    ///     Left bracket
-    /// </summary>
-    private const char lb = '(';
-    private const char rb = ')';
     private const char slash = '/';
-    /// <summary>
-    ///     backspace
-    /// </summary>
-    private const char backspace = '\b';
-    #endregion
 }

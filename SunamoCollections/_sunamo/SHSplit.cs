@@ -1,7 +1,8 @@
 namespace SunamoCollections._sunamo;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+/// <summary>
+/// String helper for splitting operations.
+/// </summary>
 internal class SHSplit
 {
     internal static List<string> SplitNone(string text, params string[] delimiters)

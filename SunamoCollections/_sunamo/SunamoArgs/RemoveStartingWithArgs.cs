@@ -1,13 +1,17 @@
 namespace SunamoCollections._sunamo.SunamoArgs;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+/// <summary>
+/// Arguments for the RemoveStartingWith operation.
+/// </summary>
 internal class RemoveStartingWithArgs
 {
     /// <summary>
-    ///     Original
+    /// Gets or sets whether to trim elements before finding matches.
     /// </summary>
     internal bool TrimBeforeFinding { get; set; } = false;
 
+    /// <summary>
+    /// Gets or sets whether the comparison is case-sensitive.
+    /// </summary>
     internal bool CaseSensitive { get; set; } = true;
 }

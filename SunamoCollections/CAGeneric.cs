@@ -1,18 +1,16 @@
 namespace SunamoCollections;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 /// <summary>
-/// V samostatném souboru kvůli &lt;T&gt;
-/// Do CAG to nejde, musel bych upravovat i ty v _sunamo všude
+/// Generic collection utility methods in a separate file due to generic type parameters.
 /// </summary>
 partial class CA
 {
     /// <summary>
-    ///     better is use first or default, because here I also have to use default(T)
+    /// Returns the first element of the list, or default if the list is empty.
     /// </summary>
-    /// <typeparam name = "T"></typeparam>
-    /// <param name = "List"></param>
+    /// <typeparam name="T">The type of elements in the list.</typeparam>
+    /// <param name="list">The list to get the first element from.</param>
+    /// <returns>The first element, or default.</returns>
     public static T? FirstOrNull<T>(List<T> list)
     {
         if (list.Count > 0)
@@ -20,6 +18,13 @@ partial class CA
         return default;
     }
 
+    /// <summary>
+    /// Divides a list into groups of the specified size. The list count must be evenly divisible by the group size.
+    /// </summary>
+    /// <typeparam name="T">The type of elements in the list.</typeparam>
+    /// <param name="list">The list to divide.</param>
+    /// <param name="groupSize">The number of elements per group.</param>
+    /// <returns>A result containing the divided groups or an exception message.</returns>
     public static ResultWithExceptionCollections<List<List<T>>> DivideBy<T>(List<T> list, int groupSize)
     {
         if (list.Count % groupSize != 0)
@@ -42,6 +47,13 @@ partial class CA
         return new ResultWithExceptionCollections<List<List<T>>>(result);
     }
 
+    /// <summary>
+    /// Divides a list into parts based on a percentage per part.
+    /// </summary>
+    /// <typeparam name="T">The type of elements in the list.</typeparam>
+    /// <param name="list">The list to divide.</param>
+    /// <param name="percentPerPart">The percentage each part should contain.</param>
+    /// <returns>A list of divided parts.</returns>
     public static List<List<T>> DivideByPercent<T>(List<T> list, int percentPerPart)
     {
         var parts = 100 / percentPerPart;
@@ -67,20 +79,38 @@ partial class CA
         return new List<T>(tempArray);
     }
 
+    /// <summary>
+    /// Fills a list with the specified number of default values.
+    /// </summary>
+    /// <typeparam name="T">The type of elements.</typeparam>
+    /// <param name="list">The list to fill.</param>
+    /// <param name="count">The number of default elements to add.</param>
     public static void InitFillWith<T>(List<T> list, int count)
     {
         for (var i = 0; i < count; i++)
             list.Add(default!);
     }
 
+    /// <summary>
+    /// Removes all null (default) elements from the list.
+    /// </summary>
+    /// <typeparam name="T">The type of elements.</typeparam>
+    /// <param name="list">The list to clean.</param>
     public static void RemoveNull<T>(List<T> list)
     {
-        var def = default(T);
+        var defaultValue = default(T);
         for (var i = list.Count - 1; i >= 0; i--)
-            if (EqualityComparer<T>.Default.Equals(def, list[i]))
+            if (EqualityComparer<T>.Default.Equals(defaultValue, list[i]))
                 list.RemoveAt(i);
     }
 
+    /// <summary>
+    /// Replaces null elements with the specified empty value.
+    /// </summary>
+    /// <typeparam name="T">The type of elements.</typeparam>
+    /// <param name="list">The list to process.</param>
+    /// <param name="empty">The value to replace null with.</param>
+    /// <returns>The processed list.</returns>
     public static List<T> ReplaceNullFor<T>(List<T> list, T empty)
         where T : class
     {
@@ -90,6 +120,12 @@ partial class CA
         return list;
     }
 
+    /// <summary>
+    /// Creates a list from the array and removes default (null) values.
+    /// </summary>
+    /// <typeparam name="T">The type of elements.</typeparam>
+    /// <param name="array">The array of elements.</param>
+    /// <returns>A list without default values.</returns>
     public static List<T> ToArrayTCheckNull<T>(params T[] array)
     {
         var result = array.ToList();
@@ -97,6 +133,13 @@ partial class CA
         return result;
     }
 
+    /// <summary>
+    /// Returns the element at the specified index, or default if the index is out of range.
+    /// </summary>
+    /// <typeparam name="T">The type of elements.</typeparam>
+    /// <param name="array">The array to access.</param>
+    /// <param name="index">The index to get.</param>
+    /// <returns>The element at the index, or default.</returns>
     public static T? IndexOrNull<T>(T[] array, int index)
     {
         if (array.Length > index)
@@ -105,12 +148,13 @@ partial class CA
     }
 
     /// <summary>
-    ///     Index A2 a další bude již v poli A4
+    /// Splits an array at the specified index into two arrays. Elements at and after the split index go into the after array.
     /// </summary>
-    /// <param name = "array"></param>
-    /// <param name = "splitIndex"></param>
-    /// <param name = "before"></param>
-    /// <param name = "after"></param>
+    /// <typeparam name="T">The type of elements.</typeparam>
+    /// <param name="array">The array to split.</param>
+    /// <param name="splitIndex">The index at which to split.</param>
+    /// <param name="before">The elements before the split index.</param>
+    /// <param name="after">The elements at and after the split index.</param>
     public static void Split<T>(T[] array, int splitIndex, out T[] before, out T[] after)
     {
         before = new T[splitIndex];
@@ -124,10 +168,17 @@ partial class CA
             if (isBeforeSplit)
                 before[i] = array[i];
             else
-                after[i] = array[i - splitIndex];
+                after[i - splitIndex] = array[i];
         }
     }
 
+    /// <summary>
+    /// Splits a list into chunks of the specified size.
+    /// </summary>
+    /// <typeparam name="T">The type of elements.</typeparam>
+    /// <param name="list">The list to split.</param>
+    /// <param name="chunkSize">The size of each chunk.</param>
+    /// <returns>A list of chunks.</returns>
     public static List<List<T>> SplitList<T>(IList<T> list, int chunkSize = 30)
     {
         var result = new List<List<T>>();
@@ -136,6 +187,12 @@ partial class CA
         return result;
     }
 
+    /// <summary>
+    /// Removes trailing padding elements matching the specified value from the end of the list.
+    /// </summary>
+    /// <typeparam name="T">The type of elements.</typeparam>
+    /// <param name="list">The list to trim.</param>
+    /// <param name="value">The padding value to remove.</param>
     public static void RemovePadding<T>(List<T> list, T value)
     {
         for (var i = list.Count - 1; i >= 0; i--)
@@ -147,18 +204,12 @@ partial class CA
     }
 
     /// <summary>
-    ///     ContainsAnyFromElement - Contains string elements of list. return List&lt;string&gt;
-    ///     IsEqualToAnyElement - same as ContainsElement, only have switched elements. return bool
-    ///     IsEqualToAllElement - takes two generic list. return bool
-    ///     ContainsElement - at least one element must be equaled. generic. bool
-    ///     IsSomethingTheSame - only for string. as list.Contains. bool
-    ///     IsAllTheSame() - takes element and list.generic. bool
-    ///     IndexesWithValue() - element and list.generic. return list&lt;int&gt;
-    ///     ReturnWhichContainsIndexes() - takes two List or element and list. return list&lt;int&gt;
+    /// Checks if the list contains the specified element by equality comparison.
     /// </summary>
-    /// <typeparam name = "T"></typeparam>
-    /// <param name = "list"></param>
-    /// <param name = "element"></param>
+    /// <typeparam name="T">The type of elements.</typeparam>
+    /// <param name="list">The list to search.</param>
+    /// <param name="element">The element to look for.</param>
+    /// <returns>True if the element exists in the list.</returns>
     public static bool ContainsElement<T>(IList<T> list, T element)
     {
         if (list.Count() == 0)
@@ -170,24 +221,16 @@ partial class CA
     }
 
     /// <summary>
-    ///     element can be null, then will be added as default(T)
-    ///     If item is null, add instead it default(T)
-    ///     cant join from IList elements because there must be T2 for element's Type of collection
+    /// Converts an IList to a typed List, handling nested collections and char-to-string conversion.
     /// </summary>
-    /// <typeparam name = "T"></typeparam>
-    /// <param name = "list"></param>
+    /// <typeparam name="T">The target type.</typeparam>
+    /// <param name="list">The list to convert.</param>
+    /// <returns>A typed list.</returns>
     public static List<T> ToList<T>(IList list)
     {
-        // system array etc cant be casted
-        //var enumerableAsList = enumerable as IList<object>;
         var enumerableAsList = list as List<object>;
         var firstElementAsList = enumerableAsList?.FirstOrNull() as IList;
         List<T>? result = null;
-        //if (enumerable is IList<char>)
-        //{
-        //    result = new List<T>(1);
-        //    result.Add(SHJoin.JoinIList(string.Empty, enumerable));
-        //}
         var isEnumerableList = enumerableAsList != null;
         var isTargetTypeString = typeof(T) == Types.TString;
         var hasMultipleElements = firstElementAsList != null && firstElementAsList.Count > 1;
@@ -218,6 +261,12 @@ partial class CA
         return result!;
     }
 
+    /// <summary>
+    /// Checks if a single-element list wraps a List of string or object.
+    /// </summary>
+    /// <typeparam name="T">The type of elements.</typeparam>
+    /// <param name="list">The list to check.</param>
+    /// <returns>True if the list wraps a List of string or object.</returns>
     public static bool IsListStringWrappedInArray<T>(List<T> list)
     {
         var first = list.First()!.ToString();
@@ -227,10 +276,10 @@ partial class CA
     }
 
     /// <summary>
-    ///     Direct edit
+    /// Removes all default-valued elements from the list. Direct edit.
     /// </summary>
-    /// <typeparam name = "T"></typeparam>
-    /// <param name = "list"></param>
+    /// <typeparam name="T">The type of elements.</typeparam>
+    /// <param name="list">The list to clean.</param>
     public static void RemoveDefaultT<T>(List<T> list)
     {
         for (var i = list.Count - 1; i >= 0; i--)
@@ -239,10 +288,11 @@ partial class CA
     }
 
     /// <summary>
-    ///     Only for structs
+    /// Returns indices of elements that have null values. Only for structs.
     /// </summary>
-    /// <typeparam name = "T"></typeparam>
-    /// <param name = "list"></param>
+    /// <typeparam name="T">The struct type.</typeparam>
+    /// <param name="list">The list of nullable values.</param>
+    /// <returns>A list of indices with null values.</returns>
     public static List<int> IndexesWithNull<T>(List<T?> list)
         where T : struct
     {
@@ -256,40 +306,52 @@ partial class CA
         return nulled;
     }
 
-    public static List<T> JoinIList<T>(params IList<T>[] enumerable)
+    /// <summary>
+    /// Joins multiple IList collections into a single list.
+    /// </summary>
+    /// <typeparam name="T">The type of elements.</typeparam>
+    /// <param name="collections">The collections to join.</param>
+    /// <returns>A combined list.</returns>
+    public static List<T> JoinIList<T>(params IList<T>[] collections)
     {
         var result = new List<T>();
-        foreach (var item in enumerable)
-            foreach (var item2 in item)
-                result.Add(item2);
+        foreach (var collection in collections)
+            foreach (var element in collection)
+                result.Add(element);
         return result;
     }
 
     /// <summary>
-    ///     Simply calling SequenceEqual
+    /// Checks if two lists are equal by comparing elements in sequence.
     /// </summary>
-    /// <typeparam name = "T"></typeparam>
-    /// <param name = "firstList"></param>
-    /// <param name = "secondList"></param>
-    /// <returns></returns>
+    /// <typeparam name="T">The type of elements.</typeparam>
+    /// <param name="firstList">The first list.</param>
+    /// <param name="secondList">The second list.</param>
+    /// <returns>True if both lists have the same elements in the same order.</returns>
     public static bool IsTheSame<T>(IList<T> firstList, IList<T> secondList)
     {
         return firstList.SequenceEqual(secondList);
     }
 
-    public static List<T> JumbleUp<T>(List<T> items)
+    /// <summary>
+    /// Randomly shuffles elements in a list.
+    /// </summary>
+    /// <typeparam name="T">The type of elements.</typeparam>
+    /// <param name="list">The list to shuffle.</param>
+    /// <returns>The shuffled list.</returns>
+    public static List<T> JumbleUp<T>(List<T> list)
     {
-        var length = items.Count;
+        var length = list.Count;
         var random = new Random();
         for (var i = 0; i < length; ++i)
         {
             var index1 = random.Next() % length;
             var index2 = random.Next() % length;
-            var temp = items[index1];
-            items[index1] = items[index2];
-            items[index2] = temp;
+            var swapTemp = list[index1];
+            list[index1] = list[index2];
+            list[index2] = swapTemp;
         }
 
-        return items;
+        return list;
     }
 }

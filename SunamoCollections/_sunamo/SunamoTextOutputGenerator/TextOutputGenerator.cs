@@ -1,27 +1,19 @@
 namespace SunamoCollections._sunamo.SunamoTextOutputGenerator;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 /// <summary>
-///     In Comparing
+/// Text output generator used for formatting comparison results.
 /// </summary>
-internal class TextOutputGenerator //: ITextOutputGenerator
+internal class TextOutputGenerator
 {
-    // při převádění na nugety jsem to změnil na ITextBuilder StringBuilder = TextBuilder.Create();
-    // ale asi to byla blbost, teď mám v _sunamo Create() která je ale null místo abych použil ctor
-    // takže vracím nazpět.
-    //internal TextBuilder StringBuilder = new TextBuilder();
     internal StringBuilder StringBuilder = new();
 
-    //internal string prependEveryNoWhite
-    //{
-    //    get => StringBuilder.prependEveryNoWhite;
-    //    set => StringBuilder.prependEveryNoWhite = value;
-    //}
-
+    /// <summary>
+    /// Returns the generated text output.
+    /// </summary>
+    /// <returns>The text content.</returns>
     public override string ToString()
     {
-        var ts = StringBuilder.ToString();
-        return ts;
+        var result = StringBuilder.ToString();
+        return result;
     }
 }

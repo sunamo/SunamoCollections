@@ -1,32 +1,32 @@
 # SunamoCollections
 
-Utilities and helpers for various utility operations.
+A comprehensive .NET library providing utility methods for common collection operations including list manipulation, string processing, element searching, and data conversion.
 
 ## Overview
 
-SunamoCollections is part of the Sunamo package ecosystem, providing modular, platform-independent utilities for .NET development.
+SunamoCollections is part of the Sunamo package ecosystem, providing modular, platform-independent utilities for .NET development. It targets `net10.0`, `net9.0`, and `net8.0`.
 
 ## Main Components
 
-### Key Classes
+### Core Class: `CA`
 
-- **CANew**
-- **ResultWithExceptionCollections**
-- **RemoveEmptyLinesService**
-- **RemoveStartingWithArgsCA**
+The `CA` partial class provides a wide range of static utility methods organized across multiple files:
 
-### Key Methods
+- **Element operations**: `InitFillWith`, `Count`, `First`, `FirstOrNull`, `GetIndex`, `HasIndex`
+- **String transformations**: `Trim`, `ToLower`, `WrapWith`, `Prepend`, `AddSuffix`, `TrimEnd`, `TrimStart`
+- **Search and filtering**: `ContainsAnyFromElementBool`, `ReturnWhichContains`, `ReturnWhichContainsIndexes`, `StartWith`, `EndsWith`
+- **Removal operations**: `RemoveNullEmptyWs`, `RemoveStringsEmpty`, `RemoveWhichContains`, `RemoveWildcard`, `RemoveStartingWith`
+- **Comparison**: `CompareListDifferent`, `IsTheSame`, `IsAllTheSameString`, `HasDuplicates`
+- **Conversion**: `ToList<T>`, `ToListString`, `ToLong`, `ToShort`, `ToBool`, `ToObject`, `JoinBytesArray`
+- **Splitting and dividing**: `DivideBy`, `DivideByPercent`, `SplitList`, `Split`
 
-- `OccurenceOfEveryLine()`
-- `LastItem()`
-- `InitFillWith()`
-- `Count()`
-- `Trim()`
-- `ContainsAnyFromElementBool()`
-- `ContainsAnyFromElement()`
-- `ReturnWhichContainsIndexes()`
-- `ContainsAnyFromArray()`
-- `TwoDimensionParamsIntoOne()`
+### Additional Classes
+
+- **`CANew`** - Facade for newer collection utility methods
+- **`ResultWithExceptionCollections<T>`** - Result wrapper with optional exception information
+- **`RemoveEmptyLinesService`** - Service for removing empty lines from string lists
+- **`FromToCollections`** / **`FromToTSHCollections<T>`** - From-to range containers
+- **`ABLCA<T, U>`** - Pair of lists for comparison results
 
 ## Installation
 
@@ -34,25 +34,36 @@ SunamoCollections is part of the Sunamo package ecosystem, providing modular, pl
 dotnet add package SunamoCollections
 ```
 
+## Usage Examples
+
+```csharp
+// Initialize a list with default values
+var list = new List<string>();
+CA.InitFillWith(list, 10, "default");
+
+// Check for duplicates
+bool hasDuplicates = CA.HasDuplicates(myList);
+
+// Filter elements containing a term
+var matches = CA.ReturnWhichContains(lines, "searchTerm");
+
+// Divide a list into groups
+var groups = CA.DivideBy(items, 3);
+
+// Check if text contains any candidate
+bool found = CA.ContainsAnyFromElementBool("input text", candidates);
+```
+
 ## Dependencies
 
-- **Diacritics** (v4.0.17)
-- **Microsoft.NET.Test.Sdk** (v17.6.0)
-- **xunit** (v2.4.2)
-- **xunit.runner.visualstudio** (v2.4.5)
-- **coverlet.collector** (v6.0.0)
-- **Microsoft.Extensions.Logging.Abstractions** (latest)
+- **Diacritics** - Diacritic character handling
+- **Microsoft.Extensions.Logging.Abstractions** - Logging abstractions
 
 ## Package Information
 
 - **Package Name**: SunamoCollections
-- **Target Framework**: net9.0
-- **Category**: Platform-Independent NuGet Package
-- **Source Files**: 38
-
-## Related Packages
-
-This package is part of the Sunamo package ecosystem. For more information about related packages, visit the main repository.
+- **Target Frameworks**: net10.0, net9.0, net8.0
+- **License**: MIT
 
 ## License
 

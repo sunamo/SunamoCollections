@@ -1,7 +1,7 @@
 namespace SunamoCollections._sunamo.SunamoValues.Constants;
 
 /// <summary>
-///     Usage:
+/// Common application messages.
 /// </summary>
 internal class Messages
 {

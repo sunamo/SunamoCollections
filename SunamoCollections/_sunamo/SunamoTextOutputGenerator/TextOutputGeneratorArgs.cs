@@ -1,21 +1,37 @@
 namespace SunamoCollections._sunamo.SunamoTextOutputGenerator;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+/// <summary>
+/// Arguments for configuring text output generation.
+/// </summary>
 internal class TextOutputGeneratorArgs
 {
+    /// <summary>
+    /// Gets or sets the delimiter between entries.
+    /// </summary>
     internal string Delimiter { get; set; } = Environment.NewLine;
-    internal bool HeaderWrappedEmptyLines { get; set; } = true;
-    internal bool InsertCount { get; set; }
+
+    /// <summary>
+    /// Gets or sets whether headers are wrapped with empty lines.
+    /// </summary>
+    internal bool IsHeaderWrappedWithEmptyLines { get; set; } = true;
+
+    /// <summary>
+    /// Gets or sets whether to insert the count in the output.
+    /// </summary>
+    internal bool IsInsertingCount { get; set; }
+
+    /// <summary>
+    /// Gets or sets the text displayed when there are no entries.
+    /// </summary>
     internal string WhenNoEntries { get; set; } = "No entries";
 
     internal TextOutputGeneratorArgs()
     {
     }
 
-    internal TextOutputGeneratorArgs(bool headerWrappedEmptyLines, bool insertCount)
+    internal TextOutputGeneratorArgs(bool isHeaderWrappedWithEmptyLines, bool isInsertingCount)
     {
-        this.HeaderWrappedEmptyLines = headerWrappedEmptyLines;
-        this.InsertCount = insertCount;
+        IsHeaderWrappedWithEmptyLines = isHeaderWrappedWithEmptyLines;
+        IsInsertingCount = isInsertingCount;
     }
 }

@@ -1,16 +1,15 @@
 namespace SunamoCollections;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 /// <summary>
-///     všechny co jsou params string[] nebo params T[]
+/// Methods using params string[] or params T[] patterns.
 /// </summary>
 public partial class CA
 {
     /// <summary>
-    ///     Dont use
+    /// Flattens two-dimensional params into a single list. Do not use directly.
     /// </summary>
-    /// <param name="parameters"></param>
+    /// <param name="parameters">The parameters to flatten.</param>
+    /// <returns>A flattened list of objects.</returns>
     [ObjectParamsObsolete]
     public static List<object> TwoDimensionParamsIntoOne(params object[] parameters)
     {
@@ -18,11 +17,12 @@ public partial class CA
     }
 
     /// <summary>
-    ///     Join elements of inner IList to single List
-    ///     T is object, not IList
-    ///     Multi deep array is not suppported
-    ///     For convert into string use ListToString
+    /// Flattens elements of inner IList collections into a single typed list.
+    /// Multi-deep arrays are not supported.
     /// </summary>
+    /// <typeparam name="T">The type of elements.</typeparam>
+    /// <param name="parameters">The parameters to flatten.</param>
+    /// <returns>A flattened typed list.</returns>
     [ObjectParamsObsolete]
     public static List<T> TwoDimensionParamsIntoOne<T>(params T[] parameters)
     {
@@ -32,8 +32,8 @@ public partial class CA
             if (item == null) continue;
 
             if (item is IList && item.GetType() != typeof(string))
-                foreach (T r in (IList)item)
-                    result.Add(r);
+                foreach (T element in (IList)item)
+                    result.Add(element);
             else
                 result.Add(item);
         }
@@ -41,12 +41,11 @@ public partial class CA
         return result;
     }
 
-    ///// <summary>
-    ///// Snažit se používat absolutně co nejméně protože všude by měl být specifikovaný generický typ.
-    ///// Tedy žádné IEnumerable nebo IList by se neměli v app vyskytovat.
-    ///// </summary>
-    ///// <param name="enumerable"></param>
-    ///// <returns></returns>
+    /// <summary>
+    /// Converts params objects into a list of objects.
+    /// </summary>
+    /// <param name="enumerable">The objects to convert.</param>
+    /// <returns>A list of objects.</returns>
     private static List<object> ToListMoreObject(params object[] enumerable)
     {
         var result = new List<object>();
@@ -55,14 +54,4 @@ public partial class CA
 
         return result;
     }
-
-    ///// <summary>
-    /////     ToListString2 - simply for all items call ToString()
-    /////     ToListString - working with Type of every element
-    ///// </summary>
-    ///// <param name="enumerable"></param>
-    //public static List<string> ToListStringMoreObject(params object[] enumerable)
-    //{
-    //    return ToListStringIList(enumerable);
-    //}
 }
