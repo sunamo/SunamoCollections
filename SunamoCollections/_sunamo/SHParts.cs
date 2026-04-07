@@ -5,6 +5,13 @@ namespace SunamoCollections._sunamo;
 /// </summary>
 internal class SHParts
 {
+    /// <summary>
+    /// Removes all characters after the first character matching the predicate (excluding allowed characters).
+    /// </summary>
+    /// <param name="text">The text to process.</param>
+    /// <param name="predicate">The predicate to test each character.</param>
+    /// <param name="canBe">Characters that are allowed even if they match the predicate.</param>
+    /// <returns>The text truncated before the first matching character.</returns>
     internal static string RemoveAfterFirstFunc(string text, Func<char, bool> predicate, params char[] canBe)
     {
         text = text.Trim();

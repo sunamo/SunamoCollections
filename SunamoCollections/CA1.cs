@@ -215,11 +215,11 @@ public partial class CA
     /// Appends a suffix to each element in the list. Direct edit.
     /// </summary>
     /// <param name="list">The list to modify.</param>
-    /// <param name="value">The suffix to append.</param>
-    public static void AddSuffix(List<string> list, string value)
+    /// <param name="suffix">The suffix to append.</param>
+    public static void AddSuffix(List<string> list, string suffix)
     {
         for (var i = 0; i < list.Count; i++)
-            list[i] = list[i] + value;
+            list[i] = list[i] + suffix;
     }
 
     /// <summary>

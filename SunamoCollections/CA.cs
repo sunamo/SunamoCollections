@@ -16,12 +16,12 @@ public partial class CA
     }
 
     /// <summary>
-    /// Returns the last item from a string split by the specified value.
+    /// Returns the last item from a string split by the specified delimiter.
     /// </summary>
     /// <param name="text">The input string.</param>
-    /// <param name="value">The delimiter value.</param>
+    /// <param name="delimiter">The delimiter to split by.</param>
     /// <returns>The last item after splitting.</returns>
-    public static string LastItem(string text, string value)
+    public static string LastItem(string text, string delimiter)
     {
         throw new NotImplementedException();
     }

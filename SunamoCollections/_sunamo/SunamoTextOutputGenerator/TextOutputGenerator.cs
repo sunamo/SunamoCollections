@@ -5,6 +5,7 @@ namespace SunamoCollections._sunamo.SunamoTextOutputGenerator;
 /// </summary>
 internal class TextOutputGenerator
 {
+    /// <summary>The underlying StringBuilder used for text generation.</summary>
     internal StringBuilder StringBuilder = new();
 
     /// <summary>

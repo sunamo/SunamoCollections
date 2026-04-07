@@ -90,16 +90,16 @@ public partial class CA
     }
 
     /// <summary>
-    /// Counts elements in the list that end with the specified value.
+    /// Counts elements in the list that end with the specified suffix.
     /// </summary>
     /// <param name="list">The list to check.</param>
-    /// <param name="value">The suffix to match.</param>
+    /// <param name="suffix">The suffix to match.</param>
     /// <returns>The number of matching elements.</returns>
-    public static int CountOfEnding(List<string> list, string value)
+    public static int CountOfEnding(List<string> list, string suffix)
     {
         var count = 0;
         for (var i = 0; i < list.Count; i++)
-            if (list[i].EndsWith(value))
+            if (list[i].EndsWith(suffix))
                 count++;
         return count;
     }

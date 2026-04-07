@@ -5,11 +5,22 @@ namespace SunamoCollections._sunamo.SunamoExceptions;
 /// </summary>
 internal sealed partial class Exceptions
 {
+    /// <summary>
+    /// Formats a prefix string for exception messages.
+    /// </summary>
+    /// <param name="before">The prefix text.</param>
+    /// <returns>The formatted prefix with colon separator, or empty string if blank.</returns>
     internal static string CheckBefore(string before)
     {
         return string.IsNullOrWhiteSpace(before) ? string.Empty : before + ": ";
     }
 
+    /// <summary>
+    /// Extracts text from an exception and its inner exceptions.
+    /// </summary>
+    /// <param name="exception">The exception to extract text from.</param>
+    /// <param name="isIncludingInner">Whether to include inner exception messages.</param>
+    /// <returns>A formatted string containing all exception messages.</returns>
     internal static string TextOfExceptions(Exception exception, bool isIncludingInner = true)
     {
         if (exception == null) return string.Empty;
@@ -26,6 +37,11 @@ internal sealed partial class Exceptions
         return result;
     }
 
+    /// <summary>
+    /// Gets the calling type name, method name, and full stack trace from the current call stack.
+    /// </summary>
+    /// <param name="isFillingFirstTwo">Whether to populate the type and method name from the first non-ThrowEx frame.</param>
+    /// <returns>A tuple of (typeName, methodName, stackTraceText).</returns>
     internal static Tuple<string, string, string> PlaceOfException(bool isFillingFirstTwo = true)
     {
         StackTrace stackTrace = new();
@@ -54,6 +70,12 @@ internal sealed partial class Exceptions
         return new Tuple<string, string, string>(typeName, methodName, string.Join(Environment.NewLine, lines));
     }
 
+    /// <summary>
+    /// Extracts the type name and method name from a stack trace line.
+    /// </summary>
+    /// <param name="stackTraceLine">The stack trace line to parse.</param>
+    /// <param name="typeName">The extracted type name.</param>
+    /// <param name="methodName">The extracted method name.</param>
     internal static void TypeAndMethodName(string stackTraceLine, out string typeName, out string methodName)
     {
         var afterAt = stackTraceLine.Split("at ")[1].Trim();
@@ -64,6 +86,11 @@ internal sealed partial class Exceptions
         typeName = string.Join(".", parts);
     }
 
+    /// <summary>
+    /// Gets the name of the calling method at the specified stack depth.
+    /// </summary>
+    /// <param name="depth">The stack frame depth.</param>
+    /// <returns>The method name, or an error message if not available.</returns>
     internal static string CallingMethod(int depth = 1)
     {
         StackTrace stackTrace = new();
@@ -76,24 +103,49 @@ internal sealed partial class Exceptions
         return methodName;
     }
 
+    /// <summary>StringBuilder for collecting additional inner info during exception handling.</summary>
     internal readonly static StringBuilder AdditionalInfoInnerStringBuilder = new();
+    /// <summary>StringBuilder for collecting additional info during exception handling.</summary>
     internal readonly static StringBuilder AdditionalInfoStringBuilder = new();
 
+    /// <summary>
+    /// Creates a divide-by-zero exception message.
+    /// </summary>
+    /// <param name="before">The calling context prefix.</param>
+    /// <returns>The formatted exception message.</returns>
     internal static string? DivideByZero(string before)
     {
         return CheckBefore(before) + " is dividing by zero.";
     }
 
+    /// <summary>
+    /// Creates a not-implemented-method exception message.
+    /// </summary>
+    /// <param name="before">The calling context prefix.</param>
+    /// <returns>The formatted exception message.</returns>
     internal static string? NotImplementedMethod(string before)
     {
         return CheckBefore(before) + "Not implemented method.";
     }
 
+    /// <summary>
+    /// Creates an is-null exception message if the variable is null.
+    /// </summary>
+    /// <param name="before">The calling context prefix.</param>
+    /// <param name="variableName">The name of the variable.</param>
+    /// <param name="variable">The variable to check.</param>
+    /// <returns>The formatted exception message, or null if the variable is not null.</returns>
     internal static string? IsNull(string before, string variableName, object? variable)
     {
         return variable == null ? CheckBefore(before) + variableName + " " + "is null" + "." : null;
     }
 
+    /// <summary>
+    /// Creates a not-implemented-case exception message.
+    /// </summary>
+    /// <param name="before">The calling context prefix.</param>
+    /// <param name="notImplementedName">The name or value of the unimplemented case.</param>
+    /// <returns>The formatted exception message.</returns>
     internal static string? NotImplementedCase(string before, object notImplementedName)
     {
         var forText = string.Empty;
@@ -109,6 +161,15 @@ internal sealed partial class Exceptions
         ".";
     }
 
+    /// <summary>
+    /// Creates a different-count-in-lists exception message if the counts differ.
+    /// </summary>
+    /// <param name="before">The calling context prefix.</param>
+    /// <param name="firstCollectionName">The name of the first collection.</param>
+    /// <param name="firstCollectionCount">The count of the first collection.</param>
+    /// <param name="secondCollectionName">The name of the second collection.</param>
+    /// <param name="secondCollectionCount">The count of the second collection.</param>
+    /// <returns>The formatted exception message, or null if counts are equal.</returns>
     internal static string? DifferentCountInLists(string before, string firstCollectionName, int firstCollectionCount, string secondCollectionName, int secondCollectionCount)
     {
         if (firstCollectionCount != secondCollectionCount)

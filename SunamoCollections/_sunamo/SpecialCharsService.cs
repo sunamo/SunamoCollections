@@ -23,7 +23,7 @@ internal class SpecialCharsService
     private const char rightApostrophe = '\u2019';
     private const char comma = ',';
     private const char space = ' ';
-    private static char space160 = (char)160;
+    private static readonly char space160 = (char)160;
     private const char dollar = '$';
     private const char hat = '^';
     private const char ast = '*';

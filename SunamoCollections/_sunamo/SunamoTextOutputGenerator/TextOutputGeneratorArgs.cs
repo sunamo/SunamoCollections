@@ -25,10 +25,18 @@ internal class TextOutputGeneratorArgs
     /// </summary>
     internal string WhenNoEntries { get; set; } = "No entries";
 
+    /// <summary>
+    /// Initializes a new instance with default values.
+    /// </summary>
     internal TextOutputGeneratorArgs()
     {
     }
 
+    /// <summary>
+    /// Initializes a new instance with the specified configuration.
+    /// </summary>
+    /// <param name="isHeaderWrappedWithEmptyLines">Whether headers are wrapped with empty lines.</param>
+    /// <param name="isInsertingCount">Whether to insert the count in the output.</param>
     internal TextOutputGeneratorArgs(bool isHeaderWrappedWithEmptyLines, bool isInsertingCount)
     {
         IsHeaderWrappedWithEmptyLines = isHeaderWrappedWithEmptyLines;

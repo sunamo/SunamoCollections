@@ -5,11 +5,20 @@ namespace SunamoCollections._sunamo;
 /// </summary>
 internal class SH
 {
+    /// <summary>
+    /// Checks whether the name matches the wildcard mask pattern.
+    /// </summary>
+    /// <param name="name">The string to test.</param>
+    /// <param name="mask">The wildcard pattern (supports ? and *).</param>
+    /// <returns>True if the name matches the mask.</returns>
     internal static bool MatchWildcard(string name, string mask)
     {
         return IsMatchRegex(name, mask, '?', '*');
     }
 
+    /// <summary>
+    /// Checks whether the input matches a wildcard mask by converting it to a regex pattern.
+    /// </summary>
     private static bool IsMatchRegex(string input, string mask, char singleWildcard, char multipleWildcard)
     {
         if (input == mask)

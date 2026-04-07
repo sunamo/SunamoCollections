@@ -5,6 +5,7 @@ namespace SunamoCollections._sunamo.SunamoPercentCalculator;
 /// </summary>
 internal class PercentCalculator
 {
+    /// <summary>Cached type reference for <see cref="PercentCalculator"/>.</summary>
     internal static Type PercentCalculatorType = typeof(PercentCalculator);
     private readonly double hundredPercent = 100d;
     private int sum;
@@ -14,6 +15,10 @@ internal class PercentCalculator
     /// </summary>
     internal double OnePercent { get; set; }
 
+    /// <summary>
+    /// Initializes a new instance with the specified overall sum as the base for calculations.
+    /// </summary>
+    /// <param name="overallSum">The total sum representing 100 percent.</param>
     internal PercentCalculator(double overallSum)
     {
         if (overallSum == 0) ThrowEx.DivideByZero();

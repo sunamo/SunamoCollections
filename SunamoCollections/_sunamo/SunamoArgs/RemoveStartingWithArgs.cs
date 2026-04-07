@@ -1,7 +1,7 @@
 namespace SunamoCollections._sunamo.SunamoArgs;
 
 /// <summary>
-/// Arguments for the RemoveStartingWith operation.
+/// Internal arguments for the RemoveStartingWith operation.
 /// </summary>
 internal class RemoveStartingWithArgs
 {

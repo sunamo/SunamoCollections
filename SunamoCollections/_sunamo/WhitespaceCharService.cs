@@ -5,7 +5,9 @@ namespace SunamoCollections._sunamo;
 /// </summary>
 internal class WhitespaceCharService
 {
+    /// <summary>List of whitespace characters derived from <see cref="WhiteSpacesCodes"/>.</summary>
     internal List<char>? WhiteSpaceChars = null;
+    /// <summary>Unicode code points representing whitespace characters.</summary>
     internal readonly List<int> WhiteSpacesCodes = new(new[]
     {
         9, 10, 11, 12, 13, 32, 133, 160, 5760, 6158, 8192, 8193, 8194, 8195, 8196, 8197, 8198, 8199, 8200, 8201, 8202,
