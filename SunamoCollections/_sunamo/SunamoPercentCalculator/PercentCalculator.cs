@@ -5,8 +5,6 @@ namespace SunamoCollections._sunamo.SunamoPercentCalculator;
 /// </summary>
 internal class PercentCalculator
 {
-    /// <summary>Cached type reference for <see cref="PercentCalculator"/>.</summary>
-    internal static Type PercentCalculatorType = typeof(PercentCalculator);
     private readonly double hundredPercent = 100d;
     private int sum;
 

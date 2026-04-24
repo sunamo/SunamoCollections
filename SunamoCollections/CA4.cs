@@ -201,8 +201,8 @@ public partial class CA
                 stringBuilder.AppendLine(trimmedLine);
             else
             {
-                WhitespaceCharService whiteSpaceChars = new WhitespaceCharService();
-                stringBuilder.AppendLine(trimmedLine.Split(whiteSpaceChars.WhiteSpaceChars!.ToArray())[0]);
+                WhitespaceCharService whitespaceCharService = new();
+                stringBuilder.AppendLine(trimmedLine.Split(whitespaceCharService.WhiteSpaceChars.ToArray())[0]);
             }
         }
 

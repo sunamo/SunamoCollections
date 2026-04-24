@@ -10,8 +10,8 @@ public partial class CA
     /// </summary>
     /// <param name="firstList">The first list to compare.</param>
     /// <param name="secondList">The second list to compare.</param>
-    /// <returns>An ABLCA where A contains elements only in the first list and B contains elements only in the second list.</returns>
-    public static ABLCA<string, string> CompareListDifferent(List<string> firstList, List<string> secondList)
+    /// <returns>An ABLCA where FirstGroup contains elements only in the first list and SecondGroup contains elements only in the second list.</returns>
+    public static ABLCA<string> CompareListDifferent(List<string> firstList, List<string> secondList)
     {
         var onlyInFirst = new List<string>();
         var onlyInSecond = new List<string>();
@@ -32,9 +32,9 @@ public partial class CA
                 onlyInFirst.Add(item);
         }
 
-        var result = new ABLCA<string, string>();
-        result.A = onlyInFirst;
-        result.B = onlyInSecond;
+        var result = new ABLCA<string>();
+        result.FirstGroup = onlyInFirst;
+        result.SecondGroup = onlyInSecond;
         return result;
     }
 
@@ -53,27 +53,28 @@ public partial class CA
     {
         var firstFolderCount = firstFolderFiles.Count;
         var secondFolderCount = secondFolderFiles.Count;
-        string result;
-        dynamic textOutput = null!;
+        var stringBuilder = new StringBuilder();
         var inBothCount = inBoth.Count;
         double totalCount = inBothCount + secondFolderCount;
         var percentCalculator = new PercentCalculator(totalCount);
         if (nameOfSolution != null)
-            textOutput.StringBuilder.AppendLine(nameOfSolution);
-        textOutput.StringBuilder.AppendLine("Both (" + inBothCount + "-" + percentCalculator.PercentFor(inBothCount, false) + "%):");
+            stringBuilder.AppendLine(nameOfSolution);
+        stringBuilder.AppendLine("Both (" + inBothCount + "-" + percentCalculator.PercentFor(inBothCount, false) + "%):");
         if (isIncludingFileNames)
-            textOutput.List(inBoth);
+            foreach (var item in inBoth)
+                stringBuilder.AppendLine(item);
         if (nameForFirstFolder != null)
-            textOutput.StringBuilder.AppendLine(nameForFirstFolder + "(" + firstFolderCount + "-" + percentCalculator.PercentFor(firstFolderCount, true) + "%):");
+            stringBuilder.AppendLine(nameForFirstFolder + "(" + firstFolderCount + "-" + percentCalculator.PercentFor(firstFolderCount, true) + "%):");
         if (isIncludingFileNames)
-            textOutput.List(firstFolderFiles);
+            foreach (var item in firstFolderFiles)
+                stringBuilder.AppendLine(item);
         if (nameForSecondFolder != null)
-            textOutput.StringBuilder.AppendLine(nameForSecondFolder + "(" + secondFolderCount + "-" + percentCalculator.PercentFor(secondFolderCount, true) + "%):");
+            stringBuilder.AppendLine(nameForSecondFolder + "(" + secondFolderCount + "-" + percentCalculator.PercentFor(secondFolderCount, true) + "%):");
         if (isIncludingFileNames)
-            textOutput.List(secondFolderFiles);
-        textOutput.SingleCharLine('*', 10);
-        result = textOutput.ToString();
-        return result;
+            foreach (var item in secondFolderFiles)
+                stringBuilder.AppendLine(item);
+        stringBuilder.AppendLine(new string('*', 10));
+        return stringBuilder.ToString();
     }
 
     /// <summary>

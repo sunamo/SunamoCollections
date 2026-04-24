@@ -110,8 +110,8 @@ public partial class CA
         List<string>? words = null;
         if (compareMethod == ContainsCompareMethodCA.SplitToWords || compareMethod == ContainsCompareMethodCA.Negations)
         {
-            WhitespaceCharService whitespaceChar = new();
-            words = SHSplit.SplitNone(term, whitespaceChar.WhiteSpaceChars!.ConvertAll(character => character.ToString()).ToArray());
+            WhitespaceCharService whitespaceCharService = new();
+            words = SHSplit.SplitNone(term, whitespaceCharService.WhiteSpaceChars.ConvertAll(character => character.ToString()).ToArray());
         }
 
         if (compareMethod == ContainsCompareMethodCA.WholeInput)
@@ -297,15 +297,4 @@ public partial class CA
         return false;
     }
 
-    /// <summary>
-    /// Prepends numbered elements to each element in the input list. Direct edit.
-    /// </summary>
-    /// <param name="numbered">The list of numbered prefixes.</param>
-    /// <param name="list">The list to prepend to.</param>
-    private static void Prepend(List<string> numbered, List<string> list)
-    {
-        ThrowEx.DifferentCountInLists("numbered", numbered.Count(), "list", list.Count);
-        for (var i = 0; i < list.Count; i++)
-            list[i] = numbered[i] + list[i];
-    }
 }

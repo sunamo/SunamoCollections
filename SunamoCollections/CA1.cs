@@ -54,15 +54,15 @@ public partial class CA
     /// Removes elements starting with the specified prefix. Direct edit.
     /// Prefix can start with '!' for negation (keeps only elements starting with the value).
     /// </summary>
-    /// <param name="start">The prefix to match (or '!' + prefix for negation).</param>
+    /// <param name="prefix">The prefix to match (or '!' + prefix for negation).</param>
     /// <param name="list">The list to filter.</param>
     /// <param name="args">Optional arguments for trimming and case sensitivity.</param>
-    public static void RemoveStartingWith(string start, List<string> list, RemoveStartingWithArgsCA? args = null)
+    public static void RemoveStartingWith(string prefix, List<string> list, RemoveStartingWithArgsCA? args = null)
     {
         if (args == null)
             args = new RemoveStartingWithArgsCA();
-        var (isNegated, extractedStart) = IsNegationTuple(start);
-        start = extractedStart;
+        var (isNegated, extractedPrefix) = IsNegationTuple(prefix);
+        prefix = extractedPrefix;
         for (var i = list.Count - 1; i >= 0; i--)
         {
             var currentElement = list[i];
@@ -70,12 +70,12 @@ public partial class CA
                 currentElement = currentElement.Trim();
             if (isNegated)
             {
-                if (!StartingWith(currentElement, start, args.CaseSensitive))
+                if (!StartingWith(currentElement, prefix, args.CaseSensitive))
                     list.RemoveAt(i);
             }
             else
             {
-                if (StartingWith(currentElement, start, args.CaseSensitive))
+                if (StartingWith(currentElement, prefix, args.CaseSensitive))
                     list.RemoveAt(i);
             }
         }
@@ -99,14 +99,14 @@ public partial class CA
     /// Checks if a string starts with the specified prefix.
     /// </summary>
     /// <param name="text">The string to check.</param>
-    /// <param name="start">The prefix to look for.</param>
+    /// <param name="prefix">The prefix to look for.</param>
     /// <param name="isCaseSensitive">Whether the comparison is case-sensitive.</param>
     /// <returns>True if the string starts with the prefix.</returns>
-    public static bool StartingWith(string text, string start, bool isCaseSensitive)
+    public static bool StartingWith(string text, string prefix, bool isCaseSensitive)
     {
         if (isCaseSensitive)
-            return text.StartsWith(start);
-        return text.ToLower().StartsWith(start.ToLower());
+            return text.StartsWith(prefix);
+        return text.ToLower().StartsWith(prefix.ToLower());
     }
 
     /// <summary>

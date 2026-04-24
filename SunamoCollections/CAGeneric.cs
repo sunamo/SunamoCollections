@@ -58,24 +58,24 @@ partial class CA
     {
         var parts = 100 / percentPerPart;
         var elementsPerPart = list.Count / parts;
-        var from = 0;
+        var startIndex = 0;
         var result = new List<List<T>>();
         for (var i = 0; i < parts; i++)
         {
-            result.Add(GetIndexesFromTo(list, from, elementsPerPart));
-            from += elementsPerPart;
+            result.Add(GetIndexesFromTo(list, startIndex, elementsPerPart));
+            startIndex += elementsPerPart;
         }
 
-        var hasRemainingElements = from != list.Count;
+        var hasRemainingElements = startIndex != list.Count;
         if (hasRemainingElements)
-            result.Add(GetIndexesFromTo(list, from, list.Count - result[0].Count * parts));
+            result.Add(GetIndexesFromTo(list, startIndex, list.Count - result[0].Count * parts));
         return result;
     }
 
-    private static List<T> GetIndexesFromTo<T>(List<T> list, int from, int countOfElements)
+    private static List<T> GetIndexesFromTo<T>(List<T> list, int startIndex, int elementCount)
     {
-        var tempArray = new T[countOfElements];
-        list.CopyTo(from, tempArray, 0, countOfElements);
+        var tempArray = new T[elementCount];
+        list.CopyTo(startIndex, tempArray, 0, elementCount);
         return new List<T>(tempArray);
     }
 

@@ -26,7 +26,7 @@ The `CA` partial class provides a wide range of static utility methods organized
 - **`ResultWithExceptionCollections<T>`** - Result wrapper with optional exception information
 - **`RemoveEmptyLinesService`** - Service for removing empty lines from string lists
 - **`FromToCollections`** / **`FromToTSHCollections<T>`** - From-to range containers
-- **`ABLCA<T, U>`** - Pair of lists for comparison results
+- **`ABLCA<T>`** - Pair of lists for comparison results
 
 ## Installation
 

@@ -5,25 +5,17 @@ namespace SunamoCollections._sunamo;
 /// </summary>
 internal class SpecialCharsService
 {
-    internal readonly List<char> SpecialChars = new(new[]
+    internal List<char> SpecialChars { get; } = new(new[]
         { excl, commat, num, dollar, percnt, hat, amp, ast, quest, lowbar, tilda });
-    internal readonly List<char> SpecialCharsExtended = new(new[]
+    internal List<char> SpecialCharsExtended { get; } = new(new[]
     {
         leftQuote, rightQuote, dash, leftApostrophe, rightApostrophe,
         comma, period, colon, apos, rightParen, sol, lt, gt, leftCurly, rightCurly, leftSquare, verbar, semi, plus, rightSquare,
         ndash, slash
     });
-    /// <summary>
-    /// Used in enigma.
-    /// </summary>
-    internal readonly List<char>? SpecialCharsAll = null;
-    internal readonly List<char> SpecialCharsWhite = new(new[] { space });
-    internal readonly List<char> SpecialCharsNotEnigma = new(new[] { space160, copy });
     private const char leftApostrophe = '\u2018';
     private const char rightApostrophe = '\u2019';
     private const char comma = ',';
-    private const char space = ' ';
-    private static readonly char space160 = (char)160;
     private const char dollar = '$';
     private const char hat = '^';
     private const char ast = '*';
@@ -50,7 +42,6 @@ internal class SpecialCharsService
     private const char num = '#';
     private const char percnt = '%';
     private const char ndash = '\u2013';
-    private const char copy = '\u00A9';
     private const char leftQuote = '\u201C';
     private const char rightQuote = '\u201D';
     private const char dash = '-';

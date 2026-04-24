@@ -103,11 +103,6 @@ internal sealed partial class Exceptions
         return methodName;
     }
 
-    /// <summary>StringBuilder for collecting additional inner info during exception handling.</summary>
-    internal readonly static StringBuilder AdditionalInfoInnerStringBuilder = new();
-    /// <summary>StringBuilder for collecting additional info during exception handling.</summary>
-    internal readonly static StringBuilder AdditionalInfoStringBuilder = new();
-
     /// <summary>
     /// Creates a divide-by-zero exception message.
     /// </summary>
