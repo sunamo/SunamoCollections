@@ -1,138 +1,106 @@
 namespace SunamoCollections;
 
-/// <summary>
-/// Shared methods for checking element containment and finding matching indices.
-/// </summary>
 public partial class CA
 {
-    /// <summary>
-    /// Checks if two lists of the same type have equal string representations for all elements.
-    /// </summary>
-    /// <typeparam name="T">The type of elements.</typeparam>
-    /// <param name="firstList">The first list.</param>
-    /// <param name="secondList">The second list.</param>
-    /// <returns>True if all elements have equal string representations.</returns>
-    public static bool IsAllTheSameString<T>(IList<T> firstList, IList<T> secondList)
+    public static bool IsAllTheSameString<T>(IList<T> l, IList<T> l2)
     {
-        var firstListCount = firstList.Count();
-        var secondListCount = secondList.Count();
-        if (firstListCount != secondListCount) ThrowEx.DifferentCountInLists("firstList", firstList.Count, "secondList", secondList.Count);
+        var c1 = l.Count();
+        var c2 = l2.Count();
+        if (c1 != c2) ThrowEx.DifferentCountInLists("l", l.Count, "l2", l2.Count);
 
-        string? firstValue;
-        string? secondValue;
+        string s1;
+        string s2;
 
-        for (var i = 0; i < firstListCount; i++)
+        for (var i = 0; i < c1; i++)
         {
-            firstValue = firstList[i]?.ToString();
-            secondValue = secondList[i]?.ToString();
-            if (firstValue != secondValue) return false;
+            s1 = l[i].ToString();
+            s2 = l2[i].ToString();
+            if (s1 != s2) return false;
         }
 
         return true;
     }
 
-    /// <summary>
-    /// Returns the indices in the list where the element equals the specified candidate.
-    /// </summary>
-    /// <typeparam name="T">The type of elements.</typeparam>
-    /// <param name="list">The list to search.</param>
-    /// <param name="candidate">The value to find.</param>
-    /// <returns>A list of indices with matching values.</returns>
-    public static List<int> IndexesWithValue<T>(List<T> list, T candidate)
+    #region 7) IndexesWithValue
+
+    public static List<int> IndexesWithValue<T>(List<T> videoCodes, T empty)
     {
-        var result = list.Select((element, index) => new { Index = index, Value = element })
-            .Where(pair => EqualityComparer<T>.Default.Equals(pair.Value, candidate)).Select(pair => pair.Index).ToList();
+        var result = videoCodes.Select((r, index) => new { dx = index, value = r })
+            .Where(d => EqualityComparer<T>.Default.Equals(d.value, empty)).Select(d => d.dx).ToList();
         return result;
     }
 
-    /// <summary>
-    /// Checks if the text contains any candidate from the list. Returns true on first match.
-    /// </summary>
-    /// <param name="text">The text to search in.</param>
-    /// <param name="candidates">The candidates to look for.</param>
-    /// <returns>True if any candidate is found in the text.</returns>
-    public static bool ContainsAnyFromElementBool(string text, IList<string> candidates)
-    {
-        if (candidates.Count() == 1 && candidates.First() == "*") return true;
+    #endregion
 
-        foreach (var item in candidates)
-            if (text.Contains(item))
+    #region 1) ContainsAnyFromElement - For easy copy from CAContainsElementsOrTheirPartsShared.cs
+
+    public static bool ContainsAnyFromElementBool(string s, IList<string> list/*,
+        bool acceptAsteriskForPassingAll = false*/)
+    {
+        if (list.Count() == 1 && list.First() == "*") return true;
+
+        foreach (var item in list)
+            if (s.Contains(item))
                 return true;
 
         return false;
     }
 
-    /// <summary>
-    /// Returns the indices of candidates that are contained in the text.
-    /// </summary>
-    /// <param name="text">The text to search in.</param>
-    /// <param name="candidates">The candidates to look for.</param>
-    /// <returns>A list of indices of matching candidates.</returns>
-    public static List<int> ContainsAnyFromElement(string text, IList<string> candidates)
+    public static List<int> ContainsAnyFromElement(string s, IList<string> list)
     {
         var result = new List<int>();
 
-        var currentIndex = 0;
+        var i = 0;
 
-        foreach (var item in candidates)
+        foreach (var item in list)
         {
-            if (text.Contains(item)) result.Add(currentIndex);
-            currentIndex++;
+            if (s.Contains(item)) result.Add(i);
+            i++;
         }
 
         return result;
     }
 
-    /// <summary>
-    /// Returns the indices of candidates that the text contains.
-    /// </summary>
-    /// <param name="text">The text to search in.</param>
-    /// <param name="candidates">The candidates to check.</param>
-    /// <returns>A list of indices of matching candidates.</returns>
-    public static List<int> ReturnWhichContainsIndexes(string text, IList<string> candidates)
+    #endregion
+
+    #region 8) ReturnWhichContainsIndexes
+
+    public static List<int> ReturnWhichContainsIndexes(string item, IList<string> terms/*,
+        SearchStrategyCA searchStrategy = SearchStrategyCA.FixedSpace*/)
     {
         var result = new List<int>();
-        var currentIndex = 0;
-        foreach (var term in candidates)
+        var i = 0;
+        foreach (var term in terms)
         {
-            if (text.Contains(term)) result.Add(currentIndex);
-            currentIndex++;
+            if (item.Contains(term) /*.Contains(item, term, searchStrategy)*/) result.Add(i);
+            i++;
         }
 
         return result;
     }
 
-    /// <summary>
-    /// Returns the indices of elements in the list that contain the specified candidate.
-    /// </summary>
-    /// <param name="list">The list to search.</param>
-    /// <param name="candidate">The candidate to look for.</param>
-    /// <returns>A list of indices of matching elements.</returns>
-    public static List<int> ReturnWhichContainsIndexes(IList<string> list, string candidate)
+    public static List<int> ReturnWhichContainsIndexes(IList<string> value, string term/*,
+        SearchStrategyCA searchStrategy = SearchStrategyCA.FixedSpace*/)
     {
         var result = new List<int>();
-        var currentIndex = 0;
-        if (list != null)
-            foreach (var item in list)
+        var i = 0;
+        if (value != null)
+            foreach (var item in value)
             {
-                if (item.Contains(candidate)) result.Add(currentIndex);
-                currentIndex++;
+                if (item.Contains(term) /*.Contains(item, term, searchStrategy)*/) result.Add(i);
+                i++;
             }
 
         return result;
     }
 
-    /// <summary>
-    /// Returns the indices of elements in the list that contain any of the specified candidates.
-    /// </summary>
-    /// <param name="list">The list to search.</param>
-    /// <param name="candidates">The candidates to look for.</param>
-    /// <returns>A list of distinct indices of matching elements.</returns>
-    public static IList<int> ReturnWhichContainsIndexes(IList<string> list, IList<string> candidates)
+    public static IList<int> ReturnWhichContainsIndexes(IList<string> parts, IList<string> mustContains)
     {
         var result = new List<int>();
-        foreach (var item in candidates) result.AddRange(ReturnWhichContainsIndexes(list, item));
+        foreach (var item in mustContains) result.AddRange(ReturnWhichContainsIndexes(parts, item));
         result = result.Distinct().ToList();
         return result;
     }
+
+    #endregion
 }

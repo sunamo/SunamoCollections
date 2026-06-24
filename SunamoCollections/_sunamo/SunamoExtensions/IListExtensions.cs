@@ -1,30 +1,63 @@
 namespace SunamoCollections._sunamo.SunamoExtensions;
 
-/// <summary>
-/// Extension methods for IEnumerable providing FirstOrNull and Count operations.
-/// </summary>
 internal static class IListExtensions
 {
-    /// <summary>
-    /// Returns the first element of the enumerable, or null if it is empty.
-    /// </summary>
-    /// <param name="enumerable">The enumerable to get the first element from.</param>
-    /// <returns>The first element, or null.</returns>
-    internal static object? FirstOrNull(this IEnumerable enumerable)
+
+    internal static object FirstOrNull(this IEnumerable e)
     {
-        foreach (var item in enumerable) return item;
+        foreach (var item in e) return item;
         return null;
     }
 
-    /// <summary>
-    /// Counts the number of elements in the enumerable by iterating through all elements.
-    /// </summary>
-    /// <param name="enumerable">The enumerable to count.</param>
-    /// <returns>The number of elements.</returns>
-    internal static int Count(this IEnumerable enumerable)
+    internal static int Count(this IEnumerable e)
     {
-        var count = 0;
-        foreach (var item in enumerable) count++;
-        return count;
+        var i = 0;
+        foreach (var item in e) i++;
+        return i;
     }
+
+
+
+
+
+    
+    #region from IListExtensionsShared64.cs
+
+    //internal static object FirstOrNull(this IList e)
+    //{
+    //    if (e.Count > 0)
+    //    {
+    //        // Here cant call CA.ToList because in FirstOrNull is called in CA.ToList => StackOverflowException
+    //        //System.Collections.Generic.List<object> c = CAThread.ToList(e);
+    //        //return c.FirstOrDefault();
+    //        return e.First2();
+    //    }
+    //    return null;
+    //}
+
+    #endregion
+
+    #region For easy copy from IListExtensionsShared64Sunamo.cs
+
+    
+    // todo DumpAsStringHeaderArgs je ve SunamoShared který nemůži přidat do deps protože by to způsobilo chybu Cycle detected
+
+    #region Must be two coz in some projects is not Dispatcher
+
+    //internal static object FirstOrNull(this IList e)
+    //{
+    //    return se.IListExtensions.FirstOrNull(e);
+    //}
+
+    #region Cant be first because then have priority than LINQ method
+
+    
+    #endregion
+
+    #endregion
+
+
+    
+    
+    #endregion
 }

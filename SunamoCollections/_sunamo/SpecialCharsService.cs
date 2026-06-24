@@ -1,23 +1,26 @@
 namespace SunamoCollections._sunamo;
 
-/// <summary>
-/// Service providing predefined lists of special characters.
-/// </summary>
 internal class SpecialCharsService
 {
-    internal List<char> SpecialChars { get; } = new(new[]
-        { excl, commat, num, dollar, percnt, hat, amp, ast, quest, lowbar, tilda });
-    internal List<char> SpecialCharsExtended { get; } = new(new[]
+    internal readonly List<char> specialChars = new(new[]
+        { excl, commat, num, dollar, percnt, Hat, amp, ast, quest, lowbar, tilda });
+    internal readonly List<char> specialChars2 = new(new[]
     {
-        leftQuote, rightQuote, dash, leftApostrophe, rightApostrophe,
-        comma, period, colon, apos, rightParen, sol, lt, gt, leftCurly, rightCurly, leftSquare, verbar, semi, plus, rightSquare,
+        lq, rq, dash, la, ra,
+        comma, period, colon, apos, rpar, sol, lt, gt, lcub, rcub, lsqb, verbar, semi, plus, rsqb,
         ndash, slash
     });
-    private const char leftApostrophe = '\u2018';
-    private const char rightApostrophe = '\u2019';
+    // Used in enigma
+    internal readonly List<char> specialCharsAll;
+    internal readonly List<char> specialCharsWhite = new(new[] { space });
+    internal readonly List<char> specialCharsNotEnigma = new(new[] { space160, copy });
+    private const char la = '‘';
+    private const char ra = '’';
     private const char comma = ',';
+    private const char space = ' ';
+    private static char space160 = (char)160;
     private const char dollar = '$';
-    private const char hat = '^';
+    private const char Hat = '^';
     private const char ast = '*';
     private const char quest = '?';
     private const char tilda = '~';
@@ -25,25 +28,52 @@ internal class SpecialCharsService
     private const char colon = ':';
     private const char excl = '!';
     private const char apos = '\'';
-    private const char rightParen = ')';
+    private const char rpar = ')';
+    private const char lpar = '(';
     private const char sol = '/';
     private const char lowbar = '_';
     private const char lt = '<';
+    // skip in specialChars2 - already as equal
+    private const char equals = '=';
     private const char gt = '>';
     private const char amp = '&';
-    private const char leftCurly = '{';
-    private const char rightCurly = '}';
-    private const char leftSquare = '[';
+    private const char lcub = '{';
+    private const char rcub = '}';
+    private const char lsqb = '[';
     private const char verbar = '|';
     private const char semi = ';';
     private const char commat = '@';
     private const char plus = '+';
-    private const char rightSquare = ']';
+    private const char rsqb = ']';
     private const char num = '#';
     private const char percnt = '%';
-    private const char ndash = '\u2013';
-    private const char leftQuote = '\u201C';
-    private const char rightQuote = '\u201D';
+    private const char ndash = '–';
+    private const char copy = '©';
+    #region MyRegion
+    private const char lq = '“';
+    private const char rq = '”';
+    #region Generic chars
+    private const char zero = '0';
+    #endregion
+    #region Names here must be the same as in Consts
+    private const char modulo = '%';
     private const char dash = '-';
+    #endregion
+    private const char tab = '\t';
+    private const char nl = '\n';
+    private const char cr = '\r';
+    private const char asterisk = '*';
+    private const char apostrophe = '\'';
+    private const char sc = ';';
+    // quotation marks
+    private const char qm = '"';
+    // Question
+    private const char q = '?';
+    // Left bracket
+    private const char lb = '(';
+    private const char rb = ')';
     private const char slash = '/';
+    // backspace
+    private const char bs2 = '\b';
+    #endregion
 }

@@ -1,16 +1,7 @@
 namespace SunamoCollections;
 
-/// <summary>
-/// Generic collection utility methods - part 1. Additional generic methods in a separate file.
-/// </summary>
 partial class CA
 {
-    /// <summary>
-    /// Converts an IList to a typed list, handling string conversion from char lists and nested collections.
-    /// </summary>
-    /// <typeparam name="T">The target type.</typeparam>
-    /// <param name="enumerable">The list to convert.</param>
-    /// <returns>A typed list.</returns>
     private static List<T> ToListT2<T>(IList enumerable)
     {
         if (typeof(T) == Types.TString)
@@ -52,12 +43,6 @@ partial class CA
         return result;
     }
 
-    /// <summary>
-    /// Randomly shuffles elements in an array.
-    /// </summary>
-    /// <typeparam name="T">The type of elements.</typeparam>
-    /// <param name="array">The array to shuffle.</param>
-    /// <returns>The shuffled array.</returns>
     public static T[] JumbleUp<T>(T[] array)
     {
         var length = array.Length;
