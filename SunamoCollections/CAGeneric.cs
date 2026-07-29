@@ -235,4 +235,14 @@ partial class CA
     {
         return items;
     }
+
+    public static List<int> IndexesWithNullOrEmpty(List<object?> list)
+    {
+        var result = new List<int>();
+        for (var i = 0; i < list.Count; i++)
+        {
+            if (list[i] is null || (list[i] is string s && s == string.Empty)) result.Add(i);
+        }
+        return result;
+    }
 }
