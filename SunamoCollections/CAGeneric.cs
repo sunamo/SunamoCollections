@@ -230,4 +230,9 @@ partial class CA
 
         return list;
     }
+
+    public static T[] ToArrayT<T>(params T[] items)
+    {
+        return items;
+    }
 }
