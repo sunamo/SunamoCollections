@@ -78,8 +78,8 @@ internal sealed partial class Exceptions
     /// <param name="methodName">The extracted method name.</param>
     internal static void TypeAndMethodName(string stackTraceLine, out string typeName, out string methodName)
     {
-        var afterAt = stackTraceLine.Split("at ")[1].Trim();
-        var fullQualifiedName = afterAt.Split("(")[0];
+        var afterAt = stackTraceLine.Split(new[] { "at " }, StringSplitOptions.None)[1].Trim();
+        var fullQualifiedName = afterAt.Split(new[] { "(" }, StringSplitOptions.None)[0];
         var parts = fullQualifiedName.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries).ToList();
         methodName = parts[^1];
         parts.RemoveAt(parts.Count - 1);
