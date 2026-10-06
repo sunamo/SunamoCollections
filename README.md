@@ -1,5 +1,10 @@
 # SunamoCollections
 
+## Short description
+
+Rozsáhlá knihovna pomocných metod pro běžné operace s kolekcemi: úpravy seznamů, zpracování řetězců, vyhledávání prvků a převody dat.
+
+
 A comprehensive .NET library providing utility methods for common collection operations including list manipulation, string processing, element searching, and data conversion.
 
 ## Overview
