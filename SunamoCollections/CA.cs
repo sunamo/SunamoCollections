@@ -96,7 +96,7 @@ public partial class CA
     }
 
     //[ObjectParamsObsoleteAttribute]
-    //    //            // zde to musí být IEnumerable protože spousta věcí z .netu může takhle přijít (např. string)
+    //    //            // this must be IEnumerable because many things from .net can come in this way (e.g. string)
     //    //                //enumerable2 is not string, then I can add all to list
     //    //            else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IList &&
     //    //        }
@@ -169,7 +169,7 @@ public partial class CA
         var n = Environment.NewLine;
         list = Regex.Replace(list, @"(\r?\n\s*){2,}", Environment.NewLine + Environment.NewLine);
         list = list.Trim();
-        // 27-10-23 dříve to bylo takhle
+        // 27-10-23 it used to be like this
     }
 
     [ObjectParamsObsoleteAttribute]

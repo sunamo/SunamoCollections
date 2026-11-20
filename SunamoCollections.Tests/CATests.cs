@@ -93,8 +93,8 @@ b";
     }
 
     /// <summary>
-    /// Vznikla kvůli ReplaceAll3
-    /// evidentně nefunguje a teď nemám čas to opravovat, existují funkční i ReplaceAll/ReplaceAll2, ReplaceAll3 je jen performance experiment
+    /// Created because of ReplaceAll3
+    /// evidently does not work and I have no time to fix it now, working ReplaceAll/ReplaceAll2 exist, ReplaceAll3 is just a performance experiment
     /// </summary>
     //[Fact]
     public void EqualRangesTest()

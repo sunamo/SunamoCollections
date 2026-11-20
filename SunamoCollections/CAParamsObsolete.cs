@@ -1,6 +1,6 @@
 namespace SunamoCollections;
 
-// všechny co jsou params string[] nebo params T[]
+// all that are params string[] or params T[]
 public partial class CA
 {
     // Dont use
@@ -33,8 +33,8 @@ public partial class CA
     }
 
     ///// <summary>
-    ///// Snažit se používat absolutně co nejméně protože všude by měl být specifikovaný generický typ.
-    ///// Tedy žádné IEnumerable nebo IList by se neměli v app vyskytovat.
+    ///// Try to use as little as possible, because the generic type should be specified everywhere.
+    ///// So no IEnumerable or IList should appear in the app.
     ///// </summary>
     ///// <param name="enumerable"></param>
     ///// <returns></returns>

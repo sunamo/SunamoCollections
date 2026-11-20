@@ -29,7 +29,7 @@ internal static class IListExtensions
     #region For easy copy from IListExtensionsShared64Sunamo.cs
 
     
-    // todo DumpAsStringHeaderArgs je ve SunamoShared který nemůži přidat do deps protože by to způsobilo chybu Cycle detected
+    // todo DumpAsStringHeaderArgs is in SunamoShared, which I cannot add to deps because it would cause a Cycle detected error
 
     #region Must be two coz in some projects is not Dispatcher
 
