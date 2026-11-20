@@ -43,6 +43,12 @@ partial class CA
         return result;
     }
 
+    /// <summary>
+    /// Jumble up t.
+    /// </summary>
+    /// <typeparam name="T">The type T.</typeparam>
+    /// <param name="array">The array.</param>
+    /// <returns>The jumble up t result.</returns>
     public static T[] JumbleUp<T>(T[] array)
     {
         var length = array.Length;

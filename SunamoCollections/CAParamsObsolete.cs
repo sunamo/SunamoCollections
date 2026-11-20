@@ -4,6 +4,11 @@ namespace SunamoCollections;
 public partial class CA
 {
     // Dont use
+    /// <summary>
+    /// Two dimension params into one.
+    /// </summary>
+    /// <param name="para">The para.</param>
+    /// <returns>The two dimension params into one result.</returns>
     [ObjectParamsObsolete]
     public static List<object> TwoDimensionParamsIntoOne(params object[] para)
     {
@@ -14,6 +19,12 @@ public partial class CA
     // T is object, not IList
     // Multi deep array is not suppported
     // For convert into string use ListToString
+    /// <summary>
+    /// Two dimension params into one t.
+    /// </summary>
+    /// <typeparam name="T">The type T.</typeparam>
+    /// <param name="para">The para.</param>
+    /// <returns>The two dimension params into one t result.</returns>
     [ObjectParamsObsolete]
     public static List<T> TwoDimensionParamsIntoOne<T>(params T[] para)
     {

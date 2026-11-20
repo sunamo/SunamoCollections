@@ -1,17 +1,32 @@
 namespace SunamoCollections;
 
+/// <summary>
+/// Represents the CA type.
+/// </summary>
 public partial class CA
 {
+    /// <summary>
+    /// The d first or null.
+    /// </summary>
     public static Func<IList, object> dFirstOrNull = null;
 
     //dFirstOrNull
     private static Type type = typeof(CA);
 
+    /// <summary>
+    /// Occurence of every line.
+    /// </summary>
+    /// <param name="CA">The CA.</param>
+    /// <returns>The occurence of every line result.</returns>
     public static Dictionary<string, int> OccurenceOfEveryLine(List<string> l)
     {
         throw new NotImplementedException();
     }
 
+    /// <summary>
+    /// Last item.
+    /// </summary>
+    /// <returns>The last item result.</returns>
     public static string LastItem(string version, string v)
     {
         throw new NotImplementedException();
@@ -22,11 +37,24 @@ public partial class CA
 
 
 
+    /// <summary>
+    /// Init fill with.
+    /// </summary>
+    /// <param name="datas">The datas.</param>
+    /// <param name="count">The count.</param>
+    /// <param name="initWith">The init with.</param>
     public static void InitFillWith(List<string> datas, int count, string initWith = "")
     {
         InitFillWith<string>(datas, count, initWith);
     }
 
+    /// <summary>
+    /// Initializes a new instance of the init fill with t class.
+    /// </summary>
+    /// <typeparam name="string">The type string.</typeparam>
+    /// <param name="datas">The datas.</param>
+    /// <param name="count">The count.</param>
+    /// <param name="initWith">The init with.</param>
     public static void InitFillWith<T>(List<T> datas, int count, T initWith)
     {
         for (var i = 0; i < count; i++) datas.Add(initWith);
@@ -37,6 +65,11 @@ public partial class CA
 
 
 
+    /// <summary>
+    /// Count.
+    /// </summary>
+    /// <param name="e">The e.</param>
+    /// <returns>The count result.</returns>
     public static int Count(IEnumerable e)
     {
         if (e == null) return 0;
@@ -48,12 +81,22 @@ public partial class CA
     }
 
 
+    /// <summary>
+    /// Trim.
+    /// </summary>
+    /// <param name="l">The l.</param>
+    /// <returns>The trim result.</returns>
     public static List<string> Trim(List<string> l)
     {
         for (var i = 0; i < l.Count; i++) l[i] = l[i].Trim();
         return l;
     }
 
+    /// <summary>
+    /// Trim where is only whitespace.
+    /// </summary>
+    /// <param name="Trim"">The trim.</param>
+    /// <returns>The trim where is only whitespace result.</returns>
     [Obsolete("Do the same as Trim")]
     public static void TrimWhereIsOnlyWhitespace(List<string> list)
     {
@@ -64,12 +107,22 @@ public partial class CA
         }
     }
 
+    /// <summary>
+    /// First.
+    /// </summary>
+    /// <param name="v2">The v 2.</param>
+    /// <returns>The first result.</returns>
     public static string First(IEnumerable v2)
     {
         foreach (var item in v2) return item.ToString();
         return null;
     }
 
+    /// <summary>
+    /// Is list string wrapped in array.
+    /// </summary>
+    /// <param name="v2">The v 2.</param>
+    /// <returns>The is list string wrapped in array result.</returns>
     public static bool IsListStringWrappedInArray(IEnumerable v2)
     {
         var first = First(v2);
@@ -79,6 +132,15 @@ public partial class CA
     }
 
 
+    /// <summary>
+    /// Wrap with if func.
+    /// </summary>
+    /// <param name="f">The f.</param>
+    /// <param name="invert">The invert.</param>
+    /// <param name="mustContains">The must contains.</param>
+    /// <param name="wrapWith">The wrap with.</param>
+    /// <param name="whereIsUsed2">The where is used 2.</param>
+    /// <returns>The wrap with if func result.</returns>
     public static List<string> WrapWithIfFunc(Func<string, string, bool, bool> f, bool invert, string mustContains,
         string wrapWith, params string[] whereIsUsed2)
     {
@@ -88,6 +150,10 @@ public partial class CA
         return whereIsUsed2.ToList();
     }
 
+    /// <summary>
+    /// Get index.
+    /// </summary>
+    /// <returns>The get index result.</returns>
     public static object GetIndex(List<string> captions, int i)
     {
         if (captions == null) return null;
@@ -103,11 +169,23 @@ public partial class CA
     //    //    }
     //    //}
 
+    /// <summary>
+    /// Has index.
+    /// </summary>
+    /// <param name="dex">The dex.</param>
+    /// <param name="col">The col.</param>
+    /// <returns>The has index result.</returns>
     public static bool HasIndex(int dex, Array col)
     {
         return col.Length > dex;
     }
 
+    /// <summary>
+    /// Has index.
+    /// </summary>
+    /// <param name="p">The p.</param>
+    /// <param name="nahledy">The nahledy.</param>
+    /// <returns>The has index result.</returns>
     public static bool HasIndex(int p, IList nahledy)
     {
         if (p < 0) throw new Exception("Chybn\u00FD parametr p");
@@ -115,6 +193,12 @@ public partial class CA
         return false;
     }
 
+    /// <summary>
+    /// Remove and leading.
+    /// </summary>
+    /// <param name="tokens">The tokens.</param>
+    /// <param name="v">The v.</param>
+    /// <returns>The remove and leading result.</returns>
     public static bool RemoveAndLeading(List<string> tokens, string v)
     {
         var dx = tokens.IndexOf(v);
@@ -130,12 +214,22 @@ public partial class CA
 
 
 
+    /// <summary>
+    /// Double or more multi lines to single.
+    /// </summary>
+    /// <param name="list">The list.</param>
+    /// <returns>The double or more multi lines to single result.</returns>
     public static string DoubleOrMoreMultiLinesToSingle(string list)
     {
         DoubleOrMoreMultiLinesToSingle(ref list);
         return list;
     }
 
+    /// <summary>
+    /// Remove null empty ws.
+    /// </summary>
+    /// <param name="l">The l.</param>
+    /// <returns>The remove null empty ws result.</returns>
     public static void RemoveNullEmptyWs(List<string> l)
     {
         for (var i = l.Count - 1; i >= 0; i--)
@@ -143,6 +237,10 @@ public partial class CA
                 l.RemoveAt(i);
     }
 
+    /// <summary>
+    /// Initializes a new instance of the is empty or null class.
+    /// </summary>
+    /// <param name="i">The i.</param>
     public static bool IsEmptyOrNull(IList mustBe)
     {
         if (mustBe == null)
@@ -151,6 +249,12 @@ public partial class CA
         return false;
     }
 
+    /// <summary>
+    /// To lower.
+    /// </summary>
+    /// <param name="ss">The ss.</param>
+    /// <param name="createNewArray">The create new array.</param>
+    /// <returns>The to lower result.</returns>
     public static List<string> ToLower(List<string> ss, bool createNewArray = false)
     {
         var outArr = ss;
@@ -164,6 +268,11 @@ public partial class CA
         return outArr;
     }
 
+    /// <summary>
+    /// Double or more multi lines to single.
+    /// </summary>
+    /// <param name="list">The list.</param>
+    /// <returns>The double or more multi lines to single result.</returns>
     public static void DoubleOrMoreMultiLinesToSingle(ref string list)
     {
         var n = Environment.NewLine;
@@ -172,6 +281,11 @@ public partial class CA
         // 27-10-23 it used to be like this
     }
 
+    /// <summary>
+    /// Convert list string wrapped in array.
+    /// </summary>
+    /// <param name="innerMain">The inner main.</param>
+    /// <returns>The convert list string wrapped in array result.</returns>
     [ObjectParamsObsoleteAttribute]
     public static object[] ConvertListStringWrappedInArray(object[] innerMain)
     {
@@ -195,6 +309,12 @@ public partial class CA
         return innerMain;
     }
 
+    /// <summary>
+    /// Is negation tuple.
+    /// </summary>
+    /// <param name="bool">The bool.</param>
+    /// <param name="string">The string.</param>
+    /// <returns>The is negation tuple result.</returns>
     public static (bool, string) IsNegationTuple(string contains)
     {
         if (contains[0] == '!')
@@ -206,6 +326,11 @@ public partial class CA
         return (false, contains);
     }
 
+    /// <summary>
+    /// Initializes a new instance of the remove starting with class.
+    /// </summary>
+    /// <param name="false">The false.</param>
+    /// <param name="contains">The contains.</param>
     public static void RemoveStartingWith(string start, List<string> mySites, RemoveStartingWithArgsCA a = null)
     {
         if (a == null) a = new RemoveStartingWithArgsCA();
@@ -226,6 +351,12 @@ public partial class CA
         }
     }
 
+    /// <summary>
+    /// Starting with.
+    /// </summary>
+    /// <param name="v">The v.</param>
+    /// <param name="l">The l.</param>
+    /// <returns>The starting with result.</returns>
     public static List<string> StartingWith(string v, List<string> l)
     {
         for (var i = l.Count - 1; i >= 0; i--)
@@ -234,6 +365,13 @@ public partial class CA
         return l;
     }
 
+    /// <summary>
+    /// Starting with.
+    /// </summary>
+    /// <param name="val">The val.</param>
+    /// <param name="start">The start.</param>
+    /// <param name="caseSensitive">The case sensitive.</param>
+    /// <returns>The starting with result.</returns>
     public static bool StartingWith(string val, string start, bool caseSensitive)
     {
         if (caseSensitive)
@@ -241,6 +379,10 @@ public partial class CA
         return val.ToLower().StartsWith(start.ToLower());
     }
 
+    /// <summary>
+    /// Remove strings empty trim before.
+    /// </summary>
+    /// <returns>The remove strings empty trim before result.</returns>
     public static List<string> RemoveStringsEmptyTrimBefore(List<string> mySites)
     {
         for (var i = mySites.Count - 1; i >= 0; i--)
@@ -254,11 +396,21 @@ public partial class CA
         return s.Replace(from, to);
     }
 
+    /// <summary>
+    /// Replace.
+    /// </summary>
+    /// <param name="from">The from.</param>
+    /// <param name="to">The to.</param>
+    /// <returns>The replace result.</returns>
     public static void Replace(List<string> files_in, string what, string forWhat)
     {
         for (var i = 0; i < files_in.Count; i++) files_in[i] = Replace(files_in[i], what, forWhat);
     }
 
+    /// <summary>
+    /// Initializes a new instance of the to list string i enumerable 2 class.
+    /// </summary>
+    /// <param name="i">The i.</param>
     public static List<string> ToListStringIEnumerable2(IEnumerable enumerable)
     {
         var result = new List<string>( /*enumerable.Count()*/);
@@ -271,6 +423,12 @@ public partial class CA
     }
 
 
+    /// <summary>
+    /// Partial contains.
+    /// </summary>
+    /// <param name="dirs">The dirs.</param>
+    /// <param name="pathWithoutNameBs">The path without name bs.</param>
+    /// <returns>The partial contains result.</returns>
     public static bool PartialContains(List<string> dirs, string pathWithoutNameBs)
     {
         throw new NotImplementedException();
@@ -278,6 +436,11 @@ public partial class CA
 
 
 
+    /// <summary>
+    /// All non whitespace lines.
+    /// </summary>
+    /// <param name="lines">The lines.</param>
+    /// <returns>The all non whitespace lines result.</returns>
     public static int AllNonWhitespaceLines(List<string> lines)
     {
         var nonEmptyLines = 0;
@@ -289,6 +452,11 @@ public partial class CA
         return nonEmptyLines;
     }
 
+    /// <summary>
+    /// Remove strings empty from begin start.
+    /// </summary>
+    /// <param name="sourceList">The source list.</param>
+    /// <returns>The remove strings empty from begin start result.</returns>
     public static List<string> RemoveStringsEmptyFromBeginStart(List<string> sourceList)
     {
 
@@ -302,6 +470,12 @@ public partial class CA
         return result;
     }
 
+    /// <summary>
+    /// Remove lines.
+    /// </summary>
+    /// <param name="lines">The lines.</param>
+    /// <param name="removeLines">The remove lines.</param>
+    /// <returns>The remove lines result.</returns>
     public static void RemoveLines(List<string> lines, List<int> removeLines)
     {
         removeLines.Sort();
@@ -313,17 +487,33 @@ public partial class CA
     }
 
 
+    /// <summary>
+    /// Remove.
+    /// </summary>
+    /// <param name="from">The from.</param>
+    /// <param name="what">The what.</param>
+    /// <returns>The remove result.</returns>
     public static void Remove(List<string> from, List<string> what)
     {
         foreach (var item in what) from.Remove(item);
     }
 
 
+    /// <summary>
+    /// Add suffix.
+    /// </summary>
+    /// <param name="headers">The headers.</param>
+    /// <param name="v">The v.</param>
+    /// <returns>The add suffix result.</returns>
     public static void AddSuffix(List<string> headers, string v)
     {
         for (var i = 0; i < headers.Count; i++) headers[i] = headers[i] + v;
     }
 
+    /// <summary>
+    /// Initializes a new instance of the create list string with reverse class.
+    /// </summary>
+    /// <param name="i">The i.</param>
     public static List<string> CreateListStringWithReverse(int reverse, IList<string> v)
     {
         var vs = new List<string>(reverse + v.Count());
@@ -332,6 +522,11 @@ public partial class CA
     }
 
 
+    /// <summary>
+    /// To list char.
+    /// </summary>
+    /// <param name="values">The values.</param>
+    /// <returns>The to list char result.</returns>
     public static List<char> ToListChar(ICollection<string> values)
     {
         var v = new List<char>(values.Count);
@@ -340,6 +535,11 @@ public partial class CA
     }
 
 
+    /// <summary>
+    /// Has duplicates.
+    /// </summary>
+    /// <param name="list">The list.</param>
+    /// <returns>The has duplicates result.</returns>
     public static bool HasDuplicates(List<string> list)
     {
         var list2 = list.ToList();
@@ -350,6 +550,11 @@ public partial class CA
     }
 
 
+    /// <summary>
+    /// Unindent.
+    /// </summary>
+    /// <param name="l">The l.</param>
+    /// <returns>The unindent result.</returns>
     public static void Unindent(List<string> l)
     {
         for (var i = 0; i < l.Count; i++)
@@ -366,12 +571,25 @@ public partial class CA
 
 
 
+    /// <summary>
+    /// Any element ends with.
+    /// </summary>
+    /// <param name="t">The t.</param>
+    /// <param name="v">The v.</param>
+    /// <returns>The any element ends with result.</returns>
     public static bool AnyElementEndsWith(string t, IList<string> v)
     {
         string item2 = null;
         return AnyElementEndsWith(t, v, out item2);
     }
 
+    /// <summary>
+    /// Any element ends with.
+    /// </summary>
+    /// <param name="t">The t.</param>
+    /// <param name="v">The v.</param>
+    /// <param name="item2">The item 2.</param>
+    /// <returns>The any element ends with result.</returns>
     public static bool AnyElementEndsWith(string t, IList<string> v, out string element)
     {
         element = null;
@@ -386,11 +604,23 @@ public partial class CA
         return false;
     }
 
+    /// <summary>
+    /// Ends with any element.
+    /// </summary>
+    /// <param name="t">The t.</param>
+    /// <param name="v">The v.</param>
+    /// <returns>The ends with any element result.</returns>
     public static bool EndsWithAnyElement(string t, params string[] v)
     {
         return EndsWithAnyElement(t, v.ToList());
     }
 
+    /// <summary>
+    /// Ends with any element.
+    /// </summary>
+    /// <param name="t">The t.</param>
+    /// <param name="v.ToList()">The v to list.</param>
+    /// <returns>The ends with any element result.</returns>
     public static bool EndsWithAnyElement(string t, IList<string> v)
     {
         foreach (var item in v)
@@ -399,6 +629,12 @@ public partial class CA
         return false;
     }
 
+    /// <summary>
+    /// Ends with.
+    /// </summary>
+    /// <param name="fn">The fn.</param>
+    /// <param name="allowedExtension">The allowed extension.</param>
+    /// <returns>The ends with result.</returns>
     public static bool EndsWith(string fn, List<string> allowedExtension)
     {
         foreach (var item in allowedExtension)
@@ -407,6 +643,11 @@ public partial class CA
         return false;
     }
 
+    /// <summary>
+    /// Join.
+    /// </summary>
+    /// <param name="o">The o.</param>
+    /// <returns>The join result.</returns>
     public static List<string> Join(IEnumerable<object> o)
     {
         var result = new List<string>();
@@ -418,6 +659,13 @@ public partial class CA
         return result;
     }
 
+    /// <summary>
+    /// Replace all.
+    /// </summary>
+    /// <param name="r">The r.</param>
+    /// <param name="what">The what.</param>
+    /// <param name="forWhat">The for what.</param>
+    /// <returns>The replace all result.</returns>
     public static string ReplaceAll(string r, List<string> what, string forWhat)
     {
         foreach (var item in what) r = r.Replace(item, forWhat);
@@ -426,6 +674,12 @@ public partial class CA
     }
 
 
+    /// <summary>
+    /// Remove which exists.
+    /// </summary>
+    /// <param name="s">The s.</param>
+    /// <param name="manuallyNo">The manually no.</param>
+    /// <returns>The remove which exists result.</returns>
     public static void RemoveWhichExists(IList<string> s, List<string> manuallyNo)
     {
         var dex = -1;
@@ -440,17 +694,36 @@ public partial class CA
 
 
 
+    /// <summary>
+    /// Start with.
+    /// </summary>
+    /// <param name="item2">The item 2.</param>
+    /// <param name="v1">The v 1.</param>
+    /// <returns>The start with result.</returns>
     public static string StartWith(string item2, params string[] v1)
     {
         return StartWith(item2, v1.ToList());
     }
 
+    /// <summary>
+    /// Start with.
+    /// </summary>
+    /// <param name="item2">The item 2.</param>
+    /// <param name="v1.ToList()">The v 1 to list.</param>
+    /// <returns>The start with result.</returns>
     public static string StartWith(string item2, IList<string> v1)
     {
         int i;
         return StartWith(item2, v1, out i);
     }
 
+    /// <summary>
+    /// Start with.
+    /// </summary>
+    /// <param name="item2">The item 2.</param>
+    /// <param name="v1">The v 1.</param>
+    /// <param name="i">The i.</param>
+    /// <returns>The start with result.</returns>
     public static string StartWith(string item2, IList<string> v1, out int i)
     {
         i = -1;
@@ -463,6 +736,12 @@ public partial class CA
         return null;
     }
 
+    /// <summary>
+    /// Trim start.
+    /// </summary>
+    /// <param name="backslash">The backslash.</param>
+    /// <param name="s">The s.</param>
+    /// <returns>The trim start result.</returns>
     public static List<string> TrimStart(string backslash, List<string> s)
     {
         ThrowEx.IsNull("backslash", backslash);
@@ -477,6 +756,11 @@ public partial class CA
 
 
 
+    /// <summary>
+    /// Append to last element.
+    /// </summary>
+    /// <param name="list">The list.</param>
+    /// <param name="s">The s.</param>
     public static void AppendToLastElement(List<string> list, string s)
     {
         if (list.Count > 0)
@@ -489,11 +773,23 @@ public partial class CA
 
 
 
+    /// <summary>
+    /// Wrap with.
+    /// </summary>
+    /// <param name="whereIsUsed2">The where is used 2.</param>
+    /// <param name="v">The v.</param>
+    /// <returns>The wrap with result.</returns>
     public static List<string> WrapWith(List<string> whereIsUsed2, string v)
     {
         return WrapWith(whereIsUsed2, v, v);
     }
 
+    /// <summary>
+    /// Wrap with.
+    /// </summary>
+    /// <param name="whereIsUsed2">The where is used 2.</param>
+    /// <param name="v">The v.</param>
+    /// <returns>The wrap with result.</returns>
     public static List<string> WrapWith(List<string> whereIsUsed2, string before, string after)
     {
         for (var i = 0; i < whereIsUsed2.Count; i++) whereIsUsed2[i] = before + whereIsUsed2[i] + after;
@@ -501,6 +797,11 @@ public partial class CA
     }
 
 
+    /// <summary>
+    /// To long.
+    /// </summary>
+    /// <param name="enumerable">The enumerable.</param>
+    /// <returns>The to long result.</returns>
     public static List<long> ToLong(IList enumerable)
     {
         var result = new List<long>();
@@ -511,6 +812,11 @@ public partial class CA
 
 
 
+    /// <summary>
+    /// To short.
+    /// </summary>
+    /// <param name="enumerable">The enumerable.</param>
+    /// <returns>The to short result.</returns>
     public static List<short> ToShort(IList enumerable)
     {
         var result = new List<short>();
@@ -519,6 +825,12 @@ public partial class CA
     }
 
 
+    /// <summary>
+    /// Join bytes array.
+    /// </summary>
+    /// <param name="pass">The pass.</param>
+    /// <param name="salt">The salt.</param>
+    /// <returns>The join bytes array result.</returns>
     public static List<byte> JoinBytesArray(byte[] pass, byte[] salt)
     {
         var lb = new List<byte>(pass.Length + salt.Length);
@@ -532,12 +844,23 @@ public partial class CA
 
 
 
+    /// <summary>
+    /// Get length.
+    /// </summary>
+    /// <param name="where">The where.</param>
+    /// <returns>The get length result.</returns>
     public static int GetLength(IList where)
     {
         if (where == null) return 0;
         return where.Count;
     }
 
+    /// <summary>
+    /// Join variable and array.
+    /// </summary>
+    /// <param name="p">The p.</param>
+    /// <param name="columns">The columns.</param>
+    /// <returns>The join variable and array result.</returns>
     public static string[] JoinVariableAndArray(object p, IList columns)
     {
         var o = new List<string>();
@@ -547,6 +870,10 @@ public partial class CA
         return o.ToArray();
     }
 
+    /// <summary>
+    /// Trim end.
+    /// </summary>
+    /// <returns>The trim end result.</returns>
     public static List<string> TrimEnd(List<string> sf, params char[] toTrim)
     {
         for (var i = 0; i < sf.Count; i++) sf[i] = sf[i].TrimEnd(toTrim);
@@ -557,6 +884,13 @@ public partial class CA
 
 
 
+    /// <summary>
+    /// Start with any in element.
+    /// </summary>
+    /// <param name="s">The s.</param>
+    /// <param name="list">The list.</param>
+    /// <param name="_trimBefore">The trim before.</param>
+    /// <returns>The start with any in element result.</returns>
     public static List<int> StartWithAnyInElement(string s, List<string> list, bool _trimBefore)
     {
         var result = new List<int>();
@@ -576,12 +910,24 @@ public partial class CA
     }
 
 
+    /// <summary>
+    /// Without diacritic.
+    /// </summary>
+    /// <param name="name">The name.</param>
+    /// <returns>The without diacritic result.</returns>
     public static List<string> WithoutDiacritic(List<string> name)
     {
         for (var i = 0; i < name.Count; i++) name[i] = name[i].RemoveDiacritics();
         return name;
     }
 
+    /// <summary>
+    /// Has index with value without exception.
+    /// </summary>
+    /// <param name="p">The p.</param>
+    /// <param name="nahledy">The nahledy.</param>
+    /// <param name="item">The item.</param>
+    /// <returns>The has index with value without exception result.</returns>
     public static bool HasIndexWithValueWithoutException(int p, List<string> nahledy, string item)
     {
         if (p < 0) return false;
@@ -589,6 +935,12 @@ public partial class CA
         return false;
     }
 
+    /// <summary>
+    /// Has index without exception.
+    /// </summary>
+    /// <param name="p">The p.</param>
+    /// <param name="nahledy">The nahledy.</param>
+    /// <returns>The has index without exception result.</returns>
     public static bool HasIndexWithoutException(int p, IList nahledy)
     {
         if (p < 0) return false;
@@ -597,12 +949,25 @@ public partial class CA
     }
 
 
+    /// <summary>
+    /// Start with.
+    /// </summary>
+    /// <param name="suMethods">The su methods.</param>
+    /// <param name="line">The line.</param>
+    /// <returns>The start with result.</returns>
     public static string StartWith(List<string> suMethods, string line)
     {
         string element = null;
         return StartWith(suMethods, line, out element);
     }
 
+    /// <summary>
+    /// Start with.
+    /// </summary>
+    /// <param name="suMethods">The su methods.</param>
+    /// <param name="line">The line.</param>
+    /// <param name="element">The element.</param>
+    /// <returns>The start with result.</returns>
     public static string StartWith(List<string> suMethods, string line, out string element)
     {
         element = null;
@@ -618,6 +983,13 @@ public partial class CA
         return null;
     }
 
+    /// <summary>
+    /// Return which contains.
+    /// </summary>
+    /// <param name="lines">The lines.</param>
+    /// <param name="term">The term.</param>
+    /// <param name="parseNegations">The parse negations.</param>
+    /// <returns>The return which contains result.</returns>
     public static List<string> ReturnWhichContains(List<string> lines, string term,
         ContainsCompareMethodCA parseNegations = ContainsCompareMethodCA.WholeInput)
     {
@@ -625,6 +997,14 @@ public partial class CA
         return ReturnWhichContains(lines, term, out founded, parseNegations);
     }
 
+    /// <summary>
+    /// Return which contains.
+    /// </summary>
+    /// <param name="lines">The lines.</param>
+    /// <param name="term">The term.</param>
+    /// <param name="founded">The founded.</param>
+    /// <param name="parseNegations">The parse negations.</param>
+    /// <returns>The return which contains result.</returns>
     public static List<string> ReturnWhichContains(List<string> lines, string term, out List<int> founded,
         ContainsCompareMethodCA parseNegations = ContainsCompareMethodCA.WholeInput)
     {
@@ -668,6 +1048,13 @@ public partial class CA
         return result;
     }
 
+    /// <summary>
+    /// Remove.
+    /// </summary>
+    /// <param name="input">The input.</param>
+    /// <param name="pred">The pred.</param>
+    /// <param name="arg">The arg.</param>
+    /// <returns>The remove result.</returns>
     public static void Remove(List<string> input, Func<string, string, bool> pred, string arg)
     {
         for (var i = input.Count - 1; i >= 0; i--)
@@ -676,6 +1063,11 @@ public partial class CA
     }
 
 
+    /// <summary>
+    /// Has null value.
+    /// </summary>
+    /// <param name="idPhotos">The id photos.</param>
+    /// <returns>The has null value result.</returns>
     public static bool HasNullValue(List<string> idPhotos)
     {
         for (var i = 0; i < idPhotos.Count; i++)
@@ -684,6 +1076,12 @@ public partial class CA
         return false;
     }
 
+    /// <summary>
+    /// To int min required length.
+    /// </summary>
+    /// <param name="enumerable">The enumerable.</param>
+    /// <param name="requiredLength">The required length.</param>
+    /// <returns>The to int min required length result.</returns>
     public static List<int> ToIntMinRequiredLength(IList enumerable, int requiredLength)
     {
         if (enumerable.Count() < requiredLength) return null;
@@ -701,6 +1099,11 @@ public partial class CA
 
 
 
+    /// <summary>
+    /// Ensure backslash.
+    /// </summary>
+    /// <param name="eb">The eb.</param>
+    /// <returns>The ensure backslash result.</returns>
     public static List<string> EnsureBackslash(List<string> eb)
     {
         for (var i = 0; i < eb.Count; i++)
@@ -712,6 +1115,12 @@ public partial class CA
         return eb;
     }
 
+    /// <summary>
+    /// Remove wildcard.
+    /// </summary>
+    /// <param name="d">The d.</param>
+    /// <param name="mask">The mask.</param>
+    /// <returns>The remove wildcard result.</returns>
     public static void RemoveWildcard(List<string> d, string mask)
     {
         //https://stackoverflow.com/a/15275806
@@ -723,6 +1132,11 @@ public partial class CA
 
 
 
+    /// <summary>
+    /// To object.
+    /// </summary>
+    /// <param name="enumerable">The enumerable.</param>
+    /// <returns>The to object result.</returns>
     public static List<object> ToObject(IList enumerable)
     {
         var result = new List<object>();
@@ -730,6 +1144,11 @@ public partial class CA
         return result;
     }
 
+    /// <summary>
+    /// To bool.
+    /// </summary>
+    /// <param name="numbers">The numbers.</param>
+    /// <returns>The to bool result.</returns>
     public static List<bool> ToBool(List<int> numbers)
     {
         var b = new List<bool>(numbers.Count);
@@ -737,6 +1156,14 @@ public partial class CA
         return b;
     }
 
+    /// <summary>
+    /// Remove which contains list.
+    /// </summary>
+    /// <param name="files">The files.</param>
+    /// <param name="list">The list.</param>
+    /// <param name="wildcard">The wildcard.</param>
+    /// <param name="WildcardIsMatch">The wildcard is match.</param>
+    /// <returns>The remove which contains list result.</returns>
     public static void RemoveWhichContainsList(List<string> files, List<string> list, bool wildcard,
         Func<string, string, bool> WildcardIsMatch = null)
     {
@@ -744,6 +1171,13 @@ public partial class CA
     }
 
 
+    /// <summary>
+    /// Remove padding.
+    /// </summary>
+    /// <param name="decrypted">The decrypted.</param>
+    /// <param name="v">The v.</param>
+    /// <param name="returnStringInUtf8">The return string in utf 8.</param>
+    /// <returns>The remove padding result.</returns>
     public static string RemovePadding(List<byte> decrypted, byte v, bool returnStringInUtf8)
     {
         RemovePadding(decrypted, v);
@@ -754,6 +1188,11 @@ public partial class CA
 
 
 
+    /// <summary>
+    /// Has at least one element in array.
+    /// </summary>
+    /// <param name="d">The d.</param>
+    /// <returns>The has at least one element in array result.</returns>
     public static bool HasAtLeastOneElementInArray(List<string> d)
     {
         if (d != null)
@@ -766,6 +1205,12 @@ public partial class CA
 
 
 
+    /// <summary>
+    /// Has postfix.
+    /// </summary>
+    /// <param name="key">The key.</param>
+    /// <param name="v1">The v 1.</param>
+    /// <returns>The has postfix result.</returns>
     public static bool HasPostfix(string key, params string[] v1)
     {
         foreach (var item in v1)
@@ -780,6 +1225,10 @@ public partial class CA
         for (var i = 0; i < input.Count; i++) input[i] = numbered[i] + input[i];
     }
 
+    /// <summary>
+    /// Initializes a new instance of the prepend class.
+    /// </summary>
+    /// <param name="i">The i.</param>
     public static List<string> Prepend(string v, List<string> toReplace)
     {
         for (var i = 0; i < toReplace.Count; i++)
@@ -788,12 +1237,24 @@ public partial class CA
         return toReplace;
     }
 
+    /// <summary>
+    /// Prepend.
+    /// </summary>
+    /// <param name="v">The v.</param>
+    /// <param name="toReplace">The to replace.</param>
+    /// <returns>The prepend result.</returns>
     public static List<string> Prepend(string v, string[] toReplace)
     {
         return Prepend(v, toReplace.ToList());
     }
 
 
+    /// <summary>
+    /// Find out longest item.
+    /// </summary>
+    /// <param name="list">The list.</param>
+    /// <param name="delimiters">The delimiters.</param>
+    /// <returns>The find out longest item result.</returns>
     public static string FindOutLongestItem(List<string> list, params string[] delimiters)
     {
         var longestLength = 0;
@@ -812,6 +1273,11 @@ public partial class CA
         return longest;
     }
 
+    /// <summary>
+    /// Is odd.
+    /// </summary>
+    /// <param name="bold">The bold.</param>
+    /// <returns>The is odd result.</returns>
     public static bool IsOdd(params List<int>[] bold)
     {
         foreach (var item in bold)
@@ -820,6 +1286,11 @@ public partial class CA
         return false;
     }
 
+    /// <summary>
+    /// To lower.
+    /// </summary>
+    /// <param name="words">The words.</param>
+    /// <returns>The to lower result.</returns>
     public static List<string> ToLower(List<string> words)
     {
         for (var i = 0; i < words.Count; i++) words[i] = words[i].ToLower();
@@ -830,6 +1301,13 @@ public partial class CA
 
 
 
+    /// <summary>
+    /// Remove which contains.
+    /// </summary>
+    /// <param name="files1">The files 1.</param>
+    /// <param name="item">The item.</param>
+    /// <param name="wildcard">The wildcard.</param>
+    /// <param name="WildcardIsMatch">The wildcard is match.</param>
     public static void RemoveWhichContains(List<string> files1, string item, bool wildcard,
         Func<string, string, bool> WildcardIsMatch)
     {
@@ -867,6 +1345,11 @@ public partial class CA
     ///// </summary>
     ///// <param name="enumerable"></param>
 
+    /// <summary>
+    /// One element collection to multi.
+    /// </summary>
+    /// <param name="deli2">The deli 2.</param>
+    /// <returns>The one element collection to multi result.</returns>
     public static IList<object> OneElementCollectionToMulti(IList deli2)
     {
         if (deli2.Count() == 1)
@@ -882,6 +1365,11 @@ public partial class CA
     }
 
 
+    /// <summary>
+    /// Remove strings empty.
+    /// </summary>
+    /// <param name="mySites">The my sites.</param>
+    /// <returns>The remove strings empty result.</returns>
     public static List<string> RemoveStringsEmpty(List<string> mySites)
     {
         for (var i = mySites.Count - 1; i >= 0; i--)
@@ -890,12 +1378,24 @@ public partial class CA
         return mySites;
     }
 
+    /// <summary>
+    /// Postfix if not ending.
+    /// </summary>
+    /// <param name="pre">The pre.</param>
+    /// <param name="l">The l.</param>
+    /// <returns>The postfix if not ending result.</returns>
     public static List<string> PostfixIfNotEnding(string pre, List<string> l)
     {
         for (var i = 0; i < l.Count; i++) l[i] = pre + l[i];
         return l;
     }
 
+    /// <summary>
+    /// Parse int.
+    /// </summary>
+    /// <param name="v">The v.</param>
+    /// <param name="comma">The comma.</param>
+    /// <returns>The parse int result.</returns>
     public static List<int> ParseInt(string v, string comma)
     {
         var s = SHSplit.Split(v, comma);
@@ -905,6 +1405,12 @@ public partial class CA
         return n;
     }
 
+    /// <summary>
+    /// Split.
+    /// </summary>
+    /// <param name="s">The s.</param>
+    /// <param name="determining">The determining.</param>
+    /// <returns>The split result.</returns>
     public static List<List<string>> Split(List<string> s, string determining)
     {
         var ls = new List<List<string>>();
@@ -919,6 +1425,11 @@ public partial class CA
         return ls;
     }
 
+    /// <summary>
+    /// Get first word of list.
+    /// </summary>
+    /// <param name="t2">The t 2.</param>
+    /// <returns>The get first word of list result.</returns>
     public static string GetFirstWordOfList(string t2)
 
     {
@@ -948,6 +1459,10 @@ public partial class CA
 
 
 
+    /// <summary>
+    /// Keep only words to first special chars.
+    /// </summary>
+    /// <param name="l">The l.</param>
     public static void KeepOnlyWordsToFirstSpecialChars(List<string> l)
     {
         for (int i = 0; i < l.Count; i++)
@@ -957,6 +1472,14 @@ public partial class CA
     }
 
 
+    /// <summary>
+    /// Lines indexes.
+    /// </summary>
+    /// <param name="cOnlyNamesBy10">The c only names by 10.</param>
+    /// <param name="from">The from.</param>
+    /// <param name="to">The to.</param>
+    /// <param name="indexedFrom1">The indexed from 1.</param>
+    /// <returns>The lines indexes result.</returns>
     public static List<string> LinesIndexes(List<string> cOnlyNamesBy10, int from, int to, bool indexedFrom1)
     {
         if (indexedFrom1)
@@ -974,6 +1497,11 @@ public partial class CA
 
     // In order to convert any 2d array to jagged one
     // let's use a generic implementation
+    /// <summary>
+    /// To jagged.
+    /// </summary>
+    /// <param name="value">The value.</param>
+    /// <returns>The to jagged result.</returns>
     public static List<List<int>> ToJagged(bool[,] value)
     {
         var result = new List<List<int>>();
@@ -996,6 +1524,12 @@ public partial class CA
     ///// Direct edit
     ///// </summary>
     ///// <param name="input"></param>
+    /// <summary>
+    /// Compares two lists and returns the differing elements.
+    /// </summary>
+    /// <param name="c1">The first list.</param>
+    /// <param name="c2">The second list.</param>
+    /// <returns>The comparison result.</returns>
     public static ABLCA<string> CompareListDifferent(List<string> c1, List<string> c2)
     {
         var existsIn1 = new List<string>();
@@ -1022,6 +1556,17 @@ public partial class CA
     }
 
 
+    /// <summary>
+    /// Compare list result.
+    /// </summary>
+    /// <param name="alsoFileNames">The also file names.</param>
+    /// <param name="nameForFirstFolder">The name for first folder.</param>
+    /// <param name="nameForSecondFolder">The name for second folder.</param>
+    /// <param name="nameOfSolution">The name of solution.</param>
+    /// <param name="files1">The files 1.</param>
+    /// <param name="files2">The files 2.</param>
+    /// <param name="inBoth">The in both.</param>
+    /// <returns>The compare list result result.</returns>
     public static string CompareListResult(bool alsoFileNames, string nameForFirstFolder, string nameForSecondFolder,
         string nameOfSolution, List<string> files1, List<string> files2, List<string> inBoth)
     {
@@ -1051,12 +1596,24 @@ public partial class CA
     }
 
 
+    /// <summary>
+    /// Padding by empty string.
+    /// </summary>
+    /// <param name="list">The list.</param>
+    /// <param name="columns">The columns.</param>
+    /// <returns>The padding by empty string result.</returns>
     public static List<string> PaddingByEmptyString(List<string> list, int columns)
     {
         for (var i = list.Count - 1; i < columns - 1; i++) list.Add(string.Empty);
         return list;
     }
 
+    /// <summary>
+    /// Count of ending.
+    /// </summary>
+    /// <param name="winrarFiles">The winrar files.</param>
+    /// <param name="v">The v.</param>
+    /// <returns>The count of ending result.</returns>
     public static int CountOfEnding(List<string> winrarFiles, string v)
     {
         var count = 0;
@@ -1066,22 +1623,46 @@ public partial class CA
         return count;
     }
 
+    /// <summary>
+    /// Is in range.
+    /// </summary>
+    /// <param name="od">The od.</param>
+    /// <param name="to">The to.</param>
+    /// <param name="index">The index.</param>
+    /// <returns>The is in range result.</returns>
     public static bool IsInRange(int od, int to, int index)
     {
         return od >= index && to <= index;
     }
 
+    /// <summary>
+    /// Dummy elements collection.
+    /// </summary>
+    /// <param name="count">The count.</param>
+    /// <returns>The dummy elements collection result.</returns>
     public static List<string> DummyElementsCollection(int count)
     {
         return Enumerable.Repeat(string.Empty, count).ToList();
     }
 
 
+    /// <summary>
+    /// Wrap with and join.
+    /// </summary>
+    /// <param name="list">The list.</param>
+    /// <param name="wrapWith">The wrap with.</param>
+    /// <param name="delimiter">The delimiter.</param>
+    /// <returns>The wrap with and join result.</returns>
     public static List<string> WrapWithAndJoin(IList<string> list, string wrapWith, string delimiter)
     {
         return list.Select(i => wrapWith + i + wrapWith + delimiter).ToList();
     }
 
+    /// <summary>
+    /// Parts count.
+    /// </summary>
+    /// <param name="i">The i.</param>
+    /// <returns>The parts count result.</returns>
     public static int PartsCount(int count, int inPart)
     {
         var total = count / inPart;
@@ -1089,6 +1670,11 @@ public partial class CA
         return total;
     }
 
+    /// <summary>
+    /// Has first item length.
+    /// </summary>
+    /// <param name="notContains">The not contains.</param>
+    /// <returns>The has first item length result.</returns>
     public static bool HasFirstItemLength(List<string> notContains)
     {
         var t = "";
@@ -1096,12 +1682,24 @@ public partial class CA
         return t.Length > 0;
     }
 
+    /// <summary>
+    /// Trim list.
+    /// </summary>
+    /// <param name="c">The c.</param>
+    /// <returns>The trim list result.</returns>
     public static List<string> TrimList(List<string> c)
     {
         for (var i = 0; i < c.Count; i++) c[i] = c[i].Trim();
         return c;
     }
 
+    /// <summary>
+    /// Get text after if contains pattern.
+    /// </summary>
+    /// <param name="input">The input.</param>
+    /// <param name="ifNotFound">The if not found.</param>
+    /// <param name="uriPatterns">The uri patterns.</param>
+    /// <returns>The get text after if contains pattern result.</returns>
     public static string GetTextAfterIfContainsPattern(string input, string ifNotFound, List<string> uriPatterns)
     {
         foreach (var item in uriPatterns)
@@ -1115,6 +1713,11 @@ public partial class CA
         return ifNotFound;
     }
 
+    /// <summary>
+    /// With end slash.
+    /// </summary>
+    /// <param name="folders">The folders.</param>
+    /// <returns>The with end slash result.</returns>
     public static List<string> WithEndSlash(List<string> folders)
     {
         var list = folders;
@@ -1123,6 +1726,11 @@ public partial class CA
         return folders;
     }
 
+    /// <summary>
+    /// Without end slash.
+    /// </summary>
+    /// <param name="folders">The folders.</param>
+    /// <returns>The without end slash result.</returns>
     public static List<string> WithoutEndSlash(List<string> folders)
     {
         for (var i = 0; i < folders.Count; i++) folders[i] = folders[i].TrimEnd('\\');
@@ -1130,6 +1738,12 @@ public partial class CA
     }
 
 
+    /// <summary>
+    /// Join array and array string.
+    /// </summary>
+    /// <param name="a">The a.</param>
+    /// <param name="p">The p.</param>
+    /// <returns>The join array and array string result.</returns>
     public static List<string> JoinArrayAndArrayString(IList<string> a, IList<string> p)
     {
         if (a != null)
@@ -1143,16 +1757,32 @@ public partial class CA
         return new List<string>(p);
     }
 
+    /// <summary>
+    /// Join array and array string.
+    /// </summary>
+    /// <typeparam name="string">The type string.</typeparam>
+    /// <param name="p">The p.</param>
+    /// <returns>The join array and array string result.</returns>
     public static List<string> JoinArrayAndArrayString(IList<string> a, params string[] p)
     {
         return JoinArrayAndArrayString(a, p.ToList());
     }
 
+    /// <summary>
+    /// Check exists.
+    /// </summary>
+    /// <param name="a">The a.</param>
+    /// <param name="p.ToList()">The p to list.</param>
+    /// <returns>The check exists result.</returns>
     public static void CheckExists(List<bool> photoFiles, List<string> allFilesRelative, List<string> value)
     {
         foreach (var item in allFilesRelative) photoFiles.Add(value.Contains(item));
     }
 
+    /// <summary>
+    /// Initializes a new instance of the has other value than null class.
+    /// </summary>
+    /// <param name="allFilesRelative">The all files relative.</param>
     public static bool HasOtherValueThanNull(List<string> idPhotos)
     {
         foreach (var item in idPhotos)
@@ -1161,6 +1791,12 @@ public partial class CA
         return false;
     }
 
+    /// <summary>
+    /// Get row of table.
+    /// </summary>
+    /// <param name="_dataBinding">The data binding.</param>
+    /// <param name="i2">The i 2.</param>
+    /// <returns>The get row of table result.</returns>
     public static List<string> GetRowOfTable(List<List<string>> _dataBinding, int i2)
     {
         var vr = new List<string>();
@@ -1168,6 +1804,13 @@ public partial class CA
         return vr;
     }
 
+    /// <summary>
+    /// Remove strings by scope keep at least one.
+    /// </summary>
+    /// <param name="mySites">The my sites.</param>
+    /// <param name="fromTo">The from to.</param>
+    /// <param name="keepLines">The keep lines.</param>
+    /// <returns>The remove strings by scope keep at least one result.</returns>
     public static List<string> RemoveStringsByScopeKeepAtLeastOne(List<string> mySites, FromToCollections fromTo,
         int keepLines)
     {
@@ -1176,6 +1819,12 @@ public partial class CA
         return mySites;
     }
 
+    /// <summary>
+    /// Short circuit.
+    /// </summary>
+    /// <param name="proj">The proj.</param>
+    /// <param name="p">The p.</param>
+    /// <returns>The short circuit result.</returns>
     public static List<string> ShortCircuit(List<string> proj, int p)
     {
         var result = new List<string>();
@@ -1184,6 +1833,11 @@ public partial class CA
         return result;
     }
 
+    /// <summary>
+    /// Contains diacritic.
+    /// </summary>
+    /// <param name="solutionNames">The solution names.</param>
+    /// <returns>The contains diacritic result.</returns>
     public static List<string> ContainsDiacritic(IList<string> solutionNames)
     {
         var vr = new List<string>(solutionNames.Count());
@@ -1194,6 +1848,12 @@ public partial class CA
     }
 
 
+    /// <summary>
+    /// To size.
+    /// </summary>
+    /// <param name="input">The input.</param>
+    /// <param name="requiredLength">The required length.</param>
+    /// <returns>The to size result.</returns>
     public static List<string> ToSize(List<string> input, int requiredLength)
     {
         List<string> returnArray = null;
@@ -1223,6 +1883,12 @@ public partial class CA
         return returnArray;
     }
 
+    /// <summary>
+    /// Format.
+    /// </summary>
+    /// <param name="uninstallNpmPackageGlobal">The uninstall npm package global.</param>
+    /// <param name="globallyInstalledTsDefinitions">The globally installed ts definitions.</param>
+    /// <returns>The format result.</returns>
     public static List<string> Format(string uninstallNpmPackageGlobal, List<string> globallyInstalledTsDefinitions)
     {
         for (var i = 0; i < globallyInstalledTsDefinitions.Count(); i++)
@@ -1243,6 +1909,12 @@ public partial class CA
 
 
 
+    /// <summary>
+    /// Trim start char.
+    /// </summary>
+    /// <param name="backslash">The backslash.</param>
+    /// <param name="s">The s.</param>
+    /// <returns>The trim start char result.</returns>
     public static List<string> TrimStartChar(char backslash, List<string> s)
     {
         for (var i = 0; i < s.Count; i++) s[i] = s[i].TrimStart(backslash);
