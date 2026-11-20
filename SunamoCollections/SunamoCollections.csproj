@@ -21,6 +21,7 @@
     <EmbedAllSources>true</EmbedAllSources>
     <NoWarn>$(NoWarn);CS8603;CS8604</NoWarn>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <PackageTags>sunamo;dotnet;collections</PackageTags>
   </PropertyGroup>
   <PropertyGroup>
     <DebugType>portable</DebugType>
