@@ -1,3 +1,4 @@
+global using SunamoCollections;
 global using Xunit;
 global using SunamoPercentCalculator;
 global using SunamoTextOutputGenerator;
