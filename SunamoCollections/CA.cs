@@ -22,14 +22,14 @@ public partial class CA
 
 
 
-    public static void InitFillWith(List<string> datas, int pocet, string initWith = "")
+    public static void InitFillWith(List<string> datas, int count, string initWith = "")
     {
-        InitFillWith<string>(datas, pocet, initWith);
+        InitFillWith<string>(datas, count, initWith);
     }
 
-    public static void InitFillWith<T>(List<T> datas, int pocet, T initWith)
+    public static void InitFillWith<T>(List<T> datas, int count, T initWith)
     {
-        for (var i = 0; i < pocet; i++) datas.Add(initWith);
+        for (var i = 0; i < count; i++) datas.Add(initWith);
     }
 
 
@@ -538,11 +538,11 @@ public partial class CA
         return where.Count;
     }
 
-    public static string[] JoinVariableAndArray(object p, IList sloupce)
+    public static string[] JoinVariableAndArray(object p, IList columns)
     {
         var o = new List<string>();
         o.Add(p.ToString());
-        foreach (var item in sloupce) o.Add(item.ToString());
+        foreach (var item in columns) o.Add(item.ToString());
 
         return o.ToArray();
     }
@@ -576,10 +576,10 @@ public partial class CA
     }
 
 
-    public static List<string> WithoutDiacritic(List<string> nazev)
+    public static List<string> WithoutDiacritic(List<string> name)
     {
-        for (var i = 0; i < nazev.Count; i++) nazev[i] = nazev[i].RemoveDiacritics();
-        return nazev;
+        for (var i = 0; i < name.Count; i++) name[i] = name[i].RemoveDiacritics();
+        return name;
     }
 
     public static bool HasIndexWithValueWithoutException(int p, List<string> nahledy, string item)
@@ -796,20 +796,20 @@ public partial class CA
 
     public static string FindOutLongestItem(List<string> list, params string[] delimiters)
     {
-        var delkaNejdelsiho = 0;
-        var nejdelsi = "";
+        var longestLength = 0;
+        var longest = "";
         foreach (var item in list)
         {
             var tem = item;
             if (delimiters.Length != 0) tem = SHSplit.Split(item, delimiters)[0].Trim();
-            if (delkaNejdelsiho < tem.Length)
+            if (longestLength < tem.Length)
             {
-                nejdelsi = tem;
-                delkaNejdelsiho = tem.Length;
+                longest = tem;
+                longestLength = tem.Length;
             }
         }
 
-        return nejdelsi;
+        return longest;
     }
 
     public static bool IsOdd(params List<int>[] bold)
@@ -820,10 +820,10 @@ public partial class CA
         return false;
     }
 
-    public static List<string> ToLower(List<string> slova)
+    public static List<string> ToLower(List<string> words)
     {
-        for (var i = 0; i < slova.Count; i++) slova[i] = slova[i].ToLower();
-        return slova;
+        for (var i = 0; i < words.Count; i++) words[i] = words[i].ToLower();
+        return words;
     }
 
 
@@ -1084,9 +1084,9 @@ public partial class CA
 
     public static int PartsCount(int count, int inPart)
     {
-        var celkove = count / inPart;
-        if (count % inPart != 0) celkove++;
-        return celkove;
+        var total = count / inPart;
+        if (count % inPart != 0) total++;
+        return total;
     }
 
     public static bool HasFirstItemLength(List<string> notContains)
@@ -1178,16 +1178,16 @@ public partial class CA
 
     public static List<string> ShortCircuit(List<string> proj, int p)
     {
-        var vratit = new List<string>();
+        var result = new List<string>();
         if (p > proj.Count) p = proj.Count;
-        for (var i = 0; i < p; i++) vratit.Add(proj[i]);
-        return vratit;
+        for (var i = 0; i < p; i++) result.Add(proj[i]);
+        return result;
     }
 
-    public static List<string> ContainsDiacritic(IList<string> nazvyReseni)
+    public static List<string> ContainsDiacritic(IList<string> solutionNames)
     {
-        var vr = new List<string>(nazvyReseni.Count());
-        foreach (var item in nazvyReseni)
+        var vr = new List<string>(solutionNames.Count());
+        foreach (var item in solutionNames)
             if (item.HasDiacritics())
                 vr.Add(item);
         return vr;
