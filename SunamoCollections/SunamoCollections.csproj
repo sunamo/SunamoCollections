@@ -9,7 +9,6 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Description>Utils for collections</Description>
     <Version>26.5.18.7</Version>
-    <PackageReleaseNotes>y</PackageReleaseNotes>
     <Authors>www.sunamo.cz</Authors>
     <Copyright>www.sunamo.cz</Copyright>
     <PackageProjectUrl>https://sunamo.github.io/PlatformIndependentNuGetPackages/SunamoCollections/</PackageProjectUrl>
@@ -20,8 +19,8 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <EmbedAllSources>true</EmbedAllSources>
-    <Optimize>false</Optimize>
     <NoWarn>$(NoWarn);CS8603;CS8604</NoWarn>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
   </PropertyGroup>
   <PropertyGroup>
     <DebugType>portable</DebugType>
@@ -54,5 +53,8 @@
     <PackageReference Include="PolySharp" Version="1.15.0" PrivateAssets="all" />
   </ItemGroup>  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="readme.md" Pack="True" PackagePath="." />
   </ItemGroup>
 </Project>
