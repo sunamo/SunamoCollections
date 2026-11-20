@@ -23,17 +23,6 @@ internal static class IListExtensions
     
     #region from IListExtensionsShared64.cs
 
-    //internal static object FirstOrNull(this IList e)
-    //{
-    //    if (e.Count > 0)
-    //    {
-    //        // Here cant call CA.ToList because in FirstOrNull is called in CA.ToList => StackOverflowException
-    //        //System.Collections.Generic.List<object> c = CAThread.ToList(e);
-    //        //return c.FirstOrDefault();
-    //        return e.First2();
-    //    }
-    //    return null;
-    //}
 
     #endregion
 
@@ -44,10 +33,6 @@ internal static class IListExtensions
 
     #region Must be two coz in some projects is not Dispatcher
 
-    //internal static object FirstOrNull(this IList e)
-    //{
-    //    return se.IListExtensions.FirstOrNull(e);
-    //}
 
     #region Cant be first because then have priority than LINQ method
 

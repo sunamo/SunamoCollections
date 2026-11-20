@@ -52,8 +52,4 @@ public partial class CA
     /////     ToListString - working with type of every element
     ///// </summary>
     ///// <param name="enumerable"></param>
-    //public static List<string> ToListStringMoreObject(params object[] enumerable)
-    //{
-    //    return ToListStringIList(enumerable);
-    //}
 }

@@ -96,61 +96,12 @@ public partial class CA
     }
 
     //[ObjectParamsObsoleteAttribute]
-    //public static List<string> ToListStringIList(IList enumerable2)
-    //{
-    //    return null;
-    //    //List<string> result = new List<string>();
-    //    //if (enumerable2.GetType() != typeof(string))
-    //    //{
-    //    //    foreach (object item in enumerable2)
-    //    //    {
-    //    //        Type t = item.GetType();
-    //    //        // !(item is string)  - not working
-    //    //        if (RH.IsOrIsDeriveFromBaseClass(t, Types.tIEnumerable))
-    //    //        {
     //    //            // zde to musí být IEnumerable protože spousta věcí z .netu může takhle přijít (např. string)
-    //    //            var enumerable = (System.Collections.IEnumerable)item;
-    //    //            Type type = enumerable.GetType();
-    //    //            bool isEnumerableChar = RH.IsOrIsDeriveFromBaseClass(type, typeof(IList<char>));
-    //    //            bool isEnumerableString = RH.IsOrIsDeriveFromBaseClass(type, typeof(IList<string>));
-    //    //            if (type == typeof(string))
-    //    //            {
-    //    //                result.Add(string.Join(string.Empty, enumerable));
-    //    //            }
-    //    //            else if (isEnumerableChar)
-    //    //            {
-    //    //                // IList<char> => string
     //    //                //enumerable2 is not string, then I can add all to list
-    //    //                result.AddRange(ToListStringIEnumerable2(enumerable));
-    //    //            }
-    //    //            else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IList<string>)
-    //    //            {
-    //    //                // IList<string> => List<string>
-    //    //                result.AddRange(((IList<string>)enumerable.FirstOrNull()).ToList());
-    //    //            }
     //    //            else if (enumerable.Count() == 1 && enumerable.FirstOrNull() is IList &&
-    //    //                     !isEnumerableChar && !isEnumerableString)
-    //    //            {
-    //    //                result.AddRange(ToListStringIEnumerable2((IList)enumerable.FirstOrNull()));
-    //    //            }
-    //    //            else
-    //    //            {
-    //    //                // IList => List<string>
-    //    //                result.AddRange(ToListStringIEnumerable2(enumerable));
-    //    //            }
-    //    //        }
-    //    //        else
-    //    //        {
-    //    //            result.Add(item.ToString());
     //    //        }
     //    //    }
     //    //}
-    //    //else
-    //    //{
-    //    //    result.Add(enumerable2.ToString());
-    //    //}
-    //    //return result;
-    //}
 
     public static bool HasIndex(int dex, Array col)
     {
@@ -218,9 +169,7 @@ public partial class CA
         var n = Environment.NewLine;
         list = Regex.Replace(list, @"(\r?\n\s*){2,}", Environment.NewLine + Environment.NewLine);
         list = list.Trim();
-        //list = list.Replace(n, n + n);
         // 27-10-23 dříve to bylo takhle
-        //return list.Trim();
     }
 
     [ObjectParamsObsoleteAttribute]
@@ -308,7 +257,6 @@ public partial class CA
     public static void Replace(List<string> files_in, string what, string forWhat)
     {
         for (var i = 0; i < files_in.Count; i++) files_in[i] = Replace(files_in[i], what, forWhat);
-        //CAChangeContent.ChangeContent2(null, files_in, Replace, what, forWhat);
     }
 
     public static List<string> ToListStringIEnumerable2(IEnumerable enumerable)
@@ -343,11 +291,6 @@ public partial class CA
 
     public static List<string> RemoveStringsEmptyFromBeginStart(List<string> sourceList)
     {
-        //textLines1.SkipWhile(e => !HasContent(e))
-        //            .Reverse()
-        //            .SkipWhile(e => !HasContent(e))
-        //            .Reverse()
-        //            .ToList();
 
         int start = 0, end = sourceList.Count - 1;
 
@@ -400,10 +343,8 @@ public partial class CA
     public static bool HasDuplicates(List<string> list)
     {
         var list2 = list.ToList();
-        //CAG.RemoveDuplicitiesList(list);
         list2 = list2.Distinct().ToList();
         if (list2.Count != list.Count)
-            //Console.WriteLine( Exceptions.DifferentCountInLists(string.Empty, "list2", list2.Count, "list", list.Count));
             return true;
         return false;
     }
@@ -894,7 +835,6 @@ public partial class CA
     {
         if (wildcard)
         {
-            //item = SH.WrapWith(item, '*');
             for (var i = files1.Count - 1; i >= 0; i--)
                 if (WildcardIsMatch(files1[i], item))
                     files1.RemoveAt(i);
@@ -918,10 +858,6 @@ public partial class CA
     ///// bcoz Cast() not working
     ///// Dont make any type checking - could be done before
     ///// </summary>
-    //private static List<string> ToListString2(IList enumerable)
-    //{
-    //    return se.new List<string>2(enumerable);
-    //}
 
     ///// <summary>
     ///// Just 3 cases of working:
@@ -930,10 +866,6 @@ public partial class CA
     ///// IList => List<string>
     ///// </summary>
     ///// <param name="enumerable"></param>
-    //public static List<string> ToListString(IList enumerable2)
-    //{
-    //    return se.new List<string>(enumerable2);
-    //}
 
     public static IList<object> OneElementCollectionToMulti(IList deli2)
     {
@@ -970,7 +902,6 @@ public partial class CA
         var n = new List<int>(s.Count);
         foreach (var item in s) n.Add(int.Parse(item));
 
-        //return BTS.CastCollectionStringToInt(s);
         return n;
     }
 
@@ -1015,25 +946,10 @@ public partial class CA
 
 
 
-    //public static object FirstOrNull(IList e)
-    //{
-    //    if (e == null)
-    //    {
-    //        return null;
-    //    }
 
-    //    //var tName = e.GetType().Name;
-    //    //if (ThreadHelper.NeedDispatcher(tName))
-    //    //{
-    //    //    var result = CA.dFirstOrNull(e);
-    //    //    return result;
-    //    //}
 
-    //    return e.FirstOrNull();
-    //}
     public static void KeepOnlyWordsToFirstSpecialChars(List<string> l)
     {
-        //ThrowEx.NotImplementedMethod();
         for (int i = 0; i < l.Count; i++)
         {
             l[i] = SHParts.RemoveAfterFirstFunc(l[i], CharHelper.IsSpecial, []);
@@ -1076,21 +992,10 @@ public partial class CA
     ///// Direct edit
     ///// </summary>
     ///// <param name="input"></param>
-    //public static string GetNumberedList(List<string> input, int startFrom)
-    //{
-    //    input = input.Where(d => !string.IsNullOrWhiteSpace(d)).ToList();
-    //    CA.PrependWithNumbered(input, startFrom);
-    //    return SH.JoinNL(input);
-    //}
     ///// <summary>
     ///// Direct edit
     ///// </summary>
     ///// <param name="input"></param>
-    //private static void PrependWithNumbered(List<string> input, int startFrom)
-    //{
-    //    var numbered = SunamoBts.BTS.GetNumberedListFromTo(startFrom, input.Count - 1, ") ");
-    //    Prepend(numbered, input);
-    //}
     public static ABLCA<string> CompareListDifferent(List<string> c1, List<string> c2)
     {
         var existsIn1 = new List<string>();
@@ -1335,11 +1240,7 @@ public partial class CA
 
 
 
-    //public static int Count(IList e)
-    //{
-    //    return se.CA.Count(e);
 
-    //}
 
 
     public static List<string> TrimStartChar(char backslash, List<string> s)
