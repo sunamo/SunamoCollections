@@ -163,6 +163,46 @@ public partial class CA
     }
 
     /// <summary>
+    /// Adds the item to the list only when the list does not contain it yet.
+    /// </summary>
+    /// <typeparam name="T">The item type.</typeparam>
+    /// <param name="list">The list to add to.</param>
+    /// <param name="item">The item to add.</param>
+    public static void AddIfNotContains<T>(List<T> list, T item)
+    {
+        if (!list.Contains(item))
+            list.Add(item);
+    }
+
+    /// <summary>
+    /// Returns true when the text ends with any of the given endings, compared with the given string comparison.
+    /// </summary>
+    /// <param name="fn">The text to test.</param>
+    /// <param name="allowedExtension">The endings.</param>
+    /// <param name="comparison">The string comparison, for example OrdinalIgnoreCase.</param>
+    public static bool EndsWith(string fn, List<string> allowedExtension, StringComparison comparison)
+    {
+        foreach (var item in allowedExtension)
+            if (fn.EndsWith(item, comparison))
+                return true;
+        return false;
+    }
+
+    /// <summary>
+    /// Returns indexes of the elements the text starts with, compared with the given string comparison.
+    /// </summary>
+    /// <param name="s">The text to test.</param>
+    /// <param name="list">The prefixes.</param>
+    /// <param name="comparison">The string comparison, for example OrdinalIgnoreCase.</param>
+    public static List<int> StartWithAnyInElement(string s, List<string> list, StringComparison comparison)
+    {
+        var result = new List<int>();
+        for (var i = 0; i < list.Count; i++)
+            if (s.StartsWith(list[i], comparison))
+                result.Add(i);
+        return result;
+    }
+    /// <summary>
     /// Ends with.
     /// </summary>
     /// <param name="fn">The fn.</param>
