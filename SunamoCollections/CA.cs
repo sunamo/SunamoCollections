@@ -424,14 +424,22 @@ public partial class CA
 
 
     /// <summary>
-    /// Partial contains.
+    /// Returns true when at least one of the directories contains the given path as a substring.
     /// </summary>
-    /// <param name="dirs">The dirs.</param>
-    /// <param name="pathWithoutNameBs">The path without name bs.</param>
-    /// <returns>The partial contains result.</returns>
+    /// <param name="dirs">The directories to search in.</param>
+    /// <param name="pathWithoutNameBs">The path (without file name) to look for.</param>
+    /// <returns>True when some directory contains the path; false for an empty list.</returns>
     public static bool PartialContains(List<string> dirs, string pathWithoutNameBs)
     {
-        throw new NotImplementedException();
+        foreach (var item in dirs)
+        {
+            if (item.Contains(pathWithoutNameBs))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 

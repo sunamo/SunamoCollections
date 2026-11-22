@@ -9,7 +9,7 @@
     <IsTestProject>false</IsTestProject>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Description>Utils for collections</Description>
-    <Version>26.11.22.1</Version>
+    <Version>26.11.22.2</Version>
     <Authors>www.sunamo.cz</Authors>
     <Copyright>www.sunamo.cz</Copyright>
     <PackageProjectUrl>https://sunamo.github.io/PlatformIndependentNuGetPackages/SunamoCollections/</PackageProjectUrl>
