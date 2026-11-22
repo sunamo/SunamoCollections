@@ -15,6 +15,19 @@ public partial class CA
     }
 
     /// <summary>
+    /// Converts every item to its string form; a null item becomes an empty string.
+    /// </summary>
+    /// <param name="items">The items to convert.</param>
+    /// <returns>The list of string forms of the items.</returns>
+    public static List<string> ToListString(IEnumerable<object?> items)
+    {
+        var result = new List<string>();
+        foreach (var item in items)
+            result.Add(item?.ToString() ?? string.Empty);
+        return result;
+    }
+
+    /// <summary>
     /// To list more string.
     /// </summary>
     /// <param name="array">The array.</param>

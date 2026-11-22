@@ -9,7 +9,7 @@
     <IsTestProject>false</IsTestProject>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Description>Utils for collections</Description>
-    <Version>26.5.18.7</Version>
+    <Version>26.11.22.1</Version>
     <Authors>www.sunamo.cz</Authors>
     <Copyright>www.sunamo.cz</Copyright>
     <PackageProjectUrl>https://sunamo.github.io/PlatformIndependentNuGetPackages/SunamoCollections/</PackageProjectUrl>
@@ -33,16 +33,6 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Diacritics" Version="4.1.4" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" Condition="'$(TargetFramework)' != 'netstandard2.0'" />
-    <PackageReference Include="xunit" Version="2.9.3" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5" Condition="'$(TargetFramework)' != 'netstandard2.0'">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="coverlet.collector" Version="6.0.4" Condition="'$(TargetFramework)' != 'netstandard2.0'">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="*" Pack="True" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="11.0.100" PrivateAssets="all" />
   </ItemGroup>

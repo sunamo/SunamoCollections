@@ -218,6 +218,31 @@ partial class CA
     }
 
     /// <summary>
+    /// Creates a list from the passed items.
+    /// </summary>
+    /// <typeparam name="T">The type of the items.</typeparam>
+    /// <param name="items">The items of the new list.</param>
+    /// <returns>The list with the items in the passed order.</returns>
+    public static List<T> ToList<T>(params T[] items)
+    {
+        return new List<T>(items);
+    }
+
+    /// <summary>
+    /// Joins several sequences into one list, keeping their order.
+    /// </summary>
+    /// <typeparam name="T">The type of the items.</typeparam>
+    /// <param name="sequences">The sequences to join.</param>
+    /// <returns>The list with the items of all sequences.</returns>
+    public static List<T> JoinIEnumerable<T>(params IEnumerable<T>[] sequences)
+    {
+        var result = new List<T>();
+        foreach (var sequence in sequences)
+            result.AddRange(sequence);
+        return result;
+    }
+
+    /// <summary>
     /// To list t.
     /// </summary>
     /// <typeparam name="T">The type T.</typeparam>
