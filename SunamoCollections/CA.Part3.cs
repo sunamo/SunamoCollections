@@ -73,10 +73,10 @@ public partial class CA
     /// <param name="parseNegations">The parse negations.</param>
     /// <returns>The return which contains result.</returns>
     public static List<string> ReturnWhichContains(List<string> lines, string term,
-        ContainsCompareMethodCA parseNegations = ContainsCompareMethodCA.WholeInput)
+        ContainsCompareMethodCA parseNegations = ContainsCompareMethodCA.WholeInput, StringComparison comparison = StringComparison.Ordinal)
     {
         List<int> founded;
-        return ReturnWhichContains(lines, term, out founded, parseNegations);
+        return ReturnWhichContains(lines, term, out founded, parseNegations, comparison);
     }
 
     /// <summary>
@@ -87,9 +87,11 @@ public partial class CA
     /// <param name="founded">The founded.</param>
     /// <param name="parseNegations">The parse negations.</param>
     /// <returns>The return which contains result.</returns>
+    // With Negations a word that starts with '!' must not be in the line; a null line never matches; comparison says how texts are compared.
     public static List<string> ReturnWhichContains(List<string> lines, string term, out List<int> founded,
-        ContainsCompareMethodCA parseNegations = ContainsCompareMethodCA.WholeInput)
+        ContainsCompareMethodCA parseNegations = ContainsCompareMethodCA.WholeInput, StringComparison comparison = StringComparison.Ordinal)
     {
+        var isParsingNegations = parseNegations == ContainsCompareMethodCA.Negations;
         founded = new List<int>();
         var result = new List<string>();
         var i = 0;
@@ -100,11 +102,12 @@ public partial class CA
         {
             WhitespaceCharService whitespaceChar = new();
             w = SHSplit.SplitNone(term, whitespaceChar.WhiteSpaceChars.ConvertAll(d => d.ToString()).ToArray());
+            w = w.Where(word => word.Length > 0).ToList();
         }
         if (parseNegations == ContainsCompareMethodCA.WholeInput)
             foreach (var item in lines)
             {
-                if (item.Contains(term))
+                if (item != null && item.IndexOf(term, comparison) != -1)
                 {
                     founded.Add(i);
                     result.Add(item);
@@ -116,7 +119,9 @@ public partial class CA
                  parseNegations == ContainsCompareMethodCA.Negations)
             foreach (var item in lines)
             {
-                if (w.All(d => item.Contains(d))) //SH.ContainsAll(item, w, parseNegations))
+                if (item != null && w.All(word => isParsingNegations && word.Length > 1 && word[0] == '!'
+                        ? item.IndexOf(word.Substring(1), comparison) == -1
+                        : item.IndexOf(word, comparison) != -1))
                 {
                     founded.Add(i);
                     result.Add(item);
