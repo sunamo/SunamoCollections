@@ -27,9 +27,6 @@ public class CATests
     [Fact]
     public void ContainsAnyFromElementTest()
     {
-        //string r = "cds";
-        //var s = CAG.ToList<string>(TestData.listABC);
-        //var i = CA.ContainsAnyFromElement(r, s);
     }
 
     [Fact]
@@ -39,7 +36,6 @@ public class CATests
         c1.Add(new SongFromInternet("a-b"));
         c1.Add(new SongFromInternet("c-d"));
         c1.Add(new SongFromInternet("a-b [c]"));
-        //c1.Add(new SongFromInternet("a-b"));
 
         List<SongFromInternet> c2 = new List<SongFromInternet>();
         c2.Add(new SongFromInternet("a-b"));
@@ -65,7 +61,6 @@ public class CATests
 
         // a,b,c
         List<string> alreadyProcessed;
-        // list = c
         var list = CA.GetDuplicities(TestData.listABCCC, out alreadyProcessed);
         int i = 0;
     }
@@ -79,14 +74,10 @@ b";
         var excepted = @"a
 
 b";
-        //            CA.DoubleOrMoreMultiLinesToSingle(ref input);
-        //            Assert.Equal(excepted, input);
-
-        //            input = @"a
 
 
 
-        //b";
+
 
         CA.DoubleOrMoreMultiLinesToSingle(ref input);
         Assert.Equal(excepted, input);
@@ -102,8 +93,8 @@ b";
     }
 
     /// <summary>
-    /// Vznikla kvůli ReplaceAll3
-    /// evidentně nefunguje a teď nemám čas to opravovat, existují funkční i ReplaceAll/ReplaceAll2, ReplaceAll3 je jen performance experiment
+    /// Created because of ReplaceAll3
+    /// evidently does not work and I have no time to fix it now, working ReplaceAll/ReplaceAll2 exist, ReplaceAll3 is just a performance experiment
     /// </summary>
     //[Fact]
     public void EqualRangesTest()
@@ -126,10 +117,8 @@ b";
         var input = CAG.ToList<int>(
             1, 2, 3);
         var toFind = CAG.ToList<int>(1, 2, 3);
-        //var excepted = CAG.ToList<FromTo>(new FromTo(1, 3, FromToUse.None), new FromTo(5, 7, FromToUse.None));
 
         var actual = CA.EqualRanges<int>(input, toFind);
-        //Assert.Equal<FromTo>(excepted, actual);
 
     }
 

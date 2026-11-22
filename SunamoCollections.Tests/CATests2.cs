@@ -11,10 +11,13 @@ public class CATests2
     [Fact]
     public void DivideByPercentTest()
     {
-        List<int> a = TestData._0To95;
-        var actual = CA.DivideByPercent<int>(a, 10);
+        var numbers = Enumerable.Range(0, 96).ToList();
+        var actual = CA.DivideByPercent<int>(numbers, 10);
 
-        Assert.Equal(TestData._0To95By10, actual);
+        Assert.Equal(11, actual.Count);
+        Assert.Equal(Enumerable.Range(0, 9).ToList(), actual[0]);
+        Assert.Equal(Enumerable.Range(81, 9).ToList(), actual[9]);
+        Assert.Equal(Enumerable.Range(90, 6).ToList(), actual[10]);
     }
 
     [Fact]

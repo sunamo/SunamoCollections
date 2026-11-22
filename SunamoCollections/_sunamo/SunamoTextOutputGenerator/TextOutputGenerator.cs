@@ -5,19 +5,13 @@ namespace SunamoCollections._sunamo.SunamoTextOutputGenerator;
 /// </summary>
 internal class TextOutputGenerator //: ITextOutputGenerator
 {
-    private static readonly string s_znakNadpisu = "*";
+    private static readonly string s_headingCharacter = "*";
 
-    // při převádění na nugety jsem to změnil na ITextBuilder sb = TextBuilder.Create();
-    // ale asi to byla blbost, teď mám v _sunamo Create() která je ale null místo abych použil ctor
-    // takže vracím nazpět.
-    //internal TextBuilder sb = new TextBuilder();
+    // but it was probably nonsense, now I have Create() in _sunamo, which is null instead of using the ctor
+    // so I return it back.
     internal StringBuilder sb = new();
 
     //internal string prependEveryNoWhite
-    //{
-    //    get => sb.prependEveryNoWhite;
-    //    set => sb.prependEveryNoWhite = value;
-    //}
 
     public override string ToString()
     {
